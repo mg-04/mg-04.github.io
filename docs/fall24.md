@@ -6,7 +6,7 @@ permalink: /f24
 Time is really tight, and apparently the prof doesn't realize that (it's her second year teaching). Midterm 2 was 15 pages 75 minutes (5 minutes/**PAGE!**). To that point, you basically need to turn yourself into GNU Make and just plug in the numbers:
 
 Here's Midterm 2, Problem 1:
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 ```Makefile
 W: epsilon, V0, q, Na, Nd
@@ -37,9 +37,9 @@ W = sqrt(2 * epsilon * V0 / q * (1/Na + 1/Nd))
 ```
 And here was what GNU Ming put down for zero bias:
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 # Circuits
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 The answer is:
 $$
@@ -71,7 +71,7 @@ One rant is with exam cheat sheets. The intention is good--recuding our memoriza
 
 Showing off my final grade there (I actually got 100%, since lowest HW and first two midterms dropped loll)
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 # CS 3157 AP
 
 > You've probably heard of some horror stories of this class
