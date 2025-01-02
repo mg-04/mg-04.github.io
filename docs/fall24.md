@@ -1,6 +1,8 @@
-layout:page
+---
+layout: page
 title: "Columbia Fall 24"
 permalink: /f24
+---
 
 # SSD
 Time is really tight, and apparently the prof doesn't realize that (it's her second year teaching). Midterm 2 was 15 pages 75 minutes (5 minutes/**PAGE!**). To that point, you basically need to turn yourself into GNU Make and just plug in the numbers:
