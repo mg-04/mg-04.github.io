@@ -46,8 +46,7 @@ And here was what GNU Ming put down for zero bias:
 
 The answer is:
 
-```math
-\begin{bmatrix}
+$$ \begin{bmatrix}
 \frac 1 R + j\omega C_1 + \frac 1 {j\omega L} & -\frac 1 {j\omega L}\\
 -\frac 1 {j\omega L} - \frac{\beta}{j\omega L} & \frac 1 {j \omega L} + \frac{\beta}{j\omega L} + j\omega C_2
 \end{bmatrix}
@@ -56,9 +55,7 @@ The answer is:
 \end{bmatrix}=\begin{bmatrix}
 -\pmb{I_{S1}} + \frac{\pmb{V_S}}{R} \\
 \pmb{I_{S1}} + \pmb{I_{S2}}
-\end{bmatrix} 
-```
-
+\end{bmatrix} $$
 This looks complicated, but every bit of it makes sense, with beautiful linear algebra. 
 If after some derivation, any of these does not seem obvious to you, consider dropping the major. Period.
 
