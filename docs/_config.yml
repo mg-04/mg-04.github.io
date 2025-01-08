@@ -20,12 +20,15 @@
 
 title: mg04-io
 email: danielminggong@gmail.com
+email2: ming.g@columbia.edu
 description: >- # this means to ignore newlines until "baseurl:"
   diary on
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mg-04@github.io" # the base hostname & protocol for your site, e.g. http://example.com
-instagram_username: minggongd
 github_username:  mg-04
+linkedin_username: mgongd
+instagram_username: minggongd
+youtube_username: '@minggong'
 
 # Build settings
 theme: minima
