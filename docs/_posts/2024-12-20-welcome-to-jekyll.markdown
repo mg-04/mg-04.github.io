@@ -5,3 +5,6 @@ date:   2024-12-20 15:59:30 -0500
 categories: jekyll update
 ---
 Welcome!
+
+A few notes for the commands:
+`bundle exec jekyll serve` serves the site locally
