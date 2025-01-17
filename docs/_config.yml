@@ -31,24 +31,36 @@ instagram_username: minggongd
 youtube_username: '@minggong'
 
 # Build settings
-theme: minima
-#remote_theme: jekyll/minima
-minima:
-  skin: dark
+
 header_pages:
   - CV.markdown
   - Resources.markdown
-author:
-  name: Ming Gong
-  email: ming.g@columbia.edu
 plugins:
   - jekyll-feed
   - jekyll-target-blank
   - jekyll-sitemap
   - jekyll-remote-theme
 
+#theme: minima
+remote_theme: jekyll/minima
+minima:
+  skin: dark
 
-show_excerpts: true
+github_edit_url: "https://github.com/mg-04/mg-04.github.io/tree/main/docs"
+
+
+show_excerpts: false
+
+comments:
+  giscus:
+    enabled: true
+    repo: "mg-04/mg-04.github.io"
+    repo_id: "MDEwOlJlcG9zaXRvcnkyOTk2NTk5MzI="
+    category: "Announcements"
+    category_id: "DIC_kwDOEdxynM4CThkc"
+    mapping: "pathname"
+    reactions_enabled: "1"
+    theme: "light"
 
 # Exclude from processing.
 # The following items will not be processed, by default.

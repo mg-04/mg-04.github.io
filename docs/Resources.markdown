@@ -3,7 +3,9 @@ layout: page
 title: "Resources"
 permalink: /resources
 menu_title: "Resources"
+git_path: "/Resources.markdown"
 ---
+
 ### CS 3157 AP
 [AP notes.md](/ap)
 
