@@ -32,12 +32,15 @@ youtube_username: '@minggong'
 
 # Build settings
 theme: minima
-remote_theme: jekyll/minima
+#remote_theme: jekyll/minima
 minima:
   skin: dark
 header_pages:
   - CV.markdown
   - Resources.markdown
+author:
+  name: Ming Gong
+  email: ming.g@columbia.edu
 plugins:
   - jekyll-feed
   - jekyll-target-blank
