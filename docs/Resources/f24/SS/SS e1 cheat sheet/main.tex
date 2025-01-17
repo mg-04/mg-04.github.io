@@ -1,0 +1,261 @@
+\documentclass[6pt]{article}
+\usepackage[margin=0.5in,top=0.5in,bottom=0.5in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{siunitx}
+\usepackage{esint}
+\usepackage{hanging}
+\usepackage{xfrac}
+\pagenumbering{gobble}
+
+
+\theoremstyle{definition}
+\newtheorem*{claim}{Claim}
+\theoremstyle{definition}
+\newtheorem*{lemma}{Lemma}
+\renewcommand{\qed}{\hfill\blacksquare}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\renewcommand{\c}{\mathrm{c}\,}
+\newcommand{\s}{\mathrm{s}\,}
+
+
+
+
+\usepackage{graphicx}
+
+\def\rcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{BoldR}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+\DeclareSIUnit\atmosphere{atm}
+\DeclareSIUnit\molecule{molecule}
+\DeclareSIUnit\cal{calorie}
+\DeclareSIUnit\ev{eV}
+
+\title{Signals and Systems Exam 1}
+%\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry} % Adjust page margins
+\usepackage{fancyhdr} % For custom headers and footers
+
+\begin{document}
+\raggedright
+\begin{multicols*}{3} % Use 3 columns
+    $\sin n\pi = 0$\\
+    $1-\cos n\pi = 2$ for odd $n$
+
+    $\sin(x\pm y) = \sin x \cos y \pm \cos x \sin y$\\
+    $\cos(x\pm y) = \cos x \cos y \mp \sin x \sin y$
+
+    $\sin x \sin y = \sfrac{1}{2}[\cos(x-y) - \cos(x+y)]$\\
+    $\cos x \cos y = \sfrac{1}{2}[\cos(x-y) + \cos(x+y)]$\\
+    $\sin x \cos y = \sfrac{1}{2}[\sin(x-y) + \sin(x+y)]$
+
+    $C \c(\omega_0 t + \theta) = C\,\c(\theta) \,\c(\omega_0 t) - C\s(\theta)\s(..)$
+
+    $\theta = \tan^{-1} (-b/a)$, $\pm \pi$ when $a<0$\\
+    $\sin t = \cos (t-\pi/2)$
+
+    $\cos x = \frac{1}{2}\,[e^{jx} + e^{-jx}]$\\
+    $\sin x = \frac{1}{2j}\, [e^{jx} - e^{-jx}]$\\
+    $e^{j\omega t} = \cos(\omega t) + j\sin (\omega t)$
+
+    $z^* = a-jb = re^{-j\theta}$\\
+    $u^* v^* = (uv)^*$
+
+    $\angle z = \tan^{-1}(b/a)$, $\pm \pi$ in Q2 and Q3
+
+    $z^{\frac 1 n} = r^{\frac 1 n} e^{j \frac{\theta + 2\pi m}{n}}$
+\rule{\linewidth}{0.5pt}
+    % For sin, swap all explicit + with - and swap all cos with sin
+    $\int \cos^2 at \, dt = \frac{t}{2} + \frac{\sin2at}{4a}$
+
+    $\int t \cos at \, dt = \frac{1}{a^2}(\cos at + at\sin at)$\\
+    $\int t^2 \c at\, dt = \frac{1}{a^3}(2at\c at - 2\s at + a^2t^2\s at)$
+
+    $\int te^{at}\, dt = \sfrac{1}{a^2} \, e^{at} (at-1)$\\
+    $\int t^2 e^{at} \, dt = \sfrac{1}{a^3} \, e^{at} (a^2t^2 - 2at + 2)$
+
+    $\int e^{at} \,\c bt \, dt = \frac{1}{a^2+b^2} \,e^{at}(a\cos 
+    bt + b \sin bt)$
+
+    \(\int \frac{1} {x^2+a^2}\, dx = \frac{1}{a} \tan^{-1} \frac x a\)
+    \rule{\linewidth}{0.5pt}
+    $\mathcal{E}_f = \int_{-\infty}^{\infty} |f(t)|^2 dt$ (complex); \\
+    $P_f = \lim_{T\rightarrow\infty}\frac{1}{T} \int^{T/2}_{-T/2} |f(t)|^2 dt $; \\
+    rms power $= \sqrt {P_f}$
+
+    % can't be both energy/power
+    Cont; 
+    analog; 
+    periodic (extension); 
+    (non/anti)causal; 
+    energy/power (both); 
+    deterministic/stochastic (carries info)
+
+    $\int f(t)\cdot \delta(t - t_0) dt = f(t_0)$ ($f$ cont at $t_0$)
+    
+
+    out--in  $f(2x-6)$: shift by 6, scale by 2; $f(2(x-6))$: scale by 2, shift by 6
+
+    $f_e(t) = \sfrac{1}{2}[f(t) + f(-t)]$; \\
+    $f_o(t) = \sfrac{1}{2}[f(t) - f(-t)]$
+\rule{\linewidth}{0.5pt}
+    L: $\mathcal{T}[kf_1(t) + f_2(t)] = ky_1(t) + y_2(t)$.\\
+    $\mathcal{T}$: $\sum_{k=0}a_k D^k \, y(t) = \sum_{l=0}b_lD^l\, f(t)$,\\
+    L if $a_k$, $b_l$ are not functions of $y(t), f(t)$\\
+    E. $\sin\dot{y}(t) + t^2 y(t) = (t+3) f(t)$
+    
+    TI: $\mathcal{T}[f(t-\tau)] = y(t-\tau)$.\\
+    $a_k$, $b_l$ indep of $t$. (const coeff)\\
+    Let $g(t)\equiv f(t-\tau)$, find $z(t) = \mathcal{T}[g(t)]$
+
+
+    Causal: $y(t)$ dep only on $f(\tau)$, $\tau < t$. 
+    Just compare $t$ and $\tau$.
+    
+    Ins/dyn: $y$ only dep $f$ at present (no $\int$)
+    
+    Invertible: given $y(t)$, we can know $f(t)$
+
+% new column here
+    $c(t) \equiv \int_{-\infty}^{\infty} f(\tau) g(t-\tau) d\tau$
+
+    $f * g = g * f$
+    
+    $f * (g + h) = f * h + g * h$
+    
+    $f * (g * h) = (f * g) * h$
+
+        Pf: $f * (g * h) = f * (h * g) = \int f(\tau_1) \int h(\tau_2)\, g(t - \tau_1 - \tau_2) \, d\tau_2 \, d\tau_1$
+    
+     $f(t - T_1) * g(t - T_2) = c(t - T_1 - T_2)$
+
+     $f(at) * g(at) = |\sfrac{1}{a}|\, c(at)$ (even/odd)
+
+     $f^{(m)} (t) * g^{(n)} (t) = c^{(m+n)}(t)$
+
+
+    Graph: shift LEFT by $t$, and reflect. Every $\tau$ replaced by $t-\tau$, reverted
+\rule{\linewidth}{0.5pt}
+    $f(t) * \delta(t-T) = f(t-T)$
+    
+    $u(t) * u(t) = t \, u(t)$
+
+    $e^{at} \,u(t)* \,u(t) = \frac{1-e^{at}}{-a}\, u(t)$
+
+    % Watch the sign.
+    $e^{at}\,u(t) * e^{bt}\,u(t) = \frac{e^{at} - e^{bt}}{a - b}\, u(t)$ ($te^{at} \, u(t)$ for $a=b$) 
+
+    $e^{at}\, u(t) * e^{bt} \,u(-t) = \frac{e^{at} \, u(t) + e^{bt} \, u(-t)}{b-a}$
+
+    % + here
+    $te^{at}\,u(t) * e^{at} \,u(t)= \sfrac{1}{2} \,t^2e^{at} \, u(t)$
+
+    $t^m\, u(t) * t^n \, u(t) = \frac{m!n!}{(m+n+1)!}\, t^{m+n+1} \, u(t)$
+
+    Don't forget $[u(t+T_1) - u(t-T_2)]$ term
+\rule{\linewidth}{0.5pt}
+    $Q(D) y(t) = P(D) f(t)$, typically $\int f$\\
+    Assume causal input $f(t) u(t)$
+
+    $y_{zs}(t) = f(t) * h(t)$ from input\\    
+        $y_{zs}(0^-) = 0$, $y_{zs}(0^+) \neq 0$
+
+        Let $h(t) = \mathcal{T} [\delta (t)]$ (impulse response)
+        % More description here
+            $y_{zs}(t)=\mathcal{T} [f(t)] = \mathcal{T} [f(t) * \delta (t)] =
+            \mathcal{T}[\lim\sum f(n\Delta\tau) \delta(t - n\Delta\tau) \Delta\tau] =
+            \lim\sum f(n\Delta\tau) h(t-n\Delta\tau)\Delta\tau = f * h$
+            
+        $y_{zi}(t)$ from ini, $f(t)=0$,
+            $Q y_{zi}(t) = 0$;
+            % same for the derivatives of y
+            $y_{zi}(0^-) = y_{zi}(0^+)$
+\rule{\linewidth}{0.5pt}
+    $\mathcal{E}_e = \int_{t_1}^{t_2} [e(t)]^2 dt = \int_{t_1}^{t_2} f^2(t)dt$\\
+    $- 2\sum c_i \int f(t) x_i(t) dt + \int (\sum c_i x_i(t))^2 dt$\\
+    $    = \mathcal{E}_f
+    -  2\sum \langle f, x_i \rangle +
+    (\sum c_i^2 \int x_i(t)^2 dt + \sum_{i\neq j} c_i c_j \int_{t1}^{t2} x_i(t) x_j(t) dt)$
+        
+    $\frac{\partial \mathcal{E}_e}{\partial c_i} = 0 = -2 \langle f(t), x_i(t)\rangle + 2\mathcal{E}_i c_i$\\
+    $\mathcal{E}_e^{\text{min}} = \mathcal{E}_f - \sum_{i=1}^N c_i^2 \mathcal{E}_i$
+
+    $\mathcal{E}^\mathrm{min}_e = 0$, Parseval's thm
+
+    For ortho, $E_z = E_x + E_y$
+        
+
+    $|u+v|^2 = |u|^2 + |v|^2 + u^*v + v^*u$
+
+    $\langle x(t), y(t)\rangle = \int_{t1}^{t2} x(t) y(t)^* \, dt$
+\vfill\null
+\columnbreak 
+    $a_0 = \frac{1}{T_0} \int_{T_0} f(t)\, dt$\\
+    $a_n = \frac{2}{T_0} \int_{T_0} f(t) \cos(n\omega_0t)\,dt$\\
+    $b_n = \frac{2}{T_0} \int_{T_0} f(t) \sin(n\omega_0t)\,dt$\\
+    Energy: $T_0$ for $n=0$; $T_0/2$ else
+     
+    Half-w sym: $f(t - \sfrac{T_0}{2}) = -f(t)$\\
+    $a_{n_\mathrm{odd}} = \frac{4}{T_0}\int_{0}^{T_0/2} f(t) \cos (n\omega_0 t) \, dt$
+
+    $f(t) = \sum_{n=-\infty}^{\infty} F_n e^{jn\omega_0 t}$\\
+    $F_n = \frac{1}{T_0}\int_{T_0} f(t) e^{-jn\omega_0t}\,dt$
+
+    $C_n\cos(n\omega_0 t + \theta_n) = \sfrac{C_n}{2} \, (e^{j(n\omega_0t + \theta_n)} + e^{-j(n\omega_0 t + \theta_n)}) = (\frac{C_n} 2 e^{j\theta_n}) e^{jn\omega_0 t} + (\frac{C_n} 2 e^{-j\theta_n}) e^{-jn\omega_0 t}$
+
+    $F_n = \frac{C_n}{2}\, e^{j\theta_n} = \frac 1 2 (a_n - jb_n) = |F_n| e^{j\angle F_n}$\\
+    $F_{-n} = \frac{C_n}{2}\, e^{-j\theta_n}$
+\rule{\linewidth}{0.5pt}
+    W: finite $\int$, fin $a$, $b$;
+
+    S: fin m/m/discont over $T_0$: converge
+\rule{\linewidth}{0.5pt}
+    Time shift: $f(t-t_0)\leftrightarrow F_n e^{-jn(\omega_0 t_0)}$, $|F_n|$ same, $\angle F_n$ shifted by $-(\omega_0 t_0)n$
+
+    Reversal: $f(-t)\leftrightarrow F_{-n}$
+
+    Scal: $T = \sfrac {T_0} a$, $\omega = a\omega_0$
+
+    Multip (same $T_0$): $f(t) g(t) \leftrightarrow F_n * G_n$ 
+        $\frac 1{T_0}  \int_{T_0} f(t) g(t) e^{jn\omega_0 t}\, dt$ =\\
+        $ \frac{1}{T_0} \int (\sum F_m e^{jm\omega_0 t}) (\sum G_k e^{jk\omega_0 t}) e^{-jn\omega_0 t} \, dt$ \\
+        $ = \sum_m \sum_k F_m G_k \frac{1}{T_0} \int_{T_0} e^{j(m+k-n)\omega_0 t} \, dt$\\
+        $ = \sum_m \sum_k F_m G_k \langle e^{j(m+k)\omega_0 t}, e^{jn\omega_0 t}\rangle$\\
+        $ = \sum_{k=-\infty}^{\infty} G_k F_{n-k}$
+        
+    Conjugation: $f(t)^* = F^*_{-n}$
+
+        $f$ real $\rightarrow$ $|F|$ even, $\angle F$ odd\\
+        $f$ real, even $\rightarrow$ $F$ re, e; $F_{-n} = F_n = F_n^*$\\
+        $f$ re, od $\rightarrow$ $F$ im, o; $-F_{-n} = F_n = -F_n^*$
+
+        $f_e(t) \leftrightarrow \mathrm{Re}\{ F_n\}$\\
+        $f_o(t) \leftrightarrow j \,\mathrm{Im} \{F_n\}$
+\rule{\linewidth}{0.5pt}
+    Square ($A=1$, $T=2\pi$, $\omega = 1$) 
+        $\frac{4}{\pi}(\cos t - \frac{1}{3}\cos 3t + \frac{1}{5} \cos 5t- ...)$\\
+        $\frac{4}{\pi}(\sin t + \frac 1 3 \sin 3t + \frac 1 5 \sin 5t + ...)$
+
+    Triangle: 
+        $\frac{8}{\pi^2}(\sin t - \frac{1}{9} \sin 3t + \frac{1}{25} \sin 5t - ...)$\\
+        $\frac{8}{\pi^2}(\cos t + \frac 1 9 \cos 3t + \frac 1 {25} \cos 5t + ...)$
+
+    Sawtooth:   
+        $\frac 2{\pi} (\sin t - \frac{1}{2} \sin 2t + \frac{1}{3} \sin 3t - ...)$
+        $\frac 2{\pi} (-\sin t - \frac{1}{2} \sin 2t - \frac{1}{3} \sin 3t - ...)$
+
+    $\delta$ train:     
+        $\delta_{T_0} (t) = \sum_{n=-\infty}^{\infty} \delta(t - nT_0)$ 
+        $\frac{1}{T_0} \sum_{n=-\infty}^{\infty} e^{jn\omega_0 t}$
+\end{multicols*}
+\end{document}

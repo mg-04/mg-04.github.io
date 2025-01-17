@@ -1,0 +1,451 @@
+\documentclass[4pt]{article}
+\usepackage[margin=0.2in,top=0.3in,bottom=0.3in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{siunitx}
+\usepackage{esint}
+\usepackage{hanging}
+\usepackage{xfrac}
+\pagenumbering{gobble}
+
+
+\theoremstyle{definition}
+\newtheorem*{claim}{Claim}
+\theoremstyle{definition}
+\newtheorem*{lemma}{Lemma}
+\renewcommand{\qed}{\hfill\blacksquare}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\renewcommand{\c}{\mathrm{c}\,}
+\newcommand{\s}{\mathrm{s}\,}
+\renewcommand{\r}{\mathrm{r}\,}
+\renewcommand{\o}{\omega}
+\newcommand{\lra}{\leftrightarrow}
+
+\usepackage{graphicx}
+
+\def\rcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{BoldR}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+\DeclareMathOperator{\rect}{rect}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+\DeclareSIUnit\atmosphere{atm}
+\DeclareSIUnit\molecule{molecule}
+\DeclareSIUnit\cal{calorie}
+\DeclareSIUnit\ev{eV}
+
+\title{Signals and Systems Exam 2}
+%\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry} % Adjust page margins
+\usepackage{fancyhdr} % For custom headers and footers
+
+\begin{document}
+\raggedright
+\begin{multicols}{3} % Use 3 columns
+    $\arctan(\frac{1}{\sqrt{3}}) = \frac{\pi}{6}$,  $\arctan(\sqrt{3}) = \frac{\pi} 3$
+
+    $\sin n\pi = 0$\\
+    $1-\cos n\pi = 2$ for odd $n$
+
+    $\sin(x\pm y) = \sin x \cos y \pm \cos x \sin y$\\
+    $\cos(x\pm y) = \cos x \cos y \mp \sin x \sin y$
+
+    $\sin x \sin y = \sfrac{1}{2}[\cos(x-y) - \cos(x+y)]$\\ % annotate for sin 2x and cos 2x
+    $\cos x \cos y = \sfrac{1}{2}[\cos(x-y) + \cos(x+y)]$\\
+    $\sin x \cos y = \sfrac{1}{2}[\sin(x-y) + \sin(x+y)]$
+
+    $C \c(\omega_0 t + \theta) = C\,\c(\theta) \,\c(\omega_0 t) - C\s(\theta)\s(\o_0 t)$
+
+    $\theta = \tan^{-1} (-b/a)$, $\pm \pi$ when $a<0$\\
+    $\sin t = \cos (t-\pi/2)$
+
+    $\cos x = \frac{1}{2}\,[e^{jx} + e^{-jx}]$\\
+    $\sin x = \frac{1}{2j}\, [e^{jx} - e^{-jx}]$\\
+    $e^{j\omega t} = \cos(\omega t) + j\sin (\omega t)$
+
+    $z^* = a-jb = re^{-j\theta}$\\
+    $u^* v^* = (uv)^*$
+
+    $\angle z = \tan^{-1}(b/a)$, $\pm \pi$ in Q2 and Q3
+
+    $z^{\frac 1 n} = r^{\frac 1 n} e^{j \frac{\theta + 2\pi m}{n}}$
+\rule{\linewidth}{0.5pt}
+    % For sin, swap all explicit + with - and swap all cos with sin
+    $\int \cos^2 at \, dt = \frac{t}{2} + \frac{\sin2at}{4a}$
+
+    $\int t \cos at \, dt = \frac{1}{a^2}(\cos at + at\sin at)$\\
+    $\int t^2 \cos at\, dt = \frac{1}{a^3}(2at\c at - 2\s at + a^2t^2\s at)$
+
+    $\int te^{at}\, dt = \frac{1}{a^2} \, e^{at} (at-1)$\\
+    $\int t^2 e^{at} \, dt = \frac{1}{a^3} \, e^{at} (a^2t^2 - 2at + 2)$
+
+    $\int e^{at} \,\cos bt \, dt = \frac{1}{a^2+b^2} \,e^{at}(a\cos 
+    bt + b \sin bt)$
+
+    \(\int \frac{1} {x^2+a^2}\, dx = \frac{1}{a} \tan^{-1} \frac x a\)
+    \rule{\linewidth}{0.5pt}
+    $\mathcal{E}_f = \int_{-\infty}^{\infty} |f(t)|^2 dt$ (complex); \\
+    $P_f = \lim_{T\rightarrow\infty}\frac{1}{T} \int^{T/2}_{-T/2} |f(t)|^2 dt $; \\
+    rms power $= \sqrt {P_f}$
+
+    % can't be both energy/power
+    Cont; 
+    analog; 
+    periodic (extension); 
+    (non/anti)causal; 
+    energy/power (both); 
+    deterministic/stochastic (carries info)
+
+    $\int f(t)\cdot \delta(t - t_0) dt = f(t_0)$ ($f$ cont at $t_0$)
+    
+
+    out--in  $f(2x-6)$: shift by 6, scale by 2; $f(2(x-6))$: scale by 2, shift by 6
+
+    $f_e(t) = \sfrac{1}{2}[f(t) + f(-t)]$; \\
+    $f_o(t) = \sfrac{1}{2}[f(t) - f(-t)]$
+\rule{\linewidth}{0.5pt}
+    L: $\mathcal{T}[kf_1(t) + f_2(t)] = ky_1(t) + y_2(t)$.\\
+    $\mathcal{T}$: $\sum_{k=0}a_k D^k \, y(t) = \sum_{l=0}b_lD^l\, f(t)$,\\
+    L if $a_k$, $b_l$ are not functions of $y(t), f(t)$\\
+    E. $\sin\dot{y}(t) + t^2 y(t) = (t+3) f(t)$
+    
+    TI: $\mathcal{T}[f(t-\tau)] = y(t-\tau)$.\\
+    $a_k$, $b_l$ indep of $t$. (const coeff)\\
+    Let $g(t)\equiv f(t-\tau)$, find $z(t) = \mathcal{T}[g(t)]$
+
+
+    Causal: $y(t)$ dep only on $f(\tau)$, $\tau < t$. 
+    Just compare $t$ and $\tau$.
+    
+    Ins/dyn: $y$ only dep $f$ at present (no $\int$)
+    
+    Invertible: given $y(t)$, we can know $f(t)$
+
+% new column here
+    $c(t) \equiv \int_{-\infty}^{\infty} f(\tau) g(t-\tau) d\tau$
+
+    $f * g = g * f$
+    
+    $f * (g + h) = f * h + g * h$
+    
+    $f * (g * h) = (f * g) * h$
+
+        Pf: $f * (g * h) = f * (h * g) = \int f(\tau_1) \int h(\tau_2)\, g(t - \tau_1 - \tau_2) \, d\tau_2 \, d\tau_1$
+    
+     $f(t - T_1) * g(t - T_2) = c(t - T_1 - T_2)$
+
+     $f(at) * g(at) = |\sfrac{1}{a}|\, c(at)$ (even/odd)
+
+     $f^{(m)} (t) * g^{(n)} (t) = c^{(m+n)}(t)$
+
+
+    Graph: shift LEFT by $t$, and reflect. Every $\tau$ replaced by $t-\tau$, reverted
+\rule{\linewidth}{0.5pt}
+    $f(t) * \delta(t-T) = f(t-T)$
+    
+    $u(t) * u(t) = t \, u(t)$
+
+    $e^{at} \,u(t)* \,u(t) = \frac{1-e^{at}}{-a}\, u(t)$
+
+    % Watch the sign.
+    $e^{at}\,u(t) * e^{bt}\,u(t) = \frac{e^{at} - e^{bt}}{a - b}\, u(t)$ ($te^{at} \, u(t)$) 
+
+    $e^{at}\, u(t) * e^{bt} \,u(-t) = \frac{e^{at} \, u(t) + e^{bt} \, u(-t)}{b-a}$
+
+    % + here
+    $te^{at}\,u(t) * e^{at} \,u(t)= \sfrac{1}{2} \,t^2e^{at} \, u(t)$
+
+    $t^m\, u(t) * t^n \, u(t) = \frac{m!n!}{(m+n+1)!}\, t^{m+n+1} \, u(t)$
+
+    Don't forget $[u(t+T_1) - u(t-T_2)]$ term
+\rule{\linewidth}{0.5pt}
+    $Q(D) y(t) = P(D) f(t)$, typically $\int f$\\
+    Assume causal input $f(t) u(t)$
+
+    $y_{zs}(t) = f(t) * h(t)$ from input\\    
+        $y_{zs}(0^-) = 0$, $y_{zs}(0^+) \neq 0$
+
+        Let $h(t) = \mathcal{T} [\delta (t)]$ (impulse response)
+        % More description here
+            $y_{zs}(t)=\mathcal{T} [f(t)] = \mathcal{T} [f(t) * \delta (t)]$\\
+            $=\mathcal{T}[\lim\sum f(n\Delta\tau) \delta(t - n\Delta\tau) \Delta\tau]$\\
+            $=\lim\sum f(n\Delta\tau) h(t-n\Delta\tau)\Delta\tau = f * h$
+            
+        $y_{zi}(t)$ from ini, $f(t)=0$,
+            $Q y_{zi}(t) = 0$;
+            % same for the derivatives of y
+            $y_{zi}(0^-) = y_{zi}(0^+)$, $\dot{y_{zi}}(0^-) = \dot{y_{zi}}(0^+)$
+\rule{\linewidth}{0.5pt}
+    $\mathcal{E}_e = \int_{t_1}^{t_2} [e(t)]^2 dt = \int_{t_1}^{t_2} f^2(t)dt$\\
+    $- 2\sum c_i \int_{t_1}^{t_2} f(t) x_i(t) dt + \int_{t_1}^{t_2} (\sum c_i x_i(t))^2 dt$\\
+    $    = \mathcal{E}_f
+    -  2\sum \langle f, x_i \rangle +
+    (\sum c_i^2 \int_{t_1}^{t_2} x_i(t)^2 dt + \sum_{i\neq j} c_i c_j \int_{t_1}^{t_2} x_i(t) x_j(t) dt)$
+        
+    $\frac{\partial \mathcal{E}_e}{\partial c_i} = 0 = -2 \langle f(t), x_i(t)\rangle + 2\mathcal{E}_i c_i$\\
+    $\mathcal{E}_e^{\text{min}} = \mathcal{E}_f - \sum_{i=1}^N c_i^2 \mathcal{E}_i$
+
+    \(c_i = \frac{1}{\mathcal{E}_i}\langle f, x_i\rangle = \frac{\int f(t) x(t) dt}{\int f^2(t) dt}\)    
+
+    For ortho, $E_z = E_x + E_y$
+        
+
+    $|u+v|^2 = |u|^2 + |v|^2 + u^*v + v^*u$
+
+    $\langle x(t), y(t)\rangle = \int_{t_1}^{t_2} x(t) y(t)^* \, dt$\\
+    \( = \int_{t_1}^{t_2} x(t) y(t) dt\) if real\\
+    Use prod $\rightarrow$ sum identities
+\rule{\linewidth}{0.5pt}
+%\vfill\null
+%\columnbreak 
+    $a_0 = \frac{1}{T_0} \int_{T_0} f(t)\, dt$\\
+    $a_n = \frac{2}{T_0} \int_{T_0} f(t) \cos(n\omega_0t)\,dt$\\
+    $b_n = \frac{2}{T_0} \int_{T_0} f(t) \sin(n\omega_0t)\,dt$\\
+    Energy: $T_0$ for $n=0$; $T_0/2$ else
+     
+    Half-w sym: $f(t - \sfrac{T_0}{2}) = -f(t)$\\
+    $a_{n_\mathrm{odd}} = \frac{4}{T_0}\int_{0}^{T_0/2} f(t) \cos (n\omega_0 t) \, dt$
+
+    $f(t) = \sum_{n=-\infty}^{\infty} F_n e^{jn\omega_0 t}$\\
+    $F_n = \frac{1}{T_0}\int_{T_0} f(t) e^{-jn\omega_0t}\,dt$
+
+    $C_n\cos(n\omega_0 t + \theta_n) = \sfrac{C_n}{2} \, (e^{j(n\omega_0t + \theta_n)} + e^{-j(n\omega_0 t + \theta_n)}) = (\frac{C_n} 2 e^{j\theta_n}) e^{jn\omega_0 t} + (\frac{C_n} 2 e^{-j\theta_n}) e^{-jn\omega_0 t}$
+
+    $F_n = \frac{C_n}{2}\, e^{j\theta_n} = \frac 1 2 (a_n - jb_n) = |F_n| e^{j\angle F_n}$\\
+    $F_{-n} = \frac{C_n}{2}\, e^{-j\theta_n}$
+\rule{\linewidth}{0.5pt}
+    W: finite $\int$, fin $a$, $b$, fin power
+
+    S: fin m/m/dcont over $T_0$, $\rightarrow \frac{f(t_0^+) + f(t_0^-)}{2}$
+\rule{\linewidth}{0.5pt}
+    Time shift: $f(t-t_0)\leftrightarrow F_n e^{-jn(\omega_0 t_0)}$, $|F_n|$ same, $\angle F_n$ shifted by $-(\omega_0 t_0)n$
+
+    Reversal: $f(-t)\leftrightarrow F_{-n}$
+
+    Scal: $T = \sfrac {T_0} a$, $\omega = a\omega_0$
+
+    Multip (same $T_0$): $f(t) g(t) \leftrightarrow F_n * G_n$ 
+        $\frac 1{T_0}  \int_{T_0} f(t) g(t) e^{jn\omega_0 t}\, dt$ =\\
+        $ \frac{1}{T_0} \int (\sum F_m e^{jm\omega_0 t}) (\sum G_k e^{jk\omega_0 t}) e^{-jn\omega_0 t} \, dt$ \\
+        $ = \sum_m \sum_k F_m G_k \frac{1}{T_0} \int_{T_0} e^{j(m+k-n)\omega_0 t} \, dt$\\
+        $ = \sum_m \sum_k F_m G_k \langle e^{j(m+k)\omega_0 t}, e^{jn\omega_0 t}\rangle$\\
+        $ = \sum_{k=-\infty}^{\infty} G_k F_{n-k}$
+        
+    Conjugation: $f(t)^* = F^*_{-n}$
+
+    Parseval (power): \(P_f = \frac 1{T_0}\int_{T_0} f(t) f(t)^* dt\)\\
+    \(=\frac{1}{T_0}\int_{T_0} (\sum_n F_n e^{jn\o_0t})(\sum_m F_m e^{jm\o_0t})^* dt\)\\
+    \(=\sum_n \sum_m  F_n F_m^* \, \frac{1}{T_0}\int_{T_0} e^{j(n-m)\o_0t} dt\)\\
+    \(=\sum_n |F_n|^2 \cdot 1\)
+
+        $f$ real $\rightarrow$ $|F|$ even, $\angle F$ odd\\
+        $f$ real, even $\rightarrow$ $F$ re, e; $F_{-n} = F_n = F_n^*$\\
+        $f$ re, od $\rightarrow$ $F$ im, o; $-F_{-n} = F_n = -F_n^*$
+
+        $f_e(t) \leftrightarrow \mathrm{Re}\{ F_n\}$\\
+        $f_o(t) \leftrightarrow j \,\mathrm{Im} \{F_n\}$
+\rule{\linewidth}{0.5pt}
+    Square ($A=1$, $T=2\pi$, $\omega = 1$) 
+        $\frac{4}{\pi}(\cos t - \frac{1}{3}\cos 3t + \frac{1}{5} \cos 5t- ...)$\\
+        $\frac{4}{\pi}(\sin t + \frac 1 3 \sin 3t + \frac 1 5 \sin 5t + ...)$
+
+    Triangle: 
+        $\frac{8}{\pi^2}(\sin t - \frac{1}{9} \sin 3t + \frac{1}{25} \sin 5t - ...)$\\
+        $\frac{8}{\pi^2}(\cos t + \frac 1 9 \cos 3t + \frac 1 {25} \cos 5t + ...)$
+
+    Sawtooth:   
+        $\frac 2{\pi} (\sin t - \frac{1}{2} \sin 2t + \frac{1}{3} \sin 3t - ...)$\\
+        $\frac 2{\pi} (-\sin t - \frac{1}{2} \sin 2t - \frac{1}{3} \sin 3t - ...)$
+
+    $\delta$ train:     
+        $\delta_{T_0} (t) = \sum_{n=-\infty}^{\infty} \delta(t - nT_0)$ \\
+        $\frac{1}{T_0} \sum_{n=-\infty}^{\infty} e^{jn\omega_0 t}$
+
+    % square duty cycle add here
+\rule{\linewidth}{0.5pt}
+\newline
+\subsubsection{Fourier transform}
+    Let \(F(\omega) \equiv \int f(t) e^{-j\omega t} \, dt\)
+
+    \(F_n = \frac 1 {T_0} \int_{T_0} f(t) e^{-jn\omega_0 t} \, dt\)
+
+    Limit as $\omega_0 =\Delta\omega \rightarrow 0$,\\
+    \(F_n = \frac {\Delta\omega}{2\pi} \int f(t) e^{-jn\Delta\omega t} \, dt
+    \equiv \frac{\Delta\omega}{2\pi} F(n\Delta\omega)\) % substitute t for n\Delta\omega
+
+    \(f_{T_0}(t) = \sum F_n\, e^{jn\omega_0 t} = \sum \frac {\Delta\omega} {2\pi} F(n\Delta\omega)\,  e^{jn\Delta\omega t}\)
+
+    % variable iof integration is \omega!
+    % lim T0 -> infty
+    % can also write delta \onega0/2pi = 1/T0
+    % sum to integral
+    \(f(t) = \lim f_{T_0} (t) = \frac{1}{2\pi}\int F(\omega) e^{jt\omega} d\omega\)
+
+    \(F(\omega) = |F(\omega)| \, e^{j\angle F(\omega)}\)
+
+    Re signals: sym of $||$ and $\angle$
+
+    Existence: energy signal ($|e^{-j\o t}| = 1$)\\
+    Strong: fin num max/min/discont
+
+\subsubsection{FT Table}
+
+    \(\delta(t) \leftrightarrow 1\)\\
+    $1 \leftrightarrow 2\pi\delta(\omega)$
+
+    \(e^{j\o_0 t}\lra 2\pi\delta(\o - \o_0)\)\\         % inverse transform this, watch minus sign
+    \(\cos \o_0 t\lra \pi[\delta(\o+\o_0) + \delta(\o - \o_0)]\)\\
+    \(\sin \o_0 t\lra j\pi[\delta(\o + \o_0) - \delta(\o - \o_0)]\)
+
+    \(\sum \delta(t-nT_0) \lra \o_0\sum \delta(\o - n\o_0)\)        % what is omega_0
+
+    $e^{-at} \, u(t) \leftrightarrow \frac{1}{a+j\omega}$\\         % a > 0
+    $e^{-a|t|} \leftrightarrow \frac{2a}{a^2+\omega^2}$ \\
+    \(u(t) = \lim_{a\rightarrow 0} e^{-at} u(t)\lra \lim \frac{1}{a+j\o}\)
+    \( = \lim(\frac{a}{a^2+\o^2} - j\frac{\o}{a^2+\o^2 }) = \pi\delta(\o) + \frac{1}{j\o}\) \\      % acrtan integral to get pi
+    \(\sgn(t)\lra \frac{2}{j\o}\)
+
+    \(t^n e^{-at} u(t)\lra \frac{n!}{(a+j\o)^{n+1}}\)
+
+    \(\c \o_0 t\, u(t)\lra \frac{\pi}{2}(\delta(-) + \delta(+)) + \frac{j\o}{\o_0^2-\o^2}\)\\       % write out - and +
+    \(\sin \o_0 t\, u(t)\lra \frac{\pi}{2j}(\delta(-) - \delta(+)) + \frac{\o_0}{\o_0^2-\o^2}\)\\
+    \(e^{-at}\cos \o_0t\, u(t)\lra \frac{a+j\o}{(a+j\o)^2 + \o_0^2}\)\\
+    \(e^{-at}\sin \o_0t\, u(t)\lra \frac{\o_0}{(a+j\o)^2 + \o_0^2}\)           
+
+
+    % width \tau, draw a diagram
+    $\rect(\frac t {\tau}) \lra \tau \sinc(\frac{\tau}{2}\omega)$\\ 
+    $\frac W \pi \sinc(Wt) \lra \rect(\frac{\omega}{2W})$
+
+    % draw a diagram as well
+    \(\triangle (\frac t {\tau}) \lra \frac{\tau}{2} \sinc^2 (\frac{\tau}{4}\omega)\)\\
+    \(\frac{W}{2\pi} \sinc^2 (\frac{W}{2}t) \lra \triangle(\frac{\omega}{2W})\)
+
+    \([\o^2 \r(\frac{\o}{2\o_0})] \leftarrow \frac{1}{2\pi} \frac{e^{j\o t}}{(jt)^3}(-\o^2t^2-2j\o t + 2)^{\o_0}_{-\o_0}\)\\
+    \(=\frac{(\o_0^2 t^2 - 2)\sin \o_0 t + 2\o_0 t\cos \o_0 t}{\pi t^3}\)\
+
+    \([\frac{|\o|}{\o_0} \rect(\frac{\o}{2\o_0})] \leftarrow \frac{\cos \o_0 t + \o_0 t \sin \o_0 t - 1}{\o_0 \pi t^2}\)
+    \columnbreak
+\subsubsection{Frequency domain properties}
+    Linearity
+
+    Time shift: \(f(t-t_0) \lra F(\omega) e^{-jt_0\omega}\) \\ % highlight negative signS
+    $|F|$ unchanged; $\angle F =- t_0\omega$, lin shift
+
+    Freq shift: \(f(t) e^{j\omega_0 t} \lra F(\omega - \omega_0)\)  % watch sign, again
+
+    t-f dual \(f(t) \lra F(\omega)\), \(F(t) \lra 2\pi f(-\omega)\)\\ 
+    Pf. \(f(t) = \frac 1 {2\pi} \int F(\lambda) e^{jt\lambda}\, d\lambda\)\\
+    % highlight the -t here
+    \(2\pi f(-t) = \int F(\lambda) e^{-tj\lambda}\, d\lambda = \mathcal{F}[F(\lambda)]\)
+
+    Reversal: \(f(-t)\lra F(-\o)\)
+
+    Scaling: \(f(at)\lra \frac{1}{|a|}F(\frac{\o}{a})\)   % compress in t, expand in omega
+
+    Convolution: \(f*g \lra FG\), \(fg \lra \frac{1}{2\pi} F*G\)\\
+    \(\mathcal F[f*g] = \int e^{-j\o t} \int f(\tau) g(t-\tau)d\tau dt =\int f(\tau) \mathcal F[g(t-\tau)]  d\tau = \int f(\tau) G(\o)e^{-j\o\tau}d\tau\)\\
+    % highlight above for the other direction
+    \( \frac{1}{2\pi} \mathcal{F}^{-1}[F * G] = (\frac{1}{2\pi})^2 \int e^{j\o t} \int F(\lambda) G(\o - \lambda) d\lambda d\o\)
+
+    Diff: \(f^{(n)}(t) \lra (j\o)^nF(\o)\) (diff $e^{j\o t}$)    % highlight j\omega
+    
+    Int: \(\int_{-\infty}^t f(\tau)d\tau \lra \frac{1}{j\o}F(\o) + \pi F(0) \delta(\o)\)\\
+    \(U(\o) = \lim \frac{1}{a+j\o} = \lim (\frac{a}{a^2+\o^2} - j\frac{\o}{a^2+\o^2}) \) \\
+    \(= \pi\delta(\o) + \frac{1}{j\o}\) ($\int \frac{a}{\o^2+a^2}d\o = \tan^{-1}=\pi$)\\
+    $\int = f(t) * u(t) \lra F(\o)U(\o)$
+
+    Conjugation: \(f(t)^* \lra F(-\o)^*\)   % highlight negative
+
+    Sym: Re $\lra$ $||$ e, $\angle$ o ($F(-\o) = F(\o)^*$);\\
+    re, e $\lra$ re, e; re, o $\lra$ im, o
+
+    $f$ even: \(F(\o) = 2\int_0^{\infty} f(t)\cos(\o t) dt\)\\
+    $f$ odd: \(F(\o) = -2j\int_0^{\infty} f(t) \sin(\o t) dt\)
+
+\subsubsection{Parseval}
+    Psval: \(E_f = \int |f(t)|^2 dt = \frac{1}{2\pi} \int |F(\omega)|^2 d\o\)  for energy signal\\  % highlight 1/2pi, and square
+    Pf: \(= \int f f^* dt = \int f(t)\mathcal F ^{-1}[F(-\o)^*]dt\)\\
+    \(= \int f(t) \frac{1}{2\pi} \int F(-\o)^* e^{j\o t} d\o dt\)\\
+    \(= \frac{1}{2\pi}\int f(t) \int F(\lambda)^* e^{-jt\lambda} d\lambda dt = \int dt d\lambda\)
+    \(\Delta E_f = \frac{2}{2\pi}\int^{\o_2}_{\o_1} |F(\o)|^2 d\o\) % highlight 2 due to +/-
+
+    Autocorrelation \(\psi_f(t) \equiv \int f(\tau)f(\tau-t)d\tau \lra |F(\o)|^2\)   % annotate for general case w/o abs
+\subsubsection{AM}
+    \(m(t) \cos(\o_c t) \lra \frac{1}{2}[M(\o + \o_c) + M(\o - \o_c)]\)     % highlight M, may be a factor of pi
+    \(e(t) = m(t)\cos^2 \o_c t\)  \\          % highlight ^2
+    \(E(\o) = \frac{1}{2} M + \frac{1}{4}[M(\o + 2\o_c) + M(\o - 2\o_c)]\)
+
+    SSB: $1/4$ gain
+
+    \(\phi_\mathrm{AM} (t) = [A + f(t)] \cos (\omega_0 t)\)\\
+    $A \geq f(t)$ for all $t$
+
+    modulation index \(\mu\equiv f_{\text{max}}/A\)\\
+    $\mu = \infty$, SC, $\mu = 1$, marginal
+\subsubsection{LTIC system transmission}
+    Let \(e^{j\o t} \rightarrow H(\o) e^{j\o t}\)
+
+    % left side is f(t), right side is response y(t)
+    \(\lim\sum \frac{F(n\Delta\o)\Delta\o}{2\pi} e^{jn\Delta\o t}\)\\
+    \(\rightarrow \lim\sum \frac{F(n\Delta\o)H(n\Delta\o)\Delta\o}{2\pi} e^{jn\Delta\o t}\)
+    \(= \frac{1}{2\pi}\int F(\o)H(\o)e^{j\o t} d\o\)
+
+    \(Y(\o) = F(\o) H(\o)\)
+
+    Distortionless: $y(t) = kf(t-t_d)$,\\
+    so $H(\o) = ke^{-j\o t_d}$          % highlight omega t_d, phase is equally important
+
+    Payley-Wiener: $H$ realizable, $h$ causal iff \(\int\frac{|\ln|H(\omega)||}{1+\o^2} d\o < \infty\) (consecutive 0s)\\
+    \(\hat{h}(t) = h(t) u(t)\)
+
+\subsubsection{Periodic FT}
+    \(f(t) = \sum F_n e^{jn\o_0 t}\), \(\mathcal{F}[f(t)] = 2\pi \sum F_n \delta(\omega - n\o_0)\)      % highlight n!
+
+    \(Y = F(\omega)H(\omega) = 2\pi \sum F_n H(n\omega_0) \delta(\omega - n\omega_0) \) \\            % due to delta
+    $Y_n \equiv F_n H(n\o_0)$. Periodic with same $\omega_0$
+
+    Eigen: $f(t) = e^{j\o_0t}$, \(Y_1 = H(1\o_0)\), $y(t) = H(1\o_0) e^{j\o_0 t}$
+
+    $f(t) = \cos(\o_0 t + \theta)$, assume $h(t)$ real\\
+    \(y = \frac 1 2 (e^{j(\theta + \o_0 t)}H(\o_0) + e^{-j(\theta + \o_0 t)}H(-\o_0))\)\\          % highlight -\omega_0
+    \(=|H(\o_0)| \cos(\o_0t + \theta + \angle H(\o_0))\)
+
+    \(\cos 2t * e^{-3t} u(t) \equiv f * h\)\\       % highlight 2 in both lines
+    \(=|H(2)| \cos(2t + \angle H(2))\)              % you can just directly shift on the angle of trig
+\subsubsection {Sampling}
+    \(\overline{f}(t)\equiv f(t) \delta_{T_s}(t) = \sum f(nT_s) \delta(t - nT_s)\)\\
+    % highlight 1/T_s, don't forget this term!
+    \(\overline{F}(\o) = \frac{1}{2\pi} F(\o) * [\frac{2\pi}{T_s} \sum\delta(\o - n\o_s)]\)
+    \(= \frac{1}{T_s}\sum F(\o - n\o_s)\)
+
+    $\o_s \geq 4\pi B$, $F_s \geq 2B$
+
+    \(F(\o) = \overline{F}(\o) T_s \rect(\frac{\o}{4\pi B})\)\\   % highlight T_s
+    If $F_s = 2B$, \(f(t) = \overline{f}(t) * \frac{2B}{F_s} \sinc(2\pi Bt)\)\\       % cancel 2B, highlight the condition
+    \(=\sum f(nT_s)\delta(t - nT_s) * \sinc(2\pi B t)\)
+    \(= \sum f(nT_s) \sinc(2\pi Bt - n\pi)\)\\
+    ana FS, basis: $\sinc$, interpolation formula
+
+    If $F_s > 2B$, \(f(t) = \sum f(nT_s) w(t - nT_s)\)\\
+    for some relaxed filter $w(t)$
+
+    Anti-alias before sampling: LPF of $F_s/2$
+
+    Practical sampling: \(p_T(t) = \frac{\tau}{T_s} + \sum(\frac{2}{\pi n}\sin(n\pi\frac{\tau}{T_s}))\cos(n\omega_s t)\)\\
+    \(P_T(\o) = 2\pi \frac{\tau}{T_s}\delta(\o)\)
+    \(+ \sum\frac{2\sin(...)}{n}[\delta(\o + n\o_s) + \delta(\o - n\o_s)]\)       % highlight first term
+\end{multicols}  
+\end{document}
