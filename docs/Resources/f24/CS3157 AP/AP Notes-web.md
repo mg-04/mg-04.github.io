@@ -4,7 +4,7 @@ title: AP Notes.md
 permalink: /ap
 ---
 
-This file may not be fully adapted for web. Download the raw file [here](Resources/f24/CS3157 AP)
+This file may not be fully adapted for web. Download the raw file [here](Resources/f24/CS3157 AP/AP Notes.zip)
 
 # 1. CLI Basics
 ```shell

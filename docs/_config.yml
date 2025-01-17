@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: mg04-io
+title: mg-04-io
 email: danielminggong@gmail.com
 email2: ming.g@columbia.edu
 description: >- # this means to ignore newlines until "baseurl:"
@@ -32,8 +32,20 @@ youtube_username: '@minggong'
 
 # Build settings
 theme: minima
+remote_theme: jekyll/minima
+minima:
+  skin: dark
+header_pages:
+  - CV.markdown
+  - Resources.markdown
 plugins:
   - jekyll-feed
+  - jekyll-target-blank
+  - jekyll-sitemap
+  - jekyll-remote-theme
+
+
+show_excerpts: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

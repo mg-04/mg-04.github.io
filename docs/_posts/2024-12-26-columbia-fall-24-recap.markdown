@@ -7,7 +7,7 @@ categories: aca
 
 A few thoughts on the past semester. This is by no means a comprehensive review. 
 
-# Circuits
+## Circuits
 Here's a snippet from our final exam: derive node voltages $$\pmb V_1$$ and $$\pmb V_2$$.  
 ![alt text](/images/f24/image-1.png)
 
@@ -33,7 +33,7 @@ If after some derivation, any of these does not seem obvious to you, consider dr
 Unfortunately, if actual numbers are given for $$R$$, $$L$$, $$C$$, working out the algebra will be quite tedious. Typically, don't in the numbers until the very last step.
 
 
-# EE 3801 Signals and Systems
+## EE 3801 Signals and Systems
 Another beautiful course
 
 Exams are really, I mean really, fair game. Questions directly come from the book, lecture, or homework, and there is never anything incredibly difficult. Midterms does have some time pressure (10 minutes/problem), so make sure to practice those key problems. Speed and consistency is the key.
@@ -48,7 +48,7 @@ Showing off my final grade there (I actually got 100%, since lowest HW and first
 
 
 ![alt text](/images/f24/image-2.png)
-# EE 3106 SSDM
+## EE 3106 SSDM
 Exam time was *really* tight, and apparently the prof doesn't realize that (it's her second year teaching). Midterm 2 was 15 pages 75 minutes (5 minutes/**PAGE!**). To that point, you basically need to turn yourself into GNU Make:
 
 1. Find the equation (recipe) of the desired quantity in the equation sheet (`Makefile`)
@@ -93,7 +93,7 @@ And here was what GNU Ming put down to his `stdout`:
 
 ![alt text](/images/f24/image-4.png)
 
-# CS 3157 AP
+## CS 3157 AP
 
 > You've probably heard of some horror stories of this class
 
@@ -107,22 +107,22 @@ Yes, cheaters outscoring me on homework is infuriating!
 
 The class is basically 3 parts:
 
-## Material
-### 1. C programs
-Theme: pointers and applications 
-- E. array, heap, string, `struct`, function
+### Material
+1. **C programs**  
+    Theme: pointers and applications 
+    - E. array, heap, string, `struct`, function
 
-### 2. Multiple programs
-Now let's move beyond a single program, and learn how programs interact with others.
-- Libraries
-- Standard and file IO
-- Multiprocessing: `fork()` and `execl()`
-- UNIX: IO redirection, shell scripts
+2. **Multiple programs**  
+    Now let's move beyond a single program, and learn how programs interact with others.
+    - Libraries
+    - Standard and file IO
+    - Multiprocessing: `fork()` and `execl()`
+    - UNIX: IO redirection, shell scripts
 
-### 3. The internet
-Now let's move beyond our local machine
-- TCP/IP: `netcat`
-- HTTP
+3. **The internet**  
+    Now let's move beyond our local machine
+    - TCP/IP: `netcat`
+    - HTTP
 
 and that's it! There's nothing too much to remember
 
@@ -157,9 +157,10 @@ Generally, there are two types of coding problems
 
 > You may not do well even if you try
 
-**Claim:** any grade below an A- is easily achievable via hard and smart work. Everything above may not.
+**Claim:** Any grade below an A- is easily achievable via hard and smart work. Everything above may not.
 
-**Proof:** *This proof will be completed after Jae posts his cutoffs.*
+**"Proof:"** [here](/aca/2025/01/10/ap-does-not-mean-aplus.html)
+
 
 It's not that the problems are impossible--everyone is *able* to get an 100 on any exam. Rather, it's the excessive stress and the meticulous attention to detail.
 
