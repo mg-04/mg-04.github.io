@@ -3,6 +3,7 @@ layout: page
 title: "Ming Gong"
 permalink: /cv
 menu_title: "CV"
+git_path: "/CV.markdown"
 ---
 
 New York, NY \| [(682) 559-3699](tel:6825593699) 
@@ -51,7 +52,12 @@ General Chemistry, Organic Chemistry
 
 ---
 
-## Work Experience
+## Experience
+**Course Assistant**  
+Columbia University | Jan. 2025 - present  
+- Course assistant for Fundamentals of Computer Systems (CSEE 3827)
+- Disability Services [notetaker](/resources) for Fundamentals of Computer Systems and Signals and Systems
+
 **Research Assistant with Dr. Katayun Barmak**  
 Columbia University	| Sept. 2024 - present  
 - Utilizing PyTorch to train U-Net convolutional neural networks for polycrystalline grain boundary detection.

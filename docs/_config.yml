@@ -31,7 +31,12 @@ instagram_username: minggongd
 youtube_username: '@minggong'
 
 # Build settings
-
+theme: minima
+#remote_theme: jekyll/minima
+minima:
+  skin: auto
+  social_links:
+  - { platform: github, user_url: "https://github.com/mg-04" }
 header_pages:
   - CV.markdown
   - Resources.markdown
@@ -40,11 +45,6 @@ plugins:
   - jekyll-target-blank
   - jekyll-sitemap
   - jekyll-remote-theme
-
-#theme: minima
-remote_theme: jekyll/minima
-minima:
-  skin: dark
 
 github_edit_url: "https://github.com/mg-04/mg-04.github.io/tree/main/docs"
 

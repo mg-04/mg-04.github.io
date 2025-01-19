@@ -2,6 +2,7 @@
 layout: page
 title: AP Notes.md
 permalink: /ap
+git_path: "/Resources/f24/CS3157-AP/AP-Notes_web.md"
 ---
 
 This file may not be fully adapted for web. Download the raw file [here](Resources/f24/CS3157 AP/AP Notes.zip)

@@ -67,25 +67,31 @@ $$\square$$
 ### Part 2: if you get above A- you don't suck
 
 
-Let's simulate an *okay* student. in every exam, on average, you normally lose around 10 points. This can be attributed to 
+Let's simulate an *okay* student. in every exam, on average, you lose around 10 points.
 - 2 points from the "impossible"
-- 8 points from the "tricky", which means you get 87% of all the "tricky" problems  
-    - This is fair, because you'll have chances to check over tricky problem multiple times.
+- 8 points from the "tricky" (87% accuracy)
+    - This is fair, since you'll check over tricky problems
 
 
 
-I here present a more accurate formula on your score estimate
+I here present a more sophisticated formula on your score estimate
 
-$$\mathrm{score} = k_{\mathrm{free}}p_{\mathrm{free}} + (1-(1-k_{\mathrm{trick}}) e^{-r(T-t_\mathrm{free}-t_{\mathrm{imp}})}) p_{\mathrm{trick}} $$
+$$\mathrm{score} = k_{\mathrm{free}}p_{\mathrm{free}} + (1-(1-k_{\mathrm{trick}}) r^{T-t_\mathrm{free}-t_{\mathrm{imp}}}) p_{\mathrm{trick}}, $$
 
-, where 
-- $p$ is the probability (weight) of each type of the questions 
-- $k$ is the your average accuracy on trick questions
-- $T$ is the time allowed
-- $t$ is the time to complete/give up on questions
-- $r$ is a rate constant, which represent you efficiency of checking over the trick questions.
+where 
+- $$p$$ is the probability (weight) of each problem type
+- $$k$$ is the your average accuracy on each type
+- $$T$$ is the time allowed
+- $$t$$ is the time to complete/give up on questions
+- $$r$$ is a rate constant for efficient during review
 
-Let's take $T = 90$, $t_\mathrm{free} = 18$ (half minute per point), and $t_{imp} = 30$ (unfortunately some of our efforts do become nothing). Therefore, we are left with 57 minutes on trick questions. Suppose it also takes half minute per point to check over trick questions, and $ r = 0.5$ Suppose your trick question miss rate halves each time you go over it.
+Let's take $$T = 90$$, $$t_\mathrm{free} = 18$$ (30 s/point), and $$t_\mathrm{imp} = 30$$ (unfortunately some of our time do become nothing). Therefore, we are left with 57 minutes on trick questions. Suppose it also takes half minute per point to check over trick questions, and $$ r = 0.5$$ Suppose your trick question miss rate halves each time you go over it.
+
+---
+
+***Below is under construction
+***
+{% comment %}
 
 In the end, your 20% miss rate will be improved to a 5.2%. That's somewhat close to a 7.2% loss, combined with the impossible. For all 3 exams, it's 21.6%
 
@@ -93,16 +99,18 @@ This is an average, but I'm pretty sure there can exist cases where you hit that
 
 For A-, you have more room, affording about 2.52 times the senario above. 
 
-How can the model be improved? Of course, there should be $k$, $p$, $r$ values associated with all types of problems, and there may be more types of problem as well. Furthermore, we can approximate the difficulty of the problems as a probability distribution, and $k$, $p$, $r$ can be made to be functions of such difficulty. 
+How can the model be improved? Of course, there should be $$k$$, $$p$$, $$r$$ values associated with all types of problems, and there may be more types of problem as well. Furthermore, we can approximate the difficulty of the problems as a probability distribution, and $$k$$, $$p$$, $$r$$ can be made to be functions of such difficulty. 
+
+{% endcomment %}
 
 ## Conclusion
 - A+: #1 in the class
 - A: 70% first-time accuracy, plus room for ~1 huge mistake
-- A-: 70% first-time accuracy, plus room for ~2.5 huge mistakes $\square$
+- A-: 70% first-time accuracy, plus room for ~2.5 huge mistakes $$\square$$
 
-As you can see, $t$ and $r$ are dependent on $p$, so this model can be better refined. 
+As you can see, $$t$$ and $$r$$ are dependent on $$p$$, so this model can be better refined. 
 
 Of course, there is a lot to improve with this crude model. For instance, you can fit your accuracy with a normal distribution, and calculate, let's say, the 90% confidence interval for A and A-
 
 ## p.s. To Cheaters
-If you choose to cheat, risked the possibility of getting busted, used some smart method to not get caught, and suffered through the mental anxieties of getting caught, and got an A, congratulations! Your effort deserves this A!
+If you chose to cheat, took the risk of getting busted, used some smart method to not get caught, and suffered through all the mental anxieties, and got an A, congratulations! Fully deserved!
