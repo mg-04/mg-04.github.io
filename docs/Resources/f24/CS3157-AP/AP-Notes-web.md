@@ -2,10 +2,10 @@
 layout: page
 title: AP Notes.md
 permalink: /ap
-git_path: "/Resources/f24/CS3157-AP/AP-Notes_web.md"
+git_path: "/Resources/f24/CS3157-AP/AP-Notes-web.md"
 ---
 
-This file may not be fully adapted for web. Download the raw file [here](Resources/f24/CS3157 AP/AP Notes.zip)
+This file may not be fully adapted for web. Download the raw file [here](Resources/f24/CS3157-AP/AP-Notes.zip)
 
 # 1. CLI Basics
 ```shell
@@ -1878,7 +1878,7 @@ IP is the bottle neck. Top/bottom layer needs to take a lot of stuff
 TCP establishes reliable bidirectional channel. (`ncat`)
 - Reliable: packets never dropped, corrupted, reordered
 - Bidirectional: both server and client can send and receive
-![tcp.png](/Resources/f24/CS3157 AP/images/tcp.png)
+![tcp.png](/Resources/f24/CS3157-AP/images/tcp.png)
 Hosts are identified by 
 - IP address
 - or domain name `clac.cs.columbia.edu` (`clac` within local network). Translated to IP address using Domain Name System (DNS)
@@ -2025,7 +2025,7 @@ while (1) {
 }
 ```
 
-![sockets](/Resources/f24/CS3157 AP/images/socket.png)
+![sockets](/Resources/f24/CS3157-AP/images/socket.png)
 
 ### Socket address `struct`
 `connect()` and `bind()` requires specifying **server**'s address and port using `struct sockaddr`
@@ -2456,7 +2456,7 @@ Nowadays JS script running on browser
 
 ### 3-tier architecture
 
-![three-tier.jpg](/Resources/f24/CS3157 AP/images/three-tier.jpg)
+![three-tier.jpg](/Resources/f24/CS3157-AP/images/three-tier.jpg)
 # Extra. C++
 Most C code are valid in C++
 
