@@ -8,11 +8,13 @@ git_path: "/CV.markdown"
 
 New York, NY \| [(682) 559-3699](tel:6825593699) 
 
+---
+
 ## Education
 ### Columbia University	
 New York, NY | 2024 - 2026  
 Bachelor of Science - **Computer Engineering**  
-**GPA** 4.3/4.0
+**GPA** 4.25/4.0
 
 ### Bard College at Simon's Rock 	
 Great Barrington, MA | 2021 - 2025  
@@ -41,6 +43,7 @@ Discrete Mathematics, Algorithms & Data Structures, Advanced Programming, Comput
 
 **Electrical Engineering:**  
 Analog & Digital Electronics, Circuit Analysis, Signals and Systems, Solid State Devices and Matters
+
 **Mathematics:**  
 Linear Algebra, Multivariable Calculus, Ordinary Differential Equations, Probability and Statistics, Real Analysis, Abstract Algebra
 
