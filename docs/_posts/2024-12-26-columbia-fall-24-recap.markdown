@@ -7,7 +7,7 @@ categories: aca
 
 A few thoughts on the past semester. This is by no means a comprehensive review. 
 
-## Circuits
+## EE 3201 Circuits
 Here's a snippet from our final exam: derive node voltages $$\pmb V_1$$ and $$\pmb V_2$$.  
 ![alt text](/images/f24/image-1.png)
 
@@ -30,7 +30,7 @@ $$
 This looks complicated, but every bit of it makes sense. 
 If after some derivation, any of these does not seem obvious to you, consider dropping the major.
 
-Unfortunately, if actual numbers are given for $$R$$, $$L$$, $$C$$, working out the algebra will be quite tedious. Typically, don't in the numbers until the very last step.
+Unfortunately, if actual numbers are given for $$R$$, $$L$$, $$C$$, working out the algebra will be quite tedious. Typically, don't plug in the numbers until the very last step.
 
 
 ## EE 3801 Signals and Systems

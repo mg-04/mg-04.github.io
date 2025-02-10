@@ -11,7 +11,7 @@ This is a log page.
 Welcome!
 
 A few notes for the commands:
-`bundle exec jekyll serve` serves the site locally
+`bundle exec jekyll serve --port <port>` serves the site locally to `<port>`
 
 ## 2025-1-9 Customizing Page Menu Titles
 

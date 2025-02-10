@@ -11,20 +11,20 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 ---
 
 ## Education
-### Columbia University	
-New York, NY | 2024 - 2026  
-Bachelor of Science - **Computer Engineering**  
-**GPA** 4.25/4.0
+- **Columbia University**	  
+    2024 - 2026  
+    Bachelor of Science - **Computer Engineering**  
+    **GPA** 4.25/4.0
 
-### Bard College at Simon's Rock 	
-Great Barrington, MA | 2021 - 2025  
-Bachelor of Arts - **Physics**  
-**GPA** 3.99/4.0	  
-**Scholarships**: Faculty Scholarship ($1500), Merit Scholarship ($15,000), Center for Talented Youth Scholarship ($30,000)
+- **Bard College at Simon's Rock**	  
+    2021 - 2025  
+    Bachelor of Arts - **Physics**  
+    **GPA** 3.99/4.0	  
+    **Scholarships**: Faculty Scholarship ($1500), Merit Scholarship ($15,000), Center for Talented Youth Scholarship ($30,000)
 
-### Coppell High School (Grade 9-10) 	
-Coppell, TX | 2019 - 2021  
-**GPA** 3.98/4.0 Unweighted, 4.25/4.0 Weighted
+- **Coppell High School (Grade 9-10)** 	  
+    2019 - 2021  
+    **GPA** 3.98/4.0 Unweighted, 4.25/4.0 Weighted
 
 ---
 
