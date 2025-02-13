@@ -183,6 +183,8 @@ and to make our lives easier, we can use binary
 if (KEY == 4'b1110)
 ```
 
+## Conclusion
+
 That's it, we've accounted for all possible cases:
 - Slow press
 - Fast press
@@ -192,5 +194,5 @@ That's it, we've accounted for all possible cases:
 An immediate follow up is to optimize the counters. Now I used three counters:
 - `counter` for long press cycle
 - `press_counter` for short --> long transition
-- `deb_counter` for switch debouncing
+- `deb_counter` for switch debouncing  
 I'm pretty sure there's a way to simplify that.
