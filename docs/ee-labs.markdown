@@ -14,6 +14,7 @@ All labs were done in collaboration with Kris Xuanyi Wu.
 
 # 3082 Digital Systems 
 [1. Digital Elements](/Resources/s25/DS/DS%20Lab%201%20Report.pdf)  
+2. 555 at high frequency failed to work. For better lab experience, change the cap to maybe 2.7 nF and R1, R2 to 
 To be continued...
 
 # 3081 Circuits
