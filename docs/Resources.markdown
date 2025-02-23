@@ -20,8 +20,8 @@ Everything else is Jae Jae's secret copyrighted material that I have pledged my 
 4. [Processor](/Resources/f24/CE3827-Fundies/Notes-4-Processor-Kim,-Fundies,%20Weeks-9-11.pdf)
 5. [Memory](/Resources/f24/CE3827-Fundies/Notes-5-Memory-Kim,-Fundies,-Weeks-11-14.pdf)
 
-### [EE Labs Compilation](/ee)
-EE 3081 and 3082. Fuck them.
+### EE Labs Compilation
+[EE 3081 and 3082](/ee)
 
 ### EE 3801 Signals and Systems
 #### ODS notes
@@ -42,5 +42,15 @@ E2 &nbsp; ([PDF](/Resources/f24/SS/SS-e2-cheat-sheet/main.pdf)/[TeX](/Resources/
 2. [LC](/Resources/f24/CA/Ca-notes-2-LC.pdf)
 3. [AC](/Resources/f24/CA/Ca-notes-3-AC.pdf)
 
+---
+以下施工中
+
+### PHYS 320 Stat Therms
+
+### PHYS 304 E&M
+
+### PHYS 221 Special Relativity
+
+### MATH 312 Analysis I
 ---
 Please contact me for any errors/questions!
