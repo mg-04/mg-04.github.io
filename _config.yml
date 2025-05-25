@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "mg-04.io"
 title_separator          : "-"
 name                     : &name "Ming Gong"
-description              : &description "CE @ Columbia"
+description              : &description "IO小站"
 url                      : https://mg-04.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "mg-04/mg-04.github.io"
@@ -22,7 +22,7 @@ repository               : "mg-04/mg-04.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Ming Gong"
   pronouns         : # example: "she/her"  
   bio              : "Computer Engineering @ Columbia"
