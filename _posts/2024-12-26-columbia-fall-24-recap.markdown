@@ -1,8 +1,12 @@
 ---
-layout: post
+#layout: post
 title:  "Columbia Fall 24 Recap"
 date:   2024-12-26 15:59:30 -0500
-categories: aca
+permalink: /posts/2024/12/f24
+tags:
+    - academia
+excerpt: >
+ A few thoughts on the past semester. This is by no means a comprehensive review. 
 ---
 
 A few thoughts on the past semester. This is by no means a comprehensive review. 

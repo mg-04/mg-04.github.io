@@ -1,8 +1,12 @@
 ---
-layout: post
+#layout: post
 title:  "Instagram Follower Scraper"
 date:   2025-1-7 22:03:30 -0500
-categories: code
+permalink: /posts/2025/01/ins
+tags:
+    - misc
+excerpt: >
+ A script to scrape the set of Instagram followers
 ---
 A script to scrape the set of Instagram followers
 

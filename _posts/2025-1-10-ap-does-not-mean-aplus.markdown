@@ -1,8 +1,13 @@
 ---
-layout: post
+#layout: post
 title:  "AP Does Not Mean APlus"
 date:   2025-1-10 14:05:30 -0500
-categories: aca
+permalink: /posts/2025/01/ap
+tags:
+    - academia
+    - cs
+excerpt: >
+ After the long, long wait, Jae finally posted his grades.
 ---
 After the long, long wait, Jae finally posted his grades.
 ## Metrics

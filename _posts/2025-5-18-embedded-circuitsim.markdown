@@ -1,17 +1,25 @@
 ---
-layout: post
+#layout: post
 title:  "Embedded Project: CircuitSim"
 date:   2025-5-18 05:58:30 -0500
-categories: aca
+permalink: /posts/2025/05/cs
+tags:
+    - cs
+    - ee
+excerpt: >
+ A walkthrough of our Embedded final project: Circuit Simulator on FPGA
 ---
 
 Here's a walkthrough of our Embedded final project: Circuit Simulator on FPGA
-## Topic
+
+<!--more-->
+
+# Topic
 This was such an amazing topic for this course! I was quite surprised that no one has done SPICE before, or any application related to matrix inversion--none of these are particularly challenging. 
 
 I was pretty sure that if we make it working, Edwards would LOVE it!
 
-## [CircuitCim](/cc)
+# [CircuitCim](/cc)
 I completed the framework [CircuitCim](/cc), the circuit simulation engine of the project pretty soon after the project start. Originally, we only planned to do linear elements: RLC, but after finding out that diodes are not too hard to do, I added diode functions soon. 
 
 We can call it a done from here, since there are just too many interesting things you can do with diodes, such as analog multiplier and different kinds of rectifiers. I still wanted to go a step beyond to get FETs working, so we can simulate logic.
@@ -22,7 +30,7 @@ Then it's all about test circuits. I spent a bit of time building the DFF and 55
 
 All works payed off. CircuitCim worked perfectly
 
-## Gaussian Elimination
+# Gaussian Elimination
 During our design review, Edwards suggested our next month will be focusing on the Gaussian Elimination. 
 
 I thought this was a pretty well-defined program, as the algorithm was only 10 lines of C, 
@@ -60,13 +68,13 @@ But in hardware, without those predefined instructions, we'll need temporary reg
 
 3. Software control: software sends a start signal to the hardware, and polls the results from it. 
 
-## Interface
+# Interface
 The interface is not particular challenging, if you know what you are doing and trust it works (unfortunately I was not)
 
-## Reflection
+# Reflection
 We were out of time to write any complete evaluation or reflection. Here's a better one:
 
-## Result
+# Result
 4th order filter and rectifier worked perfectly
 
 555 didn't work. The hardware kept returning the same result (seems to be the first time step) for every time step. It seems to solve each operating point correctly. What we suspect:
@@ -86,10 +94,10 @@ I'm sure it's more than fixable, given that rectifier works. It's just a matter 
 
 瑕不掩瑜, Edwards really liked it. We got A+ and the infamous Edwards star ![Edwards](/images/cc/staricon.png)
 
-## Future Work
+# Future Work
 We also ran out of time to write a future work section
 
-### GUI
+## GUI
 We desparately need a GUI!!   
 This will take some memory, so we may need to shrink the max nodes to 64.
 - We can also figure out smarter ways to store sparse matrices, such as using a list-like structure  

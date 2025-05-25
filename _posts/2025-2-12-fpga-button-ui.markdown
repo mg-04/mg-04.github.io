@@ -1,8 +1,13 @@
 ---
-layout: post
+#layout: post
 title:  "FPGA Button UI"
 date:   2025-2-12 22:45:30 -0500
-categories: aca
+permalink: /posts/2025/02/lab1
+tags:
+    - cs
+    - ee
+excerpt: >
+ Embedded lab 1: code an FPGA to test the Collatz Conjecture over a range of numbers... with a user interface of buttons and switches
 ---
 Embedded lab 1: code an FPGA to test the Collatz Conjecture over a range of numbers... with a user interface of buttons and switches
 

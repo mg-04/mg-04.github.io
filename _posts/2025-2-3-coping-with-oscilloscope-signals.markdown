@@ -1,8 +1,12 @@
 ---
-layout: post
+#layout: post
 title:  "Coping with Oscilloscope Signals"
 date:   2025-2-3 23:08:30 -0500
-categories: aca
+permalink: /posts/2025/02/osc
+tags:
+    - ee
+excerpt: >
+ A simple method to smoothen DC data. Worked perfectly for gate transfer curves. 
 ---
 finally I can spell *oscilloscope* correctly
 

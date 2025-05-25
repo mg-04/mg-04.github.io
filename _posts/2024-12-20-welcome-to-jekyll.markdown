@@ -3,18 +3,19 @@
 title:  "Welcome to Jekyll!"
 date:   2024-12-20 15:59:30 -0500
 permalink: /posts/2024/12/welcome/
-#categories: code
+tags:
+  - misc
+excerpt: >
+ This is a log page.
 ---
 
-This is a log page.
-
-## 2024-12-20
+# 2024-12-20
 Welcome!
 
 A few notes for the commands:
 `bundle exec jekyll serve --port <port>` serves the site locally to `<port>`
 
-## 2025-1-9 Customizing Page Menu Titles
+# 2025-1-9 Customizing Page Menu Titles
 
 Each Jekyll page has a header including menu entries to every Jekyll page. However, 
 - We may not want every page to be linked in the menu bar
@@ -34,20 +35,20 @@ menu_title: "CV"
 3. Copy the two folders over to your page directory
 4. In the following section of `_includes/header.html`, change `my_page.title` to `my_page.menu_title`:
 
-```html
-{% raw %} <div class="trigger">
-    {%- for path in page_paths -%}
-    {%- assign my_page = site.pages | where: "path", path | first -%}
-    {%- if my_page.menu_title -%}
-    <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.menu_title | escape }}</a>
-    {%- endif -%}
-    {%- endfor -%}
-</div> {% endraw %}
-```
+    ```html
+    {% raw %} <div class="trigger">
+        {%- for path in page_paths -%}
+        {%- assign my_page = site.pages | where: "path", path | first -%}
+        {%- if my_page.menu_title -%}
+        <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.menu_title | escape }}</a>
+        {%- endif -%}
+        {%- endfor -%}
+    </div> {% endraw %}
+    ```
 
 Now we have a way to separately set page title, menu title, and permalink!
 
-### P.S. How to quote Jekyll code in Jekyll
+## P.S. How to quote Jekyll code in Jekyll
 
 When formatting the html code block above, Liquid parses curly braces as variables.
 
