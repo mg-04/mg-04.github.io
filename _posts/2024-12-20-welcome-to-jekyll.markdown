@@ -73,6 +73,13 @@ Jae Jae please make this into a CS Theory exam problem and make them design a DF
 - To escape a large block, use `{{ "{" }}% raw %}` and `{{ "{" }}% endraw %}`
 - To escape a few "{{ "{" }}"s, or "{{ "{" }}% raw %}" itself, use `{{ "{{" }} "{{ "{" }}" }}`
 
+# 2025-5-26 New Site
+Run
+```sh
+bundle exec jekyll serve -l -H localhost --port 4002  --force_polling
+```
+Don't forget `--force_polling` for live regeneration on Windows
+
 
 
 
