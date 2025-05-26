@@ -5,12 +5,12 @@ permalink: /articles/cc
 
 # Contents
 1. Intro to SPICE Algorithm (this article)
-2. [Framework](/cc/framework) and your first circuit!
-3. [More Static Linear Components](/cc/sta)
-4. [Nonlinear and Diode](/cc/nl)
-5. [MOSFET](/cc/mos)
-6. [Time Variance](/cc/tv)
-7. [Applications](/cc/app)
+2. [Framework](/articles/cc/framework) and your first circuit!
+3. [More Static Linear Components](/articles/cc/sta)
+4. [Nonlinear and Diode](/articles/cc/nl)
+5. [MOSFET](/articles/cc/mos)
+6. [Time Variance](/articles/cc/tv)
+7. [Applications](/articles/cc/app)
 
 # Intro
 CircuitCim is my part of the CESS 4840 Embedded Systems final project CircuitSim, an FPGA-accelerated analog circuit simulator. I call this part Circuit**C**im, or **MG**Spice :)

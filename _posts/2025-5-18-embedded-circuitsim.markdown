@@ -19,8 +19,8 @@ This was such an amazing topic for this course! I was quite surprised that no on
 
 I was pretty sure that if we make it working, Edwards would LOVE it!
 
-# [CircuitCim](/cc)
-I completed the framework [CircuitCim](/cc), the circuit simulation engine of the project pretty soon after the project start. Originally, we only planned to do linear elements: RLC, but after finding out that diodes are not too hard to do, I added diode functions soon. 
+# [CircuitCim](/articles/cc)
+I completed the framework [CircuitCim](/articles/cc), the circuit simulation engine of the project pretty soon after the project start. Originally, we only planned to do linear elements: RLC, but after finding out that diodes are not too hard to do, I added diode functions soon. 
 
 We can call it a done from here, since there are just too many interesting things you can do with diodes, such as analog multiplier and different kinds of rectifiers. I still wanted to go a step beyond to get FETs working, so we can simulate logic.
 
