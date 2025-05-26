@@ -220,10 +220,13 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  projects:
     output: true
     permalink: /:collection/:path/
   talks:
+    output: true
+    permalink: /:collection/:path/
+  articles:                  # <=== Add this block
     output: true
     permalink: /:collection/:path/
 
@@ -234,6 +237,17 @@ defaults:
   - scope:
       path: ""
       type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+  # _articles (new)
+  - scope:
+      path: ""
+      type: articles
     values:
       layout: single
       author_profile: true
@@ -266,10 +280,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _portfolio
+  # _projeccts (formerly portfolio)
   - scope:
       path: ""
-      type: portfolio
+      type: projects
     values:
       layout: single
       author_profile: true
