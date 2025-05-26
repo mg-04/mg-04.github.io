@@ -2,9 +2,9 @@
 title: "Interpreting Inner Core Attenuation Scattering through Ultrasonic Experiments"
 collection: publications
 category: manuscripts
-permalink: /publication/2025-05-25-Interpreting-Inner-Core-Attenuation-Scattering-through-Ultrasonic-Experiments
+permalink: /publication/2025-04-25-Interpreting-Inner-Core-Attenuation-Scattering-through-Ultrasonic-Experiments
 excerpt: 'An experimental study of the scattering of ultrasonic compressional waves in an hcp Zn-Sn alloy, serving as an analog to the Fe alloy in Earth’s inner core to better understand the origin of inner core seismic attenuation.'
-date: 2025-05-25
+date: 2025-04-25
 venue: 'Physics of the Earth and Planetary Interiors'
 slidesurl: 'https://docs.google.com/presentation/d/1C4nOEIFJypRAPYpgcL_d-mbAZy0HW6WQ7nFijfUacFY/'
 paperurl: 'https://docs.google.com/document/d/1FcOFbXBSyz0f4CHegD6F-hWBEsDn0Rl5Pht8kV3OT28/edit?tab=t.0'
