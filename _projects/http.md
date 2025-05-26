@@ -1,8 +1,8 @@
 ---
 title: "HTTP Server and Client"
-excerpt: HTTP server/client from scratch
+excerpt: "HTTP server/client from scratch<br/><img src='/images/projects/http.png' style='width:500px;'>"
 collection: projects
-date: 2024-11-20
+date: 2024-12-11
 ---
 
 Final assignment for COMS 3157 Advanced Programming  

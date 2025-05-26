@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "mg-04.io"
+title                    : "mg-04-io"
 title_separator          : "-"
 name                     : &name "Ming Gong"
 description              : &description "IO小站"
@@ -25,9 +25,9 @@ author:
   avatar           : "profile.jpg"
   name             : "Ming Gong"
   pronouns         : # example: "she/her"  
-  bio              : "Computer Engineering @ Columbia"
+  bio              : "IO小站"
   location         : "New York"
-  employer         : "Mobile X Lab"
+  employer         : "Columbia University"
   uri              : # URL
   email            : "ming.g@columbia.edu" 
 
