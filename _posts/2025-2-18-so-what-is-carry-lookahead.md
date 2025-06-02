@@ -1,7 +1,7 @@
 ---
 #layout: post
-title:  "So What Is Carry Lookahead"
-date:   2025-2-12 22:45:30 -0500
+title:  "So What Is Carry Look Ahead"
+date:   2025-2-25 2:45:30 -0500
 permalink: /posts/2025/02/carry
 tags:
     - cs
