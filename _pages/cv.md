@@ -1,10 +1,11 @@
 ---
 layout: archive
 title: "CV"
-permalink: /cv
+permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
+  - /resume/
 ---
 
 New York, NY \| [(682) 559-3699](tel:6825593699) 
