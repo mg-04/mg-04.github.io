@@ -117,7 +117,7 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 接下来继续完善尾部的传动。设计师在容纳上两路动力的转向的同时，利用一个空的动力传输环连接发动机与车轮。
 
 <figure>
-  <img src="/images/posts/aqau/butt.JPG" width="150" alt="Sample image" />
+  <img src="/images/posts/aqau/butt.jpg" width="150" alt="Sample image" />
   <figcaption>小小的屁股里全是齿轮
 
 </figcaption>
@@ -125,13 +125,13 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 接下来就是贴纸环节，贴纸！贴纸！再贴纸！
 
-  <img src="/images/posts/aqau/sticker.JPG" width="150" alt="Sample image" />
+  <img src="/images/posts/aqau/sticker.jpg" width="150" alt="Sample image" />
 
 </figure>
 
 拼完大概是这样的，让镊子客串一下铲子qwq
 
-  <img src="/images/posts/aqau/half.JPG" width="200" alt="Sample image" />
+  <img src="/images/posts/aqau/half.jpg" width="200" alt="Sample image" />
 
 </figure>
 
