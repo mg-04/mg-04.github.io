@@ -20,7 +20,7 @@ pdd上500出头拿下，收到个压盒，可以接受吧
   <img src="/images/posts/aqau/box.JPG" width="250" alt="Sample image" />
 </figure>
 <figure>
-  <img src="/images/posts/aqau/bags.JPG" style="transform: rotate(270deg)"  width="200" alt="Sample image" />
+  <img src="/images/posts/aqau/bags.JPG" style="transform: rotate(270deg)"  width="20" alt="Sample image" />
   <figcaption>内部一共是8个零件分包，平均每包100多个零件出头，比较细（想当年42055也就8分包
 </figcaption>
 </figure>
@@ -125,31 +125,51 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 接下来就是贴纸环节，贴纸！贴纸！再贴纸！
 
+<figure>
+
   <img src="/images/posts/aqau/sticker.jpg" width="150" alt="Sample image" />
 
 </figure>
 
 拼完大概是这样的，让镊子客串一下铲子qwq
-
+<figure>
   <img src="/images/posts/aqau/half.jpg" width="200" alt="Sample image" />
-
 </figure>
 
+<figure>
+  <img src="/images/posts/aqau/rear.JPG" width="200" alt="Sample image" />
+</figure>
+<figure>
+  <img src="/images/posts/aqau/tail_int.JPG" width="200" alt="Sample image" />
+</figure>
 可以看到屁股的覆盖度非常好（虽然贴纸占了不少功劳。发动机舱可以打开，打开后两侧的电箱门也可以打开，露出贴纸模拟出的配电箱。这里细节满满
 
 ## 铲斗
 终于来到铲车的关键了：前面的铲子。其实把铲子放到最后一个大步骤是不够合理的。由于没有负载，之前后部的负重，让模型是没法放平的。
+
+<figure>
+  <img src="/images/posts/aqau/front.JPG" width="200" alt="Sample image" />
+</figure>
 
 铲斗的结构与42030和真车相似。这里也是对应地用上了微型致动器。左右两根控制大臂；中间控制小臂。这里巧妙地用了一根长轴将三个三单位的致动器模块固定在一起，与中间的三连万向节完美呼应
 
 # 成品
 ## 外观
 成品就是这样啦。你会获得一个非常丰满性感的屁股，但和他的大哥030一样，前端略显单薄
+<figure>
+  <img src="/images/posts/aqau/side_z.JPG" width="200" alt="Sample image" />
+</figure>
 - 铲斗的连杆组件用了贴纸来点缀，毕竟要在狭小的空间内保证各个部件的活动行程，不能做太过复杂的外部覆盖件
-- 030的一大槽点就是中部转向部位大面积的空洞。这点在209上得到了改善。设计师用了梯子遮住了中部的传动结构。远看饱满大气，近看也不失细节机械没，做到了完美的取舍。可惜前部暴露的蓝绿齿轮瞬间将模型的颜值拉低了一个档次。此处需要容纳转向的空间，但黄黑色的齿轮观感显著更佳
-- 同样吐槽的是顶部的蓝色转向齿轮。其实完全可以换成对应的米色/黑色双锥齿轮的。不知道设计师怎么样的...
+- 030的一大槽点就是中部转向部位大面积的空洞。这点在209上得到了改善。设计师用了梯子遮住了中部的传动结构。远看饱满大气，近看也不失细节机械美，做到了完美的取舍。可惜前部暴露的蓝绿齿轮瞬间将模型的颜值拉低了一个档次。此处需要容纳转向的空间，但黄黑色的齿轮观感显著更佳
+- 同样吐槽的是顶部的蓝色转向齿轮。其实完全可以换成对应的米色/黑色双锥齿轮的。不知道设计师怎么想的...
+
 ## 细节
+
 除了上文的槽点之外，整个套装细节很赞：尾部的充电口、变电箱，可开启的驾驶室和机舱门，驾驶台旁的水杯，随车的铲子、灭火器，前端的大灯，氛围感拉满！
+
+<figure>
+  <img src="/images/posts/aqau/details.JPG" width="200" alt="Sample image" />
+</figure>
 
 ## 传动
 回到科技组的主要卖点：传动
