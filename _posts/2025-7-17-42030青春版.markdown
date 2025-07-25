@@ -17,37 +17,32 @@ excerpt: >
 ## 开箱
 pdd上500出头拿下，收到个压盒，可以接受吧
 
-<img src="/images/posts/aqau/box.JPG" style="max-width: 250px;" alt="Example" />
+<img src="/images/posts/aqau/box.JPG" style="max-width: 400px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/box.JPG" width="250" alt="Sample image" />
-</figure>
-<figure>
-  <img src="/images/posts/aqau/bags.JPG" style="transform: rotate(270deg)"  width="20" alt="Sample image" />
-  <figcaption>内部一共是8个零件分包，平均每包100多个零件出头，比较细（想当年42055也就8分包
-</figcaption>
-</figure>
+<img src="/images/posts/aqau/bags.JPG" style="max-width: 400px;" alt="Example" />
+
+内部一共是8个零件分包，平均每包100多个零件出头，比较细（想当年42055也就8分包
+
 
 
 ## 结构
 ### 转向核心
 第一个分包就是中部转向+三路传动！采用了三组万向节负责前后传输动力。上下各有凸梁结构固定转向。拼搭的时候注意保留齿隙，不然之后卡到爽。。
 
-<figure>
-  <img src="/images/posts/aqau/axles.JPG" width="100" alt="Sample image" />
-  <figcaption>拼完第一个分包，这个套装的核心传动路径就展现在眼前了
-</figcaption>
-</figure>
+<img src="/images/posts/aqau/axles.JPG" style="max-width: 200px;" alt="Example" />
+
+拼完第一个分包，这个套装的核心传动路径就展现在眼前了
 
 
 ### 底盘传动
 209配备了两个乐高全新差速器，我们来看一下它的组成部分
 
-<figure>
-  <img src="/images/posts/aqau/diff.JPG" width="200" alt="Sample image" />
-</figure>
+<img src="/images/posts/aqau/diff.JPG" style="max-width: 100px;" alt="Example" />
+
 
 内部一共是五个12齿锥齿轮，两侧各一个，中间三个。
+
+<img src="/images/posts/aqau/bags.JPG" style="max-width: 100px;" alt="Example" />
 
 <figure>
   <img src="/images/posts/aqau/diff2.JPG" width="100" alt="Sample image" />
@@ -60,12 +55,12 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 > 即使不差动，动力通过差速器壳体传递给固定在上面的中间齿轮，再带动两侧的齿轮旋转，传给车轮
 
 第二个分包完成了前后轴传动。后轴还有个简单的悬挂。
+<img src="/images/posts/aqau/2.JPG" style="max-width: 400px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/2.JPG" width="200" alt="Sample image" />
-</figure>
 
 作业模块的传动也基本成型。
+
+<img src="/images/posts/aqau/front_int.JPG" style="max-width: 300px;" alt="Example" />
 
 <figure>
   <img src="/images/posts/aqau/front_int.JPG" width="150" alt="Sample image" />
@@ -79,17 +74,23 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 ## 机舱
 接下来是车尾的机舱传动。亮点是用三颗电机替代了030的标志性绿色发动机，装载机也在电气化呐
 
+<img src="/images/posts/aqau/engine.JPG" style="max-width: 300px;" alt="Example" />
+
 <figure>
   <img src="/images/posts/aqau/engine.JPG" width="150" alt="Sample image" />
   <figcaption>电机的拼搭很有意思，由两个扩展动力传输环和一个绿色马桶销组成，浅绿色点缀恰到好处
 </figcaption>
 </figure>
 
+<img src="/images/posts/aqau/engines.JPG" style="max-width: 200px;" alt="Example" />
+
 <figure>
   <img src="/images/posts/aqau/engines.JPG" width="100" alt="Sample image" />
   <figcaption>三个电机的传统比居然是不一样的，这里设计师偷懒了，扣鸡腿
 </figcaption>
 </figure>
+
+<img src="/images/posts/aqau/steer.JPG" style="max-width: 300px;" alt="Example" />
 
 <figure>
   <img src="/images/posts/aqau/steer.JPG" width="150" alt="Sample image" />
@@ -105,12 +106,16 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 3. 大臂：中间万向节输入，通过前方三颗16齿分到左右两路，再回来经过16:20:12，传输到两边
 4. 行走：底部万向节联通前后差速器。尾部的蓝色齿轮之后会连接发动机（虽然是电机但还是这么叫习惯）
 
+<img src="/images/posts/aqau/side.JPG" style="max-width: 400px;" alt="Example" />
+
 <figure>
   <img src="/images/posts/aqau/side.JPG" width="200" alt="Sample image" />
 
 </figure>
 
 设计师在7x7的核心空间内完美地排布了四路传动，用料清晰紧凑，层次分明，刚好能脑补出内部的动力流向。大量交错孔梁和半单位件在不同维度上穿插，勾勒出一幅立体的机械拼图
+
+<img src="/images/posts/aqau/wheels.JPG" style="max-width: 400px;" alt="Example" />
 
 <figure>
   <img src="/images/posts/aqau/wheels.JPG" width="200" alt="Sample image" />
@@ -121,6 +126,8 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 ## 尾部
 接下来继续完善尾部的传动。设计师在容纳上两路的转向的同时，利用一个空的动力传输环连接发动机与中轴。
 
+<img src="/images/posts/aqau/butt.jpg" style="max-width: 300px;" alt="Example" />
+
 <figure>
   <img src="/images/posts/aqau/butt.jpg" width="150" alt="Sample image" />
   <figcaption>小小的屁股里全是齿轮
@@ -130,23 +137,17 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 接下来就是贴纸环节，贴纸！贴纸！再贴纸！
 
-<figure>
+<img src="/images/posts/aqau/sticker.jpg" style="max-width: 300px;" alt="Example" />
 
-  <img src="/images/posts/aqau/sticker.jpg" width="150" alt="Sample image" />
-
-</figure>
 
 拼完大概是这样的，让镊子客串一下铲斗qwq
-<figure>
-  <img src="/images/posts/aqau/half.jpg" width="200" alt="Sample image" />
-</figure>
+<img src="/images/posts/aqau/half.JPG" style="max-width: 400px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/rear.JPG" width="200" alt="Sample image" />
-</figure>
-<figure>
-  <img src="/images/posts/aqau/tail_int.JPG" width="200" alt="Sample image" />
-</figure>
+<img src="/images/posts/aqau/rear.JPG" style="max-width: 400px;" alt="Example" />
+
+<img src="/images/posts/aqau/tail_int.JPG" style="max-width: 400px;" alt="Example" />
+
+
 可以看到屁股的覆盖度非常好（虽然贴纸占了不少功劳。机舱可以打开，展现内部的配电箱。这里细节满满
 
 ## 铲斗
@@ -154,18 +155,17 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 其实把它放到最后一大步不够合理。由于前端没有负载，后部又较重，装铲子前模型是放不稳的...
 
-<figure>
-  <img src="/images/posts/aqau/front.JPG" width="200" alt="Sample image" />
-</figure>
+<img src="/images/posts/aqau/front.JPG" style="max-width: 400px;" alt="Example" />
+
 
 铲斗的结构与42030和真车相似。这里也是对应地用上了*微型*致动器：左右两根控制大臂；中间控制小臂。这里使用一根长轴将三个三单位的致动器模块完美地串在一起，与中间的三连万向节如出一辙
 
 ## 成品
 ### 外观
 成品就是这样啦。你会获得一个非常丰满的屁股，但和他的大哥030一样，前端略显单薄
-<figure>
-  <img src="/images/posts/aqau/side_z.JPG" width="200" alt="Sample image" />
-</figure>
+
+<img src="/images/posts/aqau/side_z.JPG" style="max-width: 400px;" alt="Example" />
+
 - 铲斗的连杆通过贴纸来点缀，毕竟要在狭小的空间内保证各个部件的活动行程，很难做复杂的外部覆盖件
 - 030 中部转向部位的大空洞在209上得到了改善。设计师用梯子遮档中部的传动结构。若隐若现之间，机械的骨感于视觉的饱满达成了微妙的平衡。可惜前部裸露的蓝绿齿轮瞬间将模型的颜值拉低了一个档次。此处需要为转向预留空间，但黄黑色的齿轮显然更佳
 - 同样吐槽的是顶部的蓝色转向齿轮。其实完全可以换成对应的米色/黑色双锥齿轮的。不知道设计师怎么想的...
@@ -174,9 +174,8 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 抛开槽点，整个套装细节相当到位：尾部的充电口、变电箱，可开启的驾驶室和机舱门，驾驶台旁的水杯，随车的铲子、灭火器，前端的大灯。科技组几年来越来越细致了
 
-<figure>
-  <img src="/images/posts/aqau/details.JPG" width="200" alt="Sample image" />
-</figure>
+<img src="/images/posts/aqau/details.JPG" style="max-width: 400px;" alt="Example" />
+
 
 ### 传动
 回到科技组的主要卖点：传动
