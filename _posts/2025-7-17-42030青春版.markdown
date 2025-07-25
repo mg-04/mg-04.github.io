@@ -42,19 +42,16 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 内部一共是五个12齿锥齿轮，两侧各一个，中间三个。
 
-<img src="/images/posts/aqau/bags.JPG" style="max-width: 100px;" alt="Example" />
+<img src="/images/posts/aqau/diff2.JPG" style="max-width: 100px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/diff2.JPG" width="100" alt="Sample image" />
-  <figcaption>合体起来时这样的
-</figcaption>
-</figure>
+合体起来时这样的
 
 
 可以看到相比老版，新增的两个中间齿轮让动力更平稳；同时外侧用了更厚的齿轮（14:22，略显奇特...）
 > 即使不差动，动力通过差速器壳体传递给固定在上面的中间齿轮，再带动两侧的齿轮旋转，传给车轮
 
 第二个分包完成了前后轴传动。后轴还有个简单的悬挂。
+
 <img src="/images/posts/aqau/2.JPG" style="max-width: 400px;" alt="Example" />
 
 
@@ -62,43 +59,23 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 <img src="/images/posts/aqau/front_int.JPG" style="max-width: 300px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/front_int.JPG" width="150" alt="Sample image" />
-  <figcaption>动力被分到前方三颗米色锥齿轮，之后会连接线性致动器
-</figcaption>
-</figure>
-
-
-
+动力被分到前方三颗米色锥齿轮，之后会连接线性致动器
 
 ## 机舱
 接下来是车尾的机舱传动。亮点是用三颗电机替代了030的标志性绿色发动机，装载机也在电气化呐
 
 <img src="/images/posts/aqau/engine.JPG" style="max-width: 300px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/engine.JPG" width="150" alt="Sample image" />
-  <figcaption>电机的拼搭很有意思，由两个扩展动力传输环和一个绿色马桶销组成，浅绿色点缀恰到好处
-</figcaption>
-</figure>
+电机的拼搭很有意思，由两个扩展动力传输环和一个绿色马桶销组成，浅绿色点缀恰到好处
+
 
 <img src="/images/posts/aqau/engines.JPG" style="max-width: 200px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/engines.JPG" width="100" alt="Sample image" />
-  <figcaption>三个电机的传统比居然是不一样的，这里设计师偷懒了，扣鸡腿
-</figcaption>
-</figure>
+三个电机的传统比居然是不一样的，这里设计师偷懒了，扣鸡腿
 
 <img src="/images/posts/aqau/steer.JPG" style="max-width: 300px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/steer.JPG" width="150" alt="Sample image" />
-  <figcaption>中间的转向轴通过两根绿色连杆与一颗28齿齿轮连接，再传动到顶部的转向齿轮
-</figcaption>
-</figure>
-
-
+中间的转向轴通过两根绿色连杆与一颗28齿齿轮连接，再传动到顶部的转向齿轮
 
 至此，整个set基本已经成型了。我们来梳理一下它的传动
 1. 转向：16齿齿轮输入，传递到下面的8-28齿，驱动两根绿色连杆
@@ -108,32 +85,21 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 <img src="/images/posts/aqau/side.JPG" style="max-width: 400px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/side.JPG" width="200" alt="Sample image" />
-
-</figure>
 
 设计师在7x7的核心空间内完美地排布了四路传动，用料清晰紧凑，层次分明，刚好能脑补出内部的动力流向。大量交错孔梁和半单位件在不同维度上穿插，勾勒出一幅立体的机械拼图
 
 <img src="/images/posts/aqau/wheels.JPG" style="max-width: 400px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/wheels.JPG" width="200" alt="Sample image" />
-  <figcaption>现在就可以上轮子下地把玩啦，灰常的丝滑
-</figcaption>
-</figure>
+现在就可以上轮子下地把玩啦，灰常的丝滑
+
 
 ## 尾部
 接下来继续完善尾部的传动。设计师在容纳上两路的转向的同时，利用一个空的动力传输环连接发动机与中轴。
 
 <img src="/images/posts/aqau/butt.jpg" style="max-width: 300px;" alt="Example" />
 
-<figure>
-  <img src="/images/posts/aqau/butt.jpg" width="150" alt="Sample image" />
-  <figcaption>小小的屁股里全是齿轮
+小小的屁股里全是齿轮
 
-</figcaption>
-</figure>
 
 接下来就是贴纸环节，贴纸！贴纸！再贴纸！
 
