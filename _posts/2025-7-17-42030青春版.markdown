@@ -37,12 +37,12 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 ### 底盘传动
 209配备了两个乐高全新差速器，我们来看一下它的组成部分
 
-<img src="/images/posts/aqau/diff.JPG" style="max-width: 100px;" alt="Example" />
+<img src="/images/posts/aqau/diff.JPG" style="max-width: 200px;" alt="Example" />
 
 
 内部一共是五个12齿锥齿轮，两侧各一个，中间三个。
 
-<img src="/images/posts/aqau/diff2.JPG" style="max-width: 100px;" alt="Example" />
+<img src="/images/posts/aqau/diff2.JPG" style="max-width: 200px;" alt="Example" />
 
 合体起来时这样的
 
@@ -73,7 +73,7 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 三个电机的传统比居然是不一样的，这里设计师偷懒了，扣鸡腿
 
-<img src="/images/posts/aqau/steer.JPG" style="max-width: 300px;" alt="Example" />
+<img src="/images/posts/aqau/steer.jpg" style="max-width: 300px;" alt="Example" />
 
 中间的转向轴通过两根绿色连杆与一颗28齿齿轮连接，再传动到顶部的转向齿轮
 
@@ -96,7 +96,7 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 ## 尾部
 接下来继续完善尾部的传动。设计师在容纳上两路的转向的同时，利用一个空的动力传输环连接发动机与中轴。
 
-<img src="/images/posts/aqau/butt.jpg" style="max-width: 300px;" alt="Example" />
+<img src="/images/posts/aqau/butt.jpg" style="max-width: 400px;" alt="Example" />
 
 小小的屁股里全是齿轮
 
@@ -130,7 +130,7 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 ### 外观
 成品就是这样啦。你会获得一个非常丰满的屁股，但和他的大哥030一样，前端略显单薄
 
-<img src="/images/posts/aqau/side_z.JPG" style="max-width: 400px;" alt="Example" />
+<img src="/images/posts/aqau/side_z.JPG" style="max-width: 300px;" alt="Example" />
 
 - 铲斗的连杆通过贴纸来点缀，毕竟要在狭小的空间内保证各个部件的活动行程，很难做复杂的外部覆盖件
 - 030 中部转向部位的大空洞在209上得到了改善。设计师用梯子遮档中部的传动结构。若隐若现之间，机械的骨感于视觉的饱满达成了微妙的平衡。可惜前部裸露的蓝绿齿轮瞬间将模型的颜值拉低了一个档次。此处需要为转向预留空间，但黄黑色的齿轮显然更佳
@@ -140,7 +140,7 @@ pdd上500出头拿下，收到个压盒，可以接受吧
 
 抛开槽点，整个套装细节相当到位：尾部的充电口、变电箱，可开启的驾驶室和机舱门，驾驶台旁的水杯，随车的铲子、灭火器，前端的大灯。科技组几年来越来越细致了
 
-<img src="/images/posts/aqau/details.JPG" style="max-width: 400px;" alt="Example" />
+<img src="/images/posts/aqau/details.JPG" style="max-width: 300px;" alt="Example" />
 
 
 ### 传动
