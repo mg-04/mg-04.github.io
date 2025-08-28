@@ -20,6 +20,16 @@ This was such an amazing topic for this course! I was quite surprised that no on
 I was pretty sure that if we make it working, Edwards would LOVE it!
 
 # [CircuitCim](/articles/cc)
+
+## Contents
+1. [Intro to SPICE Algorithm](/articles/cc)
+2. [Framework](/articles/cc/framework) and your first circuit!
+3. [More Static Linear Components](/articles/cc/sta)
+4. [Nonlinear and Diode](/articles/cc/nl)
+5. [MOSFET](/articles/cc/mos)
+6. [Time Variance](/articles/cc/tv)
+7. [Applications](/articles/cc/app)
+
 I completed the framework [CircuitCim](/articles/cc), the circuit simulation engine of the project pretty soon after the project start. Originally, we only planned to do linear elements: RLC, but after finding out that diodes are not too hard to do, I added diode functions soon. 
 
 We can call it a done from here, since there are just too many interesting things you can do with diodes, such as analog multiplier and different kinds of rectifiers. I still wanted to go a step beyond to get FETs working, so we can simulate logic.
@@ -103,3 +113,5 @@ This will take some memory, so we may need to shrink the max nodes to 64.
 - We can also figure out smarter ways to store sparse matrices, such as using a list-like structure  
 
 The GUI would have a matrix grid to connect circuit components. Some software is needed to translate component grid to SPICE netlist. That should be it.
+
+

@@ -26,6 +26,23 @@ In this article, I will break down the code design, and you can learn how to wri
 
 Nothing can explain this better than just a diagram:
 
+![SPICE](/images/cc/block_loop.png)
+
+Section 2 will explain "stamp" and "update" in detail. It is not simple to understand for beginners. 
+
+We don't have good ways to simulate nonlinear and time-varying components with ODEs-- Such ideal behavior only exists in books. The idea behind SPICE is to 
+- **linearize** nonlinear components (remember the small signal model)
+- **linearly approximate** time-varying components (exponentials are not too hard).
+
+The simulation is divided into distinct **operating points** (aka time steps). At each operating point (op), we use repeated linear approximation until the op converges (inner loop). Then we move to the next op. (outer loop).
+
+As you will see in later sections, every component will be simplified to independent sources, resistors, and dependent sources. The rest is linear algebra.
+
+## Node Voltage Analysis
+So SPICE simplifies everything to a *net* of linear components. How do we solve it? We use the infamous Node Voltage Analysis (with a few tweaks). 
+
+We first need to identify all the node voltages, storing them in a vector. All components are also stored in a vector, each entry containing connectivity information. At each step, we add *each* component into the resistance (conductance) matrix and solve for the new voltage. 
+
 
 ## Future work
 This is not an exhaustive list

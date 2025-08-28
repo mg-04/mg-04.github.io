@@ -3,6 +3,15 @@ title: "Time Variance"
 permalink: /articles/cc/tv
 ---
 
+## Contents
+1. [Intro to SPICE Algorithm](/articles/cc)
+2. [Framework](/articles/cc/framework) and your first circuit!
+3. [More Static Linear Components](/articles/cc/sta)
+4. [Nonlinear and Diode](/articles/cc/nl)
+5. [MOSFET](/articles/cc/mos)
+6. Time Variance (this article)
+7. [Applications](/articles/cc/app)
+
 Now let's add another dimension to our simulation: **time**
 
 ## Framework
@@ -205,5 +214,7 @@ void setup(void) {
 It simulates the iconic rectifier curve, with:
 - Precise diode drop
 - Exponential discharge (starts very linear)
+
+![diode-rect](/images/cc/diode-rect.png)
 
 Exercise: build a bridge rectifier.

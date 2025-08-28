@@ -2,8 +2,20 @@
 title: "CircuitCim Framework"
 permalink: /articles/cc/framework
 ---
-# Framework
-To code SPICE, the main challenges are: how do you keep the component information, and how do you tell which value goes where
+
+## Contents
+1. [Intro to SPICE Algorithm](/articles/cc)
+2. Framework and your first circuit! (this article)
+3. [More Static Linear Components](/articles/cc/sta)
+4. [Nonlinear and Diode](/articles/cc/nl)
+5. [MOSFET](/articles/cc/mos)
+6. [Time Variance](/articles/cc/tv)
+7. [Applications](/articles/cc/app)
+
+## Framework
+To code SPICE, the main challenges are: how to keep the component information, and how to tell which value goes where
+
+### Components
 
 Here we define the data structure to store the general resistor info
 ```c
@@ -13,7 +25,9 @@ typedef struct {
 } Res;
 ```
 
-Sources are a bit complicated. Let's just support DC for now
+`n1`, `n2` are the node labels the resistor is connected to, and `R` is the resistance.
+
+Sources are a bit complicated, but a simple independent *current* source can be realized below:
 
 ```c
 typedef struct { 
@@ -24,12 +38,23 @@ typedef struct {
 
 ### Generic Structure
 
-We maintain a generic `Comps[]` array to keep track of all circuit components. Each entry is a generic `struct Component`, with each device's type and parameters, and functions pointers to **stamp** (add it to matrix)
+We maintain a generic `Comps[]` array to keep track of all circuit components. Each entry is a generic `struct Component`, with the following contents:
+- The device's type: 
+    - Static linear (`STA_T`, R)
+    - Time-varying linear (`LIN_T`, LC)
+    - Static nonlinear (`NL_T`, diode)
+- **Function pointers** to *stamp* the component (add it to the matrix)
+- Function pointers to *update* the component (update its internal approximation values, not needed for static, linear component)
+- A **union** of each component type, that can store
+    - Nodes
+    - Static values (E. resistance, capacitance)
+    - Dynamic values (E. initial voltage, Vds)
+
 ```c
 typedef struct Component {
-    CompType type;  // let it be STA_T for now
-    void (*stamp)(struct Component*, float[][MAT_SIZE], float[]);
-    /* void (*update)   (struct Component*, float[][MAT_SIZE], float[]); */
+    CompType type; 
+    void (*stamp) (struct Component*, float[][MAT_SIZE], float[]);
+    void (*update) (struct Component*, float[][MAT_SIZE], float[]); 
     union {
         ISrc   isrc;
         Res    res;
@@ -43,22 +68,24 @@ int       ncomps;           // number of components in the circuit
 
 ### Registering Components
 
-Now we need to define the component register functions `add_res()` and `add_isrc()`
+Now we need to define the component **register** functions `add_res()` and `add_isrc()`
 ```c
-void add_isrc(int n1,int n2, TransientSource *src) {
-    Component *c = &comps[ncomps++];
-    c->type      = STA_T;
-    c->stamp     = isrc_stamp;
-    c->u.isrc    = (ISrc){n1,n2, src};
-}
-
 void add_res(int n1, int n2, float R) {
     Component *c = &comps[ncomps++];
     c->type      = STA_T;
     c->stamp     = res_stamp;
-    c->u.res     = (Res){n1,n2,R};
+    c->u.res     = (Res){n1, n2, R};
+}
+
+void add_isrc(int n1, int n2, TransientSource *src) {
+    Component *c = &comps[ncomps++];
+    c->type      = STA_T;
+    c->stamp     = isrc_stamp;
+    c->u.isrc    = (ISrc){n1, n2, src};
 }
 ```
+
+`TransientSource` is a pointer to the source function $$i(t)$$. You can set it to be a constant function. You can also change it to a float constant for now.
 
 ### Stamping
 Now time for node voltage analysis! Let's count all currents *leaving* the node as positive.
@@ -66,7 +93,7 @@ Now time for node voltage analysis! Let's count all currents *leaving* the node 
 The **ground** node is registered as -1.
 ```c
 void res_stamp(Component *c, float Gm[][MAT_SIZE], float I[]) {
-    (void)I;                        // not used
+    (void)I;                        // RHS not used
     Res *r = &c->u.res;
     float G = 1.0f / r->R;
     int   n1 = r->n1, n2 = r->n2;
@@ -92,7 +119,7 @@ void isrc_stamp(Component *c, float Gm[][MAT_SIZE], float I[]) {
 }
 ```
 
-# Test Driver
+## Test Driver
 We first write a simple driver program that reads a circuit, runs our simulation block, and returns the result in a CSV
 
 ```c
@@ -165,9 +192,8 @@ Time to build a first circuit! It will be a simple current source with a resisto
 #include "circuit.h"
 #include "driver.h"
 #include "input_funcs.h"
-#include <string.h>   // for memset
-
-float time_step = 5e-6f;    // these are arbitrary
+#include <string.h>  
+float time_step = 5e-6f;    // arbitrary fir statuc curcyuts
 int nsteps = 500;
 
 void setup(void) {
@@ -186,4 +212,4 @@ void print_row(FILE *f) {
     fprintf(f, "%g,%g\n", t, v[0]);
 }
 ```
-and you can play around and add more linear components.
+and you can play around and add more linear components. See if it can solve the Tsividis problems!

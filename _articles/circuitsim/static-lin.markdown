@@ -2,49 +2,67 @@
 title: "More (Static) Linear Components"
 permalink: /articles/cc/sta
 ---
+
+## Contents
+1. [Intro to SPICE Algorithm](/articles/cc)
+2. [Framework](/articles/cc/framework) and your first circuit!
+3. More Static Linear Components (this article)
+4. [Nonlinear and Diode](/articles/cc/nl)
+5. [MOSFET](/articles/cc/mos)
+6. [Time Variance](/articles/cc/tv)
+7. [Applications](/articles/cc/app)
+
 ## More Linear Components
-Here is a set of more linear elements. Voltage sources need an additional row from MNA (instead of supernodes in the Tsividis textbook, because we do want to keep track of every subnode in the supernode)
+Here is a set of more linear elements. Voltage sources need an **additional** row from MNA (instead of supernodes in the Tsividis textbook, because we do want to keep track of every subnode in the supernode)
 ```c
 typedef struct { 
-    int n1, n2, ni;             // VSrc has an internal node
+    int n1, n2, ni;     // internal node
     float *V;
 } VSrc;   
+
 // dependent sources
 typedef struct { 
     int n1, n2;
     int np, nn, ni;   
-    float A;         // gain    
+    float A;            // gain    
 } Vcvs;
+
 typedef struct { 
     int n1, n2;
     int np, nn;
     float A; 
 } Vccs;
 ```
-Register functions
+
+### Register functions
 ```c
 void add_vsrc(int n1,int n2, int ni, float V) {
     // ni for an internal node for an extra row in the equation.
     Component *c = &comps[ncomps++];
     c->type      = STA_T;
     c->stamp     = vsrc_stamp;
-    c->u.vsrc    = (VSrc){n1,n2, ni, V};
+    c->u.vsrc    = (VSrc){n1, n2, ni, V};
 }
+
 void add_vcvs(int n1, int n2, int np, int nn, int ni, float A) {
     Component *c = &comps[ncomps++];
     c->type      = STA_T;
     c->stamp     = vcvs_stamp;
-    c->u.vcvs    = (Vcvs){n1,n2, np,nn, ni, A};
+    c->u.vcvs    = (Vcvs){n1, n2, np, nn, ni, A};
 }
+
 void add_vccs(int n1, int n2, int np, int nn, float A) {
     Component *c = &comps[ncomps++];
     c->type      = STA_T;
     c->stamp     = vccs_stamp;
     c->update    = NULL;
-    c->u.vccs    = (Vccs){n1,n2, np,nn, A};
+    c->u.vccs    = (Vccs){n1,n2, np, nn, A};
 }
 ```
-Update functions
+
+### Update functions
+I just took the equations from someone else and implemented them. It is just a bunch of linear algebra. Make sure to check the signs! 
+
 ```c
 /* add an ideal voltage source; stamps a "virtual" node (ni) to the circuit.*/
 void vsrc_stamp(Component *c, float Gm[][MAT_SIZE], float I[]) {
@@ -114,3 +132,5 @@ void vccs_stamp(Component *c, float Gm[][MAT_SIZE], float I[]) {
     if (n2 && nn) Gm[n2][nn] += -gm;
 }
 ```
+I chose VCVS for opamp and VCCS for MOSFETS. Controlled current sources can be implemented similarly, although I saw CCCS requires two internal nodes. 
+- With CCCS, you can simulate BJTs, completing the puzzle.

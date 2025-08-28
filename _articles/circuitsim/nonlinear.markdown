@@ -3,6 +3,15 @@ title: "Nonlinear Components"
 permalink: /articles/cc/nl
 ---
 
+## Contents
+1. [Intro to SPICE Algorithm](/articles/cc)
+2. [Framework](/articles/cc/framework) and your first circuit!
+3. [More Static Linear Components](/articles/cc/sta)
+4. Nonlinear and Diode (this article)
+5. [MOSFET](/articles/cc/mos)
+6. [Time Variance](/articles/cc/tv)
+7. [Applications](/articles/cc/app)
+
 Time for the inner loop of the SPICE algorithm: nonlinear components!
 
 We use the infamous Newton-Raphson method to take successive linear approximations until a solution is reached
@@ -143,7 +152,6 @@ void dio_update(Component *c) {
 ## Solving an operating point
 Now we will use this to solve an operating point (one point in time)
 ```c
-
 /* clear everything EXCEPT static components */
 void clear_system_sta(void) {
     memcpy(G_lin, G_sta, sizeof G_sta);

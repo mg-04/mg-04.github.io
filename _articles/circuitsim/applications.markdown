@@ -2,10 +2,20 @@
 title: "Applications"
 permalink: /articles/cc/app
 ---
-Now we have all the tools. Let's build something *interesting*. I'll show 3 example: one analog, one digital, and one mixed.
+
+## Contents
+1. [Intro to SPICE Algorithm](/articles/cc)
+2. [Framework](/articles/cc/framework) and your first circuit!
+3. [More Static Linear Components](/articles/cc/sta)
+4. [Nonlinear and Diode](/articles/cc/nl)
+5. [MOSFET](/articles/cc/mos)
+6. [Time Variance](/articles/cc/tv)
+7. Applications (this article)
+
+Now we have all the tools. Let's build something *interesting*. I'll show 3 examples: one analog, one digital, and one mixed.
 
 ## Analog: 4th-Order Filter
-I used the Sallen-Key topology (idk a fuck about this, but it works)
+I used the Sallen-Key topology (idk a fuck about its details, but it looks like a LPF on the outside!)
 ```c
 float time_step = 5e-6f;
 int nsteps = 10000;
@@ -41,9 +51,16 @@ void setup(void) {
 
 Inputting a 100 Hz and 10 kHz combo: perfect filtering
 
+![4th](/images/cc/4th.png)
+
 Let's make it harder, like 500 and 2k, and plot out the result in each stage. Each stage is very accurate, filtering out some components of the 2k while leaving 500 mostly intact. The final output is not perfect, but it's expected.
 
+![4th-hard](/images/cc/4th-hard.png)
+
 ## Digital: Rising-Edge Triggered Data Flip Flop
+
+![dff-c](/images/cc/dff-c.png)
+
 Fundies nightmare! Let's see if CircuitCim can handle it.
 ```c
 float time_step = 1e-6f;
@@ -84,6 +101,8 @@ void setup(void) {
 
 There's nothing too interesting. Just connect the gates appropriately, and pray that CircuitCim handles feedback well. (yes it did)
 
+![dff](/images/cc/dff.png)
+
 **Exercises**:
 1. There is a more efficient implementation with just 6 NANDs. Implement it
 2. Match the channel widths to make symmetric rise and fall.
@@ -93,7 +112,12 @@ Finally, the 555 I promised.
 
 I first looked up a MOS 555 implementation: https://tinyurl.com/2bg6sjrk
 
+![555-c](/images/cc/555.png)
+
 This looked insanely complicated, so I turned it to a "half"-netlist: https://tinyurl.com/26w4885x
+
+![555-netlist](/images/cc/555-netlist.png)
+
 - Analog
     - Voltage bias for comparators
     - Current bias to drive comparators and gates
@@ -103,6 +127,7 @@ This looked insanely complicated, so I turned it to a "half"-netlist: https://ti
 Doesn't look too bad now.
 
 Next is to write out the components. This was a pain, but I made it.
+
 ```c
 float time_step = 1e-6f;
 int nsteps = 10000;
@@ -158,13 +183,15 @@ void setup(void) {
     add_res(0, 19, 1e4f);
     add_res(19, 10, 1e4f);
     add_res(10, 6, 0.01f);
-    add_cap(6, -1, 3e-8f, time_step);
+    add_cap(6, -1,3e-8f, time_step);
 
     nnodes = 20;
 }
 ```
 WORKS PERFECTLY in both astable and monostable. There are slight issues on Falstad with the reset function. Have not tested it on CircuitCim yet. If it fails, it's that the model sucks, and I need to learn more on analog design.
 
-So this completes Circuit**C**im, the software part of Circuit**S**im. As I would soon realize, this is only a small part, and the worst suffering was soon to come.
+![555-plt](/images/cc/555-p.png)
 
-I think the last 555 from scratch really did the "+" part of our grades.
+So this completes Circuit**C**im, the software part of Circuit**S**im. As I would soon realize, this was only a small part, and the worst suffering was soon to come.
+
+I think the last 555 from scratch really made the "+" part of our grades :)

@@ -2,6 +2,16 @@
 title: "MOSFETS: Multivariable Nonlinear"
 permalink: /articles/cc/mos
 ---
+
+## Contents
+1. [Intro to SPICE Algorithm](/articles/cc)
+2. [Framework](/articles/cc/framework) and your first circuit!
+3. [More Static Linear Components](/articles/cc/sta)
+4. [Nonlinear and Diode](/articles/cc/nl)
+5. MOSFET (this article)
+6. [Time Variance](/articles/cc/tv)
+7. [Applications](/articles/cc/app)
+
 After building the framework for nonlinear components, I want to step into transistors. There are two choices: 
 - BJT: CCCS
 - MOS: VCCS
@@ -115,6 +125,10 @@ void nmos_update(Component *c) {
 
 The saturation mode is lowkey exactly the small-signal MOS models. There is a DC bias current, and an AC current source with transconductance $$\beta V_{ov}$
 
+Below is the transfer curve. Its first derivatives are not perfectly smooth, but good enough for our approximations. Looks very similar to the actual curves~
+
+![transfer](/images/cc/nmos-output.png)
+
 ## NOT gate
 Let's build a CMOS NOT gate out of this:
 ```c
@@ -140,6 +154,11 @@ I don't know how Falstad deals with it, but here's what I did:
 
 The new partial derivatives need to be calculated appropriately. Calculus moment.
 
+Anyway, here's the transfer curve. Looks kind of like tanh.
+
+![not](/images/cc/not-transfer.png)
+
+### More gates
 With this, you can build any combinatorial (and sequential logic), such as a NAND gate, and even an adder. Here are some helper functions:
 ```c
 void add_not(int vin, int vout, int vDD) {
