@@ -171,7 +171,8 @@ int add(int x, int y, int z){   // It will complain here
 ## Makefile
 `make` is a program that compiles based on instruction (`Makefile`)
 - **capital** M!
-```Makefile
+
+```make
 myadd.o: myadd.c myadd.h        # myadd.o: target, others: ingredient
     gcc -c -Wall -g myadd.c     # tab here, can't be spaces
 # Empty lines OK, sole spaces not allowed
@@ -200,7 +201,7 @@ Needs to specify target if not the first:
 make myprogram.o
 ```
 
-```Makefile
+```make
 myprogram: myadd.o myprogram.o
     gcc myadd.o myprogram.o -o myprogram
 
@@ -225,7 +226,8 @@ Already up to date
     - e.g. If `touch myadd.h`, 3 files updated.
 
 ### Variables
-```Makefile
+
+```make
 CC = gcc
 CFLAGS = -g -Wall
 
@@ -238,7 +240,8 @@ $(CC)   # uses the variable
 You can omit the subsequent lines
 
 ### Auto remove binary files after compilation
-```Makefile
+
+```make
 .PHONY: clean
 clean:
     rm -f *.o myprogram
@@ -246,13 +249,15 @@ clean:
 ```shell
 make clean
 ```
-```Makefile
+
+```make
 .PHONY: all
 all: clean myprogram
 # Let it first do 'clean', and then REBUILD 'myprogram'
 # make clean
 # make myprogram
 ```
+
 Make is attempting to produce a **file** `clean`. File did not get produced, but command executed
 - aka **phony target**
 
@@ -1079,7 +1084,7 @@ For code between different OS, we may need to do differently.
 ```
 ## Archive files
 Package all `.o` files into a single **archive** `.a` file
-```Makefile
+```make
 ar rcs libnumbers.a power.o prime.o
 ```
 - `r`: add `power.o` and `prime.o` to the archive (or replace them if already there)
