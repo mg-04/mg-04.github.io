@@ -15,11 +15,11 @@ permalink: /articles/cc
 # Intro
 CircuitCim is my part of the CESS 4840 Embedded Systems final project CircuitSim, an FPGA-accelerated analog circuit simulator. I call this part Circuit**C**im, or **MG**Spice :)
 
-CircuitSim is a state-of-art 4840 final project. It perfectly blends software, hardware, and circuits together, allowing us to *simulate* circuits on FPGA logic circuits. It developed from a Gaussian elimination accelerator, to solving circuits with resistors, capacitors, diodes, to modeling MOSFETs, to NOT gates, to NAND gates, to DFF, and culminates in building a 555 chip from scratch, a perfect combo of analog and digital circuitry
+CircuitSim is a state-of-art 4840 final project. It perfectly blends software, hardware, and circuits, allowing us to *simulate* circuits on FPGA logic circuits. It developed from a Gaussian elimination accelerator, to solving circuits with resistors, capacitors, diodes, to modeling MOSFETs, to NOT gates, to NAND gates, to DFF, and culminates in building a 555 chip from scratch, a perfect combo of analog and digital circuitry.
 
-Meanwhile, CircuitSim (and CircuitCim) is a piece of crap: a lot of crappy code (we did get rid of all instances of "vga" and "ball", which is better than 80% of the teams :)), crappy documentation, and some things didn't entirely work. Nevertheless, I was pretty proud about this project, so did Edwards and his TA team.
+Meanwhile, CircuitSim (and CircuitCim) is far from perfect: a lot of crappy code (we did get rid of all instances of "vga" and "ball", which is better than 80% of the teams :)), crappy documentation, and some things didn't entirely work. Nevertheless, I was pretty proud about this project, so did Edwards and his TA team :)
 
-Solving a circuit is not trivial. You'll need to solve a *system* of nonlinear multivariable differential equations. CircuitCim approaches each aspect incrementally
+Solving a circuit is not trivial. You'll need to solve a *system* of *nonlinear multivariable differential* equations. CircuitCim approaches and estimates each aspect incrementally.
 
 In this article, I will break down the code design, and you can learn how to write your own SPICE from scratch!
 ## SPICE Algorithm
@@ -28,20 +28,15 @@ Nothing can explain this better than just a diagram:
 
 ![SPICE](/images/cc/block_loop.png)
 
-Section 2 will explain "stamp" and "update" in detail. It is not simple to understand for beginners. 
+[Section 2](/articles/cc/framework) will explain "stamp" and "update" in detail.
 
 We don't have good ways to simulate nonlinear and time-varying components with ODEs-- Such ideal behavior only exists in books. The idea behind SPICE is to 
-- **linearize** nonlinear components (remember the small signal model)
+- **linearize** nonlinear components (aka small signal model)
 - **linearly approximate** time-varying components (exponentials are not too hard).
 
-The simulation is divided into distinct **operating points** (aka time steps). At each operating point (op), we use repeated linear approximation until the op converges (inner loop). Then we move to the next op. (outer loop).
+CircuitCim only supports time-domain simulation. The simulation is divided into distinct **operating points** (op, aka time steps). At each operating point (outer loop), we repeated create linear approximations of nonlinear components until the op converges (inner loop). Then we move to the next op. 
 
-As you will see in later sections, every component will be simplified to independent sources, resistors, and dependent sources. The rest is linear algebra.
-
-## Node Voltage Analysis
-So SPICE simplifies everything to a *net* of linear components. How do we solve it? We use the infamous Node Voltage Analysis (with a few tweaks). 
-
-We first need to identify all the node voltages, storing them in a vector. All components are also stored in a vector, each entry containing connectivity information. At each step, we add *each* component into the resistance (conductance) matrix and solve for the new voltage. 
+As you will see in later sections, every component will be modelled as a combo of independent sources, resistors, and dependent sources. Those can be well-tackled by Node Voltage Analysis. The rest is just linear algebra.
 
 
 ## Future work

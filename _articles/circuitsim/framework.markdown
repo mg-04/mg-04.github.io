@@ -13,9 +13,20 @@ permalink: /articles/cc/framework
 7. [Applications](/articles/cc/app)
 
 ## Framework
-To code SPICE, the main challenges are: how to keep the component information, and how to tell which value goes where
+To code SPICE, there are two main issues: how to keep the component information, and how to track their connectivity
+
+### Node Voltage Analysis
+SPICE simplifies each component to sources and resistors. We use the infamous Node Voltage Analysis (with a few tweaks). 
+
+We first need to identify all the node voltages. We represent a circuit in a SPICE netlist, where all nodes mapped to an integer, and components connect like edges. The nodes are stored in a vector. Modelling a component may introduce additional *internal* nodes, which are also appended to the vector.
+
+As a result, there will be an equation for each node.
+
 
 ### Components
+
+We use another array for circuit components. Each entry is a `struct` encoding value and connectivity. At each step, we add *each* component's value into the resistance (conductance) matrix and solve for the new voltage. 
+
 
 Here we define the data structure to store the general resistor info
 ```c

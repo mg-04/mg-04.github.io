@@ -199,6 +199,7 @@ Needs to specify target if not the first:
 ```shell
 make myprogram.o
 ```
+
 ```Makefile
 myprogram: myadd.o myprogram.o
     gcc myadd.o myprogram.o -o myprogram
@@ -208,6 +209,7 @@ myadd.o: myadd.c myadd.h
 
 myprogram.o: ...
 ```
+
 - When `make` typed in, `make` builds the first target: `myprogram`
 - Then it looks for the prereq, comparing the time. However, `.o` files are **missing**. `make` will usually give up.
     - However, it scans down if prereq are **targets** themselves, looking for `myadd.o` as targets.
