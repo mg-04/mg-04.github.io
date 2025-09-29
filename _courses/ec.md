@@ -12,5 +12,5 @@ This page is under construction.
 3. [Digital Circuits](/articles\s25\ec\EC-notes-Vallancourt-Electronic-Circuits-week11-14.pdf)
 
 ## Exam Cheat Sheets
-- Exam 1
-- Exam 2
+- [Exam 1](/articles\s25\ec\Ec e1.pdf)
+- [Exam 2](/articles\s25\ec\Ec e2.pdf)

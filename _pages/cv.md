@@ -35,14 +35,14 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 
 # Skills
 - **Technology:**  Microsoft Office, LaTeX, Maple, Premiere Pro
-- **Programming languages:** Java, Python, C, JavaScript, MATLAB
-- **Circuit Design:** Cadence, [SPICE](/articles/cc), PCE Layout
+- **Programming languages:** Python, C, System Verilog, MATLAB, Java, Javascript
+- **Circuit Design:** Cadence, [SPICE](/articles/cc), PCB Layout
 - **Languages:** English (fluent), Chinese (native), Spanish (basic)
 - **Research:** Wearable device, solid-state physics, signal processing, data analysis, machine learning
 
 ---
 
-# [Coursework](/courses)
+# [Courses](/courses)
 
 **Computer Engineering:**  
 Fundamentals of Computer Systems, Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Design, Digital VLSI Circuits
