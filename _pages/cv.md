@@ -19,7 +19,7 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 - **Columbia University**	  
     2024 - 2026  
     Bachelor of Science - **Computer Engineering**  
-    **GPA** 4.25/4.0
+    **GPA** 4.21/4.0
 
 - **Bard College at Simon's Rock**	  
     2021 - 2025  
@@ -36,21 +36,22 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 # Skills
 - **Technology:**  Microsoft Office, LaTeX, Maple, Premiere Pro
 - **Programming languages:** Java, Python, C, JavaScript, MATLAB
+- **Circuit Design:** Cadence, [SPICE](/articles/cc), PCE Layout
 - **Languages:** English (fluent), Chinese (native), Spanish (basic)
-- **Research:** Solid-state physics, ultrasonic testing, data analysis, machine learning
+- **Research:** Wearable device, solid-state physics, signal processing, data analysis, machine learning
 
 ---
 
-# Coursework
+# [Coursework](/courses)
 
 **Computer Engineering:**  
-Fundamentals of Computer Systems, Computer Networks, Embedded Systems
+Fundamentals of Computer Systems, Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Design, Digital VLSI Circuits
 
 **Computer Science:**  
 Discrete Mathematics, Algorithms & Data Structures, Advanced Programming, Advanced Systems Programming, Computer Science Theory, Artificial Intelligence, Networked Autonomous Systems 
 
 **Electrical Engineering:**  
-Analog & Digital Electronics, Circuit Analysis, Signals and Systems, Electronic Circuits, Solid State Devices and Matters
+Analog & Digital Electronics, Circuit Analysis, Signals and Systems, Electronic Circuits, Solid State Devices and Matters, Analog Electronic Circuits
 
 **Mathematics:**  
 Linear Algebra, Multivariable Calculus, Ordinary Differential Equations, Probability and Statistics, Real Analysis, Abstract Algebra
@@ -64,9 +65,9 @@ General Chemistry, Organic Chemistry
 ---
 
 # Experience
-**Teaching Assistant**  
+**Head Teaching Assistant**  
 Columbia University | Jan. 2025 - present  
-- Teaching assistant for Fundamentals of Computer Systems (CSEE 3827)
+- Head TA for Fundamentals of Computer Systems (CSEE 3827)
 - Developed and optimized exam problems. Created supplemental materials to enhance and extend lecture content.
 - Disability Services [notetaker](/resources) for Fundamentals of Computer Systems, Signals and Systems, and Electronic Circuits
 
@@ -76,19 +77,25 @@ Columbia University	| Jan. 2025 - present
 - Implemented an Arduino-based system to monitor sensor performance under varying pressure conditions.
 - Fabricated and tested additional fabric pillow sensors to enhance reliability and functionality.
 
+**Algorithms Intern**  
+Alibaba | Jun. - Aug. 2025
+- Researched advanced search agent architectures and applied them to design a workflow for business development automation. 
+- Optimized tools for browser automation, webpage scraping, and summarization.
+- Tuned multilingual LLMs, using SFT to improve translation quality.
+
 
 **Research Assistant with Dr. Katayun Barmak**  
-Columbia University	| Sept. 2024 - present  
+Columbia University	| Sept. 2024 - May 2025  
 - Utilizing PyTorch to train U-Net convolutional neural networks for polycrystalline grain boundary detection.
 - Post-processed model predictions to create binarized images for data analysis workflows.
 - Applied statistical methods to fine-tune models and compare different predictions against human hand tracing.
 
 **Physics Intern with Dr. Michael Bergman**   
-Bard College at Simon's Rock | Jun. 2022 - present
+Bard College at Simon's Rock | Jun. 2022 - Jun. 2024
 - Experimentally verified the effect of wavelength and grain size on longitudinal ultrasonic wave scattering patterns.
 - Designed a Python program to locate and integrate the scattering echo amplitude, overcoming signal quality issues.
 - Experimented with a new foil technique in high-temperature ultrasonic shear wave coupling.
-- Submitted a poster to the 2024 SEDI Conference. Currently working on two manuscripts.
+- Submitted a [paper](https://www.sciencedirect.com/science/article/pii/S0031920125001505) in 2025 and a poster to the 2024 SEDI Conference. Currently working on one more manuscript.
 
 **Tutor**  
 Bard College at Simon's Rock | Feb. 2022 - May 2024

@@ -1,5 +1,5 @@
 ---
-title: "Interpreting Inner Core Attenuation Scattering through Ultrasonic Experiments"
+title: "An Experimental Ultrasonic Method to Determine A Scattering Quality Factor, with Application to Earth's Inner Core"
 collection: publications
 category: manuscripts
 permalink: /publication/2025-04-25-Interpreting-Inner-Core-Attenuation-Scattering-through-Ultrasonic-Experiments
@@ -7,8 +7,8 @@ excerpt: 'An experimental study of the scattering of ultrasonic compressional wa
 date: 2025-04-25
 venue: 'Physics of the Earth and Planetary Interiors'
 slidesurl: 'https://docs.google.com/presentation/d/1C4nOEIFJypRAPYpgcL_d-mbAZy0HW6WQ7nFijfUacFY/'
-paperurl: 'https://docs.google.com/document/d/1FcOFbXBSyz0f4CHegD6F-hWBEsDn0Rl5Pht8kV3OT28/edit?tab=t.0'
-#citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
+paperurl: 'https://www.sciencedirect.com/science/article/pii/S0031920125001505'
+citation: "Ming Gong, Michael I. Bergman, An experimental ultrasonic method to determine a scattering quality factor, with application to earth's inner core, Physics of the Earth and Planetary Interiors, 2025, 107456, ISSN 0031-9201, https://doi.org/10.1016/j.pepi.2025.107456."
 ---
 
 We studied experimentally scattering of ultrasonic compressional waves in a hexagonal close-packed Zn-rich Sn alloy, as an analog to the Fe alloy in Earth’s inner core. The goal is to better understand the origin of inner core seismic attenuation, which can be intrinsic or due to scattering. Using the pulse-echo technique, we defined a scattering quality factor $$Q_Z = (R + T)/R$$, where $$R$$ and $$T$$ are the average reflected and transmitted energy per cycle. We examined $$Q_Z$$ for two microstructures that are likely relevant to the inner core: textured, columnar dendritic crystals typical of directional solidification and untextured, equiaxed, ‘fine-grained’ crystals typical of deformation (which can also lead to a texture, leading to an anisotropic $$Q_Z$$). We also studied the wavelength dependence of scattering for these two microstructures.
