@@ -108,16 +108,21 @@ Class tutor for Quantum Physics, Classical Mechanics, and Ordinary Differential 
 Zhejiang University | Mar. 2022 - Jul. 2024
 - Published a paper on predicting the physio-chemical properties of pure organic chemical species. 
 - Trained dense neural networks, convolutional neural networks, and decision tree models and compared the results.
-- Collaborated on revising and editing academic papers in machine learning models.
+- Collaborated on revising and editing academic [papers](https://www.sciencedirect.com/science/article/pii/S2095809924001590) in machine learning models.
 
 ---
 
 # Activities
-**Programming Lead, Columbia Robotics Club**  
+**Electrical and Programming Lead, Columbia Robotics Club**  
 Oct. 2024 - present
 - Founding member of the Combat Robot Subteam.
-- Coordinating with the team lead and programming team to design robot hardware and software.
+- Coordinating with the team lead and programming team to design robot electronics and control software.
 - Event supervisor for Robot Tour at the Columbia University Science Olympiad Invitational.
+
+**Executive Board, Columbia IEEE**
+Aug. 2025 - present
+- Maintained the Columbia IEEE [website](https://ieee.ee.columbia.edu/). 
+- Hosting Open Project Space, beginner-friendly Arduino workshops
 
 **Executive Board Member, Columbia Data Science Society**  
 Sept. 2024 - present
@@ -126,10 +131,10 @@ Sept. 2024 - present
 **Organizational Committee Member, Columbia Global China Connection**  
 Sept. 2024 - present
 - Organizing social, cultural, and pre-professional events for Chinese students at Columbia.
-- Collaborating with a team of 10 to manage GCC's website and social media. 
+- Collaborating with a team of 10 to manage GCC's website and social media platforms. 
 
 **Member, Columbia University Chinese Students and Scholars Association**  
-Sept. 2024 - present
+Sept. 2024 - May 2025
 - Member of the Community Development and Engagement Department.
 - Contributed to planning large-scale social activities and community-building initiatives across campus.
 
@@ -161,9 +166,9 @@ Summer 2020
 ---
 
 # Awards and Honors
-
+- Columbia Dean's List (2 times, 2025)
 - Fisher Poster Session Contest, 2nd place (2024)  
-- Dean's List (6 times, 2024)  
+- Simon's Rock Dean's List (6 times, 2024)  
 - SCUDEM VIII Outstanding Award (2023)  
 - AP Scholar with Distinction (2021)  
 - VEX V5 Regional Champion & State finalist (2021)
@@ -174,9 +179,10 @@ Summer 2020
 
 ---  
 # Publications
-Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2023). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
+Gong, M. & Bergman, M.I., (2025). **Interpreting Inner Core Attenuation Scattering through Ultrasonic Experiments.** *Physics of the Earth and Planetary Interiors.*
 
-Gong, M. & Bergman, M.I., (2024). **Interpreting Inner Core Attenuation Scattering through Ultrasonic Experiments.** *Physics of the Earth and Planetary Interiors.*
+Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
+
 
 ---
 # Interests
@@ -187,18 +193,24 @@ Arduino, Lego, combat robots; swimming, hiking, badminton
 
 - **Michael Bergman**  
 Emily H. Fisher Professor of Physics, Bard College at Simon's Rock  
-[(413) 528-7432](tel:4135287432) | [bergman@simons-rock.edu](mailto:bergman@simons-rock.edu)
+<!--[(413) 528-7432](tel:4135287432) | [bergman@simons-rock.edu](mailto:bergman@simons-rock.edu) -->
 
-- **Xiaodong Wang**
+- **David Vallancourt**
 Professor of Electrical Engineering, Columbia University
+
+- **Xiaodong Wang**  
+Professor of Electrical Engineering, Columbia University
+
+- **Stephen Edwards**  
+Professor of Computer Science, Columbia University
 
 - **David Myers**  
 Professor of Chemistry, Bard College at Simon's Rock  
-[(413) 528-7436](tel:4135287436) | [myersd@simons-rock.edu](mailto:myersd@simons-rock.edu)
+<!--[(413) 528-7436](tel:4135287436) | [myersd@simons-rock.edu](mailto:myersd@simons-rock.edu)-->
 
 - **Miha Habič**  
 Assistant Professor of Mathematics, Bard College at Simon's Rock  
-[(413) 528-7292](tel:4135287292) | [mhabic@simons-rock.edu](mailto:mhabic@simons-rock.edu)
+<!--[(413) 528-7292](tel:4135287292) | [mhabic@simons-rock.edu](mailto:mhabic@simons-rock.edu)-->
 
 <!---
 Teaching

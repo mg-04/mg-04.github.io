@@ -5,18 +5,24 @@ permalink: /courses/
 author_profile: true
 ---
 
+## Fall 2025
+- CSEE 4824 Computer Architecture
+- CSEE 4321 Digital VLSI Design
+- CSEE 4823 Advanced Logic Design (+Lab)
+- ELEN 4312 [Analog Electronic Circuits](/courses/ec) (+Lab)
+
 ## Spring 2025
 - COMS 4157 [Advanced Systems Programming](/courses/asp)
 - CSEE 4119 Computer Networks
 - CSEE 4840 [Embedded Systems](/posts/2025/05/cs)
-- ELEN 3331 Electronic Circuits (Lab)
+- ELEN 3331 Electronic Circuits (+Lab)
 
 ## Fall 2024
 - COMS 3157 [Advanced Programming](/articles/ap)
-- CSEE 3827 [Fundamentals of Computer Systems](/courses/fundies) ([Lab](/courses/ds-lab))
+- CSEE 3827 [Fundamentals of Computer Systems](/courses/fundies) ([+Lab](/courses/ds-lab))
 - ELEN 3106 Solid State Devices-Matters
-- ELEN 3201 [Circuit Analysis](/pages/ca) ([Lab](/pages/ca-lab))
-- ELEN 3801 [Signals and Systems](/courses/ss) (Lab)
+- ELEN 3201 [Circuit Analysis](/pages/ca) ([+Lab](/pages/ca-lab))
+- ELEN 3801 [Signals and Systems](/courses/ss) (+Lab)
 
 ---
 
