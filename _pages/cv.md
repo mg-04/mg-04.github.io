@@ -110,6 +110,12 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 - Trained dense neural networks, convolutional neural networks, and decision tree models and compared the results.
 - Collaborated on revising and editing academic [papers](https://www.sciencedirect.com/science/article/pii/S2095809924001590) in machine learning models.
 
+---  
+# Publications
+- Gong, M. & Bergman, M.I., (2025). **An Experimental Ultrasonic Method to Determine A Scattering Quality Factor, with Application to Earth’s Inner Core.** *Physics of the Earth and Planetary Interiors.*
+
+- Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
+
 ---
 
 # Activities
@@ -177,16 +183,10 @@ Summer 2020
 - Microsoft Technology Associate Programming (Python) (2020)
 
 
----  
-# Publications
-Gong, M. & Bergman, M.I., (2025). **Interpreting Inner Core Attenuation Scattering through Ultrasonic Experiments.** *Physics of the Earth and Planetary Interiors.*
-
-Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
-
 
 ---
 # Interests
-Arduino, Lego, combat robots; swimming, hiking, badminton
+Electronics, Lego, combat robots; road trip, swimming, hiking, badminton, tennis
 
 ---
 # References
