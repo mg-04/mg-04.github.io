@@ -195,8 +195,8 @@ Electronics, Lego, combat robots; road trip, swimming, hiking, badminton, tennis
 Emily H. Fisher Professor of Physics, Bard College at Simon's Rock  
 <!--[(413) 528-7432](tel:4135287432) | [bergman@simons-rock.edu](mailto:bergman@simons-rock.edu) -->
 
-- **David Vallancourt**
-Professor of Electrical Engineering, Columbia University
+- **David Vallancourt**  
+Senior Lecturer in Electrical Engineering, Columbia University
 
 - **Xiaodong Wang**  
 Professor of Electrical Engineering, Columbia University
