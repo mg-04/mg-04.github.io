@@ -1,7 +1,7 @@
 ---
 title: "An Experimental Ultrasonic Method to Determine A Scattering Quality Factor, with Application to Earth's Inner Core"
 collection: conferences
-category: manuscripts
+category: conferences
 permalink: /publication/2025-04-25-Interpreting-Inner-Core-Attenuation-Scattering-through-Ultrasonic-Experiments
 excerpt: 'SEDI Poster 2025'
 date: 2024-05-30
