@@ -15,4 +15,6 @@ permalink: /articles/vlsi
 7. [Misc](/articles/vlsi/misc)
 8. [Overall](/articles/vlsi/overall)
 
-Because I've gone through so much 
+Because I've gone through so much struggle in this class, I hope to write a guide where people can use in the future, and not fall into the same trap that I did. Then, you will truly enjoy the beauty of custom layout.
+
+This guide is never intended to cheat. You simply can't (unless I give you my GDS files!)
