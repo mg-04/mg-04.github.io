@@ -1,5 +1,5 @@
 ---
-title: "Loss Function Evaluation"
+title: "Deep Learning Loss Function and Data Optimization for A.I. Detection of Thin Film Grain Boundaries"
 collection: publications
 category: conferences
 permalink: /publication/2025-04-14-Barmak
