@@ -1,5 +1,5 @@
 ---
-title: "An Experimental Ultrasonic Method to Determine A Scattering Quality Factor, with Application to Earth's Inner Core"
+title: "Interpreting Earth’s Inner Core Structure via Ultrasonic Scattering Experiments"
 collection: publications
 category: manuscripts
 permalink: /publication/2025-04-25-Interpreting-Inner-Core-Attenuation-Scattering-through-Ultrasonic-Experiments
