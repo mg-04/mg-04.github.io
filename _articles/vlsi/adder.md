@@ -18,7 +18,7 @@ As we covered in class, and adder has two parts:
 
 ## Sizing
 Textbook pp. 432 discusses the sizing
-![](/images/vlsi/adder/sizing.png)
+![](/images/vlsi/Adder/sizing.png)
 
 
 The minimum width of our technology is 150 um
@@ -41,7 +41,7 @@ Alternatively, you can also not plan and do "vibe layout", not a bad choice eith
 # Sample Carry Circuit Walkthrough
 ## 1. Bit Pitch!
 Right after "Generate from Source", draw your M2 bit pitch. Make their centers 2.1 um apart, and each 0.1 um wide!
-![](/images/vlsi/adder/pitch.png)
+![](/images/vlsi/Adder/pitch.png)
 
 You can use the "p" shortcut to draw a path. It labels its DRC rules, too
 ![](/images/vlsi/Adder/p.png)
@@ -77,12 +77,38 @@ Now, you can regenerate the deleted transistors by "Connectivity/Update from Sou
 
 ### S/D Swap
 
+Up next is M30/M5, with its drain to `COUTN`. However, the generated instance has its source `net1` on the outside. We need to swap the source and the drain.
+
+1. Select the FET, click "q"
+2. Go to "Parameter", check "S D swap"
+
+![](/images/vlsi/Adder/sd.png)
+
+Now you can happily diffusion share!
+
 ## 4. Non-sharing Neighbors
 Most people fuck up on this one. They start crying once they could't diffusion share
 
+We run out of diffusion shares for M28/M26, a suboptimal situation, but we can still lay the FETs as closely as possible, borderline DRC
+- The `OD` layers need to be 0.13 um apart
+- (when the `PP`/`NP` box perfectly overlaps with the neighboring `OD`)
+
+![](/images/vlsi/Adder/nsd.png)
+
+Check DRC again.
+
+
 ## 5. `M1` and `PO` connections
+Now let's make DRC pleased by connecting the simple poly and metal wires
+1. Draw an `M1` rectangular extension from the `VDD!`/`GND!` vias
+    - Place `M1-M2` vias (make sure they are 0.1 um squares)
+2. Draw rectangles, or paths, to connect every S/D labeled `VDD!`/`GND!` to the supplies
+3. Draw poly paths to connect every poly with its neighbor
+
+Check DRC again. All `PO` area issues should go away, as well as some `M1` area issues.
 
 ## 6. `M2` Connections and Vias
+I don't recommend using the vias generated from "o". They are too fat and ugly, and they are the root cause of DRC miseries if used improperly.
 
 ## 7. `PO` Connections and Contacts
 
