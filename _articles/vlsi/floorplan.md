@@ -5,7 +5,9 @@ permalink: /articles/vlsi/floorplan
 
 Before even starting the project, I would recommend going over the requirements, so you know what you *should* be doing
 
-# Building Blocks
+# Architecture
+
+## Bus
 
 Our microprocessor will have the following parts:
 - Bus: there will be one writer and multiple readers
@@ -13,6 +15,7 @@ Our microprocessor will have the following parts:
 - **Accumulator**: A flip-flop that holds temporary values (think of it as your register)
 - **SRAM**
 
+## Building Blocks
 Here is a detailed floorplan from PS9
 
 - The accumulator is split into two D-latches
@@ -44,5 +47,26 @@ Whenever you are vacant, the value in `Acc` should not change. The MUX should se
 > Of course, you can probably see optimizations here and there
 
 
-# Layout Planning
-We have laid out an inverter
+# Floorplan
+> Floorplan! Floorplan! Floorplan! Many layouts don't suck at the end, they suck at the **beginning**! A bad initial decision will make you either **REDO** from scratch, or make **WORSE** and **WORSE** compromises to accomodate that
+
+There are always 3 things to plan: data, control, and power
+
+## Data Path
+Please plan a **tight** datapath layout!
+
+We have laid out an inverter. Think of adders as a series of gates like the inverter. 
+
+While in schematic level, you could try to achieve an *optimal* sizing, it's *rarely* achieved in layout. Layout is always a compromise between delay, area, and perfection. 
+- Plus it's very hard to find any global optima. It's all about approximates.
+
+## Power Distribution
+
+
+## Control Path
+The control signals are a bit random
+
+## Pitfalls
+Below I'll show you some common pitfalls
+
+

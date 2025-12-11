@@ -15,5 +15,14 @@ As we covered in class, and adder has two parts:
 # Design
 ![this](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf)
 
+# Sample Carry Circuit Walkthrough
+
+I would recommend **deleting** all transistors you are not planning to use, to avoid obstructing the real DRC errors
+
+# Our Adder
+
+Below is our adder from a few months ago. It is less optimal, but fine.
+
+
 # Misc
 We didn't follow the design rules before, and it sucked that we have to re-layout
