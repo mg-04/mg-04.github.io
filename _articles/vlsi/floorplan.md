@@ -1,6 +1,10 @@
 ---
 title: "Project Floorplan"
 permalink: /articles/vlsi/floorplan
+toc: true             # turn on table of contents
+toc_sticky: true      # make it stick while scrolling (optional)
+toc_label: "On this page"   # optional custom label
+# toc_icon: "list"    # optional Font Awesome icon name
 ---
 
 Before even starting the project, I would recommend going over the requirements, so you know what you *should* be doing
