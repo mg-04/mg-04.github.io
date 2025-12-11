@@ -11,6 +11,17 @@ The first real task is to layout an [Inverter](https://www.bioee.ee.columbia.edu
 It's a pretty comprehensive guide, but if you follow that into your project, for sure you will get in trouble! So let's still systematically go over it, and I'll highlight every possible caveat you might encounter, so it save you a huge learning curve.
 
 # Generated From Source
+
+
+# Schematic
+In your schematic, I'd recommend naming every pin CAPITAL (PEX will convert pins to capital).
+![](/images/vlsi/inv/schem.png)
+
+# Layout
+## 1. Generate from Source
+After "Generate from Source", you will get this. Rotate the devices by 90 degrees. 
+![](/images/vlsi/inv/start.png)
+
 ## Layers
 Before you start , I think it's useful to understand what each layer means here, so you actually know what you are doing, and how to avoid trouble
 - `NW` (N-well): where PMOS sit
@@ -37,6 +48,25 @@ Electrical wires from silicon
 ### Pin
 They are used to label outside connection to higher hierarchies
 
+## 2. Body Via
+Now, we need to add the body VIAs. Click "o" to add `M1-SUB` and `M1-NW` VIAs.
+- Make sure the `NP` boundary perfectly overlaps with the `PP` boundary. There can't be any **gaps** or **overlaps**
+
+The new body vias are nothing special. They are simply a stack of 5 layers:
+- `NW` (P) / substrate (N)
+- `NP` (P) / `PP` (N)
+- `OD`
+- `CO`
+- `M1`
+
+You can double click on a layer to make it exclusively visible, and you can see each other
+
+## 3. Connections
+
+
+
+![](/images/vlsi/inv/vias.png)
+
 # DRC
 Now, skip to DRC immediately, it will help you locate any possible potential errors!
 
@@ -55,3 +85,6 @@ In "I/O Pins", you have to set "Pin Label/Create Label As/Label", and set the fo
 
 > I
 Stacked functions. Close some tabs, and press `ESC`
+
+> My layout nets are not showing up
+Open with Layout XL
