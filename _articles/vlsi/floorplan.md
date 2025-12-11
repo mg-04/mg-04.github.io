@@ -1,9 +1,11 @@
 ---
 title: "Project Floorplan"
-permalink: /articles/floorplan
+permalink: /articles/vlsi/floorplan
 ---
 
 Before even starting the project, I would recommend going over the requirements, so you know what you *should* be doing
+
+# Building Blocks
 
 Our microprocessor will have the following parts:
 - Bus: there will be one writer and multiple readers
@@ -40,3 +42,7 @@ Whenever you are vacant, the value in `Acc` should not change. The MUX should se
 > Of course, this instruction set is SHIT for logic simplification!
 
 > Of course, you can probably see optimizations here and there
+
+
+# Layout Planning
+We have laid out an inverter
