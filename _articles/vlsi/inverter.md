@@ -24,6 +24,8 @@ After "Generate from Source", you will get this. Rotate the devices by 90 degree
 
 ## Layers
 Before you start , I think it's useful to understand what each layer means here, so you actually know what you are doing, and how to avoid trouble
+
+### Body
 - `NW` (N-well): where PMOS sit
 - `SUB` (P-well, substrate): where NMOS sit
     - Marked by `PDK`
@@ -120,7 +122,36 @@ RIP, another two violations. Make only the `M1` layer visible for more clarity
 ![](/images/vlsi/inv/drc_co_clean.png)
 
 
-# Via
+# LVS
+Move the M1 pins over to the metals. 
+
+Now let's check LVS. Read the [tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/calibre.html) again...
+
+![](/images/vlsi/inv/lvs.png)
+
+RIP, we got 4 "Incorrect Ports" errors. LVS somehow does not recognize our pins and decide, despite they are created with labels! This is very rare
+
+In this case, first check if Virtuoso recognizes the pin. Try moving the pins around and see if the label ("VOUT") and the cross shows up. If not, delete the pins and "Update from Source" again. Make sure you check "Create Label"!
+
+![](/images/vlsi/inv/lvs_check.png)
+
+
+
+Here, we have everything, let's *manually* add the labels to the pins again to let LVS know.
+- Click "l" and create label "VOUT". 
+- Click the center of your pin
+- Choose "Purpose": "pin" as the object
+
+![](/images/vlsi/inv/lvs_pin.png)
+
+Now, as a proof of concept, run LVS again to see if the error count drops to 3
+
+![](/images/vlsi/inv/lvs_fix.png)
+
+Yep, so add labels to the other 3, and you will be LVS clean!
+
+
+
 
 # FAQ
 > When I open Cadence, all my instances look like red boxes
