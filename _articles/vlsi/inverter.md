@@ -151,8 +151,6 @@ Now, as a proof of concept, run LVS again to see if the error count drops to 3
 Yep, so add labels to the other 3, and you will be LVS clean!
 
 
-
-
 # FAQ
 > When I open Cadence, all my instances look like red boxes
 
@@ -165,7 +163,9 @@ In "I/O Pins", you have to set "Pin Label/Create Label As/Label", and set the fo
 - "Layer Purpose": "Same As Pin"
 
 > I
+
 Stacked functions. Close some tabs, and press `ESC`
 
 > My layout nets are not showing up
+
 Open with Layout XL
