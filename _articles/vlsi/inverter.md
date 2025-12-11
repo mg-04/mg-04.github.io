@@ -52,6 +52,9 @@ They are used to label outside connection to higher hierarchies
 Now, we need to add the body VIAs. Click "o" to add `M1-SUB` and `M1-NW` VIAs.
 - Make sure the `NP` boundary perfectly overlaps with the `PP` boundary. There can't be any **gaps** or **overlaps**
 
+![](/images/vlsi/inv/vias.png)
+
+
 The new body vias are nothing special. They are simply a stack of 5 layers:
 - `NW` (P) / substrate (N)
 - `NP` (P) / `PP` (N)
@@ -59,16 +62,63 @@ The new body vias are nothing special. They are simply a stack of 5 layers:
 - `CO`
 - `M1`
 
-You can double click on a layer to make it exclusively visible, and you can see each other
+You can double click on a layer to make it exclusively visible, and you can see each layer individually
+
+
 
 ## 3. Connections
-
-
-
-![](/images/vlsi/inv/vias.png)
+Now let's connect the `PO` gate and `M1` source/drain to complete the circuit:
+![](/images/vlsi/inv/conn.png)
 
 # DRC
-Now, skip to DRC immediately, it will help you locate any possible potential errors!
+> It's always good practice to check DRC **as frequently as possible**, especially if you are a beginner!!
+Skip to the DRC [tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/calibre.html)
+
+These are the main types of DRC errors for TSMC N65:
+- **Spacing**
+- **Area**
+    - Width, or shape
+- **Enclosure** (for example, M1 must enclose `CO` by more than 0.25 um)
+- **Body connection**
+
+Let's run a DRC **right now**
+![](/images/vlsi/inv/drc_body.png)
+
+RIP, got 4 errors. You should be grateful that we *only* got 4...
+
+2 each for the N and P body vias
+- `OD` layer area too small
+- `PP`/`NP` layer area too small.
+
+There are two ways to solve it
+1. Change the via to have more rows and columns
+    - This is simple. Changing it to 4 will work
+2. Manually draw a larger `OD`/`PP`/`NP` around the current layer
+    - This is more risky, as changing one layer may violate other spacing/enclosure rules
+    - but useful for aggressive optimizations, if you know what you are doing
+
+![](/images/vlsi/inv/drc_body_fixed.png)
+After fixing it and making sure the area rules are satisfied, we are now DRC clean!
+
+
+## 4. VIA
+We are done, are we? There's one more step to connect a wire from our silicon poly. Add a `M1-PO` via.
+
+The `M1-PO` via they provide also has 3 layers: `PO`, `CO`, `M1` (start, via, destination sandwich). You need to make sure **every** layer does not violate DRC!
+
+
+Now run a DRC:
+
+![](/images/vlsi/inv/drc_co.png)
+
+RIP, another two violations. Make only the `M1` layer visible for more clarity
+- `M1` of the via is too close with our VOUT `M1`.
+    - Fix: Move either one away to at least 0.09 um apart
+- `M1` of the via's area is too small. It's like an island
+    - Fix: Add more `M1` to the via so its area is more than 0.042 um2
+
+![](/images/vlsi/inv/drc_co_clean.png)
+
 
 # Via
 
