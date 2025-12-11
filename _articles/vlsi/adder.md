@@ -3,6 +3,8 @@ title: "4321 Adder"
 permalink: /articles/vlsi/adder
 ---
 
+{% include toc %}
+
 Now comes the first real task of 4321: adder
 
 > This is very, very important, as you will learn the basics of tight layout and diffusion sharing!

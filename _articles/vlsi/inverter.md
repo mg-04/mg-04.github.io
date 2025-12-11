@@ -2,7 +2,10 @@
 title: "4321 Inverter"
 permalink: /articles/vlsi/inverter
 ---
-> This article is under construction.
+
+
+{% include toc %}
+
 
 Take a read of Shepard's [Online CAD Tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 

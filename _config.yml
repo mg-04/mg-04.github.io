@@ -212,6 +212,7 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
+  toc_levels: 1..2
 
 
 # These settings control the types of collections used by the template
@@ -249,6 +250,8 @@ defaults:
       comments: true
       share: true
       related: true
+      toc: true
+      toc_sticky: true
   # _articles (new)
   - scope:
       path: ""
@@ -323,7 +326,7 @@ sass:
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/New_York
 
 
 # Plugins

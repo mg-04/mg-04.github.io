@@ -1,7 +1,14 @@
 ---
 title: AP Notes.md
 permalink: /articles/ap
+toc: true
+toc_sticky: true
+toc_label: "On this page"
+layout: single
 ---
+
+{% include toc %}
+
 
 This file may not be fully adapted for web. Download the raw file [here](f24/CS3157-AP/AP-Notes.zip)
 
