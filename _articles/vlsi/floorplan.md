@@ -3,7 +3,8 @@ title: "Project Floorplan"
 layout: single
 permalink: /articles/vlsi/floorplan
 ---
-Before even starting the project, I would recommend going over the requirements, so you know what you *should* be doing
+Before even starting the project, I would recommend going over the requirements, so you know what you *should* be doing.
+
 
 # Architecture
 
@@ -49,6 +50,9 @@ Whenever you are vacant, the value in `Acc` should not change. The MUX should se
 
 # Floorplan
 > Floorplan! Floorplan! Floorplan! Many layouts don't suck at the end, they suck at the **beginning**! A bad initial decision will make you either **REDO** from scratch, or make **WORSE** and **WORSE** compromises to accomodate that
+> - **Disclaimer**: I'm not saying our layout is anything good. It is FAR from optimal.
+> - Please let us know for any corrections/optimizations!
+> - Most bad layouts will still have complete functionality, just a bad grade, so don't stress out too much about that 
 
 There are always 3 things to plan: data, control, and power
 

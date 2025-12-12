@@ -1,5 +1,5 @@
 ---
-title: "4321 Adder"
+title: "4321 Adder and Shifter"
 permalink: /articles/vlsi/adder
 ---
 
@@ -7,16 +7,16 @@ permalink: /articles/vlsi/adder
 
 Now comes the first real task of 4321: adder
 
-> This is very, very important, as you will learn the basics of tight layout and diffusion sharing!
+> This is very, very important. You will learn the fundamentals of tight layout and diffusion sharing!
 
-A few points:
-- Use a bit pitch width of 2.1 um!!! You will know why.
-- For the purpose of this final project, use ripple carry, since it's only 8-bits. You can show off with a more complex carry structure, but they won't help you much in pre-sim, and *definitely* won' help you in post-sim. 
-{: .notice--info}
 
-As we covered in class, and adder has two parts:
 
 # Design
+
+- Use a bit pitch-width of 2.1 um!!! You will later see why it matters!
+- For the purpose of this final project, use ripple carry, since it's only 8-bits. You can show off with a more complex carry structure, but they won't help you much in pre-sim, and *definitely* won' help you in post-sim. 
+
+As we covered in class, and adder has two parts:
 
 ## Sizing
 Textbook pp. 432 discusses the sizing
@@ -91,8 +91,9 @@ Now you can happily diffusion share!
 ## 4. Non-sharing Neighbors
 Most people fuck up on this one. They start crying once they could't diffusion share
 
-We run out of diffusion shares for M28/M26, a suboptimal situation, but we can still lay the FETs as closely as possible, borderline DRC
-- The `OD` layers need to be 0.13 um apart
+We run out of diffusion shares for M28/M26, a suboptimal situation. The key is to know what can still be overlapped, and what can't. We can still lay the FETs as closely as possible, edging the DRC
+- `NW` and `PP`/`NP` can still be overlapped. The bodies have the saem potential.
+- `OD`s are now different nets. They need to be **0.13 um** apart
 - (when the `PP`/`NP` box perfectly overlaps with the neighboring `OD`)
 
 ![](/images/vlsi/Adder/nsd.png)
@@ -189,6 +190,13 @@ It is good practice to use `M3` for global control signals, such as `SUB`
 
 ## Overflow
 You can 
+
+# Shifter
+There's nothing too much to write about the shifter. It's not very interesting.
+
+## Stick Diagram
+
+Different pattern
 
 
 # Misc
