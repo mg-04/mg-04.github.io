@@ -1,5 +1,10 @@
 
+---
+title: "4321 SRAM"
+permalink: /articles/vlsi/sram
+---
 
+{% include toc %}
 
 
 # Floorplan
@@ -7,6 +12,17 @@ There are a lot of ways to floorplan this. You don't have to, but it would be *r
 - *Logically*, the array is 8x8 SRAM. (8 wordlines, 3-bit addresses)
 - *Physically*, we lay it out **4x16**, where each pair of the 16 columns maps to one of the logical 8 columns
 - Essentially, we shift a dimension from the row direction to the column dimension. A wordline address bit now becomes the column MUX select bit.
+
+# SRAM Array
+
+# Decoder
+
+# Read Write
+## Column MUX
+
+## Write Select
+
+## Read Driver
 
 
 # Extraction

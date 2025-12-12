@@ -107,26 +107,88 @@ Now let's make DRC pleased by connecting the simple poly and metal wires
 2. Draw rectangles, or paths, to connect every S/D labeled `VDD!`/`GND!` to the supplies
 3. Draw poly paths to connect every poly with its neighbor
 
-Check DRC again. All `PO` area issues should go away, as well as some `M1` area issues.
+Check DRC again. 
+- All `PO` area issues should go away, as well as some `M1` area issues.
+- You will get a `PP` enclosure error. Draw a `PP` rectangle to perfectly cover the `PP`-`NP` gap in the center, and this will go away.
 
 ## 6. `M2` Connections and Vias
-I don't recommend using the vias generated from "o". They are too fat and ugly, and they are the root cause of DRC miseries if used improperly.
+We still have a few sources and drains left. Let's connect them vertically through the `M2` layer. Route an `M2` wire from top to bottom.
+I don't recommend using the vias generated from "o". They are too fat and ugly, and they are the root cause of DRC miseries if used improperly. Instead, let's build the three layers of a `M1-M2` via individually:
+1. Select the `VIA1` "drw" layer. Draw a 0.1 um x 0.1 um rectangle at the intersection
+2. A `VIA1` requires `M1` and `M2` enclosure of either
+    - 0.04 um on opposite edges (we almost always chose this one)
+    - 0.03 um on all edges
+    Use the ruler tool to extend the `M1` **AND** `M2` by 0.04
+    - You may also extend `M1` to the left, but that will violate the `M1` spacing DRC rules with the `GND!` wire.
+3. Done! Check DRC
+
+![](/images/vlsi/Adder/via1.png)
+
+![](/images/vlsi/Adder/via1_bare.png)
+
+
+Do the same thing for other nets. You can also use the same technique for power and ground connections.
+
+![](/images/vlsi/Adder/via1_drc.png)
+
 
 ## 7. `PO` Connections and Contacts
+From our floorplan, our input signals `A`, `BS`, `CIN` will arrive from the vertical M2 layers. We can "Update from Source/IO Pins" to create `M2` pins and label them.
+
+We need to via from `M1` all the way to `PO`. There needs to be five layers: `M2-VIA1-M1-CO-PO`. Each layer must satisfy the design rules:
+
+Be aware of the following common design rule violations (all units in um)
+- `PO` spacing > 0.12
+- `M1` spacing > 0.09; 0.11 in corners
+- `M2` spacing > 0.10; 0.12 in corners
+- `M1` area > 0.042
+- `M2` area > 0.052
+- `CO` side length = 0.09
+- `VIA1` side length = 0.10
+- `CO` must be enclosed by `PO` by > 0.01;
+- `CO` must be enclosed by `PO` by > 0.04 on opposite sides; or > 0.025 on all sides
+- `CO`/`VIA1` must be enclosed by `M1` by > 0.04 on opposite sides; or > 0.03 on all sides
+- `VIA1` must be enclosed by `M2` by > 0.04 on opposite sides; or > 0.03 on all sides
+
+The layout should be straightforward, although there may be a lot of trouble when starting to do these custom contacts and vias. The single `BS` gate in the middle is espcially hard to contact. 
+- Any vertical `PO` extension 0.04 um from the `CO` will violate the `PO` spacing rules. Therefore, we extend the `PO` horizontally.
+- The `M1` island is too small. Extend it so that it covers the `CO` and `M1` by the DR, and not violate spacing rules with its neighbors
+
+Check DRC. Below I show each layer for more clarity:
+![](/images/vlsi/Adder/drc_mp.png)
+![](/images/vlsi/Adder/drc_12.png)
+
+I also added the `M2-M1` via to connect the power.
+
+![](/images/vlsi/Adder/drc_full.png)
+
+
+Once you connect the pins, you should pass LVS too!
+
 
 CONGRATS on completing 1/3 of this assignment!
 # Our Adder
 
 Below is our adder from a few months ago. It is less optimal, but fine.
 ## Sum
+The sum bits use minimum P/N sizing. They can be really well diffusion-shared!
 
 ## Subtraction
+You can implement subtraction in two ways
+- Static XOR gate
+- MUX
+We chose the XOR implementation.
 
 ## Multibit
+Here's the interesting part. If you flip a single-bit adder vertically, the `VDD`/``GND` vias and M2 wires can be perfectly aligned next to each other. Your 8-bit layout will have a P-N-P-N-P-N-P-N-P structure
 
+I went up to `M3` for the carry propagation wires, but you may as well do it in `M1`. The `M1` power/ground *vertical* wires don't have to be contiguous. We can via local `M1` wires from the `M2` lanes.
+
+It is good practice to use `M3` for global control signals, such as `SUB`
 
 
 ## Overflow
+You can 
 
 
 # Misc

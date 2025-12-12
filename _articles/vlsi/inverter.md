@@ -22,7 +22,10 @@ In your schematic, I'd recommend naming every pin CAPITAL (PEX will convert pins
 
 # Layout
 ## 1. Generate from Source
-After "Generate from Source", you will get this. Rotate the devices by 90 degrees. 
+After "Generate from Source", you will get this. When you select a transistor in schematic/layout, the corresponding instance in the other view will also be highlighted.
+
+
+Rotate the devices by 90 degrees. 
 ![](/images/vlsi/inv/start.png)
 
 ## Layers
