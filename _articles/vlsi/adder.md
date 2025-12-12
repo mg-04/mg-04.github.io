@@ -20,6 +20,7 @@ As we covered in class, and adder has two parts:
 
 ## Sizing
 Textbook pp. 432 discusses the sizing
+
 ![](/images/vlsi/Adder/sizing.png)
 
 
@@ -101,7 +102,7 @@ We run out of diffusion shares for M28/M26, a suboptimal situation. The key is t
 Check DRC again.
 
 
-## 5. `M1` and `PO` connections
+## 5. M1 and PO connections
 Now let's make DRC pleased by connecting the simple poly and metal wires
 1. Draw an `M1` rectangular extension from the `VDD!`/`GND!` vias
     - Place `M1-M2` vias (make sure they are 0.1 um squares)
@@ -112,16 +113,18 @@ Check DRC again.
 - All `PO` area issues should go away, as well as some `M1` area issues.
 - You will get a `PP` enclosure error. Draw a `PP` rectangle to perfectly cover the `PP`-`NP` gap in the center, and this will go away.
 
-## 6. `M2` Connections and Vias
-We still have a few sources and drains left. Let's connect them vertically through the `M2` layer. Route an `M2` wire from top to bottom.
-I don't recommend using the vias generated from "o". They are too fat and ugly, and they are the root cause of DRC miseries if used improperly. Instead, let's build the three layers of a `M1-M2` via individually:
-1. Select the `VIA1` "drw" layer. Draw a 0.1 um x 0.1 um rectangle at the intersection
-2. A `VIA1` requires `M1` and `M2` enclosure of either
-    - 0.04 um on opposite edges (we almost always chose this one)
-    - 0.03 um on all edges
-    Use the ruler tool to extend the `M1` **AND** `M2` by 0.04
-    - You may also extend `M1` to the left, but that will violate the `M1` spacing DRC rules with the `GND!` wire.
-3. Done! Check DRC
+## 6. M2 Connections and Vias
+We still have a few sources and drains left. Let's route them vertically using **M2** layer. Draw a single M2 wire with minimum width (0.1 um).
+
+I do **not8* recommend using the vias generated with `o`. They are too fat and ugly, and they are the root cause of DRC miseries if used improperly. Instead, let's manually construct the M1-VIA1-M2 sandwich:
+
+1. Select the **VIA1** `drw` layer. Draw a **0.1 um x 0.1 um** square at the intersection
+2. A VIA1 requires enclosure by **both** M1 and M2, of either:
+    - **0.04 um** on 2 opposite edges (we almost always choose this one)
+    - 0.03 um on all 4 edges
+3. Use the ruler tool to measure 0.04. Use `s` to extend the both layers.
+    - You may be tempted to extend M1 to the left, but that will violate the M1 spacing DRC rules with the `GND!` wire.
+4. Done! Check DRC
 
 ![](/images/vlsi/Adder/via1.png)
 
@@ -133,7 +136,7 @@ Do the same thing for other nets. You can also use the same technique for power 
 ![](/images/vlsi/Adder/via1_drc.png)
 
 
-## 7. `PO` Connections and Contacts
+## 7. PO Connections and Contacts
 From our floorplan, our input signals `A`, `BS`, `CIN` will arrive from the vertical M2 layers. We can "Update from Source/IO Pins" to create `M2` pins and label them.
 
 We need to via from `M1` all the way to `PO`. There needs to be five layers: `M2-VIA1-M1-CO-PO`. Each layer must satisfy the design rules:
@@ -157,6 +160,9 @@ The layout should be straightforward, although there may be a lot of trouble whe
 
 Check DRC. Below I show each layer for more clarity:
 ![](/images/vlsi/Adder/drc_mp.png)
+
+Measure the distance to its neighbor. Clean!
+
 ![](/images/vlsi/Adder/drc_12.png)
 
 I also added the `M2-M1` via to connect the power.

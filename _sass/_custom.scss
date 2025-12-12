@@ -1,0 +1,131 @@
+/* ============================================================
+   Custom right-side TOC sidebar
+   ============================================================ */
+
+/* Allow content to use full width */
+.page__content {
+  max-width: 100%;
+}
+
+/* ============================================================
+   TOC positioning + geometry (theme-independent)
+   ============================================================ */
+
+.toc {
+  position: fixed;
+  top: 6rem;
+
+  /* Anchor TOC next to centered content column */
+  left: calc(50% + 24rem); /* tweak if needed */
+
+  width: 16rem;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+
+  font-size: 0.85rem;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+/* ============================================================
+   TOC — light mode (default)
+   ============================================================ */
+
+.toc {
+  background: #ffffff;
+  color: #111;
+  border: 1px solid #ddd;
+}
+
+.toc a {
+  color: #222;
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: #000;
+}
+
+/* separators / dividers */
+.toc li,
+.toc .toc__menu li {
+  border-color: #e6e6e6;
+}
+
+/* "On this page" header bar */
+.toc .nav__title,
+.toc .toc__title {
+  background: #f3f3f3;
+  color: #111;
+  border-radius: 6px;
+}
+
+/* Inline code / badges — KEEP ORIGINAL SIZE */
+.toc code,
+.toc kbd {
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;                 /* critical: no size inflation */
+  border-radius: 3px;
+  vertical-align: baseline;
+  background: #f2f2f2;
+  color: #111;
+  border: 1px solid #ddd;
+}
+
+/* ============================================================
+   TOC — dark mode (toggle-controlled)
+   ============================================================ */
+
+html[data-theme="dark"] .toc {
+  background: #2c2c2c;
+  color: #eaeaea;
+  border: 1px solid #444;
+}
+
+html[data-theme="dark"] .toc a {
+  color: #d6d6d6;
+}
+
+html[data-theme="dark"] .toc a:hover {
+  color: #ffffff;
+}
+
+/* separators / dividers */
+html[data-theme="dark"] .toc li,
+html[data-theme="dark"] .toc .toc__menu li {
+  border-color: #444;
+}
+
+/* "On this page" header bar */
+html[data-theme="dark"] .toc .nav__title,
+html[data-theme="dark"] .toc .toc__title {
+  background: #3a3a3a;
+  color: #f0f0f0;
+}
+
+/* Inline code / badges — COLOR ONLY, same size as light */
+html[data-theme="dark"] .toc code,
+html[data-theme="dark"] .toc kbd {
+  background: #1f1f1f;
+  color: #f0f0f0;
+  border-color: #555;
+  padding: 0 0.25em; /* exactly matches light theme behavior */
+}
+
+/* Active section highlight */
+html[data-theme="dark"] .toc a.active,
+html[data-theme="dark"] .toc .active > a {
+  color: #ffffff;
+  font-weight: 650;
+}
+
+/* ============================================================
+   Responsive: hide TOC on small screens
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .toc {
+    display: none;
+  }
+}
