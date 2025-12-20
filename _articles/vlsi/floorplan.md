@@ -49,10 +49,12 @@ Whenever you are vacant, the value in `Acc` should not change. The MUX should se
 
 
 # Floorplan
-> Floorplan! Floorplan! Floorplan! Many layouts don't suck at the end, they suck at the **beginning**! A bad initial decision will make you either **REDO** from scratch, or make **WORSE** and **WORSE** compromises to accomodate that
+> Floorplan! Floorplan! Floorplan! Many layouts don't suck at the end, they suck at the **beginning**! A bad initial decision will make you either **REDO** from scratch, or make **WORSE** and **WORSE** compromises to accommodate that
 > - **Disclaimer**: I'm not saying our layout is anything good. It is FAR from optimal.
 > - Please let us know for any corrections/optimizations!
-> - Most bad layouts will still have complete functionality, just a bad grade, so don't stress out too much about that 
+> - Most bad layouts will still have complete functionality, just a bad grade, so don't stress out too much about that
+
+We've laid out an inverter. The processor is basically a bunch on inverter-like gates neatly coordinated.
 
 There are always 3 things to plan: data, control, and power
 
@@ -72,5 +74,6 @@ The control signals are a bit random
 
 ## Pitfalls
 Below I'll show you some common pitfalls
-
+- Avoid long polys
+    - Long metal wires are fine
 

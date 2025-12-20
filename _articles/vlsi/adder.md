@@ -9,14 +9,37 @@ Now comes the first real task of 4321: adder
 
 > This is very, very important. You will learn the fundamentals of tight layout and diffusion sharing!
 
+# Overview
+- Fix your design with a bit pitch of 2.1 um
+- Use ripple carry
+- Make a (rough) stick diagram before you start
+- Edge DRC
+- Do not use their default VIAs
+- Diffusion share, and if you can't, put fets as closely as possible
+- Leave room for upper-level connections
 
+## What we could have done better on
+I would like to point out a few inaccuracies we've made, so it doesn't lead you to the wrong direction
+
+**Adder**
+- More organized M2 data grid
+- Smaller sizing on the non-critical path PFETs
+- Better diffusion sharing with S/D swapping
+- Using inverted `COUT` to save a gate in the propagation path
+- MUX-based `SUB` select
+- Use an odd number of fingers for better diffusion sharing
+- You don't have to put body vias everywhere
+- An organized M3 power grid and M4 segments
+
+and a lot of more...
+
+**Shifter**
+- Since we are buffering all I/O, we can do the MUX with NMOS only
+- Shift wires on M3, not M1 (that will save a lot of space between the stages)
 
 # Design
 
-- Use a bit pitch-width of 2.1 um!!! You will later see why it matters!
-- For the purpose of this final project, use ripple carry, since it's only 8-bits. You can show off with a more complex carry structure, but they won't help you much in pre-sim, and *definitely* won' help you in post-sim. 
-
-As we covered in class, and adder has two parts:
+A ripple carry adder has two parts, carry and sum. The CMOS implementation is pretty standard, and you can find plenty of resources
 
 ## Sizing
 Textbook pp. 432 discusses the sizing
@@ -32,12 +55,27 @@ We used the following sizing
     - It's a better idea to size the PMOS to 150 as well :( We went lazy, but it doesn't matter
 
 # Schematic
-If you want to use the textbook sizing, change the non-critical path NMOS to 150.
+Below is our carry schematic.  you want to use the textbook sizing, change the non-critical path NMOS to 150.
+
+![](/images/vlsi/Adder/schem.png)
+
+A few notes:
+- Use multiple fingers so every transistor has the same width
+- Set up one P/NMOS with the *right parameters*, the **duplicate** them over
+- Connect all PMOS bodies to VDD, NMOS bodies to GND. No exception
+- Label the nets and explicitly add the IO pins
+- I recommend using capital letters for net names, and global VDD/GND
 
 ## Stick Diagram
-You should make a stick diagram of your adder layout. [This](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) article from UMich discusses one way of layout and diffusion sharing with one finger. Adapt it for your design.
+You should make a stick diagram of your adder layout. [This](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) article from UMich discusses one way of layout and diffusion sharing with *one finger*. Adapt it for your design.
 
 Alternatively, you can also not plan and do "vibe layout", not a bad choice either!
+
+![](/images/vlsi/Adder/adder_stick.png)
+
+This stick diagram is rotated 90 degrees. I used magenta for PMOS OD, and dark grey for NMOS OD. 
+
+Note that I only drew with one finger. In the actual layout things will be a bit different.
 
 
 
@@ -180,29 +218,115 @@ Below is our adder from a few months ago. It is less optimal, but fine.
 ## Sum
 The sum bits use minimum P/N sizing. They can be really well diffusion-shared!
 
+![](/images/vlsi/Adder/sum.png)
+
+We can closely align the PO, M1, and M2 layers
+
+![](/images/vlsi/Adder/sum_det.png)
+
+
+
 ## Subtraction
 You can implement subtraction in two ways
 - Static XOR gate
 - MUX
 We chose the XOR implementation.
 
-## Multibit
-Here's the interesting part. If you flip a single-bit adder vertically, the `VDD`/``GND` vias and M2 wires can be perfectly aligned next to each other. Your 8-bit layout will have a P-N-P-N-P-N-P-N-P structure
+# 8-bit Adder
+This is *very important*. We need to use our single-bit adder 8 times. You definitely don't want to draw the same thing 8 times. Fortunately, we can **Instantiate** the single-bit layout as a **symbol**, just as how you use the `pch` and `nch` symbols.
+
+## Transformed Adder
+Before you do that, though, because we use the alternating VDD-GND-VDD-GND-VDD power grid plan, for odd bits, we have GND on the left, VDD on the right, but for even bits, we have the opposite. You can simply "Flip Vertically". Can you? 
+
+Mostly yes, but with the caveat of pins. Our current M2 pins have "ABC" order, but if flipped, it will have "CBA". It's not a nightmare if you are consistent on that for all flipped bits. A bigger issue are the carry chain wires
+
+![](/images/vlsi/Adder/adder_frame.png)
+
+
+We created a new schematic and layout `hw6t` for the flipped version by copying (`c`) the `hw6` layout, flipping it, and adjusting the pin orders appropriately. 
+
+![](/images/vlsi/Adder/addert.png)
+
+
+There are definitely other ways to do this:
+- Enforce symmetry in your layout
+- Create schematic and layout for 2 bits at a time
+
+## Layout Hierarchy
+Now the final push! We want a coherent pattern and minimally wasted space. If you lay out your single bit like this, it's gonna suck. You want it as **tight** as possible
+
+![](/images/vlsi/Adder/old_8b.png)
+
+1. Make sure your `hw6` and `hw6t` layouts are DRC and LVS clean
+2. Create a symbol for `hw6` and `hw6t`. It doesn't have to be fancy
+3. Create a new 8-bit schematic. Connect the bits with alternating `hw6t` and `hw6`
+    ![](/images/vlsi/Adder/8b_schem.png)
+4. Check and test the 8-bit schematic on the sample inputs
+5. Create a layout. "Generate All From Source"
+
+You will see the 1-bit instances. We need to connect them. 
+
+Layouts communicate across hierarchies through **pins**. If you zoom into the pins, you will see it's labelled. For example, "/SN/SN7"
+- "/SN" is the internal net name (sum out)
+- "/SN7" is the current net name (7th sum out)
+
+![](/images/vlsi/Adder/8b_label.png)
+
+Wires connected through the pin will be labelled by Virtuoso. Wires connected, but *not* through the pin will **still** be the same net, and checked equally under DRC/LVS. It will just be harder to see. 
+
+In this case, the bottom `VDD` is connected through a pin and labelled. The top one is also connected, but not labelled.
+- If you want labels on the top too (say you misaligned the pins), you can lay another M2 *overlapping* with the M2 in the instance (no worries, they will be the same layer) from the pin.
+
+## Alignment
+
+Now for the hairy part: align each bit **perfectly**. Fortunately, our design accommodates **exactly** that. Make sure neighboring M2/M1/vias/pins overlap **exactly**, both vertically and horizontally. In the end, the M2 center points between both ends should be 2.1x8 = 16.8 um. If not, you've done somethign wrong. Your 8-bit layout will have a P-N-P-N-P-N-P-N-P structure
+
+![](/images/vlsi/Adder/adder_ddet.png)
+
 
 I went up to `M3` for the carry propagation wires, but you may as well do it in `M1`. The `M1` power/ground *vertical* wires don't have to be contiguous. We can via local `M1` wires from the `M2` lanes.
 
 It is good practice to use `M3` for global control signals, such as `SUB`
 
+Here's how it should look like:
+
+![](/images/vlsi/Adder/adder_det.png)
+
+
 
 ## Overflow
 You can 
 
+
 # Shifter
 There's nothing too much to write about the shifter. It's not very interesting.
 
+
+We choose a **complementary pass transistor MUX** for our shifter. You can also choose an NMOS-only version.
+## Sizing
+
+Textbook pp 351-352 discusses pass transistor sizing and layout
+
+![](/images/vlsi/Adder/book1.png)
+
+
 ## Stick Diagram
 
-Different pattern
+![](/images/vlsi/Adder/book2.png)
+
+We chose to buffer at the **output** stage to reduce the poly length.
+
+![](/images/vlsi/Adder/shifter_stick.png)
+
+
+## Layout
+
+You can see the iconic "alternating gates"
+
+![](/images/vlsi/Adder/s1.png)
+
+![](/images/vlsi/Adder/shifter.png)
+
 
 
 # Misc
