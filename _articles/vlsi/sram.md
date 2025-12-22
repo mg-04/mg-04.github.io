@@ -4,9 +4,11 @@ permalink: /articles/vlsi/sram
 author: "Ming Gong, Charlotte Chen"
 ---
 
-
-
 {% include toc %}
+
+> This article is under construction.
+{: .notice--info}
+
 
 Now you are at the next *stage* of 4321: the mighty SRAM
 
@@ -112,10 +114,15 @@ Implementing it is tricky, but once you have one block, the rest is simple.
 ![](/images/vlsi/sram/dec.png)
 
 # Read Write
-Below is the R/W schematic, similar to Shepard's lecture notes
+Below is the 2-bit (4 pairs of bitlines) R/W schematic, similar to Shepard's lecture notes
 1. **Column MUX:** select between adjacent columns to do R/W
 2. **Write Select:** we combined the `write` and `data` NMOSes to save a stack height
 3. **Read Driver:** branched from `bit_bar`, amplifies with a *skewed* inverter and a bus driver
+
+![](/images/vlsi/sram/wr_sch.png)
+
+> This is legacy design. You can probably benefit more from a horizontal Poly
+{: .notice--warning}
 
 We used a vertical Poly layout for this part. You will see the pros and cons in a moment.
 

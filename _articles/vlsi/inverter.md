@@ -7,6 +7,11 @@ permalink: /articles/vlsi/inverter
 {% include toc %}
 
 
+> This article is under construction.
+{: .notice--info}
+
+
+
 Take a read of Shepard's [Online CAD Tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 
 The first real task is to layout an [Inverter](https://www.bioee.ee.columbia.edu/courses/cad/html/layout.html)
@@ -175,3 +180,5 @@ Stacked functions. Close some tabs, and press `ESC`
 > My layout nets are not showing up
 
 Open with Layout XL
+
+ Do a C+CC extraction only. If you do RCC, Cadence will crash.

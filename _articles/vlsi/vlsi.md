@@ -3,22 +3,52 @@ title: "VLSI Mini Processor"
 permalink: /articles/vlsi
 ---
 
-In this set of articles, I will walk through the essence of the 4321 layout, so you can achieve an A-tier layout as a complete newbie (like me!) It will be a *huge* learning curve, and that's exactly the point. The guide is meant to help you avoid many of the traps and misjudgments we fell early on, so you can focus on what *actually* matters. With that noise filtered out, you can start to appreciate the real beauty of custom layout. Enjoy.
+{% include toc %}
+
+
+
+
+In this set of articles, I will walk through the **essentials of the 4321 design project**, so you can achieve an A-tier even you are completely new to layout (like I was). It will be a *huge* learning curve, and that's exactly the point. 
+
+Think of this layout project as a process of **successive approximation** (Shepard’s favorite exam technique): make an initial attempt, realize how bad it is, refine it, and repeat. 
+
+This guide is meant to help you along that gradient so you can converge faster, avoiding many of the traps and misjudgments we fell early on, and focusing on what *actually* matters. 
+
+Hopefully, this means less **pain and suffering**, but more appreciation for the real beauty of custom layout. Enjoy.
+
+
 
 # Contents
 
-1. Intro to 4321 Layout (this article)
-2. [Inverter](/articles/vlsi/inverter) ([Virtuoso FAQ](/articles/vlsi/inverter#faq))
+![image-right](/images/vlsi/pretty/overall/overall_1.png){: .align-right width="30%"}
+
+1. **Intro to 4321 Layout** (this article)
+2. [Inverter](/articles/vlsi/inverter) 
+    - [Virtuoso FAQ](/articles/vlsi/inverter#faq)
 3. [Project Floorplan](/articles/vlsi/floorplan)
 4. [Adder and Shifter](/articles/vlsi/adder)
-5. [SRAM](/articles/vlsi/sram)
-6. [PLA and Others](/articles/vlsi/pla)
-7. [Overall](/articles/vlsi/overall)
+5. [SRAM](/articles/vlsi/sram) 
+    - [What if things don't fit](/articles/vlsi/sram#what-if-things-dont-fit)
+6. [Overall Data and Control Paths](/articles/vlsi/overall)
+    - [DRC and LVS Tips](/articles/vlsi/overall#drc-and-lvs-tips)
 
 Appendix. [Pictures!](/articles/vlsi/gallery)
 
+# Disclaimer
 
-Our project is **FAR from perfect**. In fact, when I was writing this, I constantly realize how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in this and that way. Nevertheless, the task is to get the project *done*, and done *well*, but not *perfectly*. In the end, this is an older technology, intended for learning and practice, so don’t pull your hair out.
+Our project is **FAR from perfect**. In fact, when I was writing this, I constantly realize how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in countless ways.
+
+That's okay.
+
+The goal of this project is to get something *done*, and done *well*, but not *perfectly*. This is an older technology node, intended for learning and practice, so don’t pull your hair out.
+
+
+- There may be a lot of naming inconsistencies; some names are chosen using common sense and local context.
+- There are be suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you find something important, or if you have a better suggestion, I am MORE THAN HAPPY to include it! 
+    - Feel free to email me at mg4264@columbia.edu
+- This guide is never intended to help you cheat (and realistically, you can't). I included more details in the early design stages, but you should come with your own at later stages.
+- TSMC don't sue me!
+
 
 # General Advice
 > Find a good teammate
@@ -39,10 +69,4 @@ They worth more, and generally easier to prepare
 
 
 
-> Don't be scared of the learning curve
-
-You will be surprised on how much this can push your limit
-
-> Don't cheat
-
-This guide is never intended to help you cheat. You literally can’t cheat with it (unless I hand you my GDS files!).
+> More to be added...
