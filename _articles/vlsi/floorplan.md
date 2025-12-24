@@ -1,88 +1,107 @@
 ---
-title: "Project Floorplan"
+title: "Intro to the Design Project"
 layout: single
 permalink: /articles/vlsi/floorplan
 ---
 
 {% include toc %}
 
-Before even starting the project, I would recommend going over the requirements, so you know what you *should* be doing.
-
-> This article is under construction.
-{: .notice--info}
-
+Before even starting the project, read through the requriements so you know what you *should* be doing.
 
 # Architecture
 
 ## Bus
 
-Our microprocessor will have the following parts:
-- Bus: there will be one writer and multiple readers
+Our microprocessor consists of:
+- **Bus**: one writer, multiple readers
 - **Computation**: adder, shifter
-- **Accumulator**: A flip-flop that holds temporary values (think of it as your register)
+- **Accumulator** (Acc): A flip-flop holding temporary values (think of it as a register)
 - **SRAM**
 
+![](/images/vlsi/floorplan/dataflow.png){: .align-center}
+
 ## Building Blocks
-Here is a detailed floorplan from PS9
+Here is the suggested floorplan from PS9
+
+![](/images/vlsi/floorplan/block.png){: .align-center}
+
 
 - The accumulator is split into two D-latches
 - One additional latch is used to latch the memory output from the bus
 - Three bus drivers are needed
-    - Accumulator -> Internal bus
-    - External bus -> Internal bus
-    - Internal bus -> External bus
+    - Acc → Internal bus
+    - External bus → Internal bus
+    - Internal bus → External bus
 
-# Opcodes
+---
+
+# ISA
 Try to derive what to do, combining with the data path above:
 
-Whenever you are vacant, the value in `Acc` should not change. The MUX should select the shifter path, but bypass the shifter, so the `Acc` is essentially feeding back the old value (I know it's stupid)
+When **holding**, the value in Acc must not change. The MUX should select the shifter path, but **bypass** it, effectively feeding Acc back to itself
 
 
-| Opcode | Assembly | Description                 | Internal bus driven by | MUX | What to do | 
+| Opcode | Assembly | Description                 | Internal bus driven by | MUX | Action | 
 |--------|----------|-----------------------------| ------ | ---- | --- | 
-| 000    | NOP      | Hold `Acc` value    | | Hold
-| 001    | LOAD     | Mem[i] ← External bus       |external bus| hold |  write internal bus value to memory
-| 010    | STORE    | External bus ← Mem[i]      | SRAM | hold | drive external bus by internal bus
-| 011    | GET      | Acc ← Mem[i]               | SRAM | Memory
-| 100    | PUT      | Mem[i] ← Acc               | Acc | Hold | Make SRAM write from bus
-| 101    | ADD      | Acc ← Acc + Mem[i]         | SRAM | Adder | Bypass shifter
-| 110    | SUB      | Acc ← Acc - Mem[i]         | SRAM | Adder | Bypass shifter
-| 111    | SHIFT    | Left logical shift of Acc  |  | Shifter | Don't bypass
+| 000    | NOP      | Hold Acc    | -- | Hold | No change
+| 001    | LOAD     | Mem[i] ← External bus       |external bus| hold |  Memory write
+| 010    | STORE    | External bus ← Mem[i]      | SRAM | hold | Memory read; Drive external bus
+| 011    | GET      | Acc ← Mem[i]               | SRAM | Memory | Memory read
+| 100    | PUT      | Mem[i] ← Acc               | Acc | Hold | Memory write
+| 101    | ADD      | Acc ← Acc + Mem[i]         | SRAM | Adder | Memory read; Bypass shifter
+| 110    | SUB      | Acc ← Acc - Mem[i]         | SRAM | Adder | Memory read; Bypass shifter
+| 111    | SHIFT    | Left logical shift of Acc  | -- | Shifter | Don't bypass
 
-> Of course, this instruction set is SHIT for logic simplification!
+> Yes, this ISA is terrible for logic simplification.  
+And yes, there are obvious optimizations.
 
-> Of course, you can probably see optimizations here and there
-
+---
 
 # Floorplan
 
 > Floorplan! Floorplan! Floorplan! Many layouts don't suck at the end, they suck at the **beginning**! A bad initial decision will make you either **REDO** from scratch, or make **WORSE** and **WORSE** compromises to accommodate that
-> - **Disclaimer**: I'm not saying our layout is anything good. It is FAR from optimal.
-> - Please let us know for any corrections/optimizations!
-> - Most bad layouts will still have complete functionality, just a bad grade, so don't stress out too much about that
 {: .notice--danger}
 
 
-We've laid out an inverter. The processor is basically a bunch on inverter-like gates neatly coordinated.
+We've laid out an inverter. The processor is basically many inverter-like gates neatly coordinated.
 
-There are always 3 things to plan: data, control, and power
-
-## Data Path
-Please plan a **tight** datapath layout!
-
-We have laid out an inverter. Think of adders as a series of gates like the inverter. 
-
-While in schematic level, you could try to achieve an *optimal* sizing, it's *rarely* achieved in layout. Layout is always a compromise between delay, area, and perfection. 
-- Plus it's very hard to find any global optima. It's all about approximates.
-
-## Power Distribution
+There are always 3 things to plan:
+- Data
+- Control
+- Power
 
 
-## Control Path
-The control signals are a bit random
 
-## Pitfalls
-Below I'll show you some common pitfalls
-- Avoid long polys
-    - Long metal wires are fine
+
+## Metal Routing
+> This is Shepard's suggested floorplan, **rotated 90 degrees**
+{: .notice--info}
+
+Adapt a consistent Metal routing rules.
+
+![](/images/vlsi/floorplan/stick.jpg)
+
+Since the Polys and their Diffusion contact M1s are horizontal, make
+- **Odd** Metal layers horizontal
+- **Even** Metal layers vertical.
+- There can be local violations, especially at lower levels
+
+
+
+This is an 8-bit processor built from identical 1-bit slices placed side by side. Since we use near-minimum device widths, each slice can have the identical **widths**, enabling a clean, regular layout.
+- Larger transistors will be made of multiple **fingers**
+
+
+This creates an organized **vertical grid**, reference for all other wires. Keep the M2 widths and spacings **uniform** to maintain this regularity
+- Reserve these long, continuous rails for VDD and GND
+- Alternate N-type and P-type diffusions
+- Place power straps (body Vias) at the center
+
+> You may also want to keep all blocks with the **same height**, so the horizontal grid is also organized.
+
+Each block will have input/output data, primarily in M2; this is the **data path**. 
+
+Blocks also need control signals, such as subtraction and MUX select. Such signals are typically identical across all bits and can be shared through a horizontal M3 layers; this is the **control path**
+
+
 

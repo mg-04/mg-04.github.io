@@ -7,34 +7,29 @@ permalink: /articles/vlsi/inverter
 {% include toc %}
 
 
-> This article is under construction.
-{: .notice--info}
-
-
-
 Take a read of Shepard's [Online CAD Tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 
 The first real task is to layout an [Inverter](https://www.bioee.ee.columbia.edu/courses/cad/html/layout.html)
 
-It's a pretty comprehensive guide, but if you follow that into your project, for sure you will get in trouble! So let's still systematically go over it, and I'll highlight every possible caveat you might encounter, so it save you a huge learning curve.
+It's a pretty comprehensive guide, but if you follow it *blindly* into your project, for sure you will get in trouble! Below, we’ll go through the process systematically and highlight common pitfalls so you can avoid a **massive learning curve**.
 
-# Generated From Source
-
-
-# Schematic
-In your schematic, I'd recommend naming every pin CAPITAL (PEX will convert pins to capital).
-![](/images/vlsi/inv/schem.png)
 
 # Layout
-## 1. Generate from Source
-After "Generate from Source", you will get this. When you select a transistor in schematic/layout, the corresponding instance in the other view will also be highlighted.
-
-
-Rotate the devices by 90 degrees. 
+## 1. Generate All From Source
+1. Create a new "Layout" the same name as your schematic
+2. Go to "Connectivity/Generate/All From Source". You will get two transistors, and a few cyan Pins
+    - You should see matching instances between schematic and layout. Selecting one highlights the other.
+    - Ignore the Pins for now
+3. **Rotate** the devices by 90 degrees. 
+4. Align the transistors
+    - Make sure `NP` and `PP` boundaries perfectly overlap with the `PP` boundary. No **gaps** or **overlaps**
 ![](/images/vlsi/inv/start.png)
 
 ## Layers
-Before you start , I think it's useful to understand what each layer means here, so you actually know what you are doing, and how to avoid trouble
+Before drawing, it's important to understand the layers we have:
+
+> You can double click on a layer to make it exclusively visible, and inspect each layer individually
+{: .notice--info}
 
 ### Body
 - `NW` (N-well): where PMOS sit
@@ -44,38 +39,49 @@ Before you start , I think it's useful to understand what each layer means here,
 ### Diffusion
 - `OD` (Oxide Diffusion): source and drain
 - `PP` (P implant mask)
-    - When `PP` overlaps `OD` the region becomes p+ doped
+    - `PP` ∩ `OD`: p+ diffusion
 - `NP` (N implant mask)
-    - When `NP` overlaps `OD`, the region become n+ doped
+    - `NP` ∩ `OD`: n+ diffusion
 
 ### Gate
-- `PO` (polysillicon): used for gate
+- `PO` (Plysillicon): used for gate
 
 ### Metal
 Electrical wires from silicon
-- `CO` (contact): between `M1` and `PO`/`OD`
-- `M1` (metal 1): metal wires
-- `VIA1`: connect between `M1` and `M2`
+- `CO` (Contact, Ohmic): connects `PO`/`OD` with `M1`  
+- `M1`: First Metal layer
+- `VIA1`: connects `M1` and `M2`
 - and so on...
 
-### Pin
-They are used to label outside connection to higher hierarchies
 
-## 2. Body Via
-Now, we need to add the body VIAs. Click "o" to add `M1-SUB` and `M1-NW` VIAs.
-- Make sure the `NP` boundary perfectly overlaps with the `PP` boundary. There can't be any **gaps** or **overlaps**
+
+### Pin
+Used to **label** connections across hierarchies. Nothing electrical.
+
+
+
+> If you are interested in the physical implementation of these layers, [this](https://www.vlsi-expert.com/2014/) article explains in glorious detail
+{: .notice--info}
+
+
+## 2. Body Vias
+Next, add Body Vias. Click `o` to add `M1-SUB` and `M1-NW` Vias.
+- Again, make sure `NP` and `PP` boundaries perfectly overlap.
 
 ![](/images/vlsi/inv/vias.png)
 
 
-The new body vias are nothing special. They are simply a stack of 5 layers:
+The Body contacts are nothing special. They are simply a stack of 5 layers connecting Body to Metal:
 - `NW` (P) / substrate (N)
 - `NP` (P) / `PP` (N)
 - `OD`
 - `CO`
 - `M1`
 
-You can double click on a layer to make it exclusively visible, and you can see each layer individually
+> "Detached Body" creates Body contacts explicitly. Not needed if you've used Body Vias  
+A Body Via can power a large region of P/N substrate (~30 um)
+{: .notice--info}
+
 
 
 
@@ -84,15 +90,25 @@ Now let's connect the `PO` gate and `M1` source/drain to complete the circuit:
 ![](/images/vlsi/inv/conn.png)
 
 # DRC
-> It's always good practice to check DRC **as frequently as possible**, especially if you are a beginner!!
-Skip to the DRC [tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/calibre.html)
+> Run DRC **as frequently as possible**, especially if you are a beginner!!
+{: .notice--warning}
+
+Skip to Shepard's Calibre DRC [tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/calibre.html) and set up the environment
+
 
 These are the main types of DRC errors for TSMC N65:
 - **Spacing**
 - **Area**
     - Width, or shape
-- **Enclosure** (for example, M1 must enclose `CO` by more than 0.25 um)
+- **Enclosure**
+    - E. M1 must enclose `CO` by more than 0.25 um
 - **Body connection**
+
+Here's a (simplified) list from textbook pages 118-119
+![](/images/vlsi/inv/dr1.png)
+![](/images/vlsi/inv/dr2.png)
+
+
 
 Let's run a DRC **right now**
 ![](/images/vlsi/inv/drc_body.png)
@@ -104,81 +120,88 @@ RIP, got 4 errors. You should be grateful that we *only* got 4...
 - `PP`/`NP` layer area too small.
 
 There are two ways to solve it
-1. Change the via to have more rows and columns
+1. Increase via rows/columns
     - This is simple. Changing it to 4 will work
 2. Manually draw a larger `OD`/`PP`/`NP` around the current layer
     - This is more risky, as changing one layer may violate other spacing/enclosure rules
-    - but useful for aggressive optimizations, if you know what you are doing
+    - but useful for aggressive optimizations, as you will see [later](/articles/vlsi/adder#6-m2-connections-and-vias)
 
 ![](/images/vlsi/inv/drc_body_fixed.png)
-After fixing it and making sure the area rules are satisfied, we are now DRC clean!
 
 
-## 4. VIA
-We are done, are we? There's one more step to connect a wire from our silicon poly. Add a `M1-PO` via.
+> After fixing them and making sure the area rules are satisfied, we are now **DRC clean!**
+{: .notice--success}
 
-The `M1-PO` via they provide also has 3 layers: `PO`, `CO`, `M1` (start, via, destination sandwich). You need to make sure **every** layer does not violate DRC!
+
+
+## 4. Gate Via
+We are done, are we? There's one more step to connect a wire from our silicon Poly. Add a `M1-PO` via.
+
+Similar to the Body Vias, this `M1-PO` also has layers 
+- `PO`
+- `CO`
+- `M1`
+
+**All layers** must satisfy DRC rules.
 
 
 Now run a DRC:
 
 ![](/images/vlsi/inv/drc_co.png)
 
-RIP, another two violations. Make only the `M1` layer visible for more clarity
+RIP, another two violations. Make only `M1` visible for more clarity
 - `M1` of the via is too close with our VOUT `M1`.
     - Fix: Move either one away to at least 0.09 um apart
 - `M1` of the via's area is too small. It's like an island
-    - Fix: Add more `M1` to the via so its area is more than 0.042 um2
+    - Fix: Add more `M1` to the via so its area is more than 0.042 um²
 
 ![](/images/vlsi/inv/drc_co_clean.png)
 
 
 # LVS
-Move the M1 pins over to the metals. 
+Move the Generated M1 Pins over to the metals. 
 
-Now let's check LVS. Read the [tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/calibre.html) again...
+Check LVS. Read the [tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/calibre.html) for the setup
 
 ![](/images/vlsi/inv/lvs.png)
 
-RIP, we got 4 "Incorrect Ports" errors. LVS somehow does not recognize our pins and decide, despite they are created with labels! This is very rare
+RIP, we got 4 "Incorrect Ports" errors. LVS somehow does not recognize our pins and decide, despite they are created with labels! This is very rare...
 
-In this case, first check if Virtuoso recognizes the pin. Try moving the pins around and see if the label ("VOUT") and the cross shows up. If not, delete the pins and "Update from Source" again. Make sure you check "Create Label"!
+In this case, first check if Virtuoso recognizes the pin. Try moving the pins around and see if the label ("VOUT") and the cross shows up. If not, delete the pins and "Connectivity/Update/All from Source" again. Make sure you select the **"Create Label"** option
 
 ![](/images/vlsi/inv/lvs_check.png)
 
 
 
-Here, we have everything, let's *manually* add the labels to the pins again to let LVS know.
-- Click "l" and create label "VOUT". 
-- Click the center of your pin
-- Choose "Purpose": "pin" as the object
+Here, we *do* have everything, let's *manually* add the labels to the pins again to let LVS know.
+1. Click `l` and create label "VOUT". 
+2. Click the center of your pin
+3. Choose "Purpose": "pin" as the object
 
 ![](/images/vlsi/inv/lvs_pin.png)
 
-Now, as a proof of concept, run LVS again to see if the error count drops to 3
+Now, as a **proof of concept**, run LVS again to see if the error count drops to 3
 
 ![](/images/vlsi/inv/lvs_fix.png)
 
-Yep, so add labels to the other 3, and you will be LVS clean!
+Yep, so add labels to the other 3, and you will be **LVS clean!**
 
 
 # FAQ
-> When I open Cadence, all my instances look like red boxes
+> When I open Virtuoso, all my instances show up as **red boxes**
 
-Click `Shift+F` to display instances, and `Ctrl+F` to hide
+Click `Shift+F` to display instances, and `Ctrl+F` to hide them
 
 > My pins do not have labels on them (or LVS doesn't recognize them)
 
-In "I/O Pins", you have to set "Pin Label/Create Label As/Label", and set the font height to (0.1 recommended), and 
+In "I/O Pins", you have to set "Pin Label/Create Label As/Label", - Set the font height to 0.1 (recommended) 
 - "Layer Name": "Same As Pin"
 - "Layer Purpose": "Same As Pin"
 
-> I
+> Cadence keyboard shortcuts stopped responding
 
-Stacked functions. Close some tabs, and press `ESC`
+Stacked functions. Close unused tabs, and press `ESC` to quit current functions
 
 > My layout nets are not showing up
 
-Open with Layout XL
-
- Do a C+CC extraction only. If you do RCC, Cadence will crash.
+Open with **Layout XL**

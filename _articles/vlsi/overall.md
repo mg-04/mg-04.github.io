@@ -1,6 +1,7 @@
 ---
 title: "4321 Overall and PLA"
 permalink: /articles/vlsi/overall
+author: "Ming Gong, Charlotte Chen, William Wang"
 ---
 
 {% include toc %}
@@ -15,7 +16,7 @@ Now for the **final push!**
 3. [Project Floorplan](/articles/vlsi/floorplan)
 4. [Adder and Shifter](/articles/vlsi/adder)
 5. [SRAM](/articles/vlsi/sram) 
-6. **Overall Data and Control Paths** (this article)
+6. **PLA, Data, Control, Overall** (this article)
 
 
 # Power Grid
@@ -139,16 +140,16 @@ We chose one-hot MUX control (one extra output, but simplicity in MUX design and
 
 Make a table of the logical outputs.
 
-| Opcode | Assembly | Description                 | Internal bus driven by | MUX | What to do | 
+| Opcode | Assembly | Description                 | Internal bus driven by | MUX | Action | 
 |--------|----------|-----------------------------| ------ | ---- | --- | 
-| 000    | NOP      | Hold `Acc` value    | | Hold
-| 001    | LOAD     | Mem[i] ← External bus       |external bus| hold |  write internal bus value to memory
-| 010    | STORE    | External bus ← Mem[i]      | SRAM | hold | drive external bus by internal bus
-| 011    | GET      | Acc ← Mem[i]               | SRAM | Memory
-| 100    | PUT      | Mem[i] ← Acc               | Acc | Hold | Make SRAM write from bus
-| 101    | ADD      | Acc ← Acc + Mem[i]         | SRAM | Adder | Bypass shifter
-| 110    | SUB      | Acc ← Acc - Mem[i]         | SRAM | Adder | Bypass shifter
-| 111    | SHIFT    | Left logical shift of Acc  |  | Shifter | Don't bypass
+| 000    | NOP      | Hold Acc    | -- | Hold | No change
+| 001    | LOAD     | Mem[i] ← External bus       |external bus| hold |  Memory write
+| 010    | STORE    | External bus ← Mem[i]      | SRAM | hold | Memory read; Drive external bus
+| 011    | GET      | Acc ← Mem[i]               | SRAM | Memory | Memory read
+| 100    | PUT      | Mem[i] ← Acc               | Acc | Hold | Memory write
+| 101    | ADD      | Acc ← Acc + Mem[i]         | SRAM | Adder | Memory read; Bypass shifter
+| 110    | SUB      | Acc ← Acc - Mem[i]         | SRAM | Adder | Memory read; Bypass shifter
+| 111    | SHIFT    | Left logical shift of Acc  | -- | Shifter | Don't bypass
 
 1. Convert this to **actual** logic signals. Be **precise**.
     - Inactive blocks must **not modify** state (E. in `Acc`)
@@ -163,7 +164,7 @@ Make a table of the logical outputs.
 3. **Test your PLA under all possible input vectors, and see if the output is expected**
 
 
-## Layout
+## Stick Diagram
 The textbook explains it on page 539.
 ![](/images/vlsi/pla/textbook_stick.png){: .align-center}
 

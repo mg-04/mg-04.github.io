@@ -8,20 +8,23 @@ permalink: /articles/vlsi/adder
 Now comes the first real task of 4321: adder
 
 > This is very, very important. You will learn the fundamentals of tight layout and diffusion sharing!
+{: .notice--info}
+
 
 # Overview
-- Fix your design with a bit pitch of 2.1 um
+- Fix a bit pitch of 2.1 um
 - Use ripple carry
 - Make a (rough) stick diagram before you start
 - Edge DRC
-- Do not use their default VIAs
-- Diffusion share, and if you can't, put fets as closely as possible
-- Leave room for upper-level connections
+- Do not use the default Vias
+- Diffusion share, and if you can't, put FETs as closely as DRC allows
+- Leave room for upper-level Metal routing
 
-## What we could have done better on
-I would like to point out a few inaccuracies we've made, so it doesn't lead you to the wrong direction
+> Below are some inefficiencies in our implementation. Don't copy them blindly.
+{: .notice--warning}
 
-**Adder**
+
+> **Adder**
 - More organized M2 data grid
 - Smaller sizing on the non-critical path PFETs
 - Better diffusion sharing with S/D swapping
@@ -29,47 +32,60 @@ I would like to point out a few inaccuracies we've made, so it doesn't lead you 
 - MUX-based `SUB` select
 - Use an odd number of fingers for better diffusion sharing
 - You don't have to put body vias everywhere
-- An organized M3 power grid and M4 segments
+- An organized M3 power grid and M4 segments  
+{: .notice--warning}
 
-and a lot of more...
 
-**Shifter**
+> **Shifter**
 - Since we are buffering all I/O, we can do the MUX with NMOS only
-- Shift wires on M3, not M1 (that will save a lot of space between the stages)
+- Shift wires on M3, not M1 (that will save a lot of space between the stages)  
+and a lot of more...  
+{: .notice--warning}
+
+---
 
 # Design
 
-A ripple carry adder has two parts, carry and sum. The CMOS implementation is pretty standard, and you can find plenty of resources
+A ripple carry adder/subtracter has 3 parts: 
+- Subtraction inversion
+- Carry generation
+- Sum generation   
+The CMOS implementation is pretty standard, and you can find plenty of resources
 
 ## Sizing
-Textbook pp. 432 discusses the sizing
+Textbook page 432 discusses the sizing
 
 ![](/images/vlsi/Adder/sizing.png)
 
 
-The minimum width of our technology is 150 um
+The minimum width of our technology is 150 nm
 - Below that, the MOSFETs will turn into a **dogbone** shape, which actually takes more space!
 We used the following sizing
-- Critical path: 300 um * 4 / 150 um * 4
+- Critical path: 300 nm * 4 / 150 nm * 4
 - Non-critical path: 300 um / 150 um
-    - It's a better idea to size the PMOS to 150 as well :( We went lazy, but it doesn't matter
+    - It's a better idea to size the PMOS to 150 as well :( We went lazy, but it's fine
+
+---
 
 # Schematic
-Below is our carry schematic.  you want to use the textbook sizing, change the non-critical path NMOS to 150.
+Below is our carry schematic. If you want to use the textbook sizing, change the non-critical path NMOS to 150 nm.
 
 ![](/images/vlsi/Adder/schem.png)
 
 A few notes:
-- Use multiple fingers so every transistor has the same width
-- Set up one P/NMOS with the *right parameters*, the **duplicate** them over
-- Connect all PMOS bodies to VDD, NMOS bodies to GND. No exception
+- Use multiple fingers so every transistor **equal width**
+- SIet up one P/NMOS with the *parameters*, then **duplicate** them over
+- Connect all PMOS bodies to VDD!, NMOS bodies to GND!. No exception
 - Label the nets and explicitly add the IO pins
-- I recommend using capital letters for net names, and global VDD/GND
+- I recommend using capital letters for net names, and global VDD!/GND!
+
+> I will refer to the device numbers Mx in the layout section. They will differ in your schematic
+{: .notice--info}
 
 ## Stick Diagram
-You should make a stick diagram of your adder layout. [This](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) article from UMich discusses one way of layout and diffusion sharing with *one finger*. Adapt it for your design.
+You should make a stick diagram of your adder layout. This [UMich note](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) shows diffusion sharing with *single fingers*. Adapt it to your design.
 
-Alternatively, you can also not plan and do "vibe layout", not a bad choice either!
+Alternatively, you can also not plan and do **"vibe layout"**, sometimes not bad
 
 ![](/images/vlsi/Adder/adder_stick.png)
 
@@ -77,48 +93,50 @@ This stick diagram is rotated 90 degrees. I used magenta for PMOS OD, and dark g
 
 Note that I only drew with one finger. In the actual layout things will be a bit different.
 
+---
 
-
-# Sample Carry Circuit Walkthrough
+# Carry Circuit Walkthrough
 ## 1. Bit Pitch!
-Right after "Generate from Source", draw your M2 bit pitch. Make their centers 2.1 um apart, and each 0.1 um wide!
+Right after "Generate All From Source", draw your M2 [bit pitch](/articles/vlsi/floorplan#metal-routing). 
+- Center-to-center **2.1 um**
+- Width: 0.1 um
 ![](/images/vlsi/Adder/pitch.png)
 
-You can use the "p" shortcut to draw a path. It labels its DRC rules, too
+You can use the `p` shortcut to draw a path. It shows its DRC rules, too
 ![](/images/vlsi/Adder/p.png)
-
-I would recommend **deleting** all transistors you are not planning to use, to avoid obstructing the real DRC errors
 
 ## 2. `A` and Body Via
 Same thing as the inverter
-1. Add the `M1-NW` and `M1-SUB` vias. **Align their centers with the `M2`!**
-2. Place the 8/4 transistors gated by `A`. Make sure the `PP`s and `NP`s touch, but not overlap, each other
+1. Add the M1-NW and M1-SUB vias. 
+    - **Align their centers with the M2!**
+2. Place the 8/4 transistors gated by `A`. 
+    - Make sure PP and NP touch, but not overlap
 
 
 ## 3. Diffusion Sharing
-Find the single-fingered transistors gated by A. You can see its top terminal (S) should be connected to `GND!`, so does the bottom terminal (S) of the four-fingered device. We can make them share the same diffusion
+Find the single-fingered transistors gated by A. 
+- The top terminal (S) should be connected to `GND!`, so does the bottom terminal (S) of the four-fingered device. 
+- We can make them share the same diffusion
 
-Move the transistors close together
+Move the transistors together:
 ![](/images/vlsi/Adder/diff0.png)
 
-Move the bottom transistor further up, and release your mouse. You should see they "snap" together. Virtuoso recognizes this as a diffusion share!
+Move the bottom transistor further up, and release your mouse. Virtuoso snaps them together.
 ![](/images/vlsi/Adder/diff1.png)
 
-Do the same thing for the PMOS
+Repeat for the PMOS
 
-
-
-Now, check DRC. I would recommend deleting the transistors you haven't yet placed and *Update* (not Generate) them back, so their DRC violations doesn't block any actual errors. 
+Now, check DRC. I would recommend deleting the transistors you haven't yet placed and Connectivity/*Update* (not *Generate*) them back, so their DRC disconnections doesn't obstruct any actual errors. 
 
 ![](/images/vlsi/Adder/t1.png)
 
-You will get quite a few errors. It's complaining that the `M1` and `PO` areas are too small. That's *fine*, since we haven't connected them yet
+You will get quite a few errors. It's complaining that the M1 and PO areas are too small. That's *fine*, since we haven't connected them yet
 
-Now, you can regenerate the deleted transistors by "Connectivity/Update from Source"
+Now, restore the deleted transistors by "Connectivity/**Update** All From Source"
 
 ### S/D Swap
 
-Up next is M30/M5, with its drain to `COUTN`. However, the generated instance has its source `net1` on the outside. We need to swap the source and the drain.
+For M30/M5, with its drain to `COUTN`. However, the generated instance has its source `net1` on the outside. We need to swap the source and the drain.
 
 1. Select the FET, click "q"
 2. Go to "Parameter", check "S D swap"
@@ -128,37 +146,42 @@ Up next is M30/M5, with its drain to `COUTN`. However, the generated instance ha
 Now you can happily diffusion share!
 
 ## 4. Non-sharing Neighbors
-Most people fuck up on this one. They start crying once they could't diffusion share
+> Most people fuck up on this one. They start crying once they could't diffusion share
+{: .notice--warning}
 
-We run out of diffusion shares for M28/M26, a suboptimal situation. The key is to know what can still be overlapped, and what can't. We can still lay the FETs as closely as possible, edging the DRC
-- `NW` and `PP`/`NP` can still be overlapped. The bodies have the saem potential.
-- `OD`s are now different nets. They need to be **0.13 um** apart
-- (when the `PP`/`NP` box perfectly overlaps with the neighboring `OD`)
+
+We run out of diffusion shares for M28/M26, a suboptimal situation. 
+
+The key is to know what can still be overlapped, and what can't. 
+- NW and PP/NP rectangles **can overlap**. The bodies have the same potential.
+- OD regions are different nets. They need to be **0.13 um** apart
+    - This happens exactly when the PP/NP boxes overlap with the neighboring OD
 
 ![](/images/vlsi/Adder/nsd.png)
 
 Check DRC again.
 
 
-## 5. M1 and PO connections
+## 5. Simple connections
 Now let's make DRC pleased by connecting the simple poly and metal wires
-1. Draw an `M1` rectangular extension from the `VDD!`/`GND!` vias
-    - Place `M1-M2` vias (make sure they are 0.1 um squares)
+1. Draw an M1 rectangular extension from the `VDD!`/`GND!` vias
+    - Place M1-M2 vias (make sure they are 0.1 um squares)
 2. Draw rectangles, or paths, to connect every S/D labeled `VDD!`/`GND!` to the supplies
 3. Draw poly paths to connect every poly with its neighbor
 
 Check DRC again. 
-- All `PO` area issues should go away, as well as some `M1` area issues.
-- You will get a `PP` enclosure error. Draw a `PP` rectangle to perfectly cover the `PP`-`NP` gap in the center, and this will go away.
+- All PO area issues should go away, as well as some M1 area issues.
+- You will get a PP enclosure error. Draw a PP rectangle to perfectly cover the PP-NP gap in the center, and this will go away.
 
 ## 6. M2 Connections and Vias
 We still have a few sources and drains left. Let's route them vertically using **M2** layer. Draw a single M2 wire with minimum width (0.1 um).
 
-I do **not8* recommend using the vias generated with `o`. They are too fat and ugly, and they are the root cause of DRC miseries if used improperly. Instead, let's manually construct the M1-VIA1-M2 sandwich:
+> I do **not** recommend using the vias generated with `o`. They are too fat and ugly, and they are the root cause of DRC miseries if used improperly. Instead, let's manually construct the M1-VIA1-M2 sandwich
+{: .notice--warning}
 
 1. Select the **VIA1** `drw` layer. Draw a **0.1 um x 0.1 um** square at the intersection
 2. A VIA1 requires enclosure by **both** M1 and M2, of either:
-    - **0.04 um** on 2 opposite edges (we almost always choose this one)
+    - **0.04 um** on 2 opposite edges (we almost always choousese this one)
     - 0.03 um on all 4 edges
 3. Use the ruler tool to measure 0.04. Use `s` to extend the both layers.
     - You may be tempted to extend M1 to the left, but that will violate the M1 spacing DRC rules with the `GND!` wire.
@@ -175,11 +198,11 @@ Do the same thing for other nets. You can also use the same technique for power 
 
 
 ## 7. PO Connections and Contacts
-From our floorplan, our input signals `A`, `BS`, `CIN` will arrive from the vertical M2 layers. We can "Update from Source/IO Pins" to create `M2` pins and label them.
+From our floorplan, our input signals `A`, `BS`, `CIN` will arrive from the vertical M2 layers. We can "Update/All From Source/IO Pins" to create M2 pins and label them.
 
-We need to via from `M1` all the way to `PO`. There needs to be five layers: `M2-VIA1-M1-CO-PO`. Each layer must satisfy the design rules:
+We need to via from M1 all the way to PO. There needs to be five layers: M2-VIA1-M1-CO-PO. Each layer must satisfy the design rules:
 
-Be aware of the following common design rule violations (all units in um)
+Be aware of the following [common design rule](/articles/vlsi/inverter) violations (all units in um)
 - `PO` spacing > 0.12
 - `M1` spacing > 0.09; 0.11 in corners
 - `M2` spacing > 0.10; 0.12 in corners
@@ -191,10 +214,13 @@ Be aware of the following common design rule violations (all units in um)
 - `CO` must be enclosed by `PO` by > 0.04 on opposite sides; or > 0.025 on all sides
 - `CO`/`VIA1` must be enclosed by `M1` by > 0.04 on opposite sides; or > 0.03 on all sides
 - `VIA1` must be enclosed by `M2` by > 0.04 on opposite sides; or > 0.03 on all sides
+{: .notice--warning}
 
-The layout should be straightforward, although there may be a lot of trouble when starting to do these custom contacts and vias. The single `BS` gate in the middle is espcially hard to contact. 
-- Any vertical `PO` extension 0.04 um from the `CO` will violate the `PO` spacing rules. Therefore, we extend the `PO` horizontally.
-- The `M1` island is too small. Extend it so that it covers the `CO` and `M1` by the DR, and not violate spacing rules with its neighbors
+
+
+The layout should be straightforward, although there may be a lot of trouble when starting to do these custom contacts and vias. The single `BS` gate in the middle is especially hard to contact. 
+- Any vertical PO extension 0.04 um from the CO will violate the PO spacing rules. Therefore, we extend the PO horizontally.
+- The M1 island is too small. Extend it so that it covers the CO and M1 without violating spacing rules with its neighbors
 
 Check DRC. Below I show each layer for more clarity:
 ![](/images/vlsi/Adder/drc_mp.png)
@@ -203,7 +229,7 @@ Measure the distance to its neighbor. Clean!
 
 ![](/images/vlsi/Adder/drc_12.png)
 
-I also added the `M2-M1` via to connect the power.
+I also added the M2-M1 via to connect the power.
 
 ![](/images/vlsi/Adder/drc_full.png)
 
@@ -211,7 +237,11 @@ I also added the `M2-M1` via to connect the power.
 Once you connect the pins, you should pass LVS too!
 
 
-CONGRATS on completing 1/3 of this assignment!
+**CONGRATS** on completing 1/3 of this assignment!
+{: .notice--success}
+
+---
+
 # Our Adder
 
 Below is our adder from a few months ago. It is less optimal, but fine.
@@ -232,13 +262,20 @@ You can implement subtraction in two ways
 - MUX
 We chose the XOR implementation.
 
+---
+
 # 8-bit Adder
-This is *very important*. We need to use our single-bit adder 8 times. You definitely don't want to draw the same thing 8 times. Fortunately, we can **Instantiate** the single-bit layout as a **symbol**, just as how you use the `pch` and `nch` symbols.
+This is *very important*. You do **not** want to draw this eight times. Fortunately, we can **Instantiate** the single-bit layout as a **symbol**, just as the `pch` and `nch` symbols.
 
-## Transformed Adder
-Before you do that, though, because we use the alternating VDD-GND-VDD-GND-VDD power grid plan, for odd bits, we have GND on the left, VDD on the right, but for even bits, we have the opposite. You can simply "Flip Vertically". Can you? 
+## Flipped Adder
+Because we use the alternating VDD-GND-VDD-GND-VDD [power grid plan](/articles/vlsi/floorplan#metal-routing)
+- Odd bits: GND left, VDD right
+- Even bits: VDD left, GND right  
+You can simply "Flip Vertically". Can you? 
 
-Mostly yes, but with the caveat of pins. Our current M2 pins have "ABC" order, but if flipped, it will have "CBA". It's not a nightmare if you are consistent on that for all flipped bits. A bigger issue are the carry chain wires
+Mostly yes, but with the caveat on **pin order**. 
+- Our current M2 pins have "ABC", which will turn to "CBA" if flipped. 
+- `cin` currently comes from the left, and `cout` from the right. They need to be flipped.
 
 ![](/images/vlsi/Adder/adder_frame.png)
 
@@ -249,8 +286,8 @@ We created a new schematic and layout `hw6t` for the flipped version by copying 
 
 
 There are definitely other ways to do this:
-- Enforce symmetry in your layout
-- Create schematic and layout for 2 bits at a time
+- Enforce symmetry for simple layouts
+- Build schematic and layout for [2 bits at a time](/articles/vlsi/overall#mux)
 
 ## Layout Hierarchy
 Now the final push! We want a coherent pattern and minimally wasted space. If you lay out your single bit like this, it's gonna suck. You want it as **tight** as possible
@@ -266,7 +303,7 @@ Now the final push! We want a coherent pattern and minimally wasted space. If yo
 
 You will see the 1-bit instances. We need to connect them. 
 
-Layouts communicate across hierarchies through **pins**. If you zoom into the pins, you will see it's labelled. For example, "/SN/SN7"
+Layouts communicate across hierarchies through **Pins**. If you zoom into the Pins, you will see it's labelled. For example, "/SN/SN7"
 - "/SN" is the internal net name (sum out)
 - "/SN7" is the current net name (7th sum out)
 
@@ -331,3 +368,5 @@ You can see the iconic "alternating gates"
 
 # Misc
 We didn't follow the design rules before, and it sucked that we have to re-layout
+
+ Do a C+CC extraction only. If you do RCC, Cadence will crash.
