@@ -1,5 +1,5 @@
 ---
-title: "4321 Overall and PLA"
+title: "4321 PLA, Data, Control, and Overall"
 permalink: /articles/vlsi/overall
 author: "Ming Gong, Charlotte Chen, William Wang"
 ---
@@ -13,17 +13,21 @@ Now for the **final push!**
 
 1. [Intro](/articles/vlsi)
 2. [Inverter](/articles/vlsi/inverter) 
-3. [Project Floorplan](/articles/vlsi/floorplan)
+3. [Project Plan](/articles/vlsi/floorplan)
 4. [Adder and Shifter](/articles/vlsi/adder)
 5. [SRAM](/articles/vlsi/sram) 
-6. **PLA, Data, Control, Overall** (this article)
+6. **PLA, Control, Data, Overall**
+    - [Gallery](/articles/vlsi/gallery)
 
+---
 
 # Power Grid
 Make sure the entire chip have a robust and continuous power grid. Route power nets all the way to the highest Metals.
 - **Data path** is already fairly structured. You can add a few straps if space permits. Do it **last**, though
 - **Control path**: *Try* to maintain some regularity, but due to the lower transistor density, it doesn't have to be as dense.
 - Make sure all **Vias** are properly connected and not shorting out
+
+---
 
 # Data Path
 
@@ -37,12 +41,12 @@ There are three main "bus-like" nets
 - `external_bus`: external IO
 
 There are a total of **4** bus drivers:
-    - Accumulator → Internal bus
-    - External bus → Internal bus
-    - Internal bus → External bus
-    - SRAM → Internal bus (done)
+- Accumulator → Internal bus
+- External bus → Internal bus
+- Internal bus → External bus
+- SRAM → Internal bus (done)
 
-> Possible optimization: feed the external bus directly into the MUX to reuse the Acc → Int driver
+> **Possible optimization:** feed the external bus directly into the MUX to reuse the Acc → Int driver
 {: .notice--info}
 
 
@@ -104,12 +108,15 @@ We used an NMOS-only gate, since the inputs are buffered; The outputs go immedia
 
 
 Here is another example of connecting the adder and the MUX. The two other inputs are Viaed from M4.
+
 ![](/images/vlsi/pla/data_conn2.png)
 
 
 ## Bus Driver
 Same as the SRAM bus driver, except to not *skew* the inverter
 ![](/images/vlsi/pla/bus_driver.png)
+
+---
 
 
 # PLA
@@ -166,6 +173,7 @@ Make a table of the logical outputs.
 
 ## Stick Diagram
 The textbook explains it on page 539.
+
 ![](/images/vlsi/pla/textbook_stick.png){: .align-center}
 
 Start with one **standard cell** with a dense transistors and push DRC limits. The rest follow naturally
@@ -173,6 +181,8 @@ Start with one **standard cell** with a dense transistors and push DRC limits. T
 
 ## Layout by William Wang
 > I would like to thank William Wang ’27 and his team for generously sharing their PLA layout. Their implementation closely follows the textbook design and achieves really impressive **density**!
+{: .notice--info}
+
 
 ![](/images/vlsi/william/pla_decoder.png)
 
@@ -193,6 +203,7 @@ To fit the chip, we eventually rotated the PLA by 90°, completely disrupting th
 > Both designs draw significant **static power**. Consider using non-minimum PMOS length to trade area for power.
 {: .notice--warning}
 
+---
 
 # Control Path
 You've gained enough "vibe-layout" experience from the SRAM. You don't need an *optimal* solution-- just one that **fits and works**
@@ -211,6 +222,8 @@ Two ways
 
 We chose the latter one.
 
+---
+
 # DRC and LVS Tips
 - DRC is quite straightforward. Run it **early and often**.
 - LVS is one of the few **nonlinear** parts of this project. It behaves well when a *small number* of nets are problematic, and degrades rapidly once errors accumulate and propagate.
@@ -228,6 +241,8 @@ Large-net shorts (power, clock, buses) are especially problematic: When this hap
 Opens are less scary, as they usually produce localized error
 
 Your extracted simulation should behave normally, given that you followed all the principles listed above.
+
+---
 
 # Wrap Up!
 > **CONGRATS** on finishing most of the project! Give yourself a break, and get ready for this final push!
@@ -250,6 +265,9 @@ Your probably need multiple decaps in parallel.
 3. In the layout, "Update All From Source". **Share** the diffusion and gates!
 4. Tune the sizes, if needed
 
+![](/images/vlsi/pla/decap.png){: .align-center}
+
+
 You are probably very tired rn. Don't chase perfection. Sufficient is enough.
 
 
@@ -269,3 +287,9 @@ The rest of the circuit is what I call a "遮羞布". These dead areas come from
 Look how the irregularities are hidden!
 
 ![](/images/vlsi/pretty/overall/overall_32.png)
+
+## Final Check
+![](/images/vlsi/pla/drclvs.png)
+
+> FIN
+{: .notice--success}

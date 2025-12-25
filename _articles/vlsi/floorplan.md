@@ -1,14 +1,27 @@
 ---
-title: "Intro to the Design Project"
+title: "Design Project Planning"
 layout: single
 permalink: /articles/vlsi/floorplan
 ---
 
 {% include toc %}
 
-Before even starting the project, read through the requriements so you know what you *should* be doing.
+
+
+
+1. [Intro](/articles/vlsi)
+2. [Inverter](/articles/vlsi/inverter) 
+3. **Project Plan**
+4. [Adder and Shifter](/articles/vlsi/adder)
+5. [SRAM](/articles/vlsi/sram) 
+6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
+
+---
 
 # Architecture
+
+> Before even starting the project, read through the requirements so you know what you *should* be doing.
+{: .notice--info}
 
 ## Bus
 
@@ -41,11 +54,11 @@ Try to derive what to do, combining with the data path above:
 When **holding**, the value in Acc must not change. The MUX should select the shifter path, but **bypass** it, effectively feeding Acc back to itself
 
 
-| Opcode | Assembly | Description                 | Internal bus driven by | MUX | Action | 
+| Opcode | Assembly | Description                 | Internal bus driven by | MUX | Other Actions | 
 |--------|----------|-----------------------------| ------ | ---- | --- | 
 | 000    | NOP      | Hold Acc    | -- | Hold | No change
-| 001    | LOAD     | Mem[i] ← External bus       |external bus| hold |  Memory write
-| 010    | STORE    | External bus ← Mem[i]      | SRAM | hold | Memory read; Drive external bus
+| 001    | LOAD     | Mem[i] ← External bus       |external bus| Hold |  Memory write
+| 010    | STORE    | External bus ← Mem[i]      | SRAM | Hold | Memory read; Drive external bus
 | 011    | GET      | Acc ← Mem[i]               | SRAM | Memory | Memory read
 | 100    | PUT      | Mem[i] ← Acc               | Acc | Hold | Memory write
 | 101    | ADD      | Acc ← Acc + Mem[i]         | SRAM | Adder | Memory read; Bypass shifter
@@ -98,10 +111,12 @@ This creates an organized **vertical grid**, reference for all other wires. Keep
 - Place power straps (body Vias) at the center
 
 > You may also want to keep all blocks with the **same height**, so the horizontal grid is also organized.
+{: .notice--info}
+
 
 Each block will have input/output data, primarily in M2; this is the **data path**. 
 
-Blocks also need control signals, such as subtraction and MUX select. Such signals are typically identical across all bits and can be shared through a horizontal M3 layers; this is the **control path**
+Blocks also need control signals, such as subtraction and MUX select, which are typically identical across all bits and can be shared through a horizontal M3 wire; this is the **control path**
 
 
 

@@ -6,13 +6,19 @@ permalink: /articles/vlsi/inverter
 
 {% include toc %}
 
+1. [Intro](/articles/vlsi)
+2. **Inverter**
+3. [Project Plan](/articles/vlsi/floorplan)
+4. [Adder and Shifter](/articles/vlsi/adder)
+5. [SRAM](/articles/vlsi/sram) 
+6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
 
-Take a read of Shepard's [Online CAD Tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 
-The first real task is to layout an [Inverter](https://www.bioee.ee.columbia.edu/courses/cad/html/layout.html)
+> Take a read of Shepard's [Online CAD Tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/). It's a pretty comprehensive guide, but if you follow it *blindly* into your project, for sure you will get in trouble! Below, we’ll go through the process systematically and highlight common pitfalls so you can avoid a **massive learning curve**.
+{: .notice--info}
 
-It's a pretty comprehensive guide, but if you follow it *blindly* into your project, for sure you will get in trouble! Below, we’ll go through the process systematically and highlight common pitfalls so you can avoid a **massive learning curve**.
 
+---
 
 # Layout
 ## 1. Generate All From Source
@@ -89,6 +95,8 @@ A Body Via can power a large region of P/N substrate (~30 um)
 Now let's connect the `PO` gate and `M1` source/drain to complete the circuit:
 ![](/images/vlsi/inv/conn.png)
 
+---
+
 # DRC
 > Run DRC **as frequently as possible**, especially if you are a beginner!!
 {: .notice--warning}
@@ -105,7 +113,9 @@ These are the main types of DRC errors for TSMC N65:
 - **Body connection**
 
 Here's a (simplified) list from textbook pages 118-119
+
 ![](/images/vlsi/inv/dr1.png)
+
 ![](/images/vlsi/inv/dr2.png)
 
 
@@ -157,6 +167,7 @@ RIP, another two violations. Make only `M1` visible for more clarity
 
 ![](/images/vlsi/inv/drc_co_clean.png)
 
+---
 
 # LVS
 Move the Generated M1 Pins over to the metals. 
@@ -186,8 +197,9 @@ Now, as a **proof of concept**, run LVS again to see if the error count drops to
 
 Yep, so add labels to the other 3, and you will be **LVS clean!**
 
+---
 
-# FAQ
+# Virtuoso FAQ
 > When I open Virtuoso, all my instances show up as **red boxes**
 
 Click `Shift+F` to display instances, and `Ctrl+F` to hide them

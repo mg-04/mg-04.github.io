@@ -10,6 +10,15 @@ Now comes the first real task of 4321: adder
 > This is very, very important. You will learn the fundamentals of tight layout and diffusion sharing!
 {: .notice--info}
 
+1. [Intro](/articles/vlsi)
+2. [Inverter](/articles/vlsi/inverter) 
+3. [Project Plan](/articles/vlsi/floorplan)
+4. **Adder and Shifter**
+5. [SRAM](/articles/vlsi/sram) 
+6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
+
+---
+
 
 # Overview
 - Fix a bit pitch of 2.1 um
@@ -50,19 +59,20 @@ A ripple carry adder/subtracter has 3 parts:
 - Subtraction inversion
 - Carry generation
 - Sum generation   
+
 The CMOS implementation is pretty standard, and you can find plenty of resources
 
 ## Sizing
 Textbook page 432 discusses the sizing
 
-![](/images/vlsi/Adder/sizing.png)
+![](/images/vlsi/Adder/sizing.png){: .align-center}
 
 
 The minimum width of our technology is 150 nm
 - Below that, the MOSFETs will turn into a **dogbone** shape, which actually takes more space!
 We used the following sizing
 - Critical path: 300 nm * 4 / 150 nm * 4
-- Non-critical path: 300 um / 150 um
+- Non-critical path: 300 nm / 150 nm
     - It's a better idea to size the PMOS to 150 as well :( We went lazy, but it's fine
 
 ---
@@ -70,7 +80,7 @@ We used the following sizing
 # Schematic
 Below is our carry schematic. If you want to use the textbook sizing, change the non-critical path NMOS to 150 nm.
 
-![](/images/vlsi/Adder/schem.png)
+![](/images/vlsi/Adder/schem.png){: .align-center}
 
 A few notes:
 - Use multiple fingers so every transistor **equal width**
@@ -83,7 +93,7 @@ A few notes:
 {: .notice--info}
 
 ## Stick Diagram
-You should make a stick diagram of your adder layout. This [UMich note](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) shows diffusion sharing with *single fingers*. Adapt it to your design.
+Make a stick diagram of your adder layout. This [UMich note](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) shows diffusion sharing with *single fingers*. Adapt it to your design.
 
 Alternatively, you can also not plan and do **"vibe layout"**, sometimes not bad
 
@@ -100,9 +110,11 @@ Note that I only drew with one finger. In the actual layout things will be a bit
 Right after "Generate All From Source", draw your M2 [bit pitch](/articles/vlsi/floorplan#metal-routing). 
 - Center-to-center **2.1 um**
 - Width: 0.1 um
+
 ![](/images/vlsi/Adder/pitch.png)
 
 You can use the `p` shortcut to draw a path. It shows its DRC rules, too
+
 ![](/images/vlsi/Adder/p.png)
 
 ## 2. `A` and Body Via
@@ -114,7 +126,7 @@ Same thing as the inverter
 
 
 ## 3. Diffusion Sharing
-Find the single-fingered transistors gated by A. 
+Find the single-fingered transistors gated by `A`. 
 - The top terminal (S) should be connected to `GND!`, so does the bottom terminal (S) of the four-fingered device. 
 - We can make them share the same diffusion
 
@@ -202,7 +214,7 @@ From our floorplan, our input signals `A`, `BS`, `CIN` will arrive from the vert
 
 We need to via from M1 all the way to PO. There needs to be five layers: M2-VIA1-M1-CO-PO. Each layer must satisfy the design rules:
 
-Be aware of the following [common design rule](/articles/vlsi/inverter) violations (all units in um)
+> Be aware of the following [common design rule](/articles/vlsi/inverter) violations (all units in powers of um)
 - `PO` spacing > 0.12
 - `M1` spacing > 0.09; 0.11 in corners
 - `M2` spacing > 0.10; 0.12 in corners
@@ -242,7 +254,7 @@ Once you connect the pins, you should pass LVS too!
 
 ---
 
-# Our Adder
+# 1-Bit Adder
 
 Below is our adder from a few months ago. It is less optimal, but fine.
 ## Sum
@@ -264,7 +276,7 @@ We chose the XOR implementation.
 
 ---
 
-# 8-bit Adder
+# 8-Bit Adder
 This is *very important*. You do **not** want to draw this eight times. Fortunately, we can **Instantiate** the single-bit layout as a **symbol**, just as the `pch` and `nch` symbols.
 
 ## Flipped Adder
@@ -285,9 +297,10 @@ We created a new schematic and layout `hw6t` for the flipped version by copying 
 ![](/images/vlsi/Adder/addert.png)
 
 
-There are definitely other ways to do this:
+> There are definitely other ways to do this:
 - Enforce symmetry for simple layouts
 - Build schematic and layout for [2 bits at a time](/articles/vlsi/overall#mux)
+{: .notice--info}
 
 ## Layout Hierarchy
 Now the final push! We want a coherent pattern and minimally wasted space. If you lay out your single bit like this, it's gonna suck. You want it as **tight** as possible
@@ -309,21 +322,27 @@ Layouts communicate across hierarchies through **Pins**. If you zoom into the Pi
 
 ![](/images/vlsi/Adder/8b_label.png)
 
-Wires connected through the pin will be labelled by Virtuoso. Wires connected, but *not* through the pin will **still** be the same net, and checked equally under DRC/LVS. It will just be harder to see. 
+- Wires connected **through a pin** are automatically labelled by Virtuoso. 
+- Wires connected, but *not* through a pin will **still** be the same net, and checked equally under **DRC/LVS**. Just harder to see.
 
-In this case, the bottom `VDD` is connected through a pin and labelled. The top one is also connected, but not labelled.
-- If you want labels on the top too (say you misaligned the pins), you can lay another M2 *overlapping* with the M2 in the instance (no worries, they will be the same layer) from the pin.
+In the case above, the bottom M2 `VDD` is connected through a pin and labelled. The top M2 is also connected, but not labelled.
+- If you want the top M2 to be labelled as well (say you [misaligned the pins](/articles/vlsi/overall#connecting-data-blocks)), simply draw another M2 segnment *overlapping* the instance M2 **from the pin** (no worries, they are the same layer).
 
 ## Alignment
 
-Now for the hairy part: align each bit **perfectly**. Fortunately, our design accommodates **exactly** that. Make sure neighboring M2/M1/vias/pins overlap **exactly**, both vertically and horizontally. In the end, the M2 center points between both ends should be 2.1x8 = 16.8 um. If not, you've done somethign wrong. Your 8-bit layout will have a P-N-P-N-P-N-P-N-P structure
+Now the hairy part: align each bit **perfectly**. Fortunately, our design accommodates **exactly** that. 
+
+Make sure neighboring M2/M1/vias/pins overlap **exactly**, both vertically and horizontally. 
+- The M2 center points between both ends should be 2.1x8 = 16.8 um. If not, you've done something wrong.
+- Your 8-bit layout will have a [P-N-P-N-P-N-P-N-P](/articles/vlsi/floorplan#metal-routing) structure
 
 ![](/images/vlsi/Adder/adder_ddet.png)
 
 
-I went up to `M3` for the carry propagation wires, but you may as well do it in `M1`. The `M1` power/ground *vertical* wires don't have to be contiguous. We can via local `M1` wires from the `M2` lanes.
+> I went up to `M3` for the carry propagation wires, but you may as well do it in `M1`. The `M1` power/ground *vertical* wires do **not** have to be contiguous. We can via local `M1` wires from the `M2` power lanes.
+{: .notice--info}
 
-It is good practice to use `M3` for global control signals, such as `SUB`
+It is good practice to use `M3` for **global control signals**, such as `SUB`
 
 Here's how it should look like:
 
@@ -332,24 +351,31 @@ Here's how it should look like:
 
 
 ## Overflow
-You can 
+Get `c7` and `c8` from M3. In our top-level layout, I placed the control logic near the LSB, so the `overflow` signal needs a long detour. It's cleaner to place it as the **MSB**
 
+> Do a **C+CC** extraction only. RCC might crash Cadence
+{: .notice--danger}
+
+
+---
 
 # Shifter
-There's nothing too much to write about the shifter. It's not very interesting.
+> There's nothing too much to write about the shifter. It's not very interesting.
+{: .notice--info}
+
 
 
 We choose a **complementary pass transistor MUX** for our shifter. You can also choose an NMOS-only version.
 ## Sizing
 
-Textbook pp 351-352 discusses pass transistor sizing and layout
+Textbook page 351-352 discusses pass transistor sizing and layout
 
-![](/images/vlsi/Adder/book1.png)
+![](/images/vlsi/Adder/book1.png){: .align-center}
 
 
 ## Stick Diagram
 
-![](/images/vlsi/Adder/book2.png)
+![](/images/vlsi/Adder/book2.png){: .align-center}
 
 We chose to buffer at the **output** stage to reduce the poly length.
 
@@ -366,7 +392,3 @@ You can see the iconic "alternating gates"
 
 
 
-# Misc
-We didn't follow the design rules before, and it sucked that we have to re-layout
-
- Do a C+CC extraction only. If you do RCC, Cadence will crash.

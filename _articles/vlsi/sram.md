@@ -12,6 +12,15 @@ Now you are at the next *stage* of 4321: the mighty **SRAM**
 > Many parts of this PS can be done in parallel. Get your teammate to work!
 {: .notice--info}
 
+1. [Intro](/articles/vlsi)
+2. [Inverter](/articles/vlsi/inverter) 
+3. [Project Plan](/articles/vlsi/floorplan)
+4. [Adder and Shifter](/articles/vlsi/adder)
+5. **SRAM**
+6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
+
+---
+
 
 # Floorplan
 There are a lot of ways to floorplan the SRAM. You don't have to, but it would be *really* nice if all the peripherals match the width of the SRAM array. 
@@ -28,9 +37,10 @@ Because the SRAM cell is extremely dense, we use **column multiplexing**, sharin
 # SRAM Array
 
 > Throughout this article, an array written as $$x\times y$$ always mean **row** $$\times$$ **column**
+{: .notice--info}
 
 ## 8x8 Layout
-The following demo array was given in Fall 2025.
+The following demo array was given in **Fall 2025**.
 
 Take a moment to appreciate this fabulous SRAM. The `065_d499_M4_` prefixes are abbreviated for clarity
 ![](/images/vlsi/sram/s_demo_master.png)
@@ -114,7 +124,9 @@ Shepard has probably showed off multiple decoder designs in lecture and practice
 
 We chose a 4-in-1 **NAND-NOT** layout that fits neatly within four SRAM rows and scales naturally with predecoding.
 
-The drawback? Kind of huge in width. It will be better for *this* project if we can put them to a more squared shape.
+> The drawback? Kind of huge in width. It will be better for *this* project if we can put them to a more squared shape.
+{: .notice--warning}
+
 
 The idea is simple: 
 1. Spam M3 horizontal wires for all signals and power (Yes they fit)
@@ -169,7 +181,9 @@ At schematic level, the common failures are:
     - When writing, `iobus` is driven by the testbench sources. The read driver should be in [tristate](/articles/vlsi/sram#read-driver).
     - When reading, `iobus` is driven by the read driver. Use **transmission gates** in the **testbench** to **disconnect** the testbench sources!
 
-Make sure your circuit functions **very well** at schematic level, or else post-sim will be a **nightmare**! 
+> Make sure your circuit functions **very well** at schematic level, or else post-sim will be a **nightmare**! 
+{: .notice--warning}
+
 
 ## Stick Diagram
 > This is legacy layout. Horizontal gates may save a lot more space
@@ -209,7 +223,7 @@ And bubble push:
 
 Omg this is too beautiful
 
-We need `iobus_bar<i>` for `bit_bar<i>`. Fortunately, we have enough space for an inverter in the center:
+We need `iobus_bar<i>` for `bit_bar<i>`. Fortunately, there's ample space to squeeze in an inverter
 
 ![](/images/vlsi/sram/rw.png){: .align-center}
 
@@ -280,12 +294,16 @@ With these decisions in-place, you can lay out the whole thing:
 ![](/images/vlsi/sram/overall.png)
 
 Don’t stress about making this section perfect on the first pass. You will **almost certainly** revisit and modify the peripheral-peripheral logic as the rest of the design evolves. That's normal and expected.
+{: .notice--info}
+
+
+---
 
 # Calibre
 It's a pain dealing with third-party libraries
 
 ## LVS
-You may get a few LVS warnings on **M2 pin short**. This is from the `v1d1_x1` cells' pin configuration.
+You may get a few LVS warnings on **M2 pin short**. This is from the `v1d1_x1` cells' pin **naming**. The M4 pins are fine.
 - We externally connected power through **M4** and M2 at the **boundary**
 - As long as you leave the shorted pins in the center untouched, it should work fine
 
