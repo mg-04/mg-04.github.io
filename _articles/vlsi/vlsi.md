@@ -114,8 +114,17 @@ A extremely accurate review from [CULPA](https://culpa.info/professor/4500):
 
 Yes. Not linearly, but **exponentially**  
 Consider PS4 the *bare minimum*.   
-**START THE FUCK EARLY!!!** Start them **the day they are released**. Not tomorrow. Not "after dinner"
+**START THE FUCK EARLY!!!** Start them **the day they are released**.
 
+> Do they give extensions?
+
+Not officially, but TAs are typically nice
+
+The real question is: **will an extension actually help you?**
+- If you are stuck on some last-minute bugs: absolutely
+- If you are fundamentally behind: **almost certainly not**. 
+
+At that point, you are not buying time. You are taking out a **high-interest loan** from **Future You**, and the interest compounds **daily**... until you declare layout-rupcy
 
 ## Resources
 
@@ -133,7 +142,8 @@ Talk to them. Compare your layouts. Steal their ideas
 > Online resources?
 
 There are a lot. The textbook is good, too.  
-But by week 5, your brain will *reject new PDFs*. These articles try to *distill* what's actually important.
+But by week 5, your brain will *reject new PDFs*.  
+These articles try to *distill* what's actually important.
 
 
 ## Design
@@ -152,7 +162,7 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 > What if my layout sucks?
 
 - Before PS7: **RESTART, NOW!**
-- After PS8: Accept your fate, BS the layout, and lock in for the exams
+- After PS8: Accept your fate, BS the project, and lock in for the exams
 
 
 
