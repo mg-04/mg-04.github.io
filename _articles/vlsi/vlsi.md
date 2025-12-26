@@ -167,3 +167,13 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 
 
 > More to be added...
+
+# Special Thanks
+Many thanks to the following folks for their help and guidance throughout this project:
+- My teammate Charlotte Chen;
+- TAs Kaden Du, James Jagielski; 
+- Professor Ken Shepard;
+- Former student Yuxi Zhang;
+- Current students David Kim, Stephen Ogunmwonyi, Simon Mao.
+
+Additional thanks to William Wang on sharing his [PLA layout](/articles/vlsi/overall#layout-by-william-wang)
