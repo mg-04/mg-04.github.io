@@ -6,7 +6,7 @@ permalink: /articles/vlsi
 {% include toc %}
 
 
-In this set of articles, I will walk through the **essentials of the 4321 design project**, so you can achieve an A-tier layout even you are **completely new** to layout (like I was). It will be a *huge* learning curve, and that's exactly the point. 
+In this set of articles, I will walk through the **essentials of the 4321 design project**, so you can achieve an A tier layout even you are **completely new** to layout (like I was). It will be a *huge* learning curve, and that's exactly the point. 
 
 Think of this project as a process of **successive approximation** (Shepard’s favorite exam technique): make an initial attempt, realize how bad it is, learn something new, refine it, and repeat. 
 
@@ -90,14 +90,14 @@ The goal of this project is to get something *done*, and done *well*, but not *p
 
 ## Logistics
 
+> What are the prereq?
+
+**Officially**: ECircuits and Fundies  
+**Unofficially**: a resilient spine, functioning caffeine metabolism, and enough tears
+
 > Find a good teammate
 
 Half of the class were having teammate issues; the other half **are** the teammate issues
-
-> What are the prereq?
-
-- **Officially**: ECircuits and Fundies
-- **Unofficially**: a resilient spine, functioning caffeine metabolism, and enough tears
 
 > Should I take this class for **fun**?
 
@@ -105,16 +105,11 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the unique **p
 
 ## Workload
 
-> Do I need All-nighters?
-
-A extremely accurate review from [CULPA](https://culpa.info/professor/4500): 
-> On a scale of one to crazy, you're looking at Deadpool level insanity. I kid you not, "dat shit cray". "Kill me now" would be your default state of existence
-
 > Do the PSets get harder and harder?
 
 Yes. Not linearly, but **exponentially**  
 Consider PS4 the *bare minimum*.   
-**START THE FUCK EARLY!!!** Start them **the day they are released**.
+**START EARLY!!!** Start them **the day they are released**.
 
 > Do they give extensions?
 
@@ -124,7 +119,14 @@ The real question is: **will an extension actually help you?**
 - If you are stuck on some last-minute bugs: absolutely
 - If you are fundamentally behind: **almost certainly not**. 
 
-At that point, you are not buying time. You are taking out a **high-interest loan** from **Future You**, and the interest compounds **daily**... until you declare layout-rupcy
+At that point, you are not buying time. You are taking out a **high-interest loan** that compounds **daily**... until you declare **layout-rupcy**
+
+> Do I need All-nighters?
+
+A extremely accurate review from [CULPA](https://culpa.info/professor/4500): 
+> On a scale of one to crazy, you're looking at Deadpool level insanity. I kid you not, "dat shit cray". "Kill me now" would be your default state of existence  
+
+
 
 ## Resources
 
@@ -163,8 +165,6 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 
 - Before PS7: **RESTART, NOW!**
 - After PS8: Accept your fate, BS the project, and lock in for the exams
-
-
 
 > More to be added...
 
