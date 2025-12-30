@@ -78,6 +78,9 @@ Above was our connection at M2. The interfaces were not fully compatible, so we 
 {: .notice--warning}
 
 ## M4 Data Wires
+> Your data wires should all fit within/above the data blocks. They should **not** significantly occupy any outside space.
+{: .notice--warning}
+
 Long-distance data routing at M2 is unrealistic. These should typically go to M4.
 
 At M4, we have a much cleaner and spacious grid. We were even able to add an extra pair of power straps.
@@ -234,11 +237,10 @@ You may encounter "**Incorrect Instances**" or "**Parameter Mismatch**". They ar
 - Netlist mismatch at *device level*
 
 Large-net shorts (power, clock, buses) are especially problematic: When this happens, the error report typically explodes, and LVS was unable to localize the fault
-- Try **intentionally break the net** and re-run LVS
-- Use a divide-and-conquer approach to localize the short
+- Try **intentionally break the net** and re-run LVS. Use divide-and-conquer to localize the short
 - Pay special attention to overlapping Vias
 
-Opens are less scary, as they usually produce localized error
+**Opens** are less scary, as they usually produce localized error
 
 Your extracted simulation should behave normally, given that you followed all the principles listed above.
 

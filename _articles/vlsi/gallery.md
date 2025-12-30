@@ -5,6 +5,7 @@ permalink: /articles/vlsi/gallery
 
 Here's a picture page, just for fun
 
+
 # Overall Layout
 
 1x  

@@ -214,7 +214,7 @@ Now to the interesting (and hard) part. In lecture, we know that we can control 
 write AND iobus<i> AND phi_1
 ```
 
-`iobus` will differ from bits, but `write AND phi_1` is the same. We **factor out** the shared term and supply it from **outside**, drastically reducing the complexity inside!
+`iobus<i>` will differ from bits, but `write AND phi_1` is the same. We **factor out** the shared term and supply it from **outside**, drastically reducing the complexity inside!
 
 And bubble push:
 ```
@@ -255,11 +255,11 @@ With careful tuning and diffusion sharing, you can make everything perfectly fit
 ## What if things don't fit?
 Cry, but not too much
 1. **Check the basics.** Start with diffusion sharing, efficient routing and viaing, avoid oversizing etc.
-2. **Resize device** People constantly miss that. Ask you self: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
-3. **Use straight lines** Bends increase contention not only itself, but its neighbors as well! Try to make lines as straight as possible, or **shift** them away from tight regions.
-4. **Detour** If you've really tried, take a detour. Find **gaps** on each layer, and consider moving your routing to these gaps to free space for the tight area.
-5. **(Temporarily) move to a higher Metal layer** Only do this for short, local routing, as it may horribly interfere with your global routing plans. Also vias are not cheap.
-6. **Accept tradeoffs** If there are truly no ways, increase spacing. Note that this is not an *excuse* to sloppy layouts. In our case spacing should always be increased vertically (the horizontal dimension fixed at 2.1 um).
+2. **Resize device.** People constantly miss that. Ask you self: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
+3. **Use straight lines.** Bends increase contention not only itself, but its neighbors as well! Try to make lines as straight as possible, or **shift** them away from tight regions.
+4. **Detour.** If you've really tried, take a detour. Find **gaps** on each layer, and consider moving your routing to these gaps to free space for the tight area.
+5. **(Temporarily) move to a higher Metal layer.** Only do this for short, local routing, as it may horribly interfere with your global routing plans. Also vias are not cheap.
+6. **Accept tradeoffs.** If there are truly no ways, increase spacing. Note that this is not an *excuse* to sloppy layouts. In our case spacing should always be increased vertically (the horizontal dimension fixed at 2.1 um).  
 A slightly area-inefficient design is not a failure -- It's a deliberate **tradeoff**. In fact, you can often reclaim the space by fitting in power straps, inverters, or decaps. 
 
 ![](/images/vlsi/sram/contention.png)

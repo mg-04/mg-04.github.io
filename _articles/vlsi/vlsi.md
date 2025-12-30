@@ -63,7 +63,7 @@ Our final design features:
 - High data path density and regularity
 
 ## Disclaimer
-> mg-04-io is a personal blog. It is not affiliated with Columbia EE.
+> mg-04-io is a personal blog. It is not affiliated with Columbia EE or BioEE.
 {: .notice--info}
 
 Our project is **FAR from perfect**. In fact, when I was writing this, I constantly realize how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in countless ways.
@@ -73,13 +73,16 @@ That's okay.
 The goal of this project is to get something *done*, and done *well*, but not *perfectly*. This is an older technology node, intended for learning and practice, so don’t pull your hair out.
 
 ## Caveats
-- There may be a lot of naming inconsistencies; some names are chosen using common sense and local context.
+- This guide is based on *our* design project. Our design evolution produces a lot of naming inconsistencies; all names should make common sense and fit local context.
 - Apologies for the image quality and resolution inconsistencies. All images should be readable, but the thumbnails may not all display properly in your browser. Download them if necessary.
-- There are be suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you find something important, or if you have a better suggestion, I am MORE THAN HAPPY to include it! 
-    - Feel free to email me at [mg4264@columbia.edu](mailto:mg4264@columbia.edu)
+- There are be suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you
+    - See any mistakes or inefficiencies
+    - Have suggestions on improving this guide
+    - Want to share your layout/experience
+    Feel free to **email** me at [mg4264@columbia.edu](mailto:mg4264@columbia.edu). I am **MORE THAN HAPPY** to include it! 
 - These articles focus primarily on **layout**, but **testing** is **equally important**
-- I did not explore much in Virtuoso's **design automation** features. This is an area worth working on
-- This guide is never intended to **help you cheat** (and realistically, you can't). I included explicit details in the early design stages, but you should come with your own at later stages.
+- We did not explore much in Virtuoso's **design automation** features. This is an area worth studying on
+- This guide is **never** intended to **help you cheat** (and realistically, you can't).
 - TSMC, please don't sue me
 
 ---
