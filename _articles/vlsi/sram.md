@@ -286,6 +286,14 @@ This is where **overall** layout organization starts to hurt. The main challenge
 - Find a place to *prettily* place such transistors
 - Floorplan the grids that integrate well with the rest of the design
 
+> Here's how I did it  
+1. Draw the core transistors within the grid. Pass DRC. (proof of concept)
+2. Roughly connect the remaining structures (even if not DRC clean) to pass LVS (proof of concept)
+3. Go back and refine the details. Resolve the remaining DRC issues.
+4. STOP for now. Don't try to make it perfect, as you will probably revisit it
+{: .notice--info}
+
+
 ![](/images/vlsi/sram/pp_stick.png)
 > **Disclaimer**: these sizings are for an older version. Calculate your own!
 {: .notice--warning}
@@ -293,8 +301,6 @@ This is where **overall** layout organization starts to hurt. The main challenge
 With these decisions in-place, you can lay out the whole thing:
 ![](/images/vlsi/sram/overall.png)
 
-Don’t stress about making this section perfect on the first pass. You will **almost certainly** revisit and modify the peripheral-peripheral logic as the rest of the design evolves. That's normal and expected.
-{: .notice--info}
 
 
 ---
