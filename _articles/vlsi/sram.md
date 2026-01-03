@@ -2,6 +2,7 @@
 title: "4321 SRAM"
 permalink: /articles/vlsi/sram
 author: "Ming Gong, Charlotte Chen"
+date: 2025-12-31
 ---
 
 {% include toc %}

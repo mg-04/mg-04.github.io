@@ -3,7 +3,19 @@ title: "CircuitSim"
 excerpt: "SPICE on FPGA<br/><img src='/images/cc/555.png' style='width:500px;'>"
 collection: projects
 date: 2025-05-20
+authors:
+  - Ming Gong
+  - Case Schemmer
+  - Jary Tolentino
+  - Andrew Yang
+  - Faustina Cheng
 ---
+
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
 
 A+ final project for CSEE 4840 Embedded Systems, Edward's favorites <br/><img src='/images/cc/staricon.png'>
 

@@ -2,6 +2,7 @@
 title: "4321 PLA, Data, Control, and Overall"
 permalink: /articles/vlsi/overall
 author: "Ming Gong, Charlotte Chen, William Wang"
+date: 2025-12-29
 ---
 
 {% include toc %}

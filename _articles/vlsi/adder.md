@@ -1,6 +1,7 @@
 ---
 title: "4321 Adder and Shifter"
 permalink: /articles/vlsi/adder
+date: 2025-12-24
 ---
 
 {% include toc %}

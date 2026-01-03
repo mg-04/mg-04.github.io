@@ -1,7 +1,17 @@
 ---
 title: "VLSI Mini Processor"
 permalink: /articles/vlsi
+date: 2026-1-2
+authors:
+  - Ming Gong
+  - Charlotte Chen
 ---
+
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
 
 {% include toc %}
 
@@ -174,6 +184,10 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 - Before PS7: **RESTART, NOW!**
 - After PS8: Accept your fate, BS the project, and lock in for the exams
 
+> What are some of the layouts that suck?
+
+You can find plenty by browsing (and purchasing) StudyDocu or similar websites. Most of these such. I've also shared some of our own early designs, which are highly inefficient, as concrete counterexamples of what to avoid.
+
 ## Grading
 > How will the project be graded?
 
@@ -202,7 +216,7 @@ Many thanks to the following folks for their help and guidance throughout this p
 - My teammate Charlotte Chen;
 - Professor Ken Shepard;
 - TAs Kaden Du, James Jagielski; 
-- Former student Yuxi Zhang;
+- Former students Yuxi Zhang, Yingrui Wei;
 - Current students David Kim, Stephen Ogunmwonyi, Simon Mao.
 
 Additional thanks to William Wang on sharing his [PLA layout](/articles/vlsi/overall#layout-by-william-wang)

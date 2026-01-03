@@ -3,7 +3,19 @@ title: "Blockchain"
 excerpt: "Final Project for Computer Networks<br/><img src='/images/projects/blockchain.jpg' style='width:500px;'>"
 collection: projects
 date: 2025-05-17
+authors:
+    - Griffin Newbold
+    - Amir Hossein Zarandi
+    - Ming Gong
+    - Neasha Mittal
 ---
+
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
+
 We implemented a fully functional peer-to-peer blockchain network written in Python. This system supports decentralized transaction validation, dynamic mining difficulty, Merkle tree-based verification, cryptographic signatures, and automated testing — all with a GUI wallet interface.
 
 ## Features

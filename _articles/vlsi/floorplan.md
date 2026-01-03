@@ -2,6 +2,7 @@
 title: "Design Project Planning"
 layout: single
 permalink: /articles/vlsi/floorplan
+date: 2025-12-24
 ---
 
 {% include toc %}
