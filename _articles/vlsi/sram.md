@@ -3,9 +3,18 @@ title: "4321 SRAM"
 permalink: /articles/vlsi/sram
 author: "Ming Gong, Charlotte Chen"
 date: 2025-12-31
+authors:
+    - Ming Gong
+    - Charlotte Chen
 ---
 
 {% include toc %}
+
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
 
 
 Now you are at the next *stage* of 4321: the mighty **SRAM**

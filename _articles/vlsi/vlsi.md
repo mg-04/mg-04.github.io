@@ -51,13 +51,14 @@ Hopefully, this means less **pain and suffering**, but more **appreciation** for
     - [SRAM Array](/articles/vlsi/sram#sram-array)
     - [Decoder](/articles/vlsi/sram#decoder)
     - [Read Write](/articles/vlsi/sram#read-write)
+    - [**Testing**](/http://localhost:4001/articles/vlsi/sram#testing)
     - [**What If Things Don't Fit**](/articles/vlsi/sram#what-if-things-dont-fit)
 6. [**Overall**](/articles/vlsi/overall) (PS9)
     - [Power Grid](/articles/vlsi/overall#power-grid)
     - [Data Path](/articles/vlsi/overall#data-path)
     - [PLA](/articles/vlsi/overall#pla)
     - [Control Path](/articles/vlsi/overall#control-path)
-    - [**DRC and LVS tips**](/articles/vlsi/overall#drc-and-lvs-tips)
+    - [**DRC and LVS Tips**](/articles/vlsi/overall#drc-and-lvs-tips)
     - [Wrap Up!](/articles/vlsi/overall#wrap-up)
 
 Appendix. [Pictures!](/articles/vlsi/gallery)
@@ -144,6 +145,9 @@ At that point, you are not buying time. You are taking out a **high-interest loa
 A extremely accurate review from [CULPA](https://culpa.info/professor/4500): 
 > On a scale of one to crazy, you're looking at Deadpool level insanity. I kid you not, "dat shit cray". "Kill me now" would be your default state of existence  
 
+> How would my partner and I coordinate
+
+Introducing Out of Order layout... Most of the design projects can be parallelized: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
 
 
 ## Resources
