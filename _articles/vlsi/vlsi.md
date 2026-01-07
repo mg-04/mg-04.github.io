@@ -1,7 +1,7 @@
 ---
 title: "VLSI Mini Processor"
 permalink: /articles/vlsi
-date: 2026-1-2
+date: 2026-1-6
 authors:
   - Ming Gong
   - Charlotte Chen
@@ -79,7 +79,8 @@ Our final design features:
 - High data path density and regularity
 
 ## Disclaimer
-> mg-04-io is a personal blog. It is not affiliated with Columbia EE or BioEE.
+> mg-04-io is a personal blog. It is not affiliated with Columbia EE or BioEE.  
+This article is totally independent from the [official layout tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 {: .notice--info}
 
 Our project is **FAR from perfect**. In fact, when I was writing this, I constantly realize how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in countless ways.
@@ -89,10 +90,10 @@ That's okay.
 The goal of this project is to get something *done*, and done *well*, but not *perfectly*. This is an older technology node, intended for learning and practice, so don’t pull your hair out.
 
 ## Caveats
-- This guide is based on *our* design project. Our design evolution produces a lot of naming inconsistencies; all names should make common sense and fit local context.
-- Apologies for the image quality and resolution inconsistencies. All images should be readable, but the thumbnails may not all display properly in your browser. Download them if necessary.
-- There are be suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you  
-    - See any mistakes or inefficiencies
+- This guide is based on *our* design project. Our design evolution produces a lot of naming inconsistencies. Nevertheless, all names should make common sense and fit local context.
+- Apologies for the image quality and resolution inconsistencies. Everything should be readable, but some thumbnails may not render properly in your browser. Download them if necessary.
+- There **are** suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you  
+    - Spot any mistakes or inefficiencies
     - Have suggestions on improving this guide
     - Want to share your layout/experience  
 
@@ -100,7 +101,7 @@ The goal of this project is to get something *done*, and done *well*, but not *p
 - These articles focus primarily on **layout**, but **testing** is **equally important**
 - We did not explore much in Virtuoso's **design automation** features. This is an area worth studying on
 - This guide is **never** intended to **help you cheat** (and realistically, you can't).
-- TSMC, please don't sue me
+- TSMC, please don't sue me!
 
 ---
 
@@ -135,19 +136,19 @@ Consider PS4 the *bare minimum*.
 
 Not officially, but TAs are typically nice  
 The real question is: **will an extension actually help you?**
-- If you are stuck on some last-minute bugs: absolutely
+- If you are stuck on some last-minute bugs or sicknesses: absolutely
 - If you are fundamentally behind: **almost certainly not**. 
 
 At that point, you are not buying time. You are taking out a **high-interest loan** that compounds **daily**... until you declare **layout-rupcy**
 
 > Do I need All-nighters?
 
-A extremely accurate review from [CULPA](https://culpa.info/professor/4500): 
-> On a scale of one to crazy, you're looking at Deadpool level insanity. I kid you not, "dat shit cray". "Kill me now" would be your default state of existence  
+Check out a few extremely accurate reviews from [CULPA](https://culpa.info/professor/4500): 
+
 
 > How would my partner and I coordinate
 
-Introducing Out of Order layout... Most of the design projects can be parallelized: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
+Introducing **Out of Order Layout**... Most of the design projects can be parallelized: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
 
 
 ## Resources
@@ -168,6 +169,10 @@ Talk to them. Compare your layouts. Steal their ideas
 There are a lot. The **textbook** is also really good.  
 But by week 5, your brain will *reject new PDFs*.    
 These articles try to *distill* those resources, listing the ones that I find helpful.
+
+> Ask Chat
+
+LLMs are **surprisingly helpful**, especially fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat to make it lay it out for you, but it is super useful at explaining concepts and interpreting unknown errors, as well as debugging Cadence.
 
 
 ## Design
@@ -195,14 +200,14 @@ You can find plenty by browsing (and purchasing) StudyDocu or similar websites. 
 ## Grading
 > How will the project be graded?
 
-> What are the deliverables?
+Shepard will grade all projects himself, which leaves no room for BS.
 
 > How are the exams?   
 
 They are relatively easy to prepare. There are two types of exam problems:
 1. **Freebies**  
     These are straightforward. Some may involve a lot of computation, but as long as you understand the concepts and have done the practice problems, you’ll be fine.
-2. **Problems that "tell the boys from the men"** (according to Shepard)  
+2. **Problems that "tell the boys apart from the men"** (according to Shepard)  
     Those are multi-part problems that require complex calculations or new concepts/equations, things that you haven't seen. Sometimes even the TA got them wrong. Sometimes Shepard himself finds the problem unsolvable. Who knows.
 
 > Over the years, the proportion of the second type has increased, as Shepard was "running out of easy problems"
@@ -213,7 +218,13 @@ The point is: **if you fail, the class fails with you**. If you can't solve the 
 > I considered writing a "4321 Exam Guide." Shepard exam tricks definitely exist, but I don't think obsessing over them is productive in the long run.
 {: .notice--info}
 
+> What are the distributions
+
+The final letter grade distributions are not published in Fall 2025 :(
+
 > More to be added...
+
+---
 
 # Special Thanks
 Many thanks to the following folks for their help and guidance throughout this project:
