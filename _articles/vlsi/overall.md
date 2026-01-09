@@ -57,6 +57,10 @@ Let's focus on a single-bit data block on the right.
 
 ## Connecting Data Blocks
 Since some blocks are not yet implemented, let's start by connecting the **shifter** and the **adder**
+
+> At you see, if the M2 interfaces are misaligned, future routing will be painful (but not impossible). Design data blocks to be **connection-compatible**
+{: .notice--warning}
+
 1. Create a schematic.
 2. Instantiate the shifter and the adder. Align their power pins
 3. Move them closer, until you hit a **critical** DRC spacing violation
@@ -74,9 +78,6 @@ Above was our connection at M2. The interfaces were not fully compatible, so we 
     - A cleaner fix would be to shorten the `B<2>` pin in the adder.
 - The `B<2>` input comes from the top latch. I laid an M2 connecting the `B<2>` pin, and send it to M4 for the long-distance `latch<2>` signal.
 
-
-> At you see, if the M2 interfaces are misaligned, future routing will be painful (but not impossible). Design data blocks to be **connection-compatible**
-{: .notice--warning}
 
 ## M4 Data Wires
 > Your data wires should all fit within/above the data blocks. They should **not** significantly occupy any outside space.
@@ -147,9 +148,9 @@ Ask yourself:
 
 ## Schematic from Espresso
 
-We chose one-hot MUX control (one extra output, but simplicity in MUX design and internal logic)
+We chose one-hot MUX control (one extra output, but simplicity in internal logic)
 
-Make a table of the logical outputs.
+Make a table of the logical outputs:
 
 | Opcode | Assembly | Description                 | Internal bus driven by | MUX | Action | 
 |--------|----------|-----------------------------| ------ | ---- | --- | 
@@ -166,13 +167,14 @@ Make a table of the logical outputs.
     - Inactive blocks must **not modify** state (E. in `Acc`)
     - For *actual* don't-cares:
         - Use `X`: simplify PLA logic
-        - Turn it off: saves power
-    As you will see from the Espresso output, because the opcode space is fully encoded (3 opcodes -> 8 bytes), Espresso gives limited simplification.
+        - Turn it off: saves power  
+
+    As you will see from the Espresso output, because the opcode space is fully encoded (3 opcodes → 8 bytes), Espresso gives limited simplification.
 
 2. Make a schematic from your Espresso logic. Start with minimum sizing for both NMOS and the pullup PMOS
     - This consumes a lot of **static** power, though. You may want to use non-minimum length.
 
-3. **Test your PLA under all possible input vectors, and see if the output is expected**
+3. **Test your PLA schematic under all input vectors, and see if the output is expected**
 
 
 ## Stick Diagram
@@ -180,8 +182,8 @@ The textbook explains it on page 539.
 
 ![](/images/vlsi/pla/textbook_stick.png){: .align-center}
 
-Start with one **standard cell** with a dense transistors and push DRC limits. The rest follow naturally
-- I recommend extracting the PLA and test its functionality and delay. Make sure all outputs are expected
+Start with one **standard cell** and push DRC limits. The rest follow naturally
+- I recommend **extracting** the PLA and test its functionality and delay. Make sure all outputs are expected
 
 ## Layout by William Wang
 > I would like to thank William Wang ’27 and his team for generously sharing their PLA layout. Their implementation closely follows the textbook design and achieves really impressive **density**!
@@ -220,7 +222,7 @@ Reserve M4 tracks for:
 The control signals to the adder/shifter need to be latched by `phi_1`. We implemented this by instantiating our single-bit latches and place them in parallel with existing latch blocks.
 
 ## Shift Bypass
-Two ways
+Two ways:
 - Add a MUX in front of the shifter
 - Qualify the `shamt` signal with `shift_bypass_bar`. 
 
@@ -238,7 +240,7 @@ You may encounter "**Incorrect Instances**" or "**Parameter Mismatch**". They ar
 - Netlist mismatch at *device level*
 
 Large-net shorts (power, clock, buses) are especially problematic: When this happens, the error report typically explodes, and LVS was unable to localize the fault
-- Try **intentionally break the net** and re-run LVS. Use divide-and-conquer to localize the short
+- Try **intentionally breaking the net** and re-run LVS. Use divide-and-conquer to localize the short
 - Pay special attention to overlapping Vias
 
 **Opens** are less scary, as they usually produce localized error
@@ -256,7 +258,7 @@ Your extracted simulation should behave normally, given that you followed all th
 If your datapath looks good, your control path probably doesn’t (relatively). Let’s hide the sins.
 
 ## Decap
-- Use NMOS with a large width and length, but not too large (> 2 um, when $$r_o$$ starts to matter)
+- Use NMOS with a large width and length, but not too large (> 2 um, so $$r_o$$ starts to matter)
 - Use it **strong inversion** (gate = VDD, others = GND)
 
 

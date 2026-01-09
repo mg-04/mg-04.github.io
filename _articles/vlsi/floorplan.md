@@ -88,7 +88,7 @@ There are always 3 things to plan:
 
 
 ## Metal Routing
-> This is Shepard's suggested floorplan, **rotated 90 degrees**
+> This is Shepard's suggested floorplan, **rotated 90 degrees**. I will stick with this orientation **from now on**
 {: .notice--info}
 
 Adapt a consistent Metal routing rules.
@@ -102,7 +102,7 @@ Since the Polys and their Diffusion contact M1s are horizontal, make
 
 
 
-This is an 8-bit processor built from identical 1-bit slices placed side by side. Since we use near-minimum device widths, each slice can have the identical **widths**, enabling a clean, regular layout.
+This is an 8-bit processor built from identical 1-bit slices placed side by side. Since we use near-minimum device widths, each slice has the identical **widths**, enabling a clean, regular layout.
 - Larger transistors will be made of multiple **fingers**
 
 

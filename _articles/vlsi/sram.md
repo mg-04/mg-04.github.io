@@ -52,10 +52,10 @@ Because the SRAM cell is extremely dense, we use **column multiplexing**, sharin
 ## 8x8 Layout
 The following demo array was given in **Fall 2025**.
 
-Take a moment to appreciate this fabulous SRAM. The `065_d499_M4_` prefixes are abbreviated for clarity
+Take a moment to appreciate this fabulous SRAM.
 ![](/images/vlsi/sram/s_demo_master.png)
 
-`v1d1_demo_array_4x4` (8x4) contains:
+`v1d1_demo_array_4x4` (8x4) contains: (the `065_d499_M4_` prefixes are abbreviated for clarity)
 - `v1d1_x4 (2x2)` (4x4)
     - `v1d1_x1`
 - `v1d1_wells_strap_x2 (1x2)` (1x4)
@@ -71,7 +71,7 @@ Take a moment to appreciate this fabulous SRAM. The `065_d499_M4_` prefixes are 
 
 
 ### Inner Cells
-Here is an SRAM section zoomed in. Try to hide the NW and M4 layers, and analyze layer by layer, and appreciate such a *fantastic* design
+Here is an SRAM section zoomed in. Try to hide the NW and M4 layers, analyze layer by layer, and appreciate such a *fantastic* design
 
 ![](/images/vlsi/sram/sram_det.png)
 
@@ -184,11 +184,11 @@ At schematic level, the common failures are:
     - If problems appear, try reducing the duty cycle for both, and slow down the period.
 - **Readability and writability**
     - This is mostly handled in the SRAM cell. 
-    - Make sure bitline transistors add minimal **parasitics**.  Close-to-minimum sizings are fine.
+    - Make sure the bitline has minimal **parasitics**.  Close-to-minimum sizings are fine.
     - **Probe** `bit` and `bit_bar` to see if it's a skew issue
 - **Tristate issues**
     - Only **one driver** should be connected to `iobus`
-    - When writing, `iobus` is driven by the testbench sources. The read driver should be in [tristate](/articles/vlsi/sram#read-driver).
+    - When writing, `iobus` is driven by testbench sources. The read driver are set in [tristate](/articles/vlsi/sram#read-driver).
     - When reading, `iobus` is driven by the read driver. Use **transmission gates** in the **testbench** to **disconnect** the testbench sources!
 
 > Make sure your circuit functions **very well** at schematic level, or else post-sim will be a **nightmare**! 
@@ -218,7 +218,7 @@ The pulldown path is short. Good for delay.
 
 ## Write Pulldown
 
-Now to the interesting (and hard) part. In lecture, we know that we can control the write pulldown NMOS of `bit` by `write AND iobus` (`iobus_bar` for `bit_bar`). For stability, we also want to qualify this with `phi_1`. The logic is 
+Now to the interesting (and hard) part. In lecture, we know that we can control the write pulldown NMOS of `bit` by `write AND iobus` (`iobus_bar` for `bit_bar`). For stability, we also want to qualify this with `phi_1`. The logic is: 
 
 ```
 write AND iobus<i> AND phi_1
@@ -264,13 +264,13 @@ With careful tuning and diffusion sharing, you can make everything perfectly fit
 
 ## What if things don't fit?
 Cry, but not too much
-1. **Check the basics.** Start with diffusion sharing, efficient routing and viaing, avoid oversizing etc.
+1. **Check the basics.** Start with diffusion sharing, efficient routing/viaing, avoid oversizing, etc.
 2. **Resize device.** People constantly miss that. Ask you self: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
 3. **Use straight lines.** Bends increase contention not only itself, but its neighbors as well! Try to make lines as straight as possible, or **shift** them away from tight regions.
 4. **Detour.** If you've really tried, take a detour. Find **gaps** on each layer, and consider moving your routing to these gaps to free space for the tight area.
 5. **(Temporarily) move to a higher Metal layer.** Only do this for short, local routing, as it may horribly interfere with your global routing plans. Also vias are not cheap.
 6. **Accept tradeoffs.** If there are truly no ways, increase spacing. Note that this is not an *excuse* to sloppy layouts. In our case spacing should always be increased vertically (the horizontal dimension fixed at 2.1 um).  
-A slightly area-inefficient design is not a failure -- It's a deliberate **tradeoff**. In fact, you can often reclaim the space by fitting in power straps, inverters, or decaps. 
+A slightly area-inefficient design is not a failure --- It's a deliberate **tradeoff**. In fact, you can often reclaim the space by fitting in power straps, inverters, or decaps. 
 
 ![](/images/vlsi/sram/contention.png)
 An example of diffusion sharing and detour
@@ -296,7 +296,7 @@ This is where **overall** layout organization starts to hurt. The main challenge
 - Find a place to *prettily* place such transistors
 - Floorplan the grids that integrate well with the rest of the design
 
-> Here's how I did it  
+> Here's how I did it:  
 1. Draw the core transistors within the grid. Pass DRC. (proof of concept)
 2. Roughly connect the remaining structures (even if not DRC clean) to pass LVS (proof of concept)
 3. Go back and refine the details. Resolve the remaining DRC issues.

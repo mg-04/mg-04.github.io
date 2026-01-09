@@ -24,12 +24,12 @@ date: 2025-12-24
 # Layout
 ## 1. Generate All From Source
 1. Create a new "Layout" the same name as your schematic
-2. Go to "Connectivity/Generate/All From Source". You will get two transistors, and a few cyan Pins
+2. Go to "Connectivity/Generate/All From Source". You will get two **transistors**, and a few cyan (M1) **Pins**
     - You should see matching instances between schematic and layout. Selecting one highlights the other.
     - Ignore the Pins for now
 3. **Rotate** the devices by 90 degrees. 
 4. Align the transistors
-    - Make sure `NP` and `PP` boundaries perfectly overlap with the `PP` boundary. No **gaps** or **overlaps**
+    - Make sure `NP` and `PP` boundaries **perfectly** align. No **gaps** or **overlaps**
 ![](/images/vlsi/inv/start.png)
 
 ## Layers
@@ -78,7 +78,7 @@ Next, add Body Vias. Click `o` to add `M1-SUB` and `M1-NW` Vias.
 ![](/images/vlsi/inv/vias.png)
 
 
-The Body contacts are nothing special. They are simply a stack of 5 layers connecting Body to Metal:
+The Body contacts are nothing special: simply a stack of 5 layers connecting Body to Metal:
 - `NW` (P) / substrate (N)
 - `NP` (P) / `PP` (N)
 - `OD`
@@ -130,7 +130,7 @@ RIP, got 4 errors. You should be grateful that we *only* got 4...
 - `OD` layer area too small
 - `PP`/`NP` layer area too small.
 
-There are two ways to solve it
+There are two ways to solve it:
 1. Increase via rows/columns
     - This is simple. Changing it to 4 will work
 2. Manually draw a larger `OD`/`PP`/`NP` around the current layer
@@ -146,9 +146,9 @@ There are two ways to solve it
 
 
 ## 4. Gate Via
-We are done, are we? There's one more step to connect a wire from our silicon Poly. Add a `M1-PO` via.
+There's one more step to connect a wire from our silicon Poly. Add a `M1-PO` via.
 
-Similar to the Body Vias, this `M1-PO` also has layers 
+Similar to the Body Vias, this `M1-PO` also has layers: 
 - `PO`
 - `CO`
 - `M1`
@@ -196,18 +196,19 @@ Now, as a **proof of concept**, run LVS again to see if the error count drops to
 
 ![](/images/vlsi/inv/lvs_fix.png)
 
-Yep, so add labels to the other 3, and you will be **LVS clean!**
+Yep, so add labels to the other three, and you will be **LVS clean!**
 
 ---
 
 # Virtuoso FAQ
-> When I open Virtuoso, all my instances show up as **red boxes**
+> When I open Virtuoso, all my instances show up as [**red boxes**](/articles/vlsi/sram#8x8-layout)
 
 Click `Shift+F` to display instances, and `Ctrl+F` to hide them
 
 > My pins do not have labels on them (or LVS doesn't recognize them)
 
-In "I/O Pins", you have to set "Pin Label/Create Label As/Label", - Set the font height to 0.1 (recommended) 
+In "I/O Pins", you have to set "Pin Label/Create Label As/Label". Set:
+- "Font Height": 0.1 (recommended) 
 - "Layer Name": "Same As Pin"
 - "Layer Purpose": "Same As Pin"
 

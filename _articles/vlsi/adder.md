@@ -79,7 +79,7 @@ We used the following sizing
 ---
 
 # Schematic
-Below is our carry schematic. If you want to use the textbook sizing, change the non-critical path NMOS to 150 nm.
+Below is our carry schematic. If you want to use the textbook sizing, change the non-critical path NMOS sizing to 150 nm.
 
 ![](/images/vlsi/Adder/schem.png){: .align-center}
 
@@ -100,7 +100,7 @@ Alternatively, you can also not plan and do **"vibe layout"**, sometimes not bad
 
 ![](/images/vlsi/Adder/adder_stick.png)
 
-This stick diagram is rotated 90 degrees. I used magenta for PMOS OD, and dark grey for NMOS OD. 
+This stick diagram is rotated 90 deg. I used magenta for PMOS OD, and dark gray for NMOS OD. 
 
 Note that I only drew with one finger. In the actual layout things will be a bit different.
 
@@ -151,7 +151,7 @@ Now, restore the deleted transistors by "Connectivity/**Update** All From Source
 
 For M30/M5, with its drain to `COUTN`. However, the generated instance has its source `net1` on the outside. We need to swap the source and the drain.
 
-1. Select the FET, click "q"
+1. Select the FET, click `q`
 2. Go to "Parameter", check "S D swap"
 
 ![](/images/vlsi/Adder/sd.png)
@@ -278,7 +278,7 @@ We chose the XOR implementation.
 ---
 
 # 8-Bit Adder
-This is *very important*. You do **not** want to draw this eight times. Fortunately, we can **Instantiate** the single-bit layout as a **symbol**, just as the `pch` and `nch` symbols.
+This is *very important*. You do **not** want to draw this eight times. Fortunately, we can **Instantiate** (`i`) the single-bit layout as a **symbol**, just as the `pch` and `nch` symbols.
 
 ## Flipped Adder
 Because we use the alternating VDD-GND-VDD-GND-VDD [power grid plan](/articles/vlsi/floorplan#metal-routing)
@@ -286,7 +286,7 @@ Because we use the alternating VDD-GND-VDD-GND-VDD [power grid plan](/articles/v
 - Even bits: VDD left, GND right  
 You can simply "Flip Vertically". Can you? 
 
-Mostly yes, but with the caveat on **pin order**. 
+Mostly yes, but with the caveat on **pin order**: 
 - Our current M2 pins have "ABC", which will turn to "CBA" if flipped. 
 - `cin` currently comes from the left, and `cout` from the right. They need to be flipped.
 
@@ -334,7 +334,7 @@ In the case above, the bottom M2 `VDD` is connected through a pin and labelled. 
 Now the hairy part: align each bit **perfectly**. Fortunately, our design accommodates **exactly** that. 
 
 Make sure neighboring M2/M1/vias/pins overlap **exactly**, both vertically and horizontally. 
-- The M2 center points between both ends should be 2.1x8 = 16.8 um. If not, you've done something wrong.
+- The M2 center points between both ends should be 2.1 x 8 = 16.8 um. If not, you've done something wrong.
 - Your 8-bit layout will have a [P-N-P-N-P-N-P-N-P](/articles/vlsi/floorplan#metal-routing) structure
 
 ![](/images/vlsi/Adder/adder_ddet.png)

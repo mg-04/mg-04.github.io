@@ -22,7 +22,7 @@ Think of this as a process of **successive approximation** (Shepard’s favorite
 
 This guide is meant to help you **converge faster**, avoiding many of the traps and misjudgments we fell early on, and focusing on what *actually* matters. 
 
-Hopefully, this means less **pain and suffering**, but more **appreciation** for the real beauty of custom layout. Enjoy.
+Hopefully, this means less **pain and suffering**, but more **appreciation** for the real beauty of custom layout. Enjoy!
 
 ---
 
@@ -80,14 +80,14 @@ Our final design features:
 
 ## Disclaimer
 > mg-04-io is a personal blog. It is not affiliated with Columbia EE or BioEE.  
-This article is totally independent from the [official layout tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
+This article is not an official TA guide. It's independent from the [official layout tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 {: .notice--info}
 
 Our project is **FAR from perfect**. In fact, when I was writing this, I constantly realize how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in countless ways.
 
 That's okay.
 
-The goal of this project is to get something *done*, and done *well*, but not *perfectly*. This is an older technology node, intended for learning and practice, so don’t pull your hair out.
+The goal of this project is to get something *done*, and done *well*, not *perfectly*. This is an older technology node, intended for learning and practice, so don’t pull your hair out.
 
 ## Caveats
 - This guide is based on *our* design project. Our design evolution produces a lot of naming inconsistencies. Nevertheless, all names should make common sense and fit local context.
@@ -106,7 +106,7 @@ The goal of this project is to get something *done*, and done *well*, but not *p
 ---
 
 # General Advice and FAQ
-> This is a generic FAQ. You can find specific debugging tips in later articles
+> This is a generic FAQ. You can find specific debugging tips in [later articles](/articles/vlsi/#contents)
 {: .notice--info}
 
 ## Logistics
@@ -116,7 +116,7 @@ The goal of this project is to get something *done*, and done *well*, but not *p
 **Officially**: ECircuits and Fundies  
 **Realistically**: a resilient spine, functioning caffeine metabolism, and enough tears
 
-> Find a good teammate
+> Find a good teammate.
 
 Half of the class were having teammate issues; the other half **are** the teammate issues
 
@@ -128,9 +128,14 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the unique **p
 
 > Do the PSets get harder and harder?
 
+> Check out a few extremely accurate reviews from [CULPA](https://culpa.info/professor/4500): 
+{: .notice--warning}
+
 Yes. Not linearly, but **exponentially**  
-Consider PS4 the *bare minimum*.   
+Consider PS4 the *bare minimum*. You will likely need a few **all-nighters** after that
 **START EARLY!!!** Start them **the day they are released**.
+
+
 
 > Do they give extensions?
 
@@ -141,66 +146,84 @@ The real question is: **will an extension actually help you?**
 
 At that point, you are not buying time. You are taking out a **high-interest loan** that compounds **daily**... until you declare **layout-rupcy**
 
-> Do I need All-nighters?
-
-Check out a few extremely accurate reviews from [CULPA](https://culpa.info/professor/4500): 
 
 
-> How would my partner and I coordinate
+> How would my partner and I coordinate?
 
-Introducing **Out of Order Layout**... Most of the design projects can be parallelized: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
+Introducing **"Out of Order Layout"**... Most of the design projects can be parallelized: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
 
 
 ## Resources
 
-> Ask Prof and TAs
+> Ask Prof and TAs.
 
 **Bring questions** to class, to recitations, to office hours.
 
-> Ask people around you
+> Ask people around you.
 
 Your classmates know things you don’t.  
 They also know things you *don’t know* you don’t know.  
 Talk to them. Compare your layouts. Steal their ideas
 
+> Ask Chat.
 
-> Online resources?
+LLMs are **surprisingly helpful**, especially at fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat to make it lay it out for you, but it is super useful at explaining concepts and interpreting unknown errors, as well as debugging Cadence.
+
+
+> What are some other resources?
 
 There are a lot. The **textbook** is also really good.  
 But by week 5, your brain will *reject new PDFs*.    
 These articles try to *distill* those resources, listing the ones that I find helpful.
 
-> Ask Chat
 
-LLMs are **surprisingly helpful**, especially fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat to make it lay it out for you, but it is super useful at explaining concepts and interpreting unknown errors, as well as debugging Cadence.
 
 
 ## Design
-> Run DRC and LVS **early and often**
+> Run DRC and LVS **early and often**.
 
 Small mistakes are cheap early and extremely expensive later. 
 
-> Don't be messy
+> Don't be messy.
 
 Symmetry and consistency will save you from debugging hell. "Messy but working" layouts *will* stab you some point in the futures.
 
-> Don't be perfect
+> Don't be perfect.
 
 Don’t stress about getting *anything* perfect on the first pass. You will **almost certainly** revisit, modify, and sometimes **completely nuke** them as your design evolves. That's part of the learning process
+
+> Don't blindly follow Shepard.
+
+He's really good at being **off-by-one**, whether it's index, an inverter, or a 90-degree rotation. So don’t take anything on faith. Make sure you understand what’s happening yourself.
 
 > What if my layout sucks?
 
 - Before PS7: **RESTART, NOW!**
 - After PS8: Accept your fate, BS the project, and lock in for the exams
 
-> What are some of the layouts that suck?
+> What are some examples that suck?
 
-You can find plenty by browsing (and purchasing) StudyDocu or similar websites. Most of these such. I've also shared some of our own early designs, which are highly inefficient, as concrete counterexamples of what to avoid.
+Just find (and buy) the ones on **StudyDocu** or similar sites. Most of these **suck**. I've also shared some of our own early designs, which are highly inefficient, as concrete counterexamples of what to avoid.
 
 ## Grading
+> This class is **curved**, so if you are an A tier student, with "proper" work, you should expect an A tier grade.
+{: .notice--info}
+
 > How will the project be graded?
 
-Shepard will grade all projects himself, which leaves no room for BS.
+Shepard will grade all projects himself, which leaves no room for BS. 
+
+> This is actually good, compared to leaving grading to ~~TAs~~ (more accurately, CAs or graders) who treat grading like a paycheck task instead of an academic responsibility.
+{: .notice--success}
+
+
+> What are the distributions?
+
+The final letter grade distributions are not published in Fall 2025, but here was the project distribution:
+
+![](/images/vlsi/grades.png)
+
+It's quite a left-heavy tail, with a similar mean to exams, but a much **wider IQR**
 
 > How are the exams?   
 
@@ -217,10 +240,6 @@ The point is: **if you fail, the class fails with you**. If you can't solve the 
 
 > I considered writing a "4321 Exam Guide." Shepard exam tricks definitely exist, but I don't think obsessing over them is productive in the long run.
 {: .notice--info}
-
-> What are the distributions
-
-The final letter grade distributions are not published in Fall 2025 :(
 
 > More to be added...
 
