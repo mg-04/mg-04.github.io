@@ -3,6 +3,9 @@ title: "4321 Adder and Shifter"
 permalink: /articles/vlsi/adder
 author: "Ming Gong, Charlotte Chen"
 date: 2025-12-24
+authors:
+    - Ming Gong
+    - Charlotte Chen
 ---
 
 {% if page.authors %}

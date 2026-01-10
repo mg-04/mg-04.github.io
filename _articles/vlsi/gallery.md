@@ -3,6 +3,9 @@ title: "Gallery"
 permalink: /articles/vlsi/gallery
 author: "Ming Gong, Charlotte Chen"
 date: 2025-12-29
+authors:
+    - Ming Gong
+    - Charlotte Chen
 ---
 
 {% if page.authors %}
@@ -23,6 +26,7 @@ Here's a picture page, just for fun
 
 {% include toc %}
 
+---
 
 # Overall Layout
 
@@ -40,6 +44,8 @@ Here's a picture page, just for fun
 
 ## 16x  
 ![](/images/vlsi/pretty/overall/overall_16.png)
+
+---
 
 # Various Layers
 
