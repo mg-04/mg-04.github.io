@@ -5,6 +5,12 @@ author: "Ming Gong, Charlotte Chen, William Wang"
 date: 2025-12-29
 ---
 
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
+
 {% include toc %}
 Now for the **final push!**
 

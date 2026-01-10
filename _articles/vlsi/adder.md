@@ -1,8 +1,15 @@
 ---
 title: "4321 Adder and Shifter"
 permalink: /articles/vlsi/adder
+author: "Ming Gong, Charlotte Chen"
 date: 2025-12-24
 ---
+
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
 
 {% include toc %}
 

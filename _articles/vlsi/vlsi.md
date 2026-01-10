@@ -61,7 +61,8 @@ Hopefully, this means less **pain and suffering**, but more **appreciation** for
     - [**DRC and LVS Tips**](/articles/vlsi/overall#drc-and-lvs-tips)
     - [Wrap Up!](/articles/vlsi/overall#wrap-up)
 
-Appendix. [Pictures!](/articles/vlsi/gallery)
+Appendix. [Pictures!](/articles/vlsi/gallery)  
+Appendix. [Class Notes](/courses/vlsi)
 
 ---
 

@@ -8,14 +8,13 @@ authors:
     - Charlotte Chen
 ---
 
-{% include toc %}
-
 {% if page.authors %}
 <div class="page__meta" style="margin: 0 0 1rem 0;">
   <strong>Authors:</strong> {{ page.authors | join: ", " }}
 </div>
 {% endif %}
 
+{% include toc %}
 
 Now you are at the next *stage* of 4321: the mighty **SRAM**
 

@@ -1,8 +1,15 @@
 ---
 title: "Gallery"
 permalink: /articles/vlsi/gallery
+author: "Ming Gong, Charlotte Chen"
 date: 2025-12-29
 ---
+
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
 
 Here's a picture page, just for fun
 

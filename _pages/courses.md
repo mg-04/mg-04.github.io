@@ -6,10 +6,10 @@ author_profile: true
 ---
 
 ## Fall 2025
-- CSEE 4824 Computer Architecture
-- CSEE 4321 Digital VLSI Design
+- CSEE 4824 [Computer Architecture](/courses/comparch)
+- EECS 4321 [Digital VLSI Circuits](/courses/vlsi)
 - CSEE 4823 Advanced Logic Design (+Lab)
-- ELEN 4312 [Analog Electronic Circuits](/courses/ec) (+Lab)
+- ELEN 4312 [Analog Electronic Circuits](/courses/aec) (+Lab)
 
 ## Spring 2025
 - COMS 4157 [Advanced Systems Programming](/courses/asp)
