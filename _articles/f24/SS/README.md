@@ -1,3 +1,9 @@
+---
+title: "README"
+permalink: /articles/f24/ss/readme
+date: 2025-1-10
+---
+
 # Exam Cheat Sheets for ELEN 3801 Signals and Systems
 Please obtain my permission before sharing this with others.
 
