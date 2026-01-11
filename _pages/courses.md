@@ -8,14 +8,14 @@ author_profile: true
 ## Fall 2025
 - CSEE 4824 [Computer Architecture](/courses/comparch)
 - EECS 4321 [Digital VLSI Circuits](/courses/vlsi)
-- CSEE 4823 Advanced Logic Design (+Lab)
+- CSEE 4823 Advanced Logic Design (+[Lab](/courses/ald))
 - ELEN 4312 [Analog Electronic Circuits](/courses/aec) (+Lab)
 
 ## Spring 2025
 - COMS 4157 [Advanced Systems Programming](/courses/asp)
 - CSEE 4119 Computer Networks
 - CSEE 4840 [Embedded Systems](/posts/2025/05/cs)
-- ELEN 3331 Electronic Circuits (+Lab)
+- ELEN 3331 [Electronic Circuits](/courses/ec) (+Lab)
 
 ## Fall 2024
 - COMS 3157 [Advanced Programming](/articles/ap)

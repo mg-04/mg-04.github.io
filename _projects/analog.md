@@ -11,7 +11,7 @@ authors:
 A two-stage OTA. See slides [here](https://docs.google.com/presentation/d/1X57wWXOmFS8GEKzkkm-Z88IRd0pvfkJFl6O1uyyqaIM/edit?usp=sharing) (Columbia accounts only)
 
 # Design
-- $$I_{DDmax}$$ = 446 uA
+- $$I_{DDmax}$$ = 446 $$\mu A$$
 - Gain = 9.988
 - Integrated noise power = 10.3 $$\mu V_{RMS}$$
 

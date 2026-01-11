@@ -19,7 +19,7 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 - **Columbia University**	  
     2024 - 2026  
     Bachelor of Science - **Computer Engineering**  
-    **GPA** 4.21/4.0
+    **GPA** 4.23/4.0
 
 - **Bard College at Simon's Rock**	  
     2021 - 2025  
