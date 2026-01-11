@@ -5,6 +5,12 @@ permalink: /courses/
 author_profile: true
 ---
 
+## Spring 2026
+- COMS 4118 Operating Systems I
+- COMS 4995 C++ Deep Dive for C Programmers
+- ELEN 4815 Random Signals and Noise
+- ELEN 6321 Advanced Digital Electronic Circuits
+
 ## Fall 2025
 - CSEE 4824 [Computer Architecture](/courses/comparch)
 - EECS 4321 [Digital VLSI Circuits](/courses/vlsi)
