@@ -164,34 +164,37 @@ Below is the 2-bit (4 bitline *pairs*) R/W schematic, closely following lecture
 
 
 ## Testing
-At schematic level, the common failures are:
+> Make sure the pre-extraction simulation works **very consistently** before starting layout, so you can isolate errors as early as possible.
+{: .notice--danger}
+
+At the schematic level, I’ve summarized a few common failure modes based on my own experience and that of my classmates.  
 - **Forgot to power** `vdd!`/`VDD!`/`VDD`. 
     - If node voltage hover near 0V, or 0.5V, it's very likely a power issue
     - The SRAM cell implicitly uses `vdd!`, and after extraction, it may appear as `VDD!`.
-    - At schematic level, there is a simple fix
+    - At schematic level, there is a simple way:
         - Use 1V `vdc` to drive `vdd!` relative to `gnd!`. 
         - Use 1V `vdc` to tie all other powers and `gnd!`
         - Use **0V** `vdc` to tie all other grounds and `gnd!`
 - **Wordline glitch**
     - Addresses much change only when `phi_2` is high. 
-    - Probe all wordlines to ensure they are **one-hot**
-- **Off-by-one inversion**: 
+    - Probe all wordlines to ensure they are **one-hot**. 
+- **Off-by-one inversion**
     - The lecture circuit is **inverted**
-    - Simple test: invert your input vector
+    - **Simple test:** invert your input vector
 - **Clock phase overlap**
     - The circuit should work fine if `phi_1` and `phi_2` are both 50% duty cycle. 
-    - If problems appear, try reducing the duty cycle for both, and slow down the period.
+    - If problems appear, try:
+        - Slow down the clock period
+        - Reduce the duty cycle for `phi_1` and `phi_2`
 - **Readability and writability**
-    - This is mostly handled in the SRAM cell. 
-    - Make sure the bitline has minimal **parasitics**.  Close-to-minimum sizings are fine.
+    - These are mostly handled in the SRAM cell. 
+    - Make sure the transistors on the bitline add minimal **parasitics**.  
+        - Close-to-minimum sizings are fine.
     - **Probe** `bit` and `bit_bar` to see if it's a skew issue
 - **Tristate issues**
     - Only **one driver** should be connected to `iobus`
     - When writing, `iobus` is driven by testbench sources. The read driver are set in [tristate](/articles/vlsi/sram#read-driver).
     - When reading, `iobus` is driven by the read driver. Use **transmission gates** in the **testbench** to **disconnect** the testbench sources!
-
-> Make sure your circuit functions **very well** at schematic level, or else post-sim will be a **nightmare**! 
-{: .notice--warning}
 
 
 ## Stick Diagram
@@ -280,7 +283,7 @@ An example of diffusion sharing and detour
 
 
 # Peripheral-Peripheral
-The rest of the circuit is what I call the "peripheral" of peripheral circuits, which include
+The rest of the circuit is what I call the "peripheral" of peripheral circuits, which include:
 - PMOS for cell precharge
 - Logic for `(write NAND phi_1)`
 - A couple of inverted control signals
@@ -295,7 +298,7 @@ This is where **overall** layout organization starts to hurt. The main challenge
 - Find a place to *prettily* place such transistors
 - Floorplan the grids that integrate well with the rest of the design
 
-> Here's how I did it:  
+> **Here's how I did it:  **
 1. Draw the core transistors within the grid. Pass DRC. (proof of concept)
 2. Roughly connect the remaining structures (even if not DRC clean) to pass LVS (proof of concept)
 3. Go back and refine the details. Resolve the remaining DRC issues.
@@ -318,14 +321,14 @@ With these decisions in-place, you can lay out the whole thing:
 It's a pain dealing with third-party libraries
 
 ## LVS
-You may get a few LVS warnings on **M2 pin short**. This is from the `v1d1_x1` cells' pin **naming**. The M4 pins are fine.
+You may get a few LVS warnings on **M2 pin short**. This is from the `v1d1_x1` cells' **M2 pin** **label**. The M4 pins are fine.
 - We externally connected power through **M4** and M2 at the **boundary**
-- As long as you leave the shorted pins in the center untouched, it should work fine
+- As long as you leave the "shorted" pins in the center untouched, it should work fine
 
 ![](/images/vlsi/sram/lvs_clean.png)
 
 ## PEX
-You might get the following warnings:
+You might get the following warnings from extraction:
 
 ```
 WARNING: [FDI3034] Schematic instance XI24/XI63/XI3/XI0<0>/M0 not found, use found instance XI24/XI63/XI3/XI0<0> instead.
@@ -333,6 +336,7 @@ WARNING: [FDI3046] Failed to create mapping for device "nchpg_sr". Netlist for "
 WARNING: [FDI3014] Could not find cell mapping for device nchpg_sr. Ignoring instance XI24/XI63/XI3/XI0<0>/M0.
 ```
 
-Those are fine, since the internal schematic for the 6T SRAM cell is not shown. The entire instance is used for the extraction.
+Those are fine, since the internal schematic for the 6T SRAM cell is not given. The **entire instance** will be used for the extraction.
+- If post-extraction simulation doesn't work, try a more tolerant testbench timing [here](/articles/vlsi/sram#testing)
 
 They post-extraction delays are around 50 ns.
