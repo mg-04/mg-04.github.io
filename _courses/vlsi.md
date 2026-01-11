@@ -1,16 +1,15 @@
 ---
-title: Digital VLSI Circuits
+title: VLSI Class Notes
 permalink: /courses/vlsi
 date: 2025-11-28
 ---
 
-> This page is under construction.
-
 # Notes
-1. MOS Transistors
-2. Layout
-3. Sequential Logic
-4. BEOL
+The notes are organized sequentially with the lecture.
+1. [MOS theory, linear model](/files/courses/vlsi/VLSI.pdf)
+2. [Layout, nonstatic logic](/files/courses/vlsi/VLSI-layout.pdf)
+3. [Sequential logic, project blocks](/files/courses/vlsi/VLSI-seq.pdf)
+4. [BEOL, finfet, arrays](/files/courses/vlsi/VLSI-beol.pdf)
 
 # Final Project
 1. [Intro](/articles/vlsi)
