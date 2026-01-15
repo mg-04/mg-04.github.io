@@ -86,7 +86,7 @@ Our final design features:
 This article is not an official TA guide. It's independent from the [official layout tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 {: .notice--info}
 
-Our project is **FAR from perfect**. In fact, when I was writing this, I constantly realize how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in countless ways.
+Our project is **FAR from perfect**. In fact, when I was writing this, I constantly realize how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in this and that ways.
 
 That's okay.
 
@@ -94,7 +94,7 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 
 ## Caveats
 - This guide is based on *our* design project. Our design evolution produces a lot of naming inconsistencies. Nevertheless, all names should make common sense and fit local context.
-- Apologies for the image quality and resolution inconsistencies. Everything should be readable, but some thumbnails may not render properly in your browser. Download them if necessary.
+- Apologies for the image quality and resolution inconsistencies. Everything should be readable, but some thumbnails may not render properly. You can always download them.
 - There **are** suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you  
     - Spot any mistakes or inefficiencies
     - Have suggestions on improving this guide
@@ -139,7 +139,7 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the unique **p
 {: .notice--warning}
 
 Yes. Not linearly, but **exponentially**  
-Consider PS4 the *bare minimum*. You will likely need a few **all-nighters** after that
+Consider PS4 the *bare minimum*. You will likely need a few **all-nighters** after that  
 **START EARLY!!!** Start them **the day they are released**.
 
 ---
@@ -179,7 +179,7 @@ Talk to them. Compare your layouts. Steal their ideas
 
 > **Ask Chat.**
 
-LLMs are **surprisingly helpful**, especially at fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat to make it lay it out for you, but it is super useful at explaining concepts and interpreting unknown errors, as well as debugging Cadence.
+LLMs are **surprisingly helpful**, especially at fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat to make it lay it out for you, but it is super useful at explaining concepts and interpreting errors.
 
 ---
 
