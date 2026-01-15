@@ -1,5 +1,5 @@
 ---
-title: "VLSI Mini Processor"
+title: "Columbia 4321 VLSI Project: Mini Processor"
 permalink: /articles/vlsi
 date: 2026-1-6
 authors:
@@ -71,6 +71,8 @@ Our final design features:
 - ~1100 µm² core area
 - 4 Metal layers  
 - 2.1 µm data path bit pitch (2 SRAM columns)
+- DRC and LVS clean
+- 2 GHz frequency
 - High data path density and regularity  
 - Static CMOS ripple-carry adder
 - Transmission gate logarithmic shifter (buffered)
@@ -155,7 +157,8 @@ At that point, you are not buying time. You are taking out a **high-interest loa
 
 > **How would my partner and I coordinate?**
 
-Introducing **"Out of Order Layout"**... Most of the design projects can be parallelized: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
+Introducing **"Out of Order Layout"**...   
+Most of the design projects can be parallelized: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
 
 
 ## Resources
@@ -220,7 +223,10 @@ He's really good at being **off-by-one**, whether it's index, an inverter, or a 
 
 > **What are some examples that suck?**
 
-Just find (and buy) the ones on **StudyDocu** or similar sites. Most of these **suck**. I've also shared some of our own inefficient early designs, as concrete counterexamples of what to avoid.
+- Go to **StudyDocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
+- Go on LinkedIn, stalks some seniors and masters, check their "projects". If they even bother to put their layout, chances are it **probably sucks** anyway.
+
+Trying not to be too toxic here. I've also shared some of our own inefficient designs, as concrete counterexamples of what to avoid.
 
 
 ## Grading
@@ -231,7 +237,7 @@ Just find (and buy) the ones on **StudyDocu** or similar sites. Most of these **
 
 Shepard will grade all projects himself, which leaves no room for BS. 
 
-> This is actually good, compared to leaving grading to EE ~~TAs~~ (more often, CAs or graders) who treat it like a paycheck task, rather than any academic responsibility.
+> This is actually a blessing compared to leaving grading to EE ~~TAs~~ (more often, CAs or graders) who treat it like a paycheck task, rather than any academic responsibility.
 {: .notice--success}
 
 ---

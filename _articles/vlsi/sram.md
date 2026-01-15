@@ -265,7 +265,7 @@ With careful tuning and diffusion sharing, you can make everything perfectly fit
 ![](/images/vlsi/sram/rw_real.png){: .align-center}
 
 ## What if things don't fit?
-Cry, but not too much
+Cry, but not too much. You still have to face it
 1. **Check the basics.** Start with diffusion sharing, efficient routing/viaing, avoid oversizing, etc.
 2. **Resize device.** People constantly miss that. Ask you self: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
 3. **Use straight lines.** Bends increase contention not only itself, but its neighbors as well! Try to make lines as straight as possible, or **shift** them away from tight regions.
