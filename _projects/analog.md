@@ -8,6 +8,12 @@ authors:
     - Ming Gong
 ---
 
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
+
 A two-stage OTA. See slides [here](https://docs.google.com/presentation/d/1X57wWXOmFS8GEKzkkm-Z88IRd0pvfkJFl6O1uyyqaIM/edit?usp=sharing) (Columbia accounts only)
 
 # Design

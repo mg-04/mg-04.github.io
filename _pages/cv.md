@@ -19,7 +19,7 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 - **Columbia University**	  
     2024 - 2026  
     Bachelor of Science - **Computer Engineering**  
-    **GPA** 4.23/4.0
+    **GPA** 4.23/4.33
 
 - **Bard College at Simon's Rock**	  
     2021 - 2025  
@@ -172,14 +172,13 @@ Summer 2020
 ---
 
 # Awards and Honors
-- Columbia Dean's List (2 times, 2025)
+- Columbia Dean's List (2 times, 2026)
 - Fisher Poster Session Contest, 2nd place (2024)  
 - Simon's Rock Dean's List (6 times, 2024)  
 - SCUDEM VIII Outstanding Award (2023)  
 - AP Scholar with Distinction (2021)  
 - VEX V5 Regional Champion & State finalist (2021)
 - National Merit Commended Scholars Class of 2021, top 3-4% (2021)
-- USACO Silver (2020)  
 - Microsoft Technology Associate Programming (Python) (2020)
 
 

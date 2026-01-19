@@ -35,7 +35,7 @@ Hopefully, this means less **pain and suffering**, but more **appreciation** for
     - [Layout](/articles/vlsi/inverter#layout)
     - [DRC](/articles/vlsi/inverter#drc)
     - [LVS](/articles/vlsi/inverter#lvs)
-    - [**Virtuoso FAQ**](/articles/vlsi/inverter#faq)
+    - [**Virtuoso FAQ**](/articles/vlsi/inverter#virtuoso-faq)
 3. [**Project Plan**](/articles/vlsi/floorplan)
     - [Architecture](/articles/vlsi/floorplan#architecture)
     - [ISA](/articles/vlsi/floorplan#isa)

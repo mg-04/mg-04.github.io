@@ -106,12 +106,16 @@ Skip to Shepard's Calibre DRC [tutorial](https://www.bioee.ee.columbia.edu/cours
 
 
 These are the main types of DRC errors for TSMC N65:
-- **Spacing**
-- **Area**
-    - Width, or shape
-- **Enclosure**
-    - E. M1 must enclose `CO` by more than 0.25 um
-- **Body connection**
+- **Shape rules**
+    - Shapes must satisfy a **minimum area**
+    - Shapes must have a **minimum width**
+    - Shapes must also meet **constraints**, such as a minimum side length
+- **Inter-shape rules**
+    - **Enclosure**: for example, a Via must be properly enclosed by its associated Metal layers
+        - Sometimes, minimum **overlap** or enclosure area also apply.
+    - **Spacing**: minimum spacing must be maintained
+        - between shapes of the **same layer**, and
+        - between shapes on **different layers**, such as spacing to body connections
 
 Here's a (simplified) list from textbook pages 118-119
 
