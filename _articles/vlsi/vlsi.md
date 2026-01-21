@@ -108,7 +108,7 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 
 ---
 
-# General Advice and FAQ
+# General FAQ, Advice, and Folklore
 > This is a generic FAQ. You can find specific debugging tips in [later articles](/articles/vlsi/#contents)
 {: .notice--info}
 
@@ -185,9 +185,8 @@ LLMs are **surprisingly helpful**, especially at fetching and reading instructio
 
 > **What are some other resources?**
 
-There are a lot. The **textbook** is really good.  
-But by week 5, your brain will *reject new PDFs*.  
-These articles try to *distill* those resources, listing the ones that I find helpful.
+There are a lot. The **textbook** is really good. But your brain will soon *reject new PDFs*.  
+This guide serves to *distill* those resources, linking the ones that I find helpful.
 
 ## Design
 > **Run DRC and LVS early and often.**
@@ -210,7 +209,7 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 
 > **Don't blindly follow Shepard.**
 
-He's really good at being **off-by-one**, whether it's index, an inverter, or a 90-degree rotation. So don’t take anything on faith. Make sure you understand what’s happening yourself.
+He's really good at being **off-by-one**, whether it's index, an inverter, or a 90-degree rotation. So make sure you understand what’s happening yourself.
 
 ---
 
@@ -224,13 +223,13 @@ He's really good at being **off-by-one**, whether it's index, an inverter, or a 
 > **What are some examples that suck?**
 
 - Go to **StudyDocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
-- Go on LinkedIn, stalks some seniors and masters, check their "projects". If they even bother to put their layout, chances are it **probably sucks** anyway.
+- Go on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother to put their layout, chances are it **probably sucks** anyway.
 
-Trying not to be too toxic here. I've also shared some of our own inefficient designs, as concrete counterexamples of what to avoid.
+~~Trying not to be too toxic here.~~ I've also shared some of our own inefficient designs, as concrete counterexamples of what to avoid.
 
 
 ## Grading
-> This class is **curved**, so if you are an A tier student, with "proper" work, you should expect an A tier grade.
+> This class is **curved**, so if you are an A tier student, with *"proper"* work, you should expect an A tier grade.
 {: .notice--info}
 
 > **How will the project be graded?**

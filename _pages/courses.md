@@ -9,7 +9,7 @@ author_profile: true
 - COMS 4118 Operating Systems I
 - COMS 4995 C++ Deep Dive for C Programmers
 - ELEN 4815 Random Signals and Noise
-- ELEN 6321 Advanced Digital Electronic Circuits
+- ELEN 6321 Advanced Digital Electronic Circuits (+Lab)
 
 ## Fall 2025
 - CSEE 4824 [Computer Architecture](/courses/comparch)
