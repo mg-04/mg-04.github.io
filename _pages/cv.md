@@ -8,6 +8,9 @@ redirect_from:
   - /resume/
 ---
 
+{% include toc %}
+
+
 New York, NY \| [(682) 559-3699](tel:6825593699) 
 
 {% include base_path %}
@@ -27,42 +30,22 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
     **GPA** 3.99/4.0	  
     **Scholarships**: Faculty Scholarship ($1500), Merit Scholarship ($15,000), Center for Talented Youth Scholarship ($30,000)
 
+<!-->
 - **Coppell High School (Grade 9-10)** 	  
     2019 - 2021  
     **GPA** 3.98/4.0 unweighted; 4.25/4.0 weighted
-
+<-->
 ---
 
 # Skills
-- **Technology:**  Microsoft Office, LaTeX, Maple, Premiere Pro
-- **Programming languages:** Python, C/C++, System Verilog, MATLAB, Java, Javascript
-- **Circuit Design:** Cadence, [SPICE](/articles/cc), PCB Layout
-- **Languages:** English (fluent), Chinese (native), Spanish (basic)
-- **Research:** VLSI design, wearable device, solid-state physics, signal processing, machine learning
+- **Hardware/EDA**: Cadence Virtuosi, Quartus, FPGA, PCB layout, SPICE
+- **Programming:** C/C++, Python, System Verilog, MATLAB, Git
+- **ML**: Pytorch, CNN/U-Net, LLM fine-tuning (SFT)
+- **Domains**: Digital VLSI, mixed-signal/analog, embedded systems, signal processing
 
 ---
 
-# [Courses](/courses)
 
-**Computer Engineering:**  
-Fundamentals of Computer Systems, Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Design, Digital VLSI Circuits, Advanced Digital Electronic Systems
-
-**Computer Science:**  
-Discrete Mathematics, Algorithms & Data Structures, Advanced Programming, Advanced Systems Programming, Computer Science Theory, Artificial Intelligence, Networked Autonomous Systems, Operating Systems, C++ Deep Dive for C Programmers, Machine Learning
-
-**Electrical Engineering:**  
-Analog & Digital Electronics, Circuit Analysis, Signals and Systems, Electronic Circuits, Solid State Devices and Matters, Analog Electronic Circuits, Random Signals and Noise
-
-**Mathematics:**  
-Linear Algebra, Multivariable Calculus, Ordinary Differential Equations, Probability and Statistics, Real Analysis, Abstract Algebra
-
-**Physics:**  
-Quantum Physics, Relativity & Cosmology, Classical Mechanics,  Electrodynamics, Statistical Thermodynamics 
-
-**Chemistry:**  
-General Chemistry, Organic Chemistry  
-
----
 
 # Experience
 **Teaching Assistant**  
@@ -117,6 +100,35 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 
 - Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
 
+# Selected [Projects](/projects)
+- 8-bit VLSI Mini Processor
+<!-->- Full custom layout in Cadence Virtuoso, DRC and LVS clean<-->
+- FPGA Gaussian Elimination Accelerator
+- Capacitivite ECG Fabric Sensing Prototype
+
+
+---
+
+# [Courses](/courses)
+
+**Computer Engineering:**  
+Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Design, Digital VLSI Circuits, Advanced Digital Electronic Systems
+
+**Computer Science:**  
+Advanced Programming, Advanced Systems Programming, Computer Science Theory, Artificial Intelligence, Networked Autonomous Systems, Operating Systems, C++ Deep Dive for C Programmers, Machine Learning
+
+**Electrical Engineering:**  
+Solid State Devices and Matters, Analog Electronic Circuits, Random Signals and Noise
+
+**Mathematics:**  
+Probability and Statistics, Real Analysis, Abstract Algebra
+
+**Physics:**  
+Quantum Physics, Relativity & Cosmology, Classical Mechanics,  Electrodynamics, Statistical Thermodynamics 
+
+**Chemistry:**  
+Organic Chemistry  
+
 ---
 
 # Activities
@@ -126,7 +138,7 @@ Oct. 2024 - present
 - Coordinating with the team lead and programming team to design robot electronics and control software.
 - Event supervisor for Robot Tour at the Columbia University Science Olympiad Invitational.
 
-**Executive Board, Columbia IEEE**
+**Executive Board, Columbia IEEE**  
 Aug. 2025 - present
 - Maintained the Columbia IEEE [website](https://ieee.ee.columbia.edu/). 
 - Hosting Open Project Space, beginner-friendly Arduino workshops
@@ -140,22 +152,24 @@ Sept. 2024 - present
 - Organizing social, cultural, and pre-professional events for Chinese students at Columbia.
 - Collaborating with a team of 10 to manage GCC's website and social media platforms. 
 
+<!-->
 **Member, Columbia University Chinese Students and Scholars Association**  
 Sept. 2024 - May 2025
 - Member of the Community Development and Engagement Department.
 - Contributed to planning large-scale social activities and community-building initiatives across campus.
+<--->
 
 **President, Simon's Rock Robotics Club**  
 Sept. 2021 - May 2024
 - Established a team of 10 from scratch; planned and allocated team budgets.
 - Lectured Arduino lessons for beginners. 
-- Coordinated school-wide robot shows at club fairs and family weekends.
 
 **Member, Simon's Rock STEM Competition Club**  
 Sept. 2021 - May 2024
 - Conducted weekly math modeling sessions, dedicating 3 hours per week to lead a team of 5.
 - Competed in SCUDEM VIII and won the Outstanding Award.
 
+<!-->
 **Captain, AI & Robotics Academy**  
 Sept. 2019 - May 2021
 - Led a team of 8 in building, programming, and operating VEX robots.
@@ -167,20 +181,23 @@ Jan. - Apr. 2020
 
 **Online program, Center for Talented Youth at John Hopkins University**  
 Summer 2020
-- Course "Vocabulary, grammar and writing using STEM"; 
+- Course "Vocabulary, Grammar and Writing Using STEM"; 
 - Course "Crafting the Essay."
+<-->
 
 ---
 
 # Awards and Honors
-- Columbia Dean's List (2 times, 2026)
+- Columbia Dean's List (3 times, 2026)
 - Fisher Poster Session Contest, 2nd place (2024)  
 - Simon's Rock Dean's List (6 times, 2024)  
 - SCUDEM VIII Outstanding Award (2023)  
 - AP Scholar with Distinction (2021)  
+<!-->
 - VEX V5 Regional Champion & State finalist (2021)
 - National Merit Commended Scholars Class of 2021, top 3-4% (2021)
 - Microsoft Technology Associate Programming (Python) (2020)
+<-->
 
 
 
@@ -193,7 +210,15 @@ Electronics, Lego, combat robots; road trip, swimming, hiking, badminton, tennis
 
 - **Michael Bergman**  
 Emily H. Fisher Professor of Physics, Bard College at Simon's Rock  
-<!--[(413) 528-7432](tel:4135287432) | [bergman@simons-rock.edu](mailto:bergman@simons-rock.edu) -->
+
+- **Xia Zhou**  
+Associate Professor of Computer Science, Columbia University
+
+- **Martha Kim**  
+Associate Professor of Computer Science, Columbia University
+
+- **Stephen Edwards**  
+Associate Professor of Computer Science, Columbia University
 
 - **David Vallancourt**  
 Senior Lecturer in Electrical Engineering, Columbia University
@@ -201,16 +226,12 @@ Senior Lecturer in Electrical Engineering, Columbia University
 - **Xiaodong Wang**  
 Professor of Electrical Engineering, Columbia University
 
-- **Stephen Edwards**  
-Professor of Computer Science, Columbia University
 
 - **David Myers**  
 Professor of Chemistry, Bard College at Simon's Rock  
-<!--[(413) 528-7436](tel:4135287436) | [myersd@simons-rock.edu](mailto:myersd@simons-rock.edu)-->
 
 - **Miha Habič**  
 Assistant Professor of Mathematics, Bard College at Simon's Rock  
-<!--[(413) 528-7292](tel:4135287292) | [mhabic@simons-rock.edu](mailto:mhabic@simons-rock.edu)-->
 
 <!---
 Teaching
