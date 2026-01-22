@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Ming Gong"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -29,29 +29,29 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 
 - **Coppell High School (Grade 9-10)** 	  
     2019 - 2021  
-    **GPA** 3.98/4.0 Unweighted, 4.25/4.0 Weighted
+    **GPA** 3.98/4.0 unweighted; 4.25/4.0 weighted
 
 ---
 
 # Skills
 - **Technology:**  Microsoft Office, LaTeX, Maple, Premiere Pro
-- **Programming languages:** Python, C, System Verilog, MATLAB, Java, Javascript
+- **Programming languages:** Python, C/C++, System Verilog, MATLAB, Java, Javascript
 - **Circuit Design:** Cadence, [SPICE](/articles/cc), PCB Layout
 - **Languages:** English (fluent), Chinese (native), Spanish (basic)
-- **Research:** Wearable device, solid-state physics, signal processing, data analysis, machine learning
+- **Research:** VLSI design, wearable device, solid-state physics, signal processing, machine learning
 
 ---
 
 # [Courses](/courses)
 
 **Computer Engineering:**  
-Fundamentals of Computer Systems, Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Design, Digital VLSI Circuits
+Fundamentals of Computer Systems, Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Design, Digital VLSI Circuits, Advanced Digital Electronic Systems
 
 **Computer Science:**  
-Discrete Mathematics, Algorithms & Data Structures, Advanced Programming, Advanced Systems Programming, Computer Science Theory, Artificial Intelligence, Networked Autonomous Systems 
+Discrete Mathematics, Algorithms & Data Structures, Advanced Programming, Advanced Systems Programming, Computer Science Theory, Artificial Intelligence, Networked Autonomous Systems, Operating Systems, C++ Deep Dive for C Programmers, Machine Learning
 
 **Electrical Engineering:**  
-Analog & Digital Electronics, Circuit Analysis, Signals and Systems, Electronic Circuits, Solid State Devices and Matters, Analog Electronic Circuits
+Analog & Digital Electronics, Circuit Analysis, Signals and Systems, Electronic Circuits, Solid State Devices and Matters, Analog Electronic Circuits, Random Signals and Noise
 
 **Mathematics:**  
 Linear Algebra, Multivariable Calculus, Ordinary Differential Equations, Probability and Statistics, Real Analysis, Abstract Algebra
@@ -65,9 +65,10 @@ General Chemistry, Organic Chemistry
 ---
 
 # Experience
-**Head Teaching Assistant**  
+**Teaching Assistant**  
 Columbia University | Jan. 2025 - present  
-- Head TA for Fundamentals of Computer Systems (CSEE 3827)
+- TA for Embedded Systems (CSEE 4840)
+- Former head TA for Fundamentals of Computer Systems (CSEE 3827)
 - Developed and optimized exam problems. Created supplemental materials to enhance and extend lecture content.
 - Disability Services [notetaker](/resources) for Fundamentals of Computer Systems, Signals and Systems, and Electronic Circuits
 

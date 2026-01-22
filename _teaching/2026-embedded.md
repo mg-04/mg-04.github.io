@@ -8,4 +8,4 @@ date: 2026-01-01
 #location: "City, Country"
 ---
 
-To be continued...
+[Course Page](https://www.cs.columbia.edu/~sedwards/classes/2024/4840-spring/index.html)
