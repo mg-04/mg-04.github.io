@@ -8,7 +8,6 @@ redirect_from:
   - /resume/
 ---
 
-{% include toc %}
 
 
 New York, NY \| [(682) 559-3699](tel:6825593699) 
@@ -30,11 +29,7 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
     **GPA** 3.99/4.0	  
     **Scholarships**: Faculty Scholarship ($1500), Merit Scholarship ($15,000), Center for Talented Youth Scholarship ($30,000)
 
-<!-->
-- **Coppell High School (Grade 9-10)** 	  
-    2019 - 2021  
-    **GPA** 3.98/4.0 unweighted; 4.25/4.0 weighted
-<-->
+
 ---
 
 # Skills
@@ -152,13 +147,6 @@ Sept. 2024 - present
 - Organizing social, cultural, and pre-professional events for Chinese students at Columbia.
 - Collaborating with a team of 10 to manage GCC's website and social media platforms. 
 
-<!-->
-**Member, Columbia University Chinese Students and Scholars Association**  
-Sept. 2024 - May 2025
-- Member of the Community Development and Engagement Department.
-- Contributed to planning large-scale social activities and community-building initiatives across campus.
-<--->
-
 **President, Simon's Rock Robotics Club**  
 Sept. 2021 - May 2024
 - Established a team of 10 from scratch; planned and allocated team budgets.
@@ -169,22 +157,6 @@ Sept. 2021 - May 2024
 - Conducted weekly math modeling sessions, dedicating 3 hours per week to lead a team of 5.
 - Competed in SCUDEM VIII and won the Outstanding Award.
 
-<!-->
-**Captain, AI & Robotics Academy**  
-Sept. 2019 - May 2021
-- Led a team of 8 in building, programming, and operating VEX robots.
-- State semifinalist in 2020; regional champion and state quarterfinalist in 2021.
-
-**Volunteer, Coppell Biodiversity Education Center**  
-Jan. - Apr. 2020
-- Hosted activities for children and contributed to the community garden.
-
-**Online program, Center for Talented Youth at John Hopkins University**  
-Summer 2020
-- Course "Vocabulary, Grammar and Writing Using STEM"; 
-- Course "Crafting the Essay."
-<-->
-
 ---
 
 # Awards and Honors
@@ -193,12 +165,6 @@ Summer 2020
 - Simon's Rock Dean's List (6 times, 2024)  
 - SCUDEM VIII Outstanding Award (2023)  
 - AP Scholar with Distinction (2021)  
-<!-->
-- VEX V5 Regional Champion & State finalist (2021)
-- National Merit Commended Scholars Class of 2021, top 3-4% (2021)
-- Microsoft Technology Associate Programming (Python) (2020)
-<-->
-
 
 
 ---
