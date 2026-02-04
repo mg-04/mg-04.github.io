@@ -44,7 +44,7 @@ declare alias ll-'ls -alF'
 cat .bashrc     # to see all alias
 ```
 
-**`diff`**
+`diff`
  ``` shell
 diff a b        # displays difference between two files
 ```
@@ -460,6 +460,7 @@ void f(void) {
 - If compile `bar.c` **alone**, **won't compile**!, since x is undefined.
 - If add a line `int x;`, both files will compile, but can't link, since **duplicate variable names**!
 Need to add `extern`. Tells the compiler to "assume" that you will find (resolve) `x` at **link time**. 
+
 ```c
 extern int x;
 void g(void) {
@@ -475,7 +476,7 @@ void g(void) {
 Defined outside `main()`. Always accessible, unless "covered" by a local variable
 ### 2b. File static variable
 In declaration in `foo.c`, use `static int = 100`.
-**`static`** makes `extern int x` in **other files** not work. `x` is for `foo.c` **file only**!
+`static` makes `extern int x` in **other files** not work. `x` is for `foo.c` **file only**!
 - Compile is fine, but **link time**, global variable not found
 
 ### 2c. Block static variable
@@ -670,7 +671,7 @@ C guarantees it's fine. You can't deref it tho.
 ## GUT
 Grand Unified Theory of pointers and arrays
 
-if **`p = &a[0]`**, 
+if `p = &a[0]`, 
 1. `a[i]` <=> `*(p+i)`
 2. `a` <=> `&a[0]`. Most cases, an array name will be **converted** to the pointer of the first element.
 3. `a[i]` <=> `*(p+i)` <=> `*(&a[0] + i)` <=> `*(a + i)`
@@ -705,7 +706,7 @@ int *f() {
 
  How to use array out of the function then: **heap allocation: `malloc()`**
 - argument: how many bytes using. 
-- returns a **`void *` pointer** to the first byte of the space you want.
+- returns a `void *` pointer to the first byte of the space you want.
     - `void *` because `malloc()` doesn't know the type
 
 ```c
@@ -851,10 +852,11 @@ void qsort( void *base,         // ANY TYPE pointers accepted
 - var type: `int (*) (const void *, const void *)`
 
 - Function input: two `const void *`s
-- Function output: **`int`**
+- Function output: `int`
 
 `compar` is in the **code** section of the memory
 - `compar`'s signature needs to **exactly** match the parameters in `qsort`.
+
 ```c
 int compare_int(const void *a, const void *b) {
     int x = *(int *) a;
@@ -866,6 +868,7 @@ int compare_int(const void *a, const void *b) {
     //return x - y;
 }
 ```
+
 Usage:
 ```c
 int a[5] = {100, 37, -2, 200, 0};
@@ -900,7 +903,7 @@ Spiral rule:
     - `[5]`: `f3` is an **array of `5` elements**. 
     - `*`: `f3` is an array[5] of **pointers**
     - `(...)`: `f3` is an array of pointers **to functions**
-    - `int`: `f3` is an array of pointers to functions **that return `int`**
+    - `int`: `f3` is an array of pointers to functions **that return** `int`
 
 `(*)` is a pointer to something that you call
 
@@ -908,7 +911,7 @@ Spiral rule:
 Similar to Java's `class`, but you can't put functions inside
 Typically defined outside `main()`. Usually in the header file. 
 ## `struct` layout
-Don't forget the **`;`!!!**
+Don't forget the `;`!!!
 ```c
 struct Point {
     int x;
@@ -961,7 +964,7 @@ printf("%p", p2 + 1);   // + 4 bytes
 (*p1).x = 5;            // dereference, the select
 p1->x = 5;            // same thing
 ```
-**`->`** means dereference the **pointer**, then select
+`->` means dereference the **pointer**, then select
 
 ```c
 struct Point pt[1];     // array of ONE element, same thing 
@@ -1119,7 +1122,8 @@ Optional space or `\` after `-I`
 ### `-L` and `-l`
 Looks for **archive** files, similar to `-I`
 - `-L` tells **where** to look. Must appear **before** object files
-- `-l` tells **what** archive file too look (**`lib<lib-name>.a`**). Must appear **after** object files
+- `-l` tells **what** archive file to look (`lib<lib-name>.a`). Must appear **after** object files
+
 ```shell
 gcc -Lsome/path foo.o bar.o -lbaz
 ```
@@ -1175,12 +1179,13 @@ If `cat` not given an argument (file name), it will behave like `echo`
 - program `<` file
 
 ## Useful functions and examples
+
 ```Shell
 cat *.txt | tr ' ' '\n' | sort | uniq > lecture-words
 ```
 - `cat *.txt` concatenates all `.txt` files in pwd and outputs to `stdout`
 - `tr ' ' '\n'` reads from `stdin`, translates every space to new line, and writes in `stdout`
-- `sort
+- `sort`
 - `uniq`: removes duplicate lines. Need to be `sort`ed
 
 ```shell
@@ -1193,13 +1198,13 @@ w | tail -n +3 | grep "vim" | cut -d " " -f 1 | sed 's/$/@colubmia.edu/' | sort 
 - `grep`: matches REGEX 
 	- E. `grep "vim.*c"`: gets all `vim` users working on `.c` files
 - `cut`: cuts content afterwards
-	- - **`-d " "`** specifies the delimiter `" "`to use for separating fields.
-	- **`-f 1`** tells `cut` to select the first field from the split text (i.e., everything before the first space in each line).
+	- `-d " "` specifies the delimiter `" "`to use for separating fields.
+	- `-f 1` tells `cut` to select the first field from the split text (i.e., everything before the first space in each line).
 - `sed`: find and replace
-	- **`s/`**: substitute
-	- **`$`**: **end of a line** in `sed`.
-	- **`@colubmia.edu`** text you're appending at the end of each line.
-	- **`/`** delimiters separating the parts of the `sed` command.
+	- `s/`: substitute
+	- `$`: **end of a line** in `sed`.
+	- `@colubmia.edu` text you're appending at the end of each line.
+	- `/` delimiters separating the parts of the `sed` command.
 
 Collect all users using `vim` and their emails, sort them, and remove duplicated (by `uniq`). Save the output to `vimusers`.
 
@@ -1275,7 +1280,7 @@ In OS perspective, the file organization is complex (lots of metadata). Costly t
 - What if the line is longer than 99 characters (`buf` - `\0`)? `buf` will read up to 99, terminating with a `\0`. The next time `fgets()` is called, it will **continue**.
 - What if I make size of `buf` small, like 20? 
 	- When `fgets()` called, it only read 19 characters. The next iteration of `fget` picks it up, BUT `lineno` is changed no matter what. BUG!!
-	- Want to see if the last read character is **`\n`**. If not, don't print the line number.
+	- Want to see if the last read character is `\n`. If not, don't print the line number.
 
 ```c
         if (fputs(buf, stdout) == EOF) {
@@ -1326,6 +1331,7 @@ Mode argument:
 | `"r+"` | Read/write  |           | fail             | beginning                        |
 | `"w+"` | Write/read  | overwrite | create           | beginning                        |
 | `"a+"` | Append/read | keep      | create           | end (init stream pos is sys dep) |
+
 Whatever`+` is the primary mode (treat as if you open with that `mode`)
 
 ### Binary file
@@ -1353,7 +1359,9 @@ Writes an arbitrary number of bytes (`n` objects) out to a file stream, includin
 - `p`: Pointer to the first element of an array of these items
 - `size`: size of each item
 - `n`: number of items
+
 Returns the number of successfully written objects (<`n` if error)
+
 ```c
 fprintf(fp, "hello, world\n");
 fputs("hello world\n", stdout);  // No string formatting
@@ -1382,6 +1390,7 @@ fread(buf, 1, sizeof(buf), fp);  // reads 1024 bytes
 `fread()` better for arbitrary binary data
 - Returns the number of objects successfully (not partially) read
 - If less than requested, `feof()` and `ferror()` will distinguish `EOF` or fail
+
 ### `EOF`
 Happens when reach the end of the byte sequence. Cursor is past the end of the stream
 When reach `EOF`, `fgetc()`, `fgets()`, `fread()` will **unblock** immediately (same for error though)
@@ -1399,7 +1408,7 @@ sleep(3);
 printf("world\n");
 ```
 `"hello..."` will not be printed after `sleep`
-Line buffering: `printf()` and other `FILE` output functions **buffer** bytes give to `stdout` and wait until reaching **`\n`** (terminal printing is expensive)
+Line buffering: `printf()` and other `FILE` output functions **buffer** bytes give to `stdout` and wait until reaching `\n` (terminal printing is expensive)
 
 ```c
 fprintf(stderr, "hello...");
@@ -1444,6 +1453,7 @@ int fseek(FILE *file, long offset, int whence)
 - `%g`: `double` (trailing zeros not printed)
 - `%s`: string (`char *`)
 - `%p`: pointer address (`void *`)
+
 ```c
 int scanf(const char *format, ...);
 int fscanf(FILE *stream, const char *format, ...)
@@ -1473,6 +1483,7 @@ All **return**  the number of `char`s printed (not including `'\0'`).
 - It returns the number of `char`s it **would have printed** if it is allowed more space
 	- If this return value not used, there will be a **warning**
 	- Use `-Wno-format-truncation` flag to disable this warning
+
 ## `cutstr.c`
 If just run as it is, nothing will be run
 
@@ -1504,7 +1515,7 @@ If you have your own database , so
 
 Size of `struct MdbRed` is 40 bytes, first 16 being `name`, second 24 being `msg`
 
-`mdb-add` calls `fgets()` and `strcpy()` or `snprintf()` to copy `name`, cutting it off at 15 (allow **`NULL`** at the end!!). Then copies 23 characters of `msg`
+`mdb-add` calls `fgets()` and `strcpy()` or `snprintf()` to copy `name`, cutting it off at 15 (allow `NULL` at the end!!). Then copies 23 characters of `msg`
 
 For lookup, 
 1. Opens the file in `"rb"` mode
@@ -1541,9 +1552,12 @@ xxd endian-demo.host
 - Right: ASCII file content (`.` for non-printable)
 
 CLAC happens to store integer in **memory** in **reverse**, in unit of **byte**
+
+```
 +----+----+----+----+
 |  03  |  02  |  01  |  00  |
 +----+----+----+----+
+```
 
 - This is specific to CLAC, called **little Endian** machine.
 	- Before, computers are small, so they started with 8-bit register (8086). For backward **compatibility**, this reverse representation is better
@@ -1582,8 +1596,8 @@ Each **instance** of a running program is a **process**. There can be many proce
 Each process has its own ID (PID)
 - `getpid()`: obtains a process's PID
 - `getppid()`: obtains PID of the parent. 
-## `fork()`
 
+## `fork()`
 `fork()` is a special **system call**. Needs to ask the underlying OS to do special stuff. 
 ```c
 pid_t fork(void);
@@ -1600,7 +1614,7 @@ Returns the PID (`pid_t`) of its **newly created** child. **Many** children can 
 - If parent, `p > 0` (returns child PID)
 - If child, `p = 0` (no child, not a valid process ID)
 - If failed, `p < 0` (E. too many already)
-Then, both parent and child resume from the place where **`fork()` returned**. Values may be different
+Then, both parent and child resume from the place where `fork()` **returned**. Values may be different
 - No guarantee of execution **order**, unless explicitly coordinated (`waitpid()`)
 
 `partnet-child.c`
@@ -1654,6 +1668,7 @@ ps af
  \_ .a/.out
 	 \_ /bin/bash
 ```
+
 ### `execl()`
 `execl()` replaces the current process image with a new process image (program). 
 - Process continues: PID and PPID retained
@@ -1666,14 +1681,17 @@ int execl(const char *pathname, const char *arg, ...
 - `pathname`: the name of the program that gets turned into
 - `arg`: variadic function, list of strings to form the `argv` array passed to the `main()` of the next function
 	- Terminated by `(char *)NULL`
+
 ```c
 execl("/bin/echo", "/bin/echo", "hello", (char *)NULL);
 printf("This should not be printed");
 ```
 This imitates `/bin/echo hello`
 - If `execl()` goes *well*, it **will not return**. The process is turned into `echo`, and terminates. The old program is **erased**.
+
 ### `execv()`
 `execv()` takes the `argv` array directly:
+
 ```c
 int execv(const char *pathname, char **argv);
 
@@ -1907,6 +1925,7 @@ nc 127.0.0.1 10000           # localhost IP address
 
 - Server **listens** to a port number
 - Client **connects** to the server with server's IP and port number the server is listening on
+
 Convert host name to address:
 ```c
 struct hostent *he;
@@ -1970,6 +1989,7 @@ cat mypipe | nc -l 20000 | ./mdb-lookup-cs3157 > mypipe    # same thing
 - `stderr`: 2
 - New files opened fd: likely 3
 `toupper.c` needs to be compiled with `STDIO` or `UNIX` defined. Reads stuff and prints capitalized.
+
 `UNIX`
 ```c
 ssize_t write(int fd, const void *buf, size_t count);
@@ -2026,6 +2046,7 @@ A `connect()`ed socket will be create later by `accept()` on the server side
 	-  Now there is a virtual pipeline where packets are byte flow.
 5. One side calls `close()` after communication done
 	- Other side detects it and calls `close()` as well
+
 ```c
 int serv_fd = socket(...);
 bind(serv_fd, ... /* server address */);
@@ -2094,7 +2115,7 @@ int recv(int sockfd, void *buf, size_t len, int flags);
 
 ### Wrapped `FILE` Descriptor
 No syscalls equivalent to `fgets()` or `fprintf()` :(
-We can **wrap** a file descriptor using `fdopen()` (*d*!), returns a **`FILE *`** 
+We can **wrap** a file descriptor using `fdopen()` (*d*!), returns a `FILE *`
 ```c
 FILE *sock_fp = fdopen(sock_fd, "wb");
 fprintf(sock_fp, ...);
@@ -2241,7 +2262,7 @@ send(sock, &size_net, sizeof(size_net), 0);
 	```
 
 	Use `fread(buf, 1, sizeof(buf), fp)`. We may need to **partial** read 4K and know how many bytes read.
-	For `send()`, the size needs to be **`n`**, to **prevent writing garbage**
+	For `send()`, the size needs to be `n` to **prevent writing garbage**
 
 3. Receive and verify file size **acknowledgement** from server
 ```c
@@ -2249,7 +2270,7 @@ uint32_t ack, ack_net;
 int r = recv(sock, &ack_net, sizeof(ack_net), MSG_WAITALL);
 ack = ntohl(ack_net);
 ```
-*`MSG_WAITALL`* tells `recv()` to **block** until full request is satisfied (4-byte `ack_net` filled).
+`MSG_WAITALL` tells `recv()` to **block** until full request is satisfied (4-byte `ack_net` filled).
 If still problem:
 - If `r != sizeof(ack_net)`,
 	- `r < 0`, `recv()` failed
@@ -2376,7 +2397,7 @@ Host: clac.cs.columbia.edu:80       # header
 ```
 - Request line: method (`GET`), URI (`index.html`), HTTP version (`HTTP/1.0`), space separated
 - Header: field name, colon, field value
-- New line is **`\r\n`!!**
+- New line is `\r\n`!!
 Sends a metadata header (browser receives all these), separated by **blank line**, followed by actual file (HTML, binary, music, video, etc.)
 
 ### Server response
@@ -2423,7 +2444,7 @@ Must work for all binary files
 
 ## Lab 7
 ### Part 1
-`clac:80` files are in `/var/www/html` folder
+`clac:80` files are in `/var/www/html` folder  
 When `GET /index.html HTTP/1.0`, we don't start from **root directory**. `/var/ww/html` is **configured** to be the **web root** by a configuration file
 
 `https://clac.cs.columbia.edu:80/~jae/index.html` will look to **user specific** web root directory, configured to be `~/html` if it sees "`/~jae`"
@@ -2434,10 +2455,13 @@ Challenge: get the permission right. Needs `x` permission for all intervening di
 `http-server`: Now write server that receives a `GET` request, parse, read file, and send to browser
 
 Use browser to test webserver
-`./http-server 8000 /home/jae/html/cs3157 127.0.0.1 9000`
-`./http-server 5201 ~/html/cs3157 localhost 9201`
-On browser go to `clac.cs.columbia.edu:5201/tng`
-Now connect to `http://clac:8000/tng/index.html`, it will send `GET /tng/index.html HTTP/1.0`
+
+```shell
+./http-server 8000 /home/jae/html/cs3157 127.0.0.1 9000
+./http-server 5201 ~/html/cs3157 localhost 9201
+```
+On browser go to `clac.cs.columbia.edu:5201/tng`  
+Now connect to `http://clac:8000/tng/index.html`, it will send `GET /tng/index.html HTTP/1.0`  
 Now the page displayed will be served by **my own server**
 - Browser receives `index.html` from first GET, will render it, and then makes **another** `GET` request to fetch the image
 	- When `GET` file downloaded ended, the server **closes** the connection (read, save, ..., until `fread()` returns 0)
@@ -2447,8 +2471,8 @@ Now the page displayed will be served by **my own server**
 	- The first time, browser asks for `/favicon.ico`, the icon in URL bar. Server sends `404 Not Found`
 
 ### Part 2(b)
-If send **hard-coded** URL `clac:8000/mdb-lookup`, my server would respond with a textbox.
-May see weird `" " 400 Bad Request`s, just respond
+If send **hard-coded** URL `clac:8000/mdb-lookup`, my server would respond with a textbox.  
+May see weird `" " 400 Bad Request`s, just respond  
 When type something in window, browser will send `GET /mdb-lookup/key=AP`, `mdb-lookup` will respond, server will make it pretty, and send it to browser
 
 The source page can be downloaded, with a `<form>`
@@ -2474,7 +2498,7 @@ Most C code are valid in C++
 
 Start by writing a simple C program
 
-`struct` (aka **`class`**)
+`struct` (aka `class`)
 - You can omit `struct` keyword
 - Can contain other **methods**
 - Access rights
