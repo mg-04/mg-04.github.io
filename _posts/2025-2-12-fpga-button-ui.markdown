@@ -40,7 +40,7 @@ end
 The result is about 6 Hz (0.16 s).
 
 ## Short press
-When thinking of implementing both long and short presses, I though of a state machine.
+I used a state machine to implement both long and short presses.
 
 **States:** off, short, long
 
@@ -201,4 +201,5 @@ An immediate follow-up is to optimize the counters. Now I used three counters:
 - `counter` for long press cycle
 - `press_counter` for short --> long transition
 - `deb_counter` for switch debouncing  
-I'm pretty sure there's a way to simplify that.
+
+I'm pretty sure you can reuse some of them.

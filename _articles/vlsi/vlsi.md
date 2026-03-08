@@ -86,7 +86,7 @@ Our final design features:
 This article is not an official TA guide. It's independent from the [official layout tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 {: .notice--info}
 
-Our project is **FAR from perfect**. In fact, when I was writing this, I constantly realize how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in this and that ways.
+Our project is **FAR from perfect**. In fact, when I was writing this, I constantly cry about how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in this and that ways.
 
 That's okay.
 
@@ -112,12 +112,13 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 > This is a generic FAQ. You can find specific debugging tips in [later articles](/articles/vlsi/#contents)
 {: .notice--info}
 
+
 ## Logistics
 
 > **What are the prereq?**
 
 **Officially**: ECircuits and Fundies  
-**Realistically**: a resilient spine, functioning caffeine metabolism, and enough tears
+**Realistically**: a resilient spine, functioning caffeine metabolism, and enough tears...
 
 ---
 
@@ -209,7 +210,7 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 
 > **Don't blindly follow Shepard.**
 
-He's really good at being **off-by-one**, whether it's index, an inverter, or a 90-degree rotation. So make sure you understand what’s happening yourself.
+He's awesome, but he's also really good at being **off-by-one**, whether it's index, an inverter, or a 90-degree rotation. So make sure you understand what’s happening yourself.
 
 ---
 
@@ -236,7 +237,7 @@ He's really good at being **off-by-one**, whether it's index, an inverter, or a 
 
 Shepard will grade all projects himself, which leaves no room for BS. 
 
-> This is actually a blessing compared to leaving grading to EE ~~TAs~~ (more often, CAs or graders) who treat it like a paycheck task, rather than any academic responsibility.
+> This is actually a blessing compared to leaving grading to EE ~~TAs~~ (more often, CAs or graders) who treat it like a paycheck task, rather than **any** academic responsibility.
 {: .notice--success}
 
 ---
@@ -256,15 +257,15 @@ It's quite a left-heavy tail, with a similar mean to exams, but a much **wider I
 They are relatively easy to prepare. There are two types of exam problems:
 1. **Freebies**  
     These are straightforward. Some may involve a lot of computation, but as long as you understand the concepts and have done the practice problems, you’ll be fine.
-2. **Problems that "tell the boys apart from the men"** (according to Shepard)  
-    Those are multi-part problems that require complex calculations or new concepts/equations, things that you haven't seen. Sometimes even the TA got them wrong. Sometimes Shepard himself finds the problem unsolvable. Who knows.
+2. **Problems that "tell the boys apart from the men"** (according to Shepard who's not trying to be sexist)  
+    Those are multi-part problems that require complex calculations or new concepts/equations, things that you haven't seen. Sometimes even the TA got them wrong. Sometimes Shepard himself finds the problem unsolvable. Who knows...
 
 > Over the years, the proportion of the second type has increased, as Shepard was "running out of easy problems"
 {: .notice--warning}
 
-The point is: **if you fail, the class fails with you**. If you can't solve the trick questions, neither can most of the class. Don't stress too much about the exam. Just do all 4 practices, understand the fundamentals, and you’ll be in good shape.
+The point is: **if you fail, the class fails with you**. If you can't solve the trick questions, neither can *most* of the class. Don't stress too much about the exam.
 
-> I considered writing a "4321 Exam Guide." Shepard exam tricks definitely exist, but I don't think obsessing over them is productive in the long run.
+> I've thought of writing a "4321 Exam Guide," but I don't think obsessing over exam tricks is productive in the long run.
 {: .notice--info}
 
 ---
