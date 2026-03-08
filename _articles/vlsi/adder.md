@@ -32,12 +32,12 @@ Now comes the first real task of 4321: adder
 
 
 # Overview
-- Fix a bit pitch of 2.1 um
-- Use ripple carry
-- Make a (rough) stick diagram before you start
+- Use [ripple carry](/articles/vlsi/adder#design)
+- Make a (rough) [stick diagram](/articles/vlsi/adder#stick-diagram) before you start
+- Fix a [bit pitch](/articles/vlsi/adder#1-bit-pitch) of 2.1 um
 - Edge DRC
-- Do not use the default Vias
-- Diffusion share, and if you can't, put as closely as DRC allows
+    - [Diffusion share](/articles/vlsi/adder#3-diffusion-sharing), and if you can't, put as closely as DRC allows
+    - Do not use the [default Vias](/articles/vlsi/adder#6-m2-connections-and-vias)
 - Leave room for upper-level Metal routing
 
 > Below are some inefficiencies in our implementation. Don't copy them blindly.
@@ -65,6 +65,8 @@ and a lot of more...
 ---
 
 # Design
+> Ripple carry is **simple**, yet more than sufficient for this 8-bit project.
+{: .notice--success}
 
 A ripple carry adder/subtracter has 3 parts: 
 - Subtraction inversion
@@ -208,9 +210,9 @@ We still have a few sources and drains left. Let's route them vertically using *
 
 1. Select the **VIA1** `drw` layer. Draw a **0.1 um x 0.1 um** square at the intersection
 2. A VIA1 requires enclosure by **both** M1 and M2, of either:
-    - **0.04 um** on 2 opposite edges (we almost always choousese this one)
+    - **0.04 um** on 2 opposite edges (almost always preferred)
     - 0.03 um on all 4 edges
-3. Use the ruler tool to measure 0.04. Use `s` to extend the both layers.
+3. Use the ruler tool (`k`) to measure 0.04. Use `s` to extend the both layers.
     - You may be tempted to extend M1 to the left, but that will violate the M1 spacing rules with the `GND!` wire.
 4. Done! Check DRC
 
