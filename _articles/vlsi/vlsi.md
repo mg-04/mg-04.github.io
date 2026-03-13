@@ -265,7 +265,8 @@ They are relatively easy to prepare. There are two types of exam problems:
 
 The point is: **if you fail, the class fails with you**. If you can't solve the trick questions, neither can *most* of the class. Don't stress too much about the exam.
 
-> I've thought of writing a "4321 Exam Guide," but I don't think obsessing over exam tricks is productive in the long run.
+> I've thought of writing a "4321 Exam Guide," but I don't think obsessing over exam tricks is productive in the long run. Have a life. 
+- You can check out some class notes [here](/courses/vlsi)
 {: .notice--info}
 
 ---
@@ -275,11 +276,12 @@ The point is: **if you fail, the class fails with you**. If you can't solve the 
 ---
 
 # Special Thanks
-Many thanks to the following folks for their help and guidance throughout this project:
+
+Many thanks to the following for their help and guidance throughout this project:
 - My teammate Charlotte Chen;
 - Professor Ken Shepard;
 - TAs Kaden Du, James Jagielski; 
 - Former students Yuxi Zhang, Yingrui Wei;
-- Current students David Kim, Stephen Ogunmwonyi, Simon Mao.
+- Current students David Kim, Stephen Ogunmwonyi, Simon Mao, Nico Alarcon.
 
 Additional thanks to William Wang on sharing his [PLA layout](/articles/vlsi/overall#layout-by-william-wang)

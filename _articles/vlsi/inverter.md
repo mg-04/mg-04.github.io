@@ -38,26 +38,31 @@ Before drawing, it's important to understand the layers we have:
 > You can double click on a layer to make it exclusively visible, and inspect each layer individually
 {: .notice--info}
 
-### Body
-- `NW` (N-well): where PMOS sit
-- `SUB` (P-well, substrate): where NMOS sit
+### MOSFET
+A MOSFET is a piece of silicon with 4 terminals: Gate, Source, Drain, and Body. S and D are typically *symmetrical*.
+
+**Body**  
+- `NW` (N-Well): where PMOS sits
+- `SUB` (P-Well, SUBstrate): where NMOS sits
     - Marked by `PDK`
 
-### Diffusion
+**Source/Drain** (diffusion)  
 - `OD` (Oxide Diffusion): source and drain
-- `PP` (P implant mask)
+- `PP` (P imPlant mask, ~~pimp~~)
     - `PP` ∩ `OD`: p+ diffusion
-- `NP` (N implant mask)
+- `NP` (N imPlant mask)
     - `NP` ∩ `OD`: n+ diffusion
 
-### Gate
-- `PO` (Plysillicon): used for gate
+**Gate**  
+- `PO` (POlysillicon)
 
 ### Metal
-Electrical wires from silicon
-- `CO` (Contact, Ohmic): connects `PO`/`OD` with `M1`  
+Now we need to connect metal wires to the devices
+- `CO` (COntact, Ohmic): connects `PO`/`OD` (silicon) with `M1` (metal)
 - `M1`: First Metal layer
 - `VIA1`: connects `M1` and `M2`
+- `M2`: Second Metal layer
+- `VIA2`: connects `M2` and `M3`
 - and so on...
 
 
