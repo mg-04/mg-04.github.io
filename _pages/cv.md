@@ -33,7 +33,7 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 ---
 
 # Skills
-- **Hardware/EDA**: Cadence, Synopsis, Quartus, FPGA, PCB layout, SPICE
+- **Hardware/EDA**: Cadence, Synopsys, Quartus, FPGA, PCB layout, SPICE
 - **Programming:** C/C++, Python, System Verilog, MATLAB, Git
 - **ML**: Pytorch, CNN/U-Net, LLM fine-tuning (SFT)
 - **Domains**: Digital VLSI, mixed-signal/analog, embedded systems, signal processing
