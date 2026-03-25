@@ -18,6 +18,11 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 ---
 
 # Education
+- **Carnegie Mellon University**
+    2026 - 2031
+    Incoming PhD - **Electrical and Computer Engineering**
+
+
 - **Columbia University**	  
     2024 - 2026  
     Bachelor of Science - **Computer Engineering**  
