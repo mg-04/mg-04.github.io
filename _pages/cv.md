@@ -33,7 +33,7 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 ---
 
 # Skills
-- **Hardware/EDA**: Cadence Virtuosi, Quartus, FPGA, PCB layout, SPICE
+- **Hardware/EDA**: Cadence, Synopsis, Quartus, FPGA, PCB layout, SPICE
 - **Programming:** C/C++, Python, System Verilog, MATLAB, Git
 - **ML**: Pytorch, CNN/U-Net, LLM fine-tuning (SFT)
 - **Domains**: Digital VLSI, mixed-signal/analog, embedded systems, signal processing
@@ -48,7 +48,7 @@ Columbia University | Jan. 2025 - present
 - TA for Embedded Systems (CSEE 4840)
 - Former head TA for Fundamentals of Computer Systems (CSEE 3827)
 - Developed and optimized exam problems. Created supplemental materials to enhance and extend lecture content.
-- Disability Services [notetaker](/resources) for Fundamentals of Computer Systems, Signals and Systems, and Electronic Circuits
+- Disability Services [notetaker](/ods) for a variety of CSEE courses
 
 **Research Assistant with Dr. Xia Zhou**  
 Columbia University	| Jan. 2025 - present  
