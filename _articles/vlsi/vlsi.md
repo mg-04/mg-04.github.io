@@ -109,15 +109,17 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 ---
 
 # General FAQ, Advice, and Folklore
-> This is a generic FAQ. You can find specific debugging tips in [later articles](/articles/vlsi/#contents)
+> This is a generic FAQ. You can find specific debugging tips in [later articles](/articles/vlsi#contents)
 {: .notice--info}
+
+
 
 
 ## Logistics
 
 > **What are the prereq?**
 
-**Officially**: ECircuits and Fundies  
+**Officially**: [ECircuits](/courses/ec) and [Fundies](/courses/fundies)  
 **Realistically**: a resilient spine, functioning caffeine metabolism, and enough tears...
 
 ---
@@ -130,9 +132,12 @@ Half of the class were having teammate issues; the other half **are** the teamma
 
 > **Should I take this class for *fun*?**
 
-Yes, if you enjoy circuits, symmetry, compulsive optimization, or the unique **pleasure** of being **tortured** by Shepard.
+Yes, if you enjoy circuits, symmetry, compulsive optimization, or the **unique pleasure** of being **tortured** by Shepard.
 
 ## Workload
+
+> **Warning**: Roast coming up... If you can't take it, **stop scrolling down**. In fact, if this bothers you, you probably shouldn't take the class either. Cadence is much less forgiving than I am...
+{: .notice--warning}
 
 > **Do the PSets get harder and harder?**
 
@@ -159,7 +164,7 @@ At that point, you are not buying time. You are taking out a **high-interest loa
 > **How would my partner and I coordinate?**
 
 Introducing **"Out of Order Layout"**...   
-Most of the design projects can be parallelized: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
+Most of the design projects can be **parallelized**: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
 
 
 ## Resources
@@ -224,7 +229,7 @@ He's awesome, but he's also really good at being **off-by-one**, whether it's in
 > **What are some examples that suck?**
 
 - Go to **StudyDocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
-- Go on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother to put their layout, chances are it **probably sucks** anyway.
+- ~~Go on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother to put their layout, chances are it probably sucks anyway.~~
 
 ~~Trying not to be too toxic here.~~ I've also shared some of our own inefficient designs, as concrete counterexamples of what to avoid.
 
@@ -257,7 +262,7 @@ It's quite a left-heavy tail, with a similar mean to exams, but a much **wider I
 They are relatively easy to prepare. There are two types of exam problems:
 1. **Freebies**  
     These are straightforward. Some may involve a lot of computation, but as long as you understand the concepts and have done the practice problems, you’ll be fine.
-2. **Problems that "tell the boys apart from the men"** (according to Shepard who's not trying to be sexist)  
+2. **Problems that "tell the boys apart from the men"** (according to Shepard who's "not trying to be sexist")  
     Those are multi-part problems that require complex calculations or new concepts/equations, things that you haven't seen. Sometimes even the TA got them wrong. Sometimes Shepard himself finds the problem unsolvable. Who knows...
 
 > Over the years, the proportion of the second type has increased, as Shepard was "running out of easy problems"

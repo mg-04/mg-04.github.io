@@ -45,7 +45,7 @@ Because the SRAM cell is extremely dense, we use **column multiplexing**, sharin
 
 # SRAM Array
 
-> Throughout this article, an array written as $$x\times y$$ always mean **row** $$\times$$ **column**
+> Throughout this article, an array written as $$x\times y$$ always means **row** $$\times$$ **column**
 {: .notice--info}
 
 ## 8x8 Layout
@@ -79,7 +79,7 @@ Below is its *intensely* annotated stick diagram. I highlighted the cell at `wor
 ![](/images/vlsi/sram/sram_stick.jpg)
 
 
-Meanwhile, appreciate its elegance, and try to make your own layout just as cute
+While appreciating its elegance, try to make your own layout just as cute
 
 
 > Don't forget to check **DRC and LVS** of the SRAM cell. If there are nontrivial errors, **tell Shepard to fix immediately!**
@@ -88,9 +88,9 @@ Meanwhile, appreciate its elegance, and try to make your own layout just as cute
 
 
 ## 4x16 Layout
-Enough appreciation--time to build. 
+Enough appreciation---it's time to build. 
 
-The provided 8×4 array is constructed from 4×4 blocks. Your task is to reorganize this into 4×16. As long as you understand what’s happening, this is very manageable.
+The provided 8×4 array is constructed from 4×4 blocks. Your task is to reorganize this into **4×16**. As long as you understand what’s happening, this is very manageable.
 
 You can group 4x4 cells together, and then piece 4 of them for 4x16.
 
@@ -124,16 +124,16 @@ You can group 4x4 cells together, and then piece 4 of them for 4x16.
 
 # Decoder
 
-Shepard has probably showed off multiple decoder designs in lecture and practice exams. However, most people converted to a **static CMOS decoder** for this project
+Shepard has probably showed off multiple decoder designs in lecture and practice exams. However, for this project, most people end up converting to a **static CMOS decoder**.
 - With column MUXing, only **two** rows need decoding. 
 - Wordlines must be **qualified** with `phi_1`. 
     - Address change happens when `phi_2` is high
     - Evaluation happens when `phi_1` is high. 
-    - Multiple (**even transiently**) active wordlines will lead to **catastrophic** data corruption, as cells will be shorted.
+    - Multiple (**even transiently**) active wordlines will short the cells, leading to **catastrophic** data corruption.
 
 We chose a 4-in-1 **NAND-NOT** layout that fits neatly within four SRAM rows and scales naturally with predecoding.
 
-> The drawback? Kind of huge in width. It will be better for *this* project if we can put them to a more squared shape.
+> **The drawback?** Kind of huge in width. It will be better for *this* project if we can put them to a more squared shape.
 {: .notice--warning}
 
 
@@ -169,9 +169,9 @@ Below is the 2-bit (4 bitline *pairs*) R/W schematic, closely following lecture
 
 At the schematic level, I’ve summarized a few common failure modes based on my own experience and that of my classmates.  
 - **Forgot to power** `vdd!`/`VDD!`/`VDD`. 
-    - If node voltage hover near 0V, or 0.5V, it's very likely a power issue
-    - The SRAM cell implicitly uses `vdd!`, and after extraction, it may appear as `VDD!`.
-    - At schematic level, there is a simple way:
+    - If node voltages hover near 0V, or 0.5V, it's very likely a power issue
+    - The SRAM cell implicitly uses `vdd!`. After extraction, it may appear as `VDD!`.
+    - At schematic level, there is a simple way to power all:
         - Use 1V `vdc` to drive `vdd!` relative to `gnd!`. 
         - Use 1V `vdc` to tie all other powers and `gnd!`
         - Use **0V** `vdc` to tie all other grounds and `gnd!`
@@ -185,7 +185,7 @@ At the schematic level, I’ve summarized a few common failure modes based on my
     - The circuit should work fine if `phi_1` and `phi_2` are both 50% duty cycle. 
     - If problems appear, try:
         - Slow down the clock period
-        - Reduce the duty cycle for `phi_1` and `phi_2`
+        - Reduce the duty cycle
 - **Readability and writability**
     - These are mostly handled in the SRAM cell. 
     - Make sure the transistors on the bitline add minimal **parasitics**.  
@@ -226,7 +226,7 @@ Now to the interesting (and hard) part. In lecture, we know that we can control 
 write AND iobus<i> AND phi_1
 ```
 
-`iobus<i>` will differ from bits, but `write AND phi_1` is the same. We **factor out** the shared term and supply it from **outside**, drastically reducing the complexity inside!
+`(write AND phi_1)` is the same for all bits. We can **factor out** the shared term and supply it from **outside**, drastically reducing the complexity for each cell!
 
 And bubble push:
 ```
@@ -239,7 +239,7 @@ We need `iobus_bar<i>` for `bit_bar<i>`. Fortunately, there's ample space to squ
 
 ![](/images/vlsi/sram/rw.png){: .align-center}
 
-Vertical Poly allows aggressive diffusion sharing if S/D Contact and Metal is aligned **directly** under the M2 bit grid. Otherwise, space is wasted quickly.
+Vertical Poly allows aggressive diffusion sharing if S/D Contact and Metal is aligned **directly** under the M2 bit grid. Otherwise, you may waste a lot of space
 
 
 ## Read Driver
@@ -255,7 +255,7 @@ We then used a (600/300)x3 C²MOS tristate bus driver. Note that it has a stack 
 ![](/images/vlsi/sram/tristate.png){: .align-center}
 
 > Do not add inverters **after** a tristate driver. That defeats the point.
-{: .notice--warning}
+{: .notice--danger}
 
 
 
@@ -265,17 +265,17 @@ With careful tuning and diffusion sharing, you can make everything perfectly fit
 ![](/images/vlsi/sram/rw_real.png){: .align-center}
 
 ## What if things don't fit?
-Cry, but not too much. You still have to face it
+Cry, but don't overcry. You still have to face it
 1. **Check the basics.** Start with diffusion sharing, efficient routing/viaing, avoid oversizing, etc.
-2. **Resize device.** People constantly miss that. Ask you self: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
-3. **Use straight lines.** Bends increase contention not only itself, but its neighbors as well! Try to make lines as straight as possible, or **shift** them away from tight regions.
-4. **Detour.** If you've really tried, take a detour. Find **gaps** on each layer, and consider moving your routing to these gaps to free space for the tight area.
-5. **(Temporarily) move to a higher Metal layer.** Only do this for short, local routing, as it may horribly interfere with your global routing plans. Also vias are not cheap.
-6. **Accept tradeoffs.** If there are truly no ways, increase spacing. Note that this is not an *excuse* to sloppy layouts. In our case spacing should always be increased vertically (the horizontal dimension fixed at 2.1 um).  
+2. **Resize device.** People constantly miss that. Ask yourself: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
+3. **Use straight lines.** Bent routes increase contention not only itself, but its neighbors as well! Try to make routes as straight as possible, or **shift** them away from tight regions.
+4. **Detour.** If you've really tried, take a detour. Find **gaps** on each layer, and consider moving your routing to these gaps.
+5. **(Temporarily) move to a higher Metal layer.** This is detour on another dimension. Only do this for short, local routing, as it may horribly interfere with your global routing plans. Vias are also not cheap.
+6. **Accept tradeoffs.** If there are truly no ways, you have to increase your spacing. Note that this is not an *excuse* to sloppy layouts.  
 A slightly area-inefficient design is not a failure --- It's a deliberate **tradeoff**. In fact, you can often reclaim the space by fitting in power straps, inverters, or decaps. 
 
 ![](/images/vlsi/sram/contention.png)
-An example of diffusion sharing and detour
+An example of diffusion sharing and detour (M1)
 
 ---
 > **CONGRATS ON FINISHING HALF THE DESIGN PROJECT!!!**
@@ -283,7 +283,7 @@ An example of diffusion sharing and detour
 
 
 # Peripheral-Peripheral
-The rest of the circuit is what I call the "peripheral" of peripheral circuits, which include:
+The rest of the circuit is what I call the "peripheral" of peripheral circuits, which includes:
 - PMOS for cell precharge
 - Logic for `(write NAND phi_1)`
 - A couple of inverted control signals
@@ -296,9 +296,9 @@ This is where **overall** layout organization starts to hurt. The main challenge
     - I chose area over delay, not accurately optimizing large-fanout drivers.
 - Find a place to place such transistors
 - Find a place to *prettily* place such transistors
-- Floorplan the grids that integrate well with the rest of the design
+- Floorplan the grids. Integrate well with the rest of the design
 
-> **Here's how I did it:  **
+> **Here's how I did it:**  
 1. Draw the core transistors within the grid. Pass DRC. (proof of concept)
 2. Roughly connect the remaining structures (even if not DRC clean) to pass LVS (proof of concept)
 3. Go back and refine the details. Resolve the remaining DRC issues.
@@ -318,7 +318,7 @@ With these decisions in-place, you can lay out the whole thing:
 ---
 
 # Calibre
-It's a pain dealing with third-party libraries
+It's a pain dealing with third-party libraries.
 
 ## LVS
 You may get a few LVS warnings on **M2 pin short**. This is from the `v1d1_x1` cells' **M2 pin** **label**. The M4 pins are fine.

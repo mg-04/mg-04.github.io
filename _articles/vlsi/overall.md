@@ -18,7 +18,7 @@ authors:
 {% include toc %}
 Now for the **final push!**
 
-> Again, most of this can be done in **parallel** via *successive approximation* (aka trial-and-error) toward an optimal layout. However, **plan your PLA and data path carefully before touching Virtuoso**. Good planning speed up convergence :)
+> Again, most of this can be done in **parallel** via *successive approximation* (aka trial-and-error) toward an optimal layout. However, **plan your PLA and data path carefully before touching Virtuoso**. Good planning speeds up convergence :)
 {: .notice--info}
 
 
@@ -273,10 +273,10 @@ If your datapath looks good, your control path probably doesn’t (relatively). 
 
 
 ### Schematic Trick
-Your probably need multiple decaps in parallel.
-1. Create a `decap` symbol, which will have all decaps in parallel
-2. Add an `nch`. Adjust *fingers* and *multipliers* to fit in your largest dead area.
-    - It would be really good if the decap fits your power grid
+Your probably need multiple decaps transistors in parallel:
+1. Create a `decap` symbol, which will contain all decaps.
+2. Instantiate an `nch`. Adjust with, length, *fingers*, and *multipliers* to fit in your largest dead area.
+    - It would be really good if the decap contacts fit your power grid
 3. In the layout, "Update All From Source". **Share** the diffusion and gates!
 4. Tune the sizes, if needed
 
