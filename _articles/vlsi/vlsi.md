@@ -136,7 +136,7 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the **unique p
 
 ## Workload
 
-> **Warning**: Roast coming up... If you can't take it, **stop scrolling down**. In fact, if this bothers you, you probably shouldn't take the class either. Cadence is much less forgiving than I am...
+> **Warning**: Roast coming up... If you can't take it, **stop scrolling down**. In fact, if this bothers you, you probably shouldn't take the class either. Cadence is much less forgiving than this...
 {: .notice--warning}
 
 > **Do the PSets get harder and harder?**

@@ -10,6 +10,7 @@ author_profile: true
 - COMS 4995 C++ Deep Dive for C Programmers
 - ELEN 4815 Random Signals and Noise
 - ELEN 6321 Advanced Digital Electronic Circuits (+Lab)
+- COMS 4771 Machine Learning
 
 ## Fall 2025
 - CSEE 4824 [Computer Architecture](/courses/comparch)
@@ -65,3 +66,13 @@ author_profile: true
 ## Fall 2021
 - CHEM 100 Chemistry I
 - MATH 220 Linear Algebra
+
+---
+
+## 2020-2021
+- AP Calculus BC
+- AP Physics C
+- AP CSP
+
+## 2019-2020
+- AP Calculus AB
