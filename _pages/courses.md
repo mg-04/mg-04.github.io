@@ -7,7 +7,7 @@ author_profile: true
 
 ## Spring 2026
 - COMS 4118 Operating Systems I
-- COMS 4995 C++ Deep Dive for C Programmers
+- COMS 4995 [C++ Deep Dive for C Programmers](/courses/cpp)
 - ELEN 4815 Random Signals and Noise
 - ELEN 6321 Advanced Digital Electronic Circuits (+Lab)
 - COMS 4771 Machine Learning
