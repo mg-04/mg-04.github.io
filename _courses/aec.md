@@ -4,8 +4,6 @@ permalink: /courses/aec
 date: 2025-11-28
 ---
 
-> This page is under construction.
-
 # Notes
 1. [Feedback](/files/courses/analog/Analog.pdf)
 2. [Frequency Response](/files/courses/analog/Analog-freq.pdf)

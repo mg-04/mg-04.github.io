@@ -1,11 +1,11 @@
 ---
-title: C 2 Cpp
+title: C2Cpp
 permalink: /courses/cpp
 ---
 
-> This page is under construction, up until Variadic
 
 ODS Notes
-1. [Essential 6, Container, Inheritance](/articles/cpp/1new)
-2. [Iterators, Metaprogramming](/articles/cpp/2new)
-3. [Smart Pointers...] (under construction)
+1. [Fundamentals](/articles/cpp/new)
+2. [Container and Inheritance](/articles/cpp/1new)
+3. [Iterators and Metaprogramming](/articles/cpp/2new)
+4. [Smart Pointers...](/articles/cpp/3new)

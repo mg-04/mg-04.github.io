@@ -3,21 +3,14 @@ title: Operating Systems
 permalink: /courses/os
 ---
 
-OS notes page
 
-- Intro
-- Unix Systems Programming (see [ASP Notes](courses/asp))
-- System Calls
-- Run/Wait Queues
-- Interrupts
-- Synchronization
+> This page, and all its children, are under construction.
+{: .notice--warning}
 
-## Assembly
-<ol start="11">
-  <li><a href="/articles/asp/11">x86-64 Assembly</a></li>
-  <li><a href="/articles/asp/12">Interrupts</a></li>
-  <li><a href="/articles/asp/13">ELF</a></li>
-  <li><a href="/articles/asp/14">Linking</a></li>
-  <li><a href="/articles/asp/15">UNIX File System</a></li>
-  <li><a href="/articles/asp/16">Linux Container</a></li>
-</ol>
+ODS notes page
+
+1. [Systems Programming](/articles/os/1-asp) (see [ASP Notes](courses/asp))
+2. [Scheduling](/articles/os/2-sched)
+3. [Memory Management](/articles/os/3-mm)
+4. [Disk and IO](/articles/os/4-io)
+

@@ -5,6 +5,9 @@ permalink: /ods/
 author_profile: true
 ---
 
+> This page is under construction.
+{: .notice--warning}
+
 I like notetaking as a habit, and I have some stories to share that I find interesting
 - In elementary school, I have no sense of studying, no sense of reviewing before the exam, and of course, no sense of taking notes. I constantly do above average, but never close to the top. I ended up in a mid-tier public school
 - In middle school, I was paied attention to peiople taking notes, and I preprared notebooks for various subjects. At that time, my notes followed my personal style: very detailed, very cramped together
@@ -25,8 +28,17 @@ Over the years, the role of traditional note-taking is fading away, from posted 
 # COMS 4771 Machine Learning
 - Under construction
 
+# COMS 4995 C++ Deep Dive for C Programmers
+- Under construction (almost done)  
+1. [Fundamentals](/articles/cpp/new)
+2. [Container and Inheritance](/articles/cpp/1new)
+3. [Iterators and Metaprogramming](/articles/cpp/2new)
+4. [Smart Pointers...](/articles/cpp/3new)
+
 # COMS 4118 Operating Systems
-- Under construction
+- Under construction'
+
+
 
 # ELEN 3331 Electronic Circuits
 1. [Nonlinear Components](/articles\s25\ec\EC-notes-Vallancourt-Electronic-Circuits-weeks1-6.pdf)

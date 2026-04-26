@@ -3,8 +3,6 @@ title: Electronic Circuits
 permalink: /courses/ec
 ---
 
-This page is under construction.
-
 
 ## ODS Notes
 1. [Nonlinear Components](/articles\s25\ec\EC-notes-Vallancourt-Electronic-Circuits-weeks1-6.pdf)
