@@ -32,6 +32,9 @@ Now you are at the next *stage* of 4321: the mighty **SRAM**
 
 
 # Floorplan
+> Throughout this article, an array written as $$x\times y$$ always stands for **row** $$\times$$ **column**
+{: .notice--info}
+
 There are a lot of ways to floorplan the SRAM. You don't have to, but it would be *really* nice if all the peripherals match the width of the SRAM array. 
 
 Because the SRAM cell is extremely dense, we use **column multiplexing**, sharing one set of R/W circuitry for each **two** adjacent columns
@@ -45,17 +48,15 @@ Because the SRAM cell is extremely dense, we use **column multiplexing**, sharin
 
 # SRAM Array
 
-> Throughout this article, an array written as $$x\times y$$ always means **row** $$\times$$ **column**
-{: .notice--info}
+
 
 ## 8x8 Layout
-The following demo array was given in **Fall 2025**.
+The following demo array was given in **Fall 2025**. Take a moment to appreciate this fabulous SRAM.
 
-Take a moment to appreciate this fabulous SRAM.
+Press `Ctrl-F` to viewthe blocks:
 ![](/images/vlsi/sram/s_demo_master.png)
 
-`v1d1_demo_array_4x4` (8x4) contains: (the `065_d499_M4_` prefixes are abbreviated for clarity)
-- `v1d1_x4 (2x2)` (4x4)
+Above is a piece of `v1d1_demo_array_4x4` (8x4), which contains the following: 
     - `v1d1_x1`
 - `v1d1_wells_strap_x2 (1x2)` (1x4)
     - `v1d1_wells_strap_x1` (power strap)
@@ -65,12 +66,13 @@ Take a moment to appreciate this fabulous SRAM.
 - M2 and M4 pins
 - **There is an extra M3 layer at the left that will cause DRC errors. Delete it.**
 
+A level down the hierarchy:
 ![](/images/vlsi/sram/s_demo_hie.png)
 
 
 
 ### Inner Cells
-Here is an SRAM section zoomed in. Try to hide the NW and M4 layers, analyze layer by layer, and appreciate such a *fantastic* design
+Now `Shift-F` to show the layers. Try to hide NW and M4, analyze layer by layer, and appreciate such a *fantastic* design
 
 ![](/images/vlsi/sram/sram_det.png)
 
@@ -79,7 +81,7 @@ Below is its *intensely* annotated stick diagram. I highlighted the cell at `wor
 ![](/images/vlsi/sram/sram_stick.jpg)
 
 
-While appreciating its elegance, try to make your own layout just as cute
+Try to make your own layout just as cute!
 
 
 > Don't forget to check **DRC and LVS** of the SRAM cell. If there are nontrivial errors, **tell Shepard to fix immediately!**
@@ -92,15 +94,15 @@ Enough appreciation---it's time to build.
 
 The provided 8×4 array is constructed from 4×4 blocks. Your task is to reorganize this into **4×16**. As long as you understand what’s happening, this is very manageable.
 
-You can group 4x4 cells together, and then piece 4 of them for 4x16.
+You can assemble a 4x4 cell with 1x1 cells, and then piece 4 of them for 4x16.
 
 1. Make a 4x4 schematic and symbol with four `v1d1_x1` symbols
     - 4 wordlines, bitline `<3:0>`
 2. Generate a 4x4 layout. 
     - Move entire rows/columns to save effort
     - Make sure they are **perfectly** aligned. I'd like to look at the vias, as their sizes are fixed
-        - Sanity check, does your 4x4 dimension match with the sample 4x4 layout?
-    - Add instances of the top and bottom `wells_strap_x2` to the **layout**. They don't appear in the schematic, but that's OK.
+        - Sanity check: Does your 4x4 dimension match with the sample 4x4 layout?
+    - Add instances of the top and bottom `wells_strap_x2` to the **layout**. They are not active components, so they are not part of the schematic.
 
     ![](/images/vlsi/sram/sram_4x4.png)
 3. Create a 4x16 schematic and symbol with four of your 4x4
@@ -164,7 +166,7 @@ Below is the 2-bit (4 bitline *pairs*) R/W schematic, closely following lecture
 
 
 ## Testing
-> Make sure the pre-extraction simulation works **very consistently** before starting layout, so you can isolate errors as early as possible.
+> Make sure the pre-extraction simulation works **consistently** before starting layout, so you can isolate errors as early as possible.
 {: .notice--danger}
 
 At the schematic level, I’ve summarized a few common failure modes based on my own experience and that of my classmates.  
@@ -193,8 +195,8 @@ At the schematic level, I’ve summarized a few common failure modes based on my
     - **Probe** `bit` and `bit_bar` to see if it's a skew issue
 - **Tristate issues**
     - Only **one driver** should be connected to `iobus`
-    - When writing, `iobus` is driven by testbench sources. The read driver are set in [tristate](/articles/vlsi/sram#read-driver).
-    - When reading, `iobus` is driven by the read driver. Use **transmission gates** in the **testbench** to **disconnect** the testbench sources!
+    - When writing, `iobus` is driven by testbench sources. The read drivers are set [tristate](/articles/vlsi/sram#read-driver).
+    - When reading, `iobus` is driven by the read driver. Use **transmission gates** in the **testbench** to **disconnect** the testbench voltage sources!
 
 
 ## Stick Diagram

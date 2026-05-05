@@ -104,6 +104,7 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 - These articles focus primarily on **layout**, but **testing** is **equally important**
 - We did not explore much in Virtuoso's **design automation** features. This is an area worth studying on
 - This guide is **never** intended to **help you cheat** (and realistically, you can't).
+	- Do NOT try to reverse-engineer
 - TSMC, please don't sue me!
 
 ---
@@ -120,7 +121,7 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 > **What are the prereq?**
 
 **Officially**: [ECircuits](/courses/ec) and [Fundies](/courses/fundies)  
-**Realistically**: a resilient spine, functioning caffeine metabolism, and enough tears...
+**Realistically**: a resilient spine, caffeine metabolism, and enough tears...
 
 ---
 
@@ -136,9 +137,6 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the **unique p
 
 ## Workload
 
-> **Warning**: Roast coming up... If you can't take it, **stop scrolling down**. In fact, if this bothers you, you probably shouldn't take the class either. Cadence is much less forgiving than this...
-{: .notice--warning}
-
 > **Do the PSets get harder and harder?**
 
 > Check out a few extremely accurate reviews from [CULPA](https://culpa.info/professor/4500)
@@ -146,7 +144,7 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the **unique p
 
 Yes. Not linearly, but **exponentially**  
 Consider PS4 the *bare minimum*. You will likely need a few **all-nighters** after that  
-**START EARLY!!!** Start them **the day they are released**.
+**START EARLY!!!** Start them **the day they are released!!!**
 
 ---
 
@@ -157,13 +155,13 @@ The real question is: **will an extension actually help you?**
 - If you are stuck on some last-minute bugs or sicknesses: absolutely
 - If you are fundamentally behind: **almost certainly not**. 
 
-At that point, you are not buying time. You are taking out a **high-interest loan** that compounds **daily**... until you declare **layout-rupcy**
+At that point, you are not buying time. You are taking out a **high-interest loan** that compounds **hourly**... until you declare **layout-rupcy**
 
 ---
 
-> **How would my partner and I coordinate?**
+> **How should my partner and I coordinate?**
 
-Introducing **"Out of Order Layout"**...   
+Introducing **"Out of Order Layout":**   
 Most of the design projects can be **parallelized**: design, schematic, layout, testing, and writing the report. Just make sure you can handle the "dependencies" well
 
 
@@ -235,7 +233,7 @@ He's awesome, but he's also really good at being **off-by-one**, whether it's in
 
 
 ## Grading
-> This class is **curved**, so if you are an A tier student, with *"proper"* work, you should expect an A tier grade.
+> This class is **curved**, so if you are an A tier student putting in your *A tier* work, you should expect an A tier grade.
 {: .notice--info}
 
 > **How will the project be graded?**
@@ -253,7 +251,8 @@ The letter grade distribution was not published in Fall 2025, but here's the pro
 
 ![](/images/vlsi/grades.png)
 
-It's quite a left-heavy tail, with a similar mean to exams, but a much **wider IQR**
+It's quite a left-heavy tail, with a similar mean to exams, but a much **higher variance**
+- This means even though the project worths half as the Final, it has the same power to boost/bomb your final grade
 
 ---
 
@@ -261,7 +260,7 @@ It's quite a left-heavy tail, with a similar mean to exams, but a much **wider I
 
 They are relatively easy to prepare. There are two types of exam problems:
 1. **Freebies**  
-    These are straightforward. Some may involve a lot of computation, but as long as you understand the concepts and have done the practice problems, you’ll be fine.
+    These are straightforward. Some may be quite computational, but as long as you hold your ground, you’ll be fine.
 2. **Problems that "tell the boys apart from the men"** (according to Shepard who's "not trying to be sexist")  
     Those are multi-part problems that require complex calculations or new concepts/equations, things that you haven't seen. Sometimes even the TA got them wrong. Sometimes Shepard himself finds the problem unsolvable. Who knows...
 
