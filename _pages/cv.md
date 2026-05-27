@@ -4,11 +4,8 @@ title: "Ming Gong"
 permalink: /cv/
 author_profile: true
 redirect_from:
-  - /resume
-  - /resume/
+  - /resume--verbose
 ---
-
-
 
 New York, NY \| [(682) 559-3699](tel:6825593699) 
 
@@ -20,23 +17,20 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 # Education
 - **Carnegie Mellon University**    
     2026 - 2031  
-    Incoming PhD - **Electrical and Computer Engineering**  
+    Incoming PhD -- **Electrical and Computer Engineering**  
 
 
 - **Columbia University**	  
     2024 - 2026  
-    Bachelor of Science - **Computer Engineering**  
-    **GPA** 4.23/4.33
+    Bachelor of Science -- **Computer Engineering**  
+    **GPA** 4.25/4.33
 
 - **Bard College at Simon's Rock**	  
     2021 - 2025  
-    Bachelor of Arts - **Physics**  
+    Bachelor of Arts -- **Physics**, *Summa Cum Laude*  
     **GPA** 3.99/4.0	  
-    **Scholarships**: Faculty Scholarship ($1500), Merit Scholarship ($15,000), Center for Talented Youth Scholarship ($30,000)
-
 
 ---
-
 # Skills
 - **Hardware/EDA**: Cadence, Synopsys, Quartus, FPGA, PCB layout, SPICE
 - **Programming:** C/C++, Python, System Verilog, MATLAB, Git
@@ -44,9 +38,6 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 - **Domains**: Digital VLSI, mixed-signal/analog, embedded systems, signal processing
 
 ---
-
-
-
 # Experience
 **Teaching Assistant**  
 Columbia University | Jan. 2025 - present  
@@ -57,16 +48,16 @@ Columbia University | Jan. 2025 - present
 
 **Research Assistant with Dr. Xia Zhou**  
 Columbia University	| Jan. 2025 - present  
-- Designed charger circuits to safeguard fabric pillow sensor control chips.
-- Implemented an Arduino-based system to monitor sensor performance under varying pressure conditions.
+- Implemented an Arduino-based system to monitor ECG under motion artifacts.
+- Designed impedance sensing software and circuit to detect blood pulses.
 - Fabricated and tested additional fabric pillow sensors to enhance reliability and functionality.
+- Designed charger circuits to safeguard fabric pillow sensor control chips.
 
 **Algorithms Intern**  
 Alibaba | Jun. - Aug. 2025
 - Researched advanced search agent architectures and applied them to design a workflow for business development automation. 
 - Optimized tools for browser automation, webpage scraping, and summarization.
 - Tuned multilingual LLMs, using SFT to improve translation quality.
-
 
 **Research Assistant with Dr. Katayun Barmak**  
 Columbia University	| Sept. 2024 - May 2025  
@@ -100,12 +91,23 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 
 - Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
 
+---
+# Awards and Honors
+- [Jonathan L. Gross Award for Academic Excellence](https://www.cs.columbia.edu/2026/celebrating-the-class-of-2026/) (2026)
+- [Computer Engineering Award of Excellence](https://www.ee.columbia.edu/news/celebrate-excellence-eece-senior-awards-2026) (2026)
+- Columbia Dean's List (all semesters)
+- Fisher Poster Session Contest, 2nd place (2024)  
+- Simon's Rock Dean's List (all semesters)  
+- SCUDEM VIII Outstanding Award (2023)  
+- Simon's Rock Faculty Scholarship (2022)
+- Center for Talented Youth Scholarship (2021)
+- AP Scholar with Distinction (2021)  
+
+---
 # Selected [Projects](/projects)
 - 8-bit VLSI Mini Processor
-<!-->- Full custom layout in Cadence Virtuoso, DRC and LVS clean<-->
 - FPGA Gaussian Elimination Accelerator
 - Capacitivite ECG Fabric Sensing Prototype
-
 
 ---
 
@@ -133,24 +135,24 @@ Organic Chemistry
 
 # Activities
 **Electrical and Programming Lead, Columbia Robotics Club**  
-Oct. 2024 - present
+Oct. 2024 - May 2026
 - Founding member of the Combat Robot Subteam.
 - Coordinating with the team lead and programming team to design robot electronics and control software.
 - Event supervisor for Robot Tour at the Columbia University Science Olympiad Invitational.
 
 **Executive Board, Columbia IEEE**  
-Aug. 2025 - present
+Aug. 2025 - May 2026
 - Maintained the Columbia IEEE [website](https://ieee.ee.columbia.edu/). 
 - Hosting Open Project Space, beginner-friendly Arduino workshops
 
-**Executive Board Member, Columbia Data Science Society**  
-Sept. 2024 - present
-- Organizing data-science events and workshops for the Columbia community and the NYC area.
-
 **Organizational Committee Member, Columbia Global China Connection**  
-Sept. 2024 - present
+Sept. 2024 - May 2026
 - Organizing social, cultural, and pre-professional events for Chinese students at Columbia.
 - Collaborating with a team of 10 to manage GCC's website and social media platforms. 
+
+**Executive Board Member, Columbia Data Science Society**  
+Sept. 2024 - May 2026
+- Organizing data-science events and workshops for the Columbia community and the NYC area.
 
 **President, Simon's Rock Robotics Club**  
 Sept. 2021 - May 2024
@@ -161,16 +163,6 @@ Sept. 2021 - May 2024
 Sept. 2021 - May 2024
 - Conducted weekly math modeling sessions, dedicating 3 hours per week to lead a team of 5.
 - Competed in SCUDEM VIII and won the Outstanding Award.
-
----
-
-# Awards and Honors
-- Columbia Dean's List (3 times, 2026)
-- Fisher Poster Session Contest, 2nd place (2024)  
-- Simon's Rock Dean's List (6 times, 2024)  
-- SCUDEM VIII Outstanding Award (2023)  
-- AP Scholar with Distinction (2021)  
-
 
 ---
 # Interests
