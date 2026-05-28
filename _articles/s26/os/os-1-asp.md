@@ -7,14 +7,16 @@ permalink: /articles/os/1-asp
 
 
 # 1-2. Intro
-- **Abstraction**
-	- Manages and hides detail
-- **Protection**
+> Abstraction and protection
+{: .notice--info}
+
+
 ## Early OS
 Just a **library** of standard features
 - Assume one program at a time
 - No malicious program
 - Poor utilization (idle)
+
 **Solution**: protection
 - **Preemption**: reclaim CPU from a running process
 	- Kernel regains control whenever interval timer fires
@@ -59,22 +61,18 @@ Can break the system with `fork()` bomb
 **Interposition**
 - Check if accesses are legal
 
-<div style="page-break-after: always;"></div>
-## System Call
-App invoke kernel, special HW instruction
 
-File descriptors are **inherited** by child processes
-
-## OS Structures
+**OS Structures**
 - **Monolithic**: app directly above OS
 - **Microkernel**: app with **modular design**, called through system calls
 	- Resilience to application bugs
 
 ### Memory
 > If you can't name it, you can't touch it
+{: .notice--warning}
 
 Address translation (done in HW)
-![[mem.png]]
+![](/articles/s26/os/img/mem.png)
 ### Advantages
 - Kernel-only VA
 	- Can't touched by apps
@@ -82,6 +80,7 @@ Address translation (done in HW)
 	- Sharing code pages (libraries)
 	- Inter-process communication, memory mapping
 - Disable execution
+
 ## System contexts
 - User-level
 - Kernel process context: syscall, exception handling
@@ -93,8 +92,8 @@ Address translation (done in HW)
 Context switching is not always better, if a lot of memory required
 - `strace` tells the traces of the **syscalls**
 
-
-## Linked List
+---
+# HW1 Linked List
 - Linear movement (not good at random access)
 - Circular doubly linked
 
@@ -124,15 +123,13 @@ INIT_LIST_HEAD(&red_fox->list);
 
 ```
 
-### List Head
-Special head pointer
-
-Created with macro:
+## List Head
+Special head pointer. Created with macro:
 ```c
 static LIST_HEAD(head);
 ```
 
-### Manipulation
+## Manipulation
 ```c
 #include <linux/list.h>
 list_add(struct list_head *new, struct list_head *head);
@@ -148,7 +145,7 @@ list_del_init(struct list_head *entry);
 // delete, then reinitialize
 ```
 
-### Traversal
+## Traversal
 ```c
 list_for_each_entry(pos, head, member)
 ```
@@ -162,12 +159,13 @@ list_for_each_entry_safe(pos, next, head, member)
 ```
 - `next` used to store the **next** list entry, so it's safe to remove the current entry
 
-
+---
 # 3. Linux
 
 1. Firmware code performs a power-on self test, pre-initializes hardware
 2. Firmware checks Master Boot Record (MBR) of hard disks to identify a **bootable partition**
 3. Bootloader in MBR reads configuration files, loads and launches the kernel from the disk
+
 ## Booting Linux
 1. Kernel program starts
 2. Hardware configures, including VA
@@ -187,30 +185,7 @@ list_for_each_entry_safe(pos, next, head, member)
 - If child dies, before the parent reaps it, it's a **zombie** process
 	- Becomes `<defunct>` in the process tree
 
-## Signal
-```c
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
 
-static void sig_int(int signo)
-    printf("stop pressing ctrl-c!\n");
-
-int main()
-{
-    if (signal(SIGINT, &sig_int) == SIG_ERR) {
-		perror("signal() failed");
-		exit(1);
-    }
-
-    int i = 0;
-    for (;;) {
-		printf("%d\n", i++);
-		sleep(1);
-    }
-}
-```
 
 ## Kernel Modules
 **Kernel Module** Interface to **dynamically** link object files into running kernel
@@ -278,604 +253,78 @@ If a fault happens in your kernel module, kernel will jump to exception handlers
 - Beyond that, kernel crashes
 - Due to limited hardware support
 
+### Symbol Scope
+**Exported symbols** are visible to any *loadable module*
+- Dynamically linked to the kernel
 
+```c
+ #include <linux/module.h>  
+ #include <linux/init.h>  
+ #include <linux/kernel.h>  
+  
+static int rday_1 = 1;  
+int rday_2 = 2;  
+int rday_3 = 3;  
+EXPORT_SYMBOL(rday_3);  
+
+static int __init hi(void) {
+	 printk(KERN_INFO "module m2 being loaded.n");  
+	 return 0;  
+}  
+  
+static void __exit bye(void)  
+	printk(KERN_INFO "module m2 being unloaded.n");  
+  
+module_init(hi);  
+module_exit(bye);
+```
+- `rday_1` does not show in symtab, not show up in kernel space
+- `rday_2` and `rday_3` flagged as global data objects
+- `rday_3` has an entry in the module string table and symbol table, in `ksymtab` and `kstrtab`
+
+
+---
 # 4.1 Signals
-## Process Groups
-> How to do other work while a process is running
+See [ASP Signals](/articles/asp/4)
 
-```shell
-proc1 | proc2 &   # send to bg
-[1] 7106
-proc3
-```
-- `7106` pid of the **last process**
-- `jobs`: list all jobs
-- `Ctrl-Z`: suspend foreground job and send to background
-- `bg <jobs>`: resume `<job>` in bg
-- `fg <jobs>`: bring from bg to fg
-
-## Sending Signals
-```c
-#include <signal.h>
-int kill(pid_t pid, int signo);
-int raise(int signo)
-```
-- If `pid` < 0, signal is sent to process group with `pgid == -pid`
-- If `pid` = -1, kills everything
-
-To **foreground** process group
-- `Ctrl-C` `SIGINT`
-- `Ctrl-\` `SIGQUIT`
-- `Ctrl-Z` `SIGTSTP`
-
-```c
-typedef void (*sighandler_t) (int);
-sighandler_t signal(int signum, sighandler_t handler);
-```
-Handler can be `SIG_IGN` or `SIG_DFL`
-
-## Issues
-Slow system call (`read()`) will be **interrupted** by a signal
-- Fix: check `EINTR` at `errno` and restart `read()`
-```c
-#include "apue.h"
-
-static void	sig_alrm(int);
-
-int main(void)
-{
-    int		n;
-    char	line[MAXLINE];
-
-    if (signal(SIGALRM, sig_alrm) == SIG_ERR)
-		err_sys("signal(SIGALRM) error");
-
-    alarm(10);
-    if ((n = read(STDIN_FILENO, line, MAXLINE)) < 0)
-		err_sys("read error");
-
-    write(STDOUT_FILENO, line, n);
-}
-
-static void sig_alrm(int signo) {
-    /* nothing to do, just return to interrupt the read */
-}
-```
-**Lost signal**: disposition set with `signal()` is **reset** after each signal
-- Fix: set disposition again after detecting the signal
-	- Race condition: getting another signal before reset :(
-Functions that use **static** data structures `malloc()`, `free()`, `printf()` are not **signal safe**
-- Can't be called in **asynchronous** contexts
-### Race Condition
-```c
-static void sig_alrm(int signo) { // sends -EINTR to pause()}
-
-unsigned int sleep(unsigned int seconds) {
-	signal(SIGALRM, sig_alrm);
-	alarm(seconds); /* start the timer */
-	pause(); /* next caught signal wakes us up */
-	return alarm(0); /* turn off timer, return unslept time */
-}
-```
-- Race condition before `pause()`
-- Each alarm resets the handler
-## `sigaction`
-Stable handler
-- See https://mg-04.github.io/articles/asp/4#portable-solution for detail
-
-
+---
 # 4.2 File IO
-> [!info] Everything is a file in UNIX
-> - Good with portability and **permissions**
+See [ASP File IO](/articles/asp/5)
 
-```c
-int open(const char *path int oflag, mode_t mode);
-// need to specify mode if file is being created
-```
-- Creates an entry in the process's File Descriptor Table (FDT)
-	- Offset
-	- Options
-	- Metadata
-- Returns the **file descriptor**
-```c
-int close(int fildes)
-```
-- Deletes the file table entry
-- If the process exits, memory leak, reclaimed by OS
-	- Might lose data too
-```c
-off_t lseek(int fildes, off_t offset, int whence)
-```
-- `SEEK_SET`, `SEEK_CUR`, `SEEK_END`, plus `offset`
-	- A hole in the file useful for storing sparse structures (physical < logical size)
-- Returns the new position
-
-```c
-ssize_t read(int fildes, void *buf, size_t byte);
-ssize_t write(int fildes, const void *buf, size_t nbyte);
-
-// for sockets
-ssize_t recv(int socket, void *buffer, size_t length, int flags);
-ssize_t send(int sociket, const void *buffer, size_t length, int flags);
-```
-- Return number of bytes actually read/written, may be less than requested
-
-### C `stdio`
-Wrapped version in C `stdio` library
-- Reduce the number of **system calls** while performing **stream** operations
-
-```c
-FILE *fopen(const char *pathname, const char *mode); // open()
-int fclose(FILE *stream);  // close()
-int fseek(FILE *stream, long offset, int whence);  // lseek()
-size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);  // read()
-size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream); 
-```
-
-## Kernel Data Structure
-
-![[file.jpg]]
-- File table entry may be **shared**
-	- **Independent processes** have different process/file table entries, pointing to same v-nodes
-- i-node specifies *how* files stored on disk
-- v-node: API of i-node
-
-### Process Relations
-- If `fork()` before `open()`, `write()` will **overwrite** each other, since each process's file table stores its own **file offset**
-- If `open()` before `fork()`, `write()` will **duplicate**, since offsets are updated across the same table.
-
-### `dup()`
-```c
-int dup(int oldfd);
-```
-Duplicate the pointer to the **file table entry** and return the next available file descriptor
-
-
+---
 # 5.1 IPC
-## Unnamed Pipe
-> A kernel object, not copied over `fork()`
+See [ASP IPC](/articles/asp/8) and [ASP Synchronization](/articles/asp/7)
 
-```c
-#include <unistd.h>
-int pipe(int fd[2]);
-```
-- `fd[0]` is opened for reading
-- `fd[1]` is opened for writing
-- Returns 0 if OK, 1 if error
-
-If `fork()`ed, the parent and child will both take the type
-
-Connect the input and output of two processes:
-1. Parse `argv`
-```c
-int main(int argc, char **argv) {
-    int fd[2];
-    pid_t pid1, pid2;
-
-    // Split arguments ["cmd1", ..., "--", "cmd2", ...] into
-    //                 ["cmd1", ...] and ["cmd2", ...]
-    char **argv1 = argv + 1; // argv for the first command
-    char **argv2;            // argv for the second command
-
-    for (argv2 = argv1; *argv2; argv2++) {
-        if (strcmp(*argv2, "--") == 0) {
-            *argv2++ = NULL;
-            break;
-        }
-    }
-```
-
-2. Piping and `fork()`
-```c
-    pipe(fd);
-
-    if ((pid1 = fork()) == 0) {
-        close(fd[0]);   // Close read end of pipe
-        dup2(fd[1], 1); // Redirect stdout to write end of pipe
-        close(fd[1]);   // stdout already writes to pipe, close spare fd
-        execvp(*argv1, argv1);
-        // Unreachable
-    }
-
-    if ((pid2 = fork()) == 0) {
-        close(fd[1]);   // Close write end of pipe
-        dup2(fd[0], 0); // Redirect stdin from read end of pipe
-        close(fd[0]);   // stdin already reads from pipe, close spare fd
-        execvp(*argv2, argv2);
-        // Unreachable
-    }
-```
-
-3. Parent handling
-```c
-    // Parent does not need either end of the pipe
-    close(fd[0]);
-    close(fd[1]);
-
-    waitpid(pid1, NULL, 0);
-    waitpid(pid2, NULL, 0);
-    return 0;
-}
-```
-- Need error check
-
-```shell
-./connect2 ls -ls -- grep "connect"
-
-ls -ls | grep "connect"
-```
-
-> [!warning] Pipe is a FIFO
-> Data is not broadcasted, only consumed by one reader
-> - Atomicity up to 4K
-
-## Named Pipe
-```c
-#include <sys/stat.h>
-int mkfifo(const char *path, mode_t mode);
-```
-- Creates a FIFO at `path`
-- **Half-duplex**
-
-## Unnamed Semaphore
-- `sem_post()`: increment
-- `sem_wait()`: wait until > 0, then decrement
-
-### Usage
-- Binary: lock
-- Counting: resource sharing
-- Ordering
-
-```c
-#include <semaphore.h>
-int sem_init(sem_t *sem, int pshared, unsigned int value);
-int sem_destroy(sem_t *sem);
-```
-- Need **shared memory** (`mmap()`)
-- Or **named** semaphore
-
-### Named Semaphore
-Created under `/dev/shm`
-```c
-sem_t *sem_open(char *name, int oflag, ... /* mode_t mode, unsigned int value*/ );
-int sem_close(sem_t *sem);
-int sem_unlink(char *name);   // deletes from fs
-```
-
-### Modifying Semaphore
-- `sem_trywait()` does not block
-- `sem_wait()` blocks
-- `sem_timedwait()` blocks either available, or timeout
-	- Can't implement with `SIGALRM` due to race conditions
-
-## Memory Mapped IO
-Map **file** into address space
-- **Private**: changes not flushed to disk or **other processes**
-- **Shared**: other processes can see
-- **Anonymous**: not backed by file (`fd=-1, flag=MAP_ANON`)
-	- `malloc()`: actual allocation
-	- `mmap()`: **reservation*** of address space, protection, share, **alignment**
-- **Named**
-
-```c
-#include <sys/mman.h>
-void *mmap(void *addr, size_t len, int prot, int flag, int fd, off_t off);
-```
-- `addr`: map target
-	- If `NULL`, let OS decide
-- `len`: size to allocate
-- `prot`: read, write, exec
-- `flag`
-	- `MAP_PRIVATE`
-	- `MAP_SHARED`
-	- `MAP_ANON`
-- `fd`: file we want to map
-	- -1 for anonymous
-- Returns pointer to the region 
-
-## `counter.c`
-
-Declare a counter with a semaphore lock
-```c
-#define LOOPS 2000
-
-struct counter {
-    sem_t sem;
-    int cnt;
-};
-
-static struct counter *counter = NULL;
-
-static void inc_loop() {
-    for (int i = 0; i < LOOPS; i++) {
-        sem_wait(&counter->sem);
-        counter->cnt++;
-        sem_post(&counter->sem);
-    }
-}
-```
-
-```c
-int main(int argc, char **argv) {
-    // Create a shared anonymous memory mapping, set global pointer to it
-    counter = mmap(
-	    /*addr=*/NULL, 
-		sizeof(struct counter),
-		PROT_READ | PROT_WRITE, // Region is readable and writable
-		MAP_SHARED | MAP_ANON, // share with children
-		/*fd=*/-1, 
-		/*offset=*/0
-    );
-
-    // Mapping is already zero-initialized.
-    assert(counter->cnt == 0);
-
-    sem_init(&counter->sem, /*pshared=*/1, /*value=*/1);
-
-    pid_t pid;
-    if ((pid = fork()) == 0) {
-        inc_loop();
-        return 0;
-    }
-
-    inc_loop();
-    waitpid(pid, NULL, 0);
-
-    printf("Total count: %d, Expected: %d\n", counter->cnt, LOOPS * 2);
-
-    sem_destroy(&counter->sem);
-    assert(munmap(counter, sizeof(struct counter)) == 0);
-    return 0;
-}
-```
-
+---
 # 5.2 Threads
-Share virtual memory **and fd**
-- Each thread has its own stack
+See [ASP Threads](/articles/asp/6)
 
-```c
-#include <pthread.h>
-int pthread_create(pthread_t *thread, 
-	                const pthread_attr_t *attr,
-                    void *(*start_routine)(void *), 
-                    void *arg); 
-int pthread_join(pthread_t thread, void **retval);
-```
-
-## Mutex
-```c
-#include <pthread.h>
-int pthread_mutex_init(pthread_mutex_t *mutex, pthread_mutexattr_t *attr);
-int pthread_mutex_destroy(pthread_mutex_t *mutex);
-int pthread_mutex_lock(pthread_mutex_t *mutex);
-int pthread_mutex_trylock(pthread_mutex_t *mutex);  // nonblocking if fail
-int pthread_mutex_unlock(pthread_mutex_t *mutex);
-#include <time.h>
-int pthread_mutex_timedlock(pthread_mutex_t *mutex, struct timespec *tsptr);
-```
-
-### Deadlock
-- Lock same mutex **twice**
-- Mutual lock of 2 mutexes
-Need strict lock ordering
-
-## Condition Variables
-Signal
-```c
-#include <pthread.h>
-
-int pthread_cond_init(pthread_cond_t *restrict cond,
-                      const pthread_condattr_t *restrict attr);
-int pthread_cond_destroy(pthread_cond_t *cond);
-
-int pthread_cond_wait(pthread_cond_t *restrict cond,
-                      pthread_mutex_t *restrict mutex);
-int pthread_cond_timedwait(pthread_cond_t *restrict cond,
-                           pthread_mutex_t *restrict mutex,
-                           const struct timespec *restrict tsptr);
-
-int pthread_cond_signal(pthread_cond_t *cond);
-int pthread_cond_broadcast(pthread_cond_t *cond);
-```
-
-```c
-#include <pthread.h>
-struct msg {
-    struct msg *m_next;
-};
-
-struct msg *workq;
-pthread_cond_t qready = PTHREAD_COND_INITIALIZER;
-pthread_mutex_t qlock = PTHREAD_MUTEX_INITIALIZER;
-```
-
-```c
-void process_msg(void)
-{
-    struct msg *mp;
-
-    for (;;) {
-        pthread_mutex_lock(&qlock);
-
-        while (workq == NULL)
-            pthread_cond_wait(&qready, &qlock);
-        
-        mp = workq;
-        workq = mp->m_next;
-        
-        pthread_mutex_unlock(&qlock);
-    }
-}
-
-void enqueue_msg(struct msg *mp)
-{
-    pthread_mutex_lock(&qlock);
-    
-    mp->m_next = workq;
-    workq = mp;
-    
-    pthread_cond_signal(&qready);
-    pthread_mutex_unlock(&qlock);
-}
-```
-
-## Other Mechanisms
-- Spinlock (used a lot in the kernel, for small hold time)
-- Barriers
-
+---
 # 6 Advanced IO
-> [!info] Skim this
+See [ASP Advanced IO](/articles/asp/9)
 
-Nonblocking IO: `io_uring`: avoid polling the kernel through system calls
-![[io_ring.png]]
-
-## IO Multiplexing
-E. network
-- Nonblocking reads alternating
-- IO kernel multiplexing
-## `select()`
-From a fd **set**
-```c
-#include <sys/select.h>
-int select(int maxfdp1, // max fd plus 1, or simply FD_SETSIZE
-    /* main params */
-    fd_set *readfds,   // see if they're ready for reading
-    fd_set *writefds,  // see if they're ready for writing
-    fd_set *exceptfds, // see if exceptional condition
-
-    struct timeval *tvptr); // timeout
-    
-void FD_ZERO(fd_set *fdset);          // initialize fdset
-void FD_SET(int fd, fd_set *fdset);   // adds fd to fdset
-void FD_CLR(int fd, fd_set *fdset);   // removes fd from fdset
-int FD_ISSET(int fd, fd_set *fdset);  // tests if fd is in fdset
-    
-```
-Inefficient
-## `poll()`
-Modern version, only gives user **one descriptor**
-```c
-#include <sys/select.h>
-struct pollfd {
-	int fd;             // fd assigned to fds monitor
-	short events;       // POLLIN for read, POLLOUT for write
-	short reevents;     // events that actually occur
-};
-
-int poll(struct pullfd fds[],
-		nfds_t nfds,  // number of fds to monitor
-		int timeout);
-```
-
-## `epoll()`
-Edge-triggered API
-
-## Domain Sockets
-- Threads: shared
-- Related processes: anonymous `mmap()`
-- Unrelated processes: file-backed `mmap()`
-
-To pass data:
-- **Related** process: unnamed `pipe()` (half-duplex)
-- **Unrelated** process: named `mkfifo()` (half-duplex)
-- **Distant** process
-	- TCP/UDP sockets (full duplex)
-### Unix Domain Sockets
-- **Unnamed**: `socketpair(AF_UNIX, ...);`
-	- Duplex pipe
-- **Named**: `socket(AF_UNIX, ...);`
-	- Special file
-Can transport **open fd**
-- Pass the i-node information
-
-```c
-int socketpair(int domain, int type, int protocol, int sv[2]);
-```
-- Socket "buffers" the data from fd
-
-`recv-unix.c`
-```c
-int main(int argc, char **argv)
-{
-    const char *name = argv[1];
-    int num_to_recv = atoi(argv[2]);
-
-    struct sockaddr_un un;
-
-    int fd, len;
-
-    // create a UNIX domain datagram socket
-    fd = socket(AF_UNIX, SOCK_DGRAM, 0);
-
-    // remove the socket file if exists already
-    unlink(name);
-
-    // fill in the socket address structure
-    memset(&un, 0, sizeof(un));
-    un.sun_family = AF_UNIX;
-    strcpy(un.sun_path, name);
-    len = offsetof(struct sockaddr_un, sun_path) + strlen(name);
-
-    // bind the name to the descriptor
-    if (bind(fd, (struct sockaddr *)&un, len) < 0) 
-        die("bind failed");
-
-    char buf[num_to_recv + 1];
-
-    for (;;) {
-        memset(buf, 0, sizeof(buf));
-        int n = recv(fd, buf, num_to_recv, 0);
-        else
-            printf("%d bytes received: \"%s\"\n", n, buf);
-    }
-
-    close(fd);
-    unlink(name);
-    return 0;
-}
-```
-
-`send-unix.c`
-```c
-int main(int argc, char **argv)
-{
-    const char *name = argv[1];
-    const char *msg = argv[2];
-    int num_repeat = atoi(argv[3]);
-
-    struct sockaddr_un	un;
-
-    int fd, len, i;
-
-    // create a UNIX domain datagram socket
-    fd = socket(AF_UNIX, SOCK_DGRAM, 0);
-
-    // fill in the socket address structure with server's address
-    memset(&un, 0, sizeof(un));
-    un.sun_family = AF_UNIX;
-    strcpy(un.sun_path, name);
-    len = offsetof(struct sockaddr_un, sun_path) + strlen(name);
-
-    for (i = 0; i < num_repeat; i++) {
-        int n = sendto(fd, msg, strlen(msg), 0, (struct sockaddr *)&un, len);
-        printf("sent %d bytes\n", n);
-    }
-
-    close(fd);
-    return 0;
-```
-
-```shell
-./recv-unix filename 1000
-./send-unix filename hello 100 
-```
-
-
+---
 # 7. System Calls
-## Address Space
-Virtually addressed
-- The moment you touch something, you will get a backing in physical memory
+## Interrupts
+See [ASP Interrupts](/articles/asp/12#interrupt)
 
+## Parameters
+Passed via **registers**. If larger, use a `struct` pointer (E. `struct sigaction`)
+
+**Convention** for function calls (typical):
+- Arguments passed through registers
+	- Sometimes as stack offsets
+	- Volatile: may be changed on return
+	- Non-volatile: must be saved and restored by callee
+- Encoded in Application Binary Interface (ABI)
+
+Need to validate buffer, need to check boundary and permissions, to avoid writing to kernel memory, since will enter kernel mode
+
+## Kernel Actions
+Need to enter and return kernel mode, branch to the position of `sys_read()` function in the kernel
+![](/articles/s26/os/img/syscall.png)
+
+## E. Address Space
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -911,48 +360,12 @@ cat maps           # shows entire addresss space
 ```
 Get a block on the heap
 Modern allocators use `mmap()` instead of repeatedly calling `brk()`
-- Ideally, will get a contiguous region
 - `mmap()` more flexible, `brk()` forces a contiguous region
 
-## Interrupts
-- **Hardware**
-	- Async (network, timer)
-- **Exceptions**
-	- Synchronous
-	- Division by 0, page fault
-- **Software**
-	- Synchronous
-	- syscall, x86 assembly interrupt, **debugger**
 
-On a `read()` call,
-```asm
-movl __NR_READ, %eax
-int 0x80
-ret
-```
-Now enter **kernel mode**
-1. Kernel looks `0x80` in **Interrupt Descriptor Table** -> `system_call`
-2. Jump to `system_call(registers)`, which access the `system_call_table[%eax]`
-3. `system_call_table`is read at `__NR_READ` -> `sys_read`
-4. Jumps to `sys_read()`, and do the real read
-
-## Parameters
-Passed via **registers**. If larger, use a `struct` pointer (E. `struct sigaction`)
-
-**Convention** for function calls (typical):
-- Arguments passed through registers
-	- Sometimes as stack offsets
-	- Volatile: may be changed on return
-	- Non-volatile: must be saved and restored by callee
-- Encoded in Application Binary Interface (ABI)
-
-Need to validate buffer, need to check boundary and permissions, to avoid writing to kernel memory, since will enter kernel mode
-
-## Kernel Actions
-Need to enter and return kernel mode, branch to the position of `sys_read()` function in the kernel
-![[syscall.png]]
-## HW3
-### System Calls
+---
+# HW3
+## System Calls
 ```c
 asmlinkage long sys_getpid(getpid)    // maxro SYSCALL_DEFINE0(getpid)
 { 
@@ -964,11 +377,9 @@ asmlinkage long sys_getpid(getpid)    // maxro SYSCALL_DEFINE0(getpid)
 	- Required for any syscalls
 - Return `long` in kernel and `int` in user space
 - `sys_*` naming convention
-### Syscall number
-Can't be reused
-All registered syscalls in `sys_call_table`
 
-### Implementation
+
+## Implementation
 - Verify parameters
 	- Pointers
 	- `copy_to_user(dst, src, size)` writes into user space
@@ -977,7 +388,7 @@ All registered syscalls in `sys_call_table`
 
 ```c
 SYSCALL_DEFINE3(silly_copy, 
-				unsigned long *, src, unsigned long *, dst, unsigned long len)
+			unsigned long *, src, unsigned long *, dst, unsigned long len)
 {
 	unsigned long buf;
 	if (copy_from_user(&buf, src, len)) 
@@ -992,7 +403,7 @@ SYSCALL_DEFINE3(silly_copy,
 
 ```c
 SYSCALL_DEFINE4(reboot,
-				int, magic1, int, magic2, unsigned int, cmd, void __user *, arg)
+			int, magic1, int, magic2, unsigned int, cmd, void __user *, arg)
 {
 	if (!capable(CAP_SYS_BOOT))
 		return -EPERM;
@@ -1000,54 +411,28 @@ SYSCALL_DEFINE4(reboot,
 	// ...
 }
 ```
-### Context
+
 Kernel in **process** context during syscall execution, 
 - `current` pointer points to current task
 - Can sleep (E. blocking call), preemptible
 
-### Registration
+## Registration
 1. Add entry to the **end** of syscall table
 	- For each architecture
 2. Define syscall number in `<asm/unistd.h>`
+	- Syscall number can't be reused
+	- All registered syscalls in `sys_call_table`
 3. Compile into **kernel image**
 
-## Kernel Modules
-**Exported symbols** are visible to any *loadable module*
-- Dynamically linked to the kernel
-
-```c
- #include <linux/module.h>  
- #include <linux/init.h>  
- #include <linux/kernel.h>  
-  
-static int rday_1 = 1;  
-int rday_2 = 2;  
-int rday_3 = 3;  
-EXPORT_SYMBOL(rday_3);  
-
-static int __init hi(void) {
-	 printk(KERN_INFO "module m2 being loaded.n");  
-	 return 0;  
-}  
-  
-static void __exit bye(void)  
-	printk(KERN_INFO "module m2 being unloaded.n");  
-  
-module_init(hi);  
-module_exit(bye);
-```
-- `rday_1` does not show in symtab, not show up in kernel space
-- `rday_2` and `rday_3` flagged as global data objects
-- `rday_3` has an entry in the module string table and symbol table, in `ksymtab` and `kstrtab`
-
-Need to fix syscall table and `syscalls.h`
-
+---
 # 8. Run/Wait Queues
 Test code that times `gettimeofday()` calls
 - Inconsistent results
 - Due to scheduling and interrupts
+
 If test library calls to syscall, **much slower**
 - User library reads from kernel directly, avoiding the actual `syscall()` trap overhead
+
 Same for opening a file
 
 ## Process States
@@ -1067,15 +452,15 @@ A linked list of `task_struct` via `children` and `sibling`
 Each CPU has a `run_queue`, links tasks with `TASK_RUNNING` state
 - With a separate `list_head`, and its own **disjoint** run queue
 
-![[run_queue.png]]
+![](/articles/s26/os/img/run_queue.png)
 
 ## Wait Queue
 Not embedded in `task_struct`
 - In fact, a parent of `task_struct`
 - Since don't know which element to wake up
-![[wait_queue.png]]
+![](/articles/s26/os/img/wait_queue.png)
 
-### Data Structure
+### Data Structures
 ```c
 struct wait_queue_head {
 	spin_lock_t lock;
@@ -1121,10 +506,12 @@ Functions:
 4. Wait for other task to call `schedule()`. Choose a sleeping task
 5. Sleeping task checks condition again. If true, `finish_wake()`
 Never go back directly to running on CPU
+
 ### States
 - **Running on CPU**
-	- To sleep, 
-![[switch_fsm.png]]
+	- To sleep:
+
+![](/articles/s26/os/img/switch_fsm.png)
 
 ### E. `read()`
 1. Trap into kernel
@@ -1138,26 +525,30 @@ Never go back directly to running on CPU
 	- Another process on the **run** queue starts running
 
 ## Context Switch
-(easier in ARM)
+(easier in ARM)  
 Current task blocks **OR** preemption via interrupt
-**TODO**
 - Release CPU registers (written in assembly)
+
 ### Preemption
 If a process does not give up the CPU
 - Use external timer to interrupt
-![[force_switch.png]]
 
+![](/articles/s26/os/img/force_switch.png)
 
+---
 # 9. Interrupts
 ## Interrupt Contexts
-Limitations: **can't sleep**
-- No associated task running, can't interact with wait queue and `schedule()`
-- Don't know when can wake up
-- `kmalloc()`, `copy_to_user()` may trigger IO, **can't** be called from interrupt context
-All handlers share **one interrupt stack** per processor
+> Limitations: **can't sleep**
+> - No associated task running, can't interact with wait queue and `schedule()`
+> - Don't know when can wake up
+> - `kmalloc()`, `copy_to_user()` may trigger IO, **can't** be called from interrupt context
+> All handlers share **one interrupt stack** per processor
+{: .notice--danger}
+
 
 ## Handling
 > Idea: Defer most work for later, only time-critical ones
+{: .notice--info}
 
 1. **Top half** (first level)
 	- ACK the interrupt
@@ -1168,9 +559,10 @@ All handlers share **one interrupt stack** per processor
 - Single interrupts will **not nest**, no need to be reentrant
 	- Can be interrupted by another *type* of interrupt
 
-> [!info] E. network package arrival
+> **E. network package arrival**
 > - **Top half**: ACK arrival, move from NIC to memory, prepare for future packets
 > - **Bottom half**: propagate through networking stack (TCP/IP), can be deferred
+{: .notice--info}
 
 ## Sync
 All concurrent data must be protected
@@ -1182,13 +574,15 @@ pthread_mutex_unlock(&balance_lock);
 ```
 Calling task **put to sleep** while waiting for lock
 
-> [!warning] Is sleeping always a good idea?
+> **Is sleeping always a good idea?**  
 > - **Bad**: sleep overhead
+{: .notice--warning}
 
 ### Spin Lock
-> [!warning] No preemption
+> **No preemption**  
 > Interrupt still normal, but the task can't be rescheduled
 > - With `preempt_count`, only sleepable when 0
+{: .notice--info}
 
 ```c
 int flag = 0;
@@ -1207,7 +601,7 @@ unlock() {
 - Multithread **race condition**. Need atomic
 - Waste CPU cycles
 Both threads assume ownership:
-![[Pasted image 20260224194546.png]]
+![](/articles/s26/os/img/context_switch.png)
 
 Need **atomic instruction** `test_and_set(&flag)`
 
@@ -1219,7 +613,8 @@ int test_and_set(int *lock) {
 	 return old;
 }
 ```
-### Linux Kernel
+
+### Linux Spin Lock
 `spin_lock()` and `spin_unlock()`
 - Want keep critical sections **small**
 - Must not lose CPU while holding lock
@@ -1232,6 +627,7 @@ int test_and_set(int *lock) {
 - Used by process context or a **single interrupt**
 
 > IRQ: **interrupt request**
+{: .notice--info}
 
 `spin_lock_irqsave()`, `spin_lock_irqrestore()`
 - Lock a shared resource that may be used by **interrupt handler**
@@ -1252,6 +648,7 @@ Kernel forcefully reclaim CPU
 	3. `preempt_count = 0`, (E. right after releasing lock)
 	4. Task in **kernel mode** calls `schedule()` itself (E. blocking syscall)
 
+---
 # 10. Synchronization
 - **Safety**: Mutex
 - **Liveliness** (progress): 
@@ -1265,15 +662,15 @@ Kernel forcefully reclaim CPU
 lock() { disable_interrupt(); }
 unlock() {enable_interrupt(); }
 ```
-**Bad**:
-- Privileged operations, user program can't use
-- Can't work on **multiprocessors** (`*_interrupt()` only applies for current CPU)
-- Can't have long critical sections
+
+> **Bad**:  
+> - Privileged operations, user program can't use
+> - Can't work on **multiprocessors** (`*_interrupt()` only applies for current CPU)
+> - Can't have long critical sections
+{: .notice--warning}
+
 ## 2. Software Spin Lock
-**Peterson's algorithm**
-Assume:
-- Load and store are **atomic**
-- **In-order** execution
+
 
 ```c
 int flag[2] = {0, 0};
@@ -1285,7 +682,8 @@ lock() {
 unlock()
 	flag[self] = 0;
 ```
-**Not live**: can deadlock, race condition
+> **Not live**: can deadlock, race condition
+{: .notice--danger}
 
 ```c
 int turn = 0;
@@ -1296,9 +694,15 @@ lock() {
 unlock()
 	turn = 1 - self;
 ```
-**Not live**: Can't enter twice in a row
+> **Not live**: Can't enter twice in a row
+{: .notice--danger}
 
 ### Peterson
+> Assume:
+> - Load and store are **atomic**
+> - **In-order** execution
+{: .notice--info}
+
 ```c
 int turn = 0;
 int flag[2] = {0, 0};
@@ -1313,23 +717,28 @@ lock() {
 unlock()
 	flag[self] = 0;
 ```
+
 Spin while
 - Other thread needs lock, **AND**
 - It's other thread's turn
 `turn` acts as **tie-breaker** to prevent deadlock when both threads are "polite"
 - The last thread to write `turn` yields to the other
 
-> [!warning] Bad if reordered
+> **Bad if reordered**  
 > Memory access (load `flag[1-self]`) will typically be reordered up
+{: .notice--warning}
 
 ## 3. Hardware Spin Lock
 ### Fence
-Ensure all **memory operations** are in-order before processing
-- expensive
+> Ensure all **memory operations** are in-order before processing
+> - expensive
+{: .notice--info}
+
 
 - `mfence`: all memory
 - `lfence`: all loads
 - `sfence`: all stores
+
 ```c
 lock() {
 	flag[self] = 1;
@@ -1339,8 +748,8 @@ lock() {
 }
 ```
 
-### Atomic TS
-x86
+### Atomic Test-Set
+x86  
 Use `xchgl` to **atomically swap** two locations
 ```c
 long test_and_set(volatile long *lock) {
@@ -1376,15 +785,17 @@ unlock() {
 		// wake up one thread
 }
 ```
-**Issues**
-- Lost wakeup
-	- After calling TS, **before** adding to wait queue; other thread unlocks
-- Wrong thread gets lock
-	- Newer threads may steal the lock
-	- Fix: make `unlock()` directly transfer to waiting thread
+> **Issues**
+> - Lost wakeup
+>	- After calling TS, **before** adding to wait queue; other thread unlocks
+> - Wrong thread gets lock
+> 	- Newer threads may steal the lock
+> 	- Fix: make `unlock()` directly transfer to waiting thread
+{: .notice--warning}
 
 Fix by adding a `guard` lock to avoid losing wakeups
 - `prepared_to_yield()` to protect the gap between `guard = 0` and `yield()`
+
 ```c
 typedef struct mutex_t {
 	int flag;
@@ -1420,6 +831,7 @@ void unlock(mutex_t *m) {
 ## RW Lock
 - **Read lock** (shared): multiple may hold
 - **Write lock** (exclusive): only one can hold
+
 ```c
 struct rwlock_t {
 	int nreader;
@@ -1449,12 +861,15 @@ read_unlock(rwlock_t *l) {
 	unlock(&l->guard);
 }
 ```
-> [!warning] Writer will be starved
+
+> **Writer will be starved**  
 > Need to kick readers out for write requests
+{: .notice--warning}
 
 ### Anti-Starve
 Use a `writer` lock, so when writer is waiting for the actual `lock`, no new readers can add themselves
 - Existing readers will drain and release `lock`
+
 ```c
 struct rwlock_t {
 	int nreader;
@@ -1482,6 +897,8 @@ read_lock(rwlock_t *l) {
 
 ## Semaphore
 > Now kernel context
+{: .notice--info}
+
 ```cpp
 class Semaphore {
 	int lockvar;       // atomicity
@@ -1504,6 +921,7 @@ If run out of resources, add yourself to wait queue
 - First line **disable interrupts**
 - Last line **enable interrupts**
 - Spin lock, since critical
+
 ```cpp
 void Semaphore::P() {
 	lock(&lockvar);
@@ -1533,12 +951,11 @@ void Semaphore::V() {
 }
 ```
 
-### E. Producer-Consumer
-E. Linux pipe
+### E. Linux pipe Producer-Consumer
 - Block producer when buffer full
 - Block consumer if no data
 
-Ring buffer;
+Ring buffer:
 ```c
 Semaphore empty = N;
 Semaphore full = 0;
@@ -1562,10 +979,11 @@ Producer (T item) {
 ```
 - If move buffer R/W outside of `mutex`, won't work
 
-### Barrier
+### E. Barrier
 Coordinate multiple threads to **all** reach a specific point before allowed to continue
 - **Rendezvous**: waiting point
 - **Critical point**: no thread allowed to execute until everyone reach Rendezvous
+
 ```c
 rendezous:
 	sem_wait(mutex);
@@ -1591,9 +1009,11 @@ Can use interlocking `barrier2` with `barrier` for `critical_points` in a loop
 ## RCU
 Lock-free Synchronization
 
-RW lock very **slow**
-- Writes not happen often
-- Doesn't scale with large number of CPUs
+> **Problem:** RW lock very **slow**
+> - Writes not happen often
+> - Doesn't scale with large number of CPUs
+{: .notice--warning}
+
 **Read-Copy-Update**
 - Multiple readers **and** one writer and run simultaneously
 - Reader may read **old**, but consistent data
@@ -1663,23 +1083,29 @@ void set(int x, int y) {
 ```
 - `synchronize_rcu()`: tells writer to wait until every single active reader has finished
 	- safe to `kfree()` after
-> [!info] In Linux Kernel
+
+> In Linux Kernel
 > Implemented as a compiler optimization to reorder the critical sections properly
+{: .notice--info}
+
 ## Summary
 - **Spinlocks:** Small, fast, non-sleeping locks used when holding time is short, such as in interrupt handlers.
 - **Mutexes:** Sleeping locks for mutual exclusion, offering better performance for longer critical sections where sleeping is allowed.
 - **Semaphores:** Traditional locks that can allow multiple holders, used for complex synchronization.
 - **Read/Write Locks (rwlock / rwsem):** Allow multiple simultaneous readers but only one exclusive writer.
 - **Read-Copy-Update (RCU):** A mechanism for high-read-frequency scenarios, allowing readers to run without locks.
-### Contention
-Failed lock acquire
-Function of 
+
+### Lock Contention 
+> Failed lock acquire
+{: .notice--warning}
+
+Function of:
 - Frequency of attempts
 - Lock hold time
 - Number of threads
-### Monitor
+
+### Monitoring
 Object with a set of **monitor procedures**
 - One one **active thread** at a time
 - Java `synchronized`
 	- 1 Mutex + N condition variables in a class object
-

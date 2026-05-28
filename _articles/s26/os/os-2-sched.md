@@ -7,6 +7,7 @@ permalink: /articles/os/2-sched
 
 # 12. Scheduling
 > How synchronization works
+{: .notice--info}
 
 - **Dispatcher**: Low-level *mechanism*
 	- Responsible for **context switch** (`context_switch()`)
@@ -26,12 +27,15 @@ permalink: /articles/os/2-sched
 ### 1. FIFO
 - Non-preemptive (you can run as long as you want)
 - Implementation: FIFO queue
-- **Good:** 
-	- Simple
-	- Fair
-- **Bad:** 
-	- Waiting time depends on arrival order
-	- Short process stuck waiting (Convoy effect)
+
+> **Good:** 
+> - Simple
+> - Fair
+> 
+> **Bad:** 
+> - Waiting time depends on arrival order
+> - Short process stuck waiting (Convoy effect)
+{: .notice--info}
 
 ### 2. Short Job First (SJF)
 *without preemption*
@@ -40,14 +44,17 @@ permalink: /articles/os/2-sched
 ### 3. Shortest Remaining Time First (SRTF)
 - If a process arrives with shorter time than the **remaining** current process time, schedule new process
 - aka SJF *with* preemption
-- **Good:** 
-	- Reduces **average** waiting time
-		- Proven to be **optimal!**
-- **Bad**: 
-	- Starves long jobs
-		- Avoid starving: prioritize processes with long wait time
-	- **Not practical** to *predict* burst time
-		- Use past to predict future
+
+> **Good:** 
+> - Reduces **average** waiting time
+> - Proven to be **optimal!**
+> 
+> **Bad**: 
+> - Starves long jobs
+> 	- Avoid starving: prioritize processes with long wait time
+> - **Not practical** to *predict* burst time
+> 	- Use past to predict future
+{: .notice--info}
 
 ![](/articles/s26/os/img/sched_fifo.png)
 
@@ -55,13 +62,17 @@ permalink: /articles/os/2-sched
 - aka preemptive FIFO
 - Each process runs a predetermined time slide, then preempt and move back to queue
 - Need optimal time slice ((wait time > **response** time) vs # context switch)
-- **Good:** 
-	- Low *response* time, fair allocation, 
-	- Low average waiting time
-		- Even when job lengths **vary widely**
-- **Bad:** 
-	- Poor average waiting time when jobs have **similar lengths**
-	- Performance depends on time slice length
+
+> **Good:** 
+> - Low *response* time, fair allocation, 
+> - Low average waiting time
+> 	- Even when job lengths **vary widely**
+> 
+> **Bad:** 
+> - Poor average waiting time when jobs have **similar lengths**
+> - Performance depends on time slice length
+{: .notice--info}
+
 
 ## Priorities
 Associated with each process ("niceness")
@@ -218,18 +229,16 @@ static void inc_nr_running(struct task_struct *p, struct rq *rq)
 - `.invweight` used to calculate `vruntime`
 
 ## Multicore
-**Setup:** Symmetric Multiprocessing (SMP)
-- Identical CPU
-- Same access time to main memory
-- Private cache
+> **Setup:** Symmetric Multiprocessing (SMP)
+> - Identical CPU
+> - Same access time to main memory
+> - Private cache
+{: .notice--info}
+
 
 ### 1. Global Queue of Processes
-- **Good:** 
-	- Good CPU util
-	- Fair to all processes
-- **Bad:**
-	- Global queue lock (not scalable)
-	- Poor cache locality
+- Good CPU util. Fair to all processes
+- Global queue lock (not scalable). Poor cache locality
 
 ### 2. Dispatcher Core
 Dispatcher core handles the scheduling and synchronization
@@ -237,14 +246,8 @@ Dispatcher core handles the scheduling and synchronization
 
 ### 3. Per-CPU Queue
 **Static** partition to individual CPUs
-- **Good:** 
-	- Simple
-	- Scalable
-	- Cache locality
-- **Bad:**
-	- Load-imbalance
-	- Unfair
-	- Lower CPU util
+- Simple, scalable, cache locality
+- Load-imbalance, unfair. Lower CPU util
 
 ### 4. Hybrid Approaches
 Modern OS
@@ -253,7 +256,7 @@ Modern OS
 - Cache recent processes on the *same* CPU
 
 
-
+---
 # 13. Linux Scheduler
 ## 1. $$O(N)$$
 Scan the *entire* list of runnable processes to select
@@ -296,9 +299,9 @@ Need to find the highest priority queue that is *not empty*
 
 ## 3. CFS
 > Maintain fairness and balance
-
-- Balance timer
-- Determine virtual runtime
+> - Balance timer
+> - Determine virtual runtime
+{: .notice--info}
 
 Use dynamic time slice on `EPOCH` definition
 - `EPOCH` controlled via `sched_latency` (E. 48 ms)
@@ -314,8 +317,9 @@ $$\texttt{time\_slice}_k = \frac{\texttt{weight}_k}{\sum_{i=0}^{n-1} \texttt{wei
 
 $$\texttt{vruntime}_i = \texttt{vruntime}_i + \frac{\texttt{weight}_0}{\texttt{weight}_i} \cdot \texttt{runtime}_i$$
 
-### Data Structure
+### Data Structures
 > Extract task with minimum `vruntime`
+{: .notice--info}
 
 **Time-order** RB tree
 - Operations $$O(\log n)$$
@@ -406,7 +410,7 @@ Pay attention to locking!
 {: .notice--info}
 
 
-https://columbia-os.github.io/dev-guides/kernel-debugging.html
+[https://columbia-os.github.io/dev-guides/kernel-debugging.html](https://columbia-os.github.io/dev-guides/kernel-debugging.html)
 
 ### KConfig
 - `DEBUG_INFO`
@@ -424,9 +428,11 @@ https://columbia-os.github.io/dev-guides/kernel-debugging.html
 
 ### `BUG_ON`
 `kernel/sched/core.c`  
-`BUG_ON` crashes earlier than `dmesg`
+> `BUG_ON` crashes earlier than `dmesg`
+{: .notice--danger}
+
 - Specify the assumptions (`assert`)
-Also `panic()` function to print info, instead of `BUG_ON`
+- `panic()` function to print info, instead of `BUG_ON`
 
 ## Data Structures
 ### `task_struct`
@@ -469,6 +475,7 @@ struct task_struct {
 
 ### Run Queue
 > Per CPU. Each active process only on one run queue
+{: .notice--info}
 
 ```c
 static DEFINE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
@@ -653,8 +660,11 @@ void scheduler_trick(void) {
 
 
 ## Kernel Connections
+> I show some simple skeleton, boiler-plate code as a starting point
+{: .notice--info}
+
 ### `include/linux/sched.h`
-**internal** kernel data structures
+**Internal** kernel data structures
 - Internal **entity** data structures:
 
 ```c
@@ -729,6 +739,7 @@ static void __sched_fork(unsigned long clone_flags, struct task_struct *p) {
 ## Freezer
 ### Enqueue/Dequeue
 > Update fields of the queue and the sched entity!
+{: .notice--info}
 
 ```c
 static void enqueue_task_freezer(rq *rq, task_struct *p, int flags) {
@@ -750,6 +761,7 @@ static void enqueue_task_freezer(rq *rq, task_struct *p, int flags) {
 
 ### Pick/Put Task
 > Just pick the head of the freezer RQ
+{: .notice--info}
 
 ```c
 static struct task_struct *pick_next_task_freezer(rq *rq, ...) {
@@ -765,6 +777,7 @@ static struct task_struct *pick_next_task_freezer(rq *rq, ...) {
 ```
 
 > Typically called when **yielding** to another task
+{: .notice--info}
 
 ```c
 static void put_prev_task_freezer(rq *rq, task_struct *prev) {
@@ -813,6 +826,7 @@ void update_curr_freezer(struct rq *rq) {
 
 ### Yield
 > Just reset time-slice to 0. No need to handle special
+{: .notice--info}
 
 **Blocking Wait**
 1. Task will set its state to `TASK_INTERRUPTIBLE`
@@ -825,6 +839,7 @@ void update_curr_freezer(struct rq *rq) {
 
 ### Set Task
 > Called when picked, or **switched** to `freezer`. Just set data structures
+{: .notice--info}
 
 ```c
 void set_next_task_freezer(rq *rq, task_struct *p, bool first) {
@@ -865,7 +880,8 @@ static int idle_balance_freezer(struct rq *cur_rq, struct rq_flags *cur_rf)
 
 
 ## Heater
-> entry only appears *either* in global rq or local `curr`
+> Entry only appears *either* in global rq or local `curr`
+{: .notice--info}
 
 ```c
 struct heater_rq {
@@ -892,6 +908,7 @@ Just noop. Since heater is FIFO, the next task will still be him.
 
 ## Make Default Scheduler
 > These functions will end up calling the `__*` functions in `core.c`
+{: .notice--info}
 
 To make default, in `linux/init/init_task.c`
 - Also do some initialization
