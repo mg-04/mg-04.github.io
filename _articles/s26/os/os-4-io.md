@@ -637,6 +637,9 @@ static long nullzero_ioctl(struct file *filep,
 
 
 # HW7
+> Check out awesome [diagrams](https://alex-xjk.github.io/post/tiny-afs/) from prev. Head TA Alex!  
+{: .notice--success}
+
 ## VFS
 > Virtual File System, **API** for an FS
 {: .notice--info}

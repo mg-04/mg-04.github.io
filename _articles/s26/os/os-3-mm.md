@@ -1,7 +1,16 @@
 ---
 title: "OS Notes: Memory Management"
 permalink: /articles/os/3-mm
+authors:
+  - Ming Gong
+  - Chris Henry
 ---
+
+{% if page.authors %}
+<div class="page__meta" style="margin: 0 0 1rem 0;">
+  <strong>Authors:</strong> {{ page.authors | join: ", " }}
+</div>
+{% endif %}
 
 {% include toc %}
 
