@@ -33,6 +33,7 @@ I like to master hard and interesting classes, and pass my knowledge to others.
   - I am also the ODS notetaker for a variety of CSEE [courses](/courses).
 - **2025:** Head TA of Fundies (see my [study guides](/teaching/2025-fundies)) 
 - **2022-2024:** Think Tank drop-in tutor at Simon's Rock, where I helped students across a range of [STEM courses](/teaching/)
+	- I archived my SR materials [here](/sr-archive)
 
 ## Personal
 I love:

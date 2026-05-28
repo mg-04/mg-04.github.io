@@ -1683,11 +1683,3 @@ Object with a set of **monitor procedures**
 - Java `synchronized`
 	- 1 Mutex + N condition variables in a class object
 
-# Midterm Recitation
-## Concurrency
-- Rule: All need to **respect** the lock
-- Risk: deadlock
-	- `lock(A); lock(A);`
-	- Interleaved locks of `A`, `B`
-> [!warning] 
- Prioritize HW, lectures, lecture code examples

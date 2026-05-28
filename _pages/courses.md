@@ -33,38 +33,42 @@ author_profile: true
 
 ---
 
+> For full course materials, please consult the [SR archive directory](/sr-archive/) or navigate through the Drive links
+{: .notice--info}
+
+
 ## Spring 2024
-- MATH 312 Analysis I
-- PHYS 221 Relativity and Cosmology
-- PHYS 304 Electricity and Magnetism
-- PHYS 320T Statistical Thermodynamics
+- MATH 312 [Analysis I](https://drive.google.com/drive/folders/1B9vMXt6R8yzwBUjKxr03fciTs9vP1nvT)
+- PHYS 221 [Relativity and Cosmology](https://drive.google.com/drive/folders/1bbTQ6t6TIwqexidX7HFzMZtCpTiA1tG0)
+- PHYS 304 [Electricity and Magnetism](https://drive.google.com/drive/folders/1fcXtLMbb6SSvdSlEm_6KJKk_IB1D50o8)
+- PHYS 320T [Statistical Thermodynamics](https://drive.google.com/drive/folders/1QGnIkjfVLexV9XOeF_IV3_fV7kujCCSK)
 
 ## Fall 2023
-- CMPT 320 The Theory of Computation
-- MATH 320 Abstract Algebra
+- CMPT 320 [The Theory of Computation](https://drive.google.com/drive/folders/1-29VQ6jJvS6UyJgH94jW1-KMSO6AGj9W)
+- MATH 320 [Abstract Algebra](https://drive.google.com/drive/folders/1AXACfB8uLsI0F2Jr7bl52zsIZVzGgY4O)
 - PHYS 210 Analog and Digital Electronics
 - PHYS 320 Modern Physics Laboratory
 
 ## Spring 2023
-- CHEM 303 Organic Chemistry II
+- CHEM 303 [Organic Chemistry II](https://drive.google.com/drive/folders/16FQgi1xLrny8jt-5E4MkzUAi5jDitlLd)
 - CMPT 243 Algorithms and Data Structures
-- MATH 330 Probability and Statistics
-- MATH 364 Ordinary Differential Equations
-- PHYS 303 Classical Mechanics
+- MATH 330 [Probability and Statistics](https://drive.google.com/drive/folders/1RiLdLuBx03tBRLo3lqnAbn4MikVZspjd)
+- MATH 364 [Ordinary Differential Equations](https://drive.google.com/drive/folders/1siZdtOaLaX1PObpPb4dozJLhJXlBVxER)
+- PHYS 303 [Classical Mechanics](https://drive.google.com/drive/folders/1SFoXn_ZEDtgJ90FZAa4VYFLD4DPhweOT)
 
 ## Fall 2022
-- CHEM 302T Organic Chemistry I
+- CHEM 302T [Organic Chemistry I](https://drive.google.com/drive/folders/12h-QO_QnrUMTblkJYjitGkVom0Tq5uAq)
 - CMPT 100 Intro to Computer Science
-- CMPT 252 Discrete Mathematics
-- PHYS 220 Intro to Quantum Physics
+- CMPT 252 [Discrete Mathematics](https://drive.google.com/drive/folders/1rh0RCj7j-ALBp7z77vIB9ZyG69JEoLq6)
+- PHYS 220 [Intro to Quantum Physics](https://drive.google.com/drive/folders/1Kk1GXRv4mm4x93b6cO9oFV2s7wBg1kAO)
 
 ## Spring 2022
 - CHEM 101 Chemistry II
 - MATH 221 Vector Calculus
-- PHYS 101 Physics II
+- PHYS 101 [Physics II](https://drive.google.com/drive/folders/12KD6BNZ_IV-eg1AUdzrf2NeTg_PqLnTu)
 
 ## Fall 2021
-- CHEM 100 Chemistry I
+- CHEM 100 [Chemistry I](https://drive.google.com/drive/folders/1NP3N6_hWpWr4nWY0CsjQyeGTKsHuMFCq)
 - MATH 220 Linear Algebra
 
 ---
