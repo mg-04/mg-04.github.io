@@ -3,6 +3,7 @@ title: Operating Systems I
 permalink: /courses/os
 ---
 
+
 Here are my OS notes:
 1. [Systems Programming](/articles/os/1-asp) (see [ASP Notes](/courses/asp))
 2. [Scheduling](/articles/os/2-sched)
