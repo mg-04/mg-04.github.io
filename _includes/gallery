@@ -6,8 +6,12 @@
   {% assign gallery = page.gallery %}
 {% endif %}
 
-{% if gallery.size == 2 %}
+{% if include.layout %}
+  {% assign gallery_layout = include.layout %}
+{% elsif gallery.size == 2 %}
   {% assign gallery_layout = 'half' %}
+{% elsif gallery.size == 4 %}
+  {% assign gallery_layout = 'quarter' %}
 {% elsif gallery.size >= 3 %}
   {% assign gallery_layout = 'third' %}
 {% else %}
