@@ -1,6 +1,6 @@
 ---
 title: "Blockchain"
-excerpt: "Final Project for Computer Networks<br/><img src='/images/projects/blockchain.jpg' style='width:500px;'>"
+excerpt: "Blockchain mining written in Python, with automated testing<br/><img src='/images/projects/blockchain.jpg' style='width:500px;'>"
 collection: projects
 date: 2025-05-17
 authors:

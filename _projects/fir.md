@@ -1,6 +1,6 @@
 ---
 title: "64-Tap FIR Filter"
-excerpt: "Final Project for CSEE 4823 Advanced Logic Design <br/><img src='/images/projects/ald.png' style='width:500px;'>"
+excerpt: "Design and simulation of a 64-tap finite impulse response filter<br/><img src='/images/projects/ald.png' style='width:500px;'>"
 collection: projects
 date: 2025-11-20
 ---

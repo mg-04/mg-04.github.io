@@ -129,3 +129,81 @@ html[data-theme="dark"] .toc .active > a {
     display: none;
   }
 }
+
+
+/* Base Container for the Row */
+.responsive-row {
+  display: flex;
+  flex-direction: column; /* Mobile first: stack them up and down */
+  gap: 20px;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+/* Ensure images/figures behave nicely inside their wrapper */
+.row-media {
+  width: 100%;
+  max-width: 300px; /* Limits max size on mobile */
+}
+
+.row-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px; /* Optional styling */
+}
+
+.row-media figure {
+  margin: 0;
+  width: 100%;
+}
+
+/* Light mode default caption styling */
+.row-media figcaption {
+  font-size: 0.85em;
+  color: #666; /* Mild gray for bright screens */
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* 🌙 Dark mode adaptation */
+html[data-theme="dark"] .row-media figcaption {
+  color: #b0b0b0; /* Soft, readable light gray for dark screens */
+}
+
+.row-text {
+  width: 100%;
+  flex: 1;
+}
+
+/* 🖥️ Desktop Styling (Screens wider than 768px) */
+@media (min-width: 768px) {
+  .responsive-row {
+    flex-direction: row; /* Side by side on desktop */
+    align-items: stretch; /* This forces the text block and image block to have the SAME height */
+  }
+
+  /* For rows where you want the image on the left on desktop, 
+     but still want it to look normal on mobile */
+  .responsive-row.reverse-on-desktop {
+    flex-direction: row-reverse;
+  }
+
+  .row-text {
+    /* Gives text breathing room while letting image shrink/grow dynamically */
+    flex: 2; 
+  }
+
+  .row-media {
+    flex: 1; /* Adjust ratio (e.g., text takes 2 parts, image takes 1 part) */
+    max-width: 250px; /* Keeps the image from getting obnoxiously large on massive screens */
+    display: flex;
+    align-items: center; /* Centers the image vertically if text is much longer */
+  }
+  
+  .row-media img {
+    /* If you want the image to completely fill the height to match the text perfectly */
+    object-fit: cover; 
+    height: 100%;
+  }
+}

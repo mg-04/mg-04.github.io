@@ -107,7 +107,7 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 # Selected [Projects](/projects)
 - 8-bit VLSI Mini Processor
 - FPGA Gaussian Elimination Accelerator
-- Capacitivite ECG Fabric Sensing Prototype
+- Capacitive ECG Fabric Sensing Prototype
 
 ---
 

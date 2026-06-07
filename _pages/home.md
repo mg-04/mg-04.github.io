@@ -9,7 +9,7 @@ redirect_from:
 
 Hi, I'm **Ming**, a senior at **Columbia University** studying Computer Engineering. I'm part of the 3-2 combined plan with [Bard College at Simon's Rock](https://simons-rock.edu/), where I studied [Physics](https://www.instagram.com/p/DT3do9PjohB/).
 
-**Update:** I'm thrilled to share that I will be joining **Carnegie Mellon University** this fall to pursue a PhD in ECE, advised by Professor [Ken Mai](https://www.ece.cmu.edu/directory/bios/mai-ken.html). Looking forward!
+I will be joining **Carnegie Mellon University** this fall to pursue a PhD in ECE, advised by Professor [Ken Mai](https://www.ece.cmu.edu/directory/bios/mai-ken.html). Looking forward!
 
 ## Research
 I'm interested at the intersection of circuit design and low-level systems. My interests include:

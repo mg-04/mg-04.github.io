@@ -67,16 +67,17 @@ Appendix. [Class Notes](/courses/vlsi)
 ---
 
 # About
-Our final design features:  
+Performance:  
 - ~1100 µm² core area
 - 4 Metal layers  
+- 2 GHz frequency
 - 2.1 µm data path bit pitch (2 SRAM columns)
 - DRC and LVS clean
-- 2 GHz frequency
-- High data path density and regularity  
+
+Building blocks:
 - Static CMOS ripple-carry adder
 - Transmission gate logarithmic shifter (buffered)
-- 4x16 physical SRAM
+- 4x16 physical SRAM (static decoding, 2-column MUX)
 - Pseudo-NMOS ratio PLA
 - Master-slave accumulator
 - C²MOS bus drivers
@@ -142,7 +143,7 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the **unique p
 > Check out a few extremely accurate reviews from [CULPA](https://culpa.info/professor/4500)
 {: .notice--warning}
 
-Yes. Not linearly, but **exponentially**  
+Yes, and **not** linearly.    
 Consider PS4 the *bare minimum*. You will likely need a few **all-nighters** after that  
 **START EARLY!!!** Start them **the day they are released!!!**
 
@@ -229,7 +230,7 @@ He's awesome, but he's also really good at being **off-by-one**, whether it's in
 - Go to **StudyDocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
 - ~~Go on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother to put their layout, chances are it probably sucks anyway.~~
 
-~~Trying not to be too toxic here.~~ I've also shared some of our own inefficient designs, as concrete counterexamples of what to avoid.
+I've also shared some of our own inefficient designs, as concrete counterexamples of what to avoid.
 
 
 ## Grading

@@ -1,6 +1,6 @@
 ---
 title: "Climate Change"
-excerpt: "Eco-Literature Final Project <br/><img src='/images/projects/climate.png' style='width:500px;'>"
+excerpt: "Interviews with professors on climate change<br/><img src='/images/projects/climate.png' style='width:500px;'>"
 collection: projects
 date: 2023-11-17
 ---

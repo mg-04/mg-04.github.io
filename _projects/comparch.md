@@ -1,6 +1,6 @@
 ---
 title: "Sorting Algorithms"
-excerpt: "Final Project for ELEN 4824 Computer Architecture <br/><img src='/images/projects/comparch.png' style='width:500px;'>"
+excerpt: "Architectural analysis on sorting algorithms <br/><img src='/images/projects/comparch.png' style='width:500px;'>"
 collection: projects
 date: 2025-11-18
 authors:

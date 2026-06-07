@@ -1,6 +1,6 @@
 ---
 title: "Rogue Planets"
-excerpt: "Final project for PHYS 221 Relativity and Cosmology<br/><img src='/images/projects/planet.png' style='width:500px;'>"
+excerpt: "Origin, detection, and simulation of rogue planets<br/><img src='/images/projects/planet.png' style='width:500px;'>"
 collection: projects
 date: 2024-05-08
 ---

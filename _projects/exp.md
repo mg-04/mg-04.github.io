@@ -1,6 +1,6 @@
 ---
 title: "Exponential and Logarithm"
-excerpt: Final project for MATH 312 Analysis I
+excerpt:  A rigorous dive into exponential and logarithm functions
 collection: projects
 date: 2023-11-20
 ---
