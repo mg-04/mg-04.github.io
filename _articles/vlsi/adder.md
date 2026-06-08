@@ -40,14 +40,14 @@ Now comes the first real task of 4321: adder
     - Do not use the [default Vias](/articles/vlsi/adder#6-m2-connections-and-vias)
 - Leave room for upper-level Metal routing
 
-> Below are some inefficiencies in our implementation. Don't copy them blindly.
+> Below are some improvement areas in our implementation. Don't copy them blindly.
 {: .notice--warning}
 
 
 > **Adder**
 - More organized M2 data grid
-- Smaller sizing on the non-critical path PFETs
-- Better diffusion sharing with S/D swapping
+- Use [minimum](/articles/vlsi/adder#sizing) sizing on the non-critical path PFETs
+- Better diffusion sharing with [S/D swapping](/articles/vlsi/adder#sd-swap)
 - Using inverted `COUT` to save a gate in the propagation path
 - MUX-based `SUB` select
 - Use an odd number of fingers for better diffusion sharing
@@ -76,14 +76,15 @@ A ripple carry adder/subtracter has 3 parts:
 The CMOS implementation is pretty standard, and you can find plenty of resources
 
 ## Sizing
-Textbook page 432 discusses the sizing:
+Textbook page 432 shows the standard sizing. Carry propagation is the critical path; all other paths use minimum sizing.
 
 ![](/images/vlsi/Adder/sizing.png){: .align-center}
 
 
-The minimum width of our technology is 150 nm
+The suggested minimum width of is 150 nm
 - Below that, the MOSFETs will turn into a **dogbone** shape, which actually takes more space!  
-We used the following sizing
+
+We used the following sizing:
 - Critical path: 300 nm * 4 / 150 nm * 4
 - Non-critical path: 300 nm / 150 nm
     - It's a better idea to size the PMOS to 150 as well :( We went lazy...
@@ -96,50 +97,55 @@ Below is our carry schematic. If you want to use the textbook sizing, change the
 ![](/images/vlsi/Adder/schem.png){: .align-center}
 
 A few notes:
-- Use multiple fingers so every transistor has **equal width**
+- Use multiple fingers, so every transistor has **equal width**
 - Set up one P/NMOS with the *parameters*, then **duplicate** them over
 - Connect all PMOS bodies to `VDD!`, NMOS bodies to `GND!`. No exception
 - Label the nets and explicitly add the IO pins
 - I recommend using capital letters for net names, and global `VDD!`/`GND!`
 
-> I will refer to transistors by their name `Mx` in the *schematic above*. They will may in your schematic
+> I will refer to transistors by their name `Mx` in the [*schematic above*](/images/vlsi/Adder/schem.png). They will differ in your schematic
 {: .notice--info}
 
 ## Stick Diagram
-Make a stick diagram of your adder layout. This [UMich note](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) is pretty useful. Adapt it to your design.
+Make a stick diagram of your adder layout. This [UMich lecture](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) is pretty useful. Adapt it to your design.
 
-Alternatively, you can choose not plan and do **"vibe layout"**, sometimes not bad
 
 ![](/images/vlsi/Adder/adder_stick.png)
 
-This stick diagram is rotated 90 deg. I used magenta for PMOS OD, and dark gray for NMOS OD. 
+This stick diagram is rotated 90 deg. In the actual layout, M2 (orange) will be vertical. I used magenta for PMOS OD, and dark gray for NMOS OD. 
 
-> Note the diagrams only show one finger. Multiple fingers will differ slightly in [diffusion sharing](/articles/vlsi/adder#4-non-sharing-neighbors)
+> For simplicity, I only show one finger. Multiple fingers will differ slightly in [diffusion sharing](/articles/vlsi/adder#4-non-sharing-neighbors)
 {: .notice--warning}
+
+Alternatively, you can give up planning and **"vibe layout"**, sometimes not bad
+
 
 ---
 
 # Carry Circuit Walkthrough
+
+Similar to the inverter, "Generate All From Source." You will get a sea of transistors and pins from the schematic. Our job is to move and connect them correctly.
+
 ## 1. Bit Pitch!
-Right after "Generate All From Source", draw your M2 [bit pitch](/articles/vlsi/floorplan#metal-routing). 
+Before placing anything, draw your M2 [bit pitch](/articles/vlsi/floorplan#metal-routing). 
 - Center-to-center: **2.1 um**
 - Width: 0.1 um
 
 <img src="/images/vlsi/Adder/pitch.png"
-     style="display: block; margin: 0 auto; max-width: 400px; width: 100%;">
+     style="display: block; margin: 0 auto; max-width: 300px; width: 100%;">
 
 You can use the `p` shortcut to draw a path. It shows its DRC boundaries, too
 
 <img src="/images/vlsi/Adder/p.png"
-     style="display: block; margin: 0 auto; max-width: 400px; width: 100%;">
+     style="display: block; margin: 0 auto; max-width: 250px; width: 100%;">
 
 
-## 2. `A` and Body Via
-Same thing as the inverter
-1. Add the M1-NW and M1-SUB vias. 
-    - **Align their centers with the M2!**
-2. Place the 8/4 transistors gated by `A`. 
-    - Make sure PP and NP touch, but not overlap
+## 2. First Transistor
+1. Find the two fat 8/4 transistors gated by `A`. 
+2. Move them within the M2 grid, and rotate properly.
+- Make sure PP and NP touch, but not overlap
+3. Add the M1-NW and M1-SUB vias. 
+    - **Align their centers with the M2 grid!**
 
 
 ## 3. Diffusion Sharing

@@ -24,28 +24,32 @@ date: 2025-12-24
 > Before even starting the project, read through the requirements so you know what you *should* be doing.
 {: .notice--info}
 
-## Bus
 
 Our microprocessor consists of:
-- **Bus**: one writer, multiple readers
-- **Computation**: adder, shifter
-- **Accumulator** (Acc): A flip-flop holding temporary values (think of it as a register)
+- **Internal Bus**: single writer, multiple readers
+- **Accumulator** (Acc): A flip-flop holding temporary values
+- **Arithmetic**: adder, shifter
 - **SRAM**
 
 ![](/images/vlsi/floorplan/dataflow.png){: .align-center}
 
-## Building Blocks
-Here is the suggested floorplan from PS9
+## Bus
+The block diagram above has two critical nets: the *internal bus*, and the *accumulator*. 
+- The **accumulator** (top net) is a flip-flop holding temporary values from the adder and shifter. Think of it as a register
+- The **internal bus** (bottom net) routes the values to the components. 
+	- Only one source below can drive the internal bus:
+		- Accumulator
+		- SRAM
+		- External bus (not shown, for testing)  
+	- All components below may read from the internal bus simultaneously:
+		- Adder
+		- Accumulator (via MUX)
+		- SRAM
+		- External bus
 
-![](/images/vlsi/floorplan/block.png){: .align-center}
+> Tristate buffers control data routing between SRAM/internal/external bus, preventing contention.
+{: .notice--info}
 
-
-- The accumulator is split into two D-latches
-- One additional latch is used to latch the memory output from the bus
-- Three bus drivers are needed
-    - Acc → Internal bus
-    - External bus → Internal bus
-    - Internal bus → External bus
 
 ---
 
@@ -64,7 +68,7 @@ When **holding**, the value in Acc must not change. The MUX should select the sh
 | 100    | PUT      | Mem[i] ← Acc               | Acc | Hold | Memory write
 | 101    | ADD      | Acc ← Acc + Mem[i]         | SRAM | Adder | Memory read; Bypass shifter
 | 110    | SUB      | Acc ← Acc - Mem[i]         | SRAM | Adder | Memory read; Bypass shifter
-| 111    | SHIFT    | Left logical shift of Acc  | -- | Shifter | Don't bypass
+| 111    | SHIFT    | Acc ← Acc << shamt  | -- | Shifter | Don't bypass
 
 > Yes, this ISA is terrible for logic simplification.  
 And yes, there are obvious optimizations.
@@ -76,10 +80,14 @@ And yes, there are obvious optimizations.
 > Floorplan! Floorplan! Floorplan! Many layouts don't suck at the end, they suck at the **beginning**! A bad initial decision will make you either **REDO** from scratch, or make **WORSE** and **WORSE** compromises to accommodate that
 {: .notice--danger}
 
+Here is the suggested floorplan from PS9
 
-We've laid out an inverter. The processor is basically many inverter-like gates neatly coordinated.
+![](/images/vlsi/floorplan/block.png){: .align-center}
 
-There are always 3 things to plan:
+
+We have laid out an inverter already. The processor can be seen as many inverter-like gates neatly coordinated.
+
+These are the 3 main things to plan:
 - Data
 - Control
 - Power
@@ -91,33 +99,24 @@ There are always 3 things to plan:
 > This is Shepard's suggested floorplan, **rotated 90 degrees**. I will stick with this orientation **from now on**
 {: .notice--info}
 
-Adapt a consistent Metal routing rules.
 
 ![](/images/vlsi/floorplan/stick.jpg)
 
-Since the Polys and their Diffusion contact M1s are horizontal, make
+Adapt a consistent Metal routing rules. Let's make
 - **Odd** Metal layers horizontal
 - **Even** Metal layers vertical.
 - There can be local violations, especially at lower levels
 
 
+## Vertical Grid
+Our 8-bit processor built from isomorphic 1-bit slices placed side by side. We can create a **vertical** grid of M2 power rails of alternating VDD and GND
+- Each cell will build VDD (PMOS N-Well) on one side, and GND (NMOS P-Well) on the other
+- The power straps (body Vias) can be placed directly below the M2 rails
+- All transistors will fit horizontally within each stripe. Larger transistors can be made of multiple **fingers**
 
-This is an 8-bit processor built from identical 1-bit slices placed side by side. Since we use near-minimum device widths, each slice has the identical **widths**, enabling a clean, regular layout.
-- Larger transistors will be made of multiple **fingers**
+See example in our [adder](/articles/vlsi/adder#7-po-connections-and-contacts)
 
 
-This creates an organized **vertical grid**, reference for all other wires. Keep the M2 widths and spacings **uniform** to maintain this regularity
-- Reserve these long, continuous rails for VDD and GND
-- Alternate N-type and P-type diffusions
-- Place power straps (body Vias) at the center
-
-> You may also want to keep all blocks with the **same height**, so the horizontal grid is also organized.
+> Although not done in our project, you can further design all blocks to have the **same height** to have an organized horizontal grid
+- This leads to standard cells. You can check out some library examples!
 {: .notice--info}
-
-
-Each block will have input/output data, primarily in M2; this is the **data path**. 
-
-Blocks also need control signals, such as subtraction and MUX select, which are typically identical across all bits and can be shared through a horizontal M3 wire; this is the **control path**
-
-
-

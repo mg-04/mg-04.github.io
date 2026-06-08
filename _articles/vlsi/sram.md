@@ -53,7 +53,7 @@ Because the SRAM cell is extremely dense, we use **column multiplexing**, sharin
 ## 8x8 Layout
 The following demo array was given in **Fall 2025**. Take a moment to appreciate this fabulous SRAM.
 
-Press `Ctrl-F` to viewthe blocks:
+Press `Ctrl-F` to view the blocks:
 ![](/images/vlsi/sram/s_demo_master.png)
 
 Above is a piece of `v1d1_demo_array_4x4` (8x4), which contains the following: 

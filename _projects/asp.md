@@ -1,8 +1,8 @@
 ---
-title: "Rogue Planets"
-excerpt: "ASP Zookeeper<br/><img src='/images/projects/planet.png' style='width:500px;'>"
+title: "ASP Zookeeper"
+excerpt: "(Subsets of) `malloc`, `grep`, chat server, `gdb`, `ld`, and a container manager<br/><img src='/images/projects/planet.png' style='width:500px;'>"
 collection: projects
-date: 2025-05-03
+date: 2025-05-18
 authors:
     - Ming Gong
     - David Juarez

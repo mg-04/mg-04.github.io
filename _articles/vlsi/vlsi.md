@@ -16,7 +16,7 @@ authors:
 {% include toc %}
 
 
-In this set of articles, I will walk through the **essentials of the 4321 design project**, so you can achieve an A tier layout even you are **completely new** to layout (like I was). It will be a *huge* learning curve, and that's exactly the point. 
+In this set of articles, I will walk through the **essentials of the 4321 design project**, so you can achieve an A tier layout even you are **completely new** to layout (like I [was](https://drive.google.com/file/d/1FBoEp4GBl2KEo-37PTwxRQWdf6YPI9t_/view?usp=sharing)). It will be a *huge* learning curve, and that's exactly the point. 
 
 Think of this as a process of **successive approximation** (Shepard’s favorite exam technique): make an initial attempt, realize how bad it is, learn something new, refine it, and repeat. 
 
@@ -62,19 +62,21 @@ Hopefully, this means less **pain and suffering**, but more **appreciation** for
     - [Wrap Up!](/articles/vlsi/overall#wrap-up)
 
 Appendix. [Pictures!](/articles/vlsi/gallery)  
-Appendix. [Class Notes](/courses/vlsi)
+Link. [Offical Course Page](https://www.bioee.ee.columbia.edu/courses/ee4321/)  
+Link. My [Class Notes](/courses/vlsi)  
+Link. [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by Charlotte Chen
 
 ---
 
 # About
-Performance:  
+Specifications:  
 - ~1100 µm² core area
 - 4 Metal layers  
 - 2 GHz frequency
 - 2.1 µm data path bit pitch (2 SRAM columns)
 - DRC and LVS clean
 
-Building blocks:
+Configuration:
 - Static CMOS ripple-carry adder
 - Transmission gate logarithmic shifter (buffered)
 - 4x16 physical SRAM (static decoding, 2-column MUX)
@@ -95,7 +97,7 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 
 ## Caveats
 - This guide is based on *our* design project. Our design evolution produces a lot of naming inconsistencies. Nevertheless, all names should make common sense and fit local context.
-- Apologies for the image quality and resolution inconsistencies. Everything should be readable, but some thumbnails may not render properly. You can always download them.
+- Sorry for the image quality and resolution inconsistencies. Some thumbnails may not render properly. You can always open them in a new tab.
 - There **are** suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you  
     - Spot any mistakes or inefficiencies
     - Have suggestions on improving this guide
@@ -103,9 +105,10 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 
     Feel free to **email** me at [ming.g@columbia.edu](mailto:ming.g@columbia.edu). I am **MORE THAN HAPPY** to include it! 
 - These articles focus primarily on **layout**, but **testing** is **equally important**
+	- Check out the [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by my teammate Charlotte
 - We did not explore much in Virtuoso's **design automation** features. This is an area worth studying on
 - This guide is **never** intended to **help you cheat** (and realistically, you can't).
-	- Do NOT try to reverse-engineer
+	- Don't try to reverse-engineer, as a lot of them come from our older versions
 - TSMC, please don't sue me!
 
 ---
@@ -228,9 +231,8 @@ He's awesome, but he's also really good at being **off-by-one**, whether it's in
 > **What are some examples that suck?**
 
 - Go to **StudyDocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
-- ~~Go on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother to put their layout, chances are it probably sucks anyway.~~
-
-I've also shared some of our own inefficient designs, as concrete counterexamples of what to avoid.
+- ~~Go on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother putting their layout, chances are it probably sucks anyway.~~
+- I'll also share some of our own early designs, as concrete examples of what not to do.
 
 
 ## Grading
