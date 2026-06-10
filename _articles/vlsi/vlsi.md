@@ -159,7 +159,7 @@ The real question is: **will an extension actually help you?**
 - If you are stuck on some last-minute bugs or sicknesses: absolutely
 - If you are fundamentally behind: **almost certainly not**. 
 
-At that point, you are not buying time. You are taking out a **high-interest loan** that compounds **hourly**... until you declare **layout-rupcy**
+At that point, you are not buying time. You are taking out a **high-interest loan**... until you declare **layout-rupcy**
 
 ---
 
@@ -217,7 +217,7 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 
 > **Don't blindly follow Shepard.**
 
-He's awesome, but he's also really good at being **off-by-one**, whether it's index, an inverter, or a 90-degree rotation. So make sure you understand what’s happening yourself.
+He's absolutely brilliant, but he's sometimes **off-by-one**, whether it's index, an inverter, or a 90-degree rotation. So make sure you understand what’s happening yourself.
 
 ---
 

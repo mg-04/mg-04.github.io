@@ -6,6 +6,16 @@ date: 2025-12-31
 authors:
     - Ming Gong
     - Charlotte Chen
+
+gallery:
+  - url: /vlsi/sram/sram_det.png
+    image_path: /vlsi/sram/sram_det.png
+    alt: ""
+    title: "SRAM Layout Detail"
+  - url: /vlsi/sram/sram_stick.jpg
+    image_path: /vlsi/sram/sram_stick.jpg
+    alt: ""
+    title: "SRAM Annotated Stick Diagram"
 ---
 
 {% if page.authors %}
@@ -64,7 +74,7 @@ Above is a piece of `v1d1_demo_array_4x4` (8x4), which contains the following:
     - `v1d1_row_edge_x1` (x4)
 - `v1d1_corner_edge_x1`
 - M2 and M4 pins
-- **There is an extra M3 layer at the left that will cause DRC errors. Delete it.**
+- (Fall 2025) **There is an extra M3 layer at the left that will cause DRC errors. Delete it.**
 
 A level down the hierarchy:
 ![](/images/vlsi/sram/s_demo_hie.png)
@@ -72,14 +82,11 @@ A level down the hierarchy:
 
 
 ### Inner Cells
-Now `Shift-F` to show the layers. Try to hide NW and M4, analyze layer by layer, and appreciate such a *fantastic* design
+Now `Shift-F` to show the layers. Try to hide NW and M4, analyze layer by layer, and appreciate such a *fantastic* design.  
+I annotated the cell at `wordline<2>`, `bit<0>`, clearly showing the coupled inverters and access transistors.
 
-![](/images/vlsi/sram/sram_det.png)
 
-Below is its *intensely* annotated stick diagram. I highlighted the cell at `wordline<2>`, `bit<0>`, clearly showing the coupled inverters and access transistors.
-
-![](/images/vlsi/sram/sram_stick.jpg)
-
+{% include gallery id="gallery" caption="" %}
 
 Try to make your own layout just as cute!
 

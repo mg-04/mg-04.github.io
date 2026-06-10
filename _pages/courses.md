@@ -5,17 +5,19 @@ permalink: /courses/
 author_profile: true
 ---
 
+---
+
 ## Spring 2026
 - COMS 4118 [Operating Systems I](/courses/os)
 - COMS 4995 [C++ Deep Dive for C Programmers](/courses/cpp)
-- ELEN 4815 Random Signals and Noise
-- ELEN 6321 Advanced Digital Electronic Circuits (+Lab)
-- COMS 4771 Machine Learning
+- ELEN 4815 [Random Signals and Noise](/courses/rsn)
+- ELEN 6321 [Advanced Digital Electronic Circuits](/courses/vlsi2)
+- COMS 4771 [Machine Learning](/courses/ml)
 
 ## Fall 2025
 - CSEE 4824 [Computer Architecture](/courses/comparch)
 - EECS 4321 [Digital VLSI Circuits](/courses/vlsi)
-- CSEE 4823 Advanced Logic Design (+[Lab](/courses/ald))
+- CSEE 4823 [Advanced Logic Design](/courses/ald)
 - ELEN 4312 [Analog Electronic Circuits](/courses/aec) (+Lab)
 
 ## Spring 2025
@@ -33,7 +35,7 @@ author_profile: true
 
 ---
 
-> For full course materials, please consult the [SR archive directory](/sr-archive/) or navigate through the Drive links
+> For full course materials, please go to the [SR archive directory](/sr-archive/) or navigate through the Drive links
 {: .notice--info}
 
 
@@ -58,7 +60,6 @@ author_profile: true
 
 ## Fall 2022
 - CHEM 302T [Organic Chemistry I](https://drive.google.com/drive/folders/12h-QO_QnrUMTblkJYjitGkVom0Tq5uAq)
-- CMPT 100 Intro to Computer Science
 - CMPT 252 [Discrete Mathematics](https://drive.google.com/drive/folders/1rh0RCj7j-ALBp7z77vIB9ZyG69JEoLq6)
 - PHYS 220 [Intro to Quantum Physics](https://drive.google.com/drive/folders/1Kk1GXRv4mm4x93b6cO9oFV2s7wBg1kAO)
 
@@ -70,13 +71,3 @@ author_profile: true
 ## Fall 2021
 - CHEM 100 [Chemistry I](https://drive.google.com/drive/folders/1NP3N6_hWpWr4nWY0CsjQyeGTKsHuMFCq)
 - MATH 220 Linear Algebra
-
----
-
-## 2020-2021
-- AP Calculus BC
-- AP Physics C
-- AP CSP
-
-## 2019-2020
-- AP Calculus AB

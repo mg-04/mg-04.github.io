@@ -55,7 +55,7 @@ There are a total of **4** bus drivers:
 - Accumulator → Internal bus
 - External bus → Internal bus
 - Internal bus → External bus
-- SRAM → Internal bus (done)
+- SRAM → Internal bus ([done](/articles/vlsi/sram#read-driver))
 
 > **Possible optimization:** feed the external bus directly into the MUX to reuse the Acc → Int driver
 {: .notice--info}
@@ -65,10 +65,12 @@ There are a total of **4** bus drivers:
 
 Let's focus on a single-bit data block on the right.
 
-## Connecting Data Blocks
-Since some blocks are not yet implemented, let's start by connecting the **shifter** and the **adder**
+## M2: Connecting the Interface
+Let's start by connecting the **shifter** and the **adder**
 
-> At you see, if the M2 interfaces are misaligned, future routing will be painful (but not impossible). Design data blocks to be **connection-compatible**
+
+
+> At you see, if the M2 interfaces are misaligned, future routing will be painful, but still more than possible.
 {: .notice--warning}
 
 1. Create a schematic.
@@ -76,20 +78,21 @@ Since some blocks are not yet implemented, let's start by connecting the **shift
 3. Move them closer, until you hit a **critical** DRC spacing violation
     - NW/PP/NP spacing doesn’t count (you can **fill** that)
     - The limiting factor is typically M1 or Poly
-    - If both blocks have an M3 power grid, align it
+    - If both blocks have an M3 power grid, you can try to align them
 4. Fix any DRC errors.
-5. Connect power at M2 level, if not already connected
+5. Connect power rails at M2 level, if not already
 6. **Connect the signal wires**: `out<i>` from the shifter should go in `A<i>` of the adder
 7. Check DRC and LVS again. Make sure nothing's shorted
 
 ![](/images/vlsi/pla/data_conn.png)
-Above was our connection at M2. The interfaces were not fully compatible, so we need to make some tweaks:
+
+Above was our connection at M2. We didn't design the adder and shifter interfaces to be fully compatible, so we need to make some tweaks:
 - The `out<2>` - `A<2>` path is misaligned, but no worries, we can temporarily route it to M3. 
     - A cleaner fix would be to shorten the `B<2>` pin in the adder.
-- The `B<2>` input comes from the top latch. I laid an M2 connecting the `B<2>` pin, and send it to M4 for the long-distance `latch<2>` signal.
+- The `B<2>` input comes from the top latch. I laid an M2 connecting the `B<2>` pin, and send it through M3 to M4 for the long-distance `latch<2>` signal.
 
 
-## M4 Data Wires
+## M4: Long-Distance Data
 > Your data wires should all fit within/above the data blocks. They should **not** significantly occupy any outside space.
 {: .notice--warning}
 
@@ -179,7 +182,7 @@ Make a table of the logical outputs:
         - Use `X`: simplify PLA logic
         - Turn it off: saves power  
 
-    As you will see from the Espresso output, because the opcode space is fully encoded (3 opcodes → 8 bytes), Espresso gives limited simplification.
+    As you will see from the Espresso output, because the opcode space is fully encoded (3 opcodes → 8 bytes), Espresso can't do much.
 
 2. Make a schematic from your Espresso logic. Start with minimum sizing for both NMOS and the pullup PMOS
     - This consumes a lot of **static** power, though. You may want to use non-minimum length.
@@ -224,9 +227,10 @@ To fit the chip, we eventually rotated the PLA by 90°, completely disrupting th
 # Control Path
 You've gained enough "vibe-layout" experience from the SRAM. You don't need an *optimal* solution-- just one that **fits and works**
 
-Reserve M4 tracks for:
-- `phi_1` and `phi_2`
-- `instr<0:5>`
+Reserve M4 tracks for the following:
+- Clock
+- Instructions
+- Other long-distance/critical control nets
 
 ## Latched Signals
 The control signals to the adder/shifter need to be latched by `phi_1`. We implemented this by instantiating our single-bit latches and place them in parallel with existing latch blocks.
@@ -269,7 +273,7 @@ If your datapath looks good, your control path probably doesn’t (relatively). 
 
 ## Decap
 - Use NMOS with a large width and length, but not too large (> 2 um, so $$r_o$$ starts to matter)
-- Use it **strong inversion** (gate = VDD, others = GND)
+- Put the NMOS in **strong inversion** (gate = VDD, others = GND)
 
 
 ### Schematic Trick
@@ -295,9 +299,7 @@ Extend your I/O metals to the boundary of your chip. Make pretty pins
 
 ## Fig Leaf (遮羞布)
 
-The rest of the circuit is what I call a "遮羞布". These dead areas come from the messy geometry of the control path, and instead of thoughtfully filling them with decaps, you inevitably give up and hide them under N-well.
-- The NW layer is **great** at hiding layout imperfection
-- A clean NW pattern leaves a great impression!
+The rest of the circuit is what I call "遮羞布". These dead areas come from the messy geometry of the control path, and instead of thoughtfully filling them with decaps, you inevitably give up and hide them under N-well.
 
 Look how the irregularities are hidden!
 
