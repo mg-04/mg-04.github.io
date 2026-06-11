@@ -1,11 +1,11 @@
 ---
 title: "Two-Stage OTA"
-excerpt: "Two-stage operational transconductance amplifier, with extensive DC/AC/step testing<br/><img src='/images/projects/analog.png' style='width:500px;'>"
+excerpt: "Two-stage operational transconductance amplifier with extensive DC/AC/step testing and PVT variation analysis."
 collection: projects
 date: 2025-11-20
-authors:
-    - Elijah Johnson
-    - Ming Gong
+authors: "Elijah Johnson, Ming Gong"
+teaser: '/images/projects/analog.png'
+venue: "Analog Electronic Circuits, Fall 2025"
 ---
 
 {% if page.authors %}

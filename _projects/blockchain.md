@@ -1,13 +1,11 @@
 ---
 title: "Blockchain"
-excerpt: "Blockchain mining written in Python, with automated testing<br/><img src='/images/projects/blockchain.jpg' style='width:500px;'>"
+excerpt: "Fully functional peer-to-peer blockchain network in Python with proof-of-work, digital signatures, Merkle trees, and a GUI wallet."
 collection: projects
 date: 2025-05-17
-authors:
-    - Griffin Newbold
-    - Amir Hossein Zarandi
-    - Ming Gong
-    - Neasha Mittal
+authors: Griffin Newbold, Amir Hossein Zarandi, Ming Gong, Neasha Mittal
+teaser: '/images/projects/blockchain.jpg'
+venue: Computer Networks, Spring 2025
 ---
 
 {% if page.authors %}

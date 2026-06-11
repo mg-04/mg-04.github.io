@@ -1,8 +1,11 @@
 ---
 title: "Rogue Planets"
-excerpt: "Origin, detection, and simulation of rogue planets<br/><img src='/images/projects/planet.png' style='width:500px;'>"
+excerpt: "Origin, detection, and simulation of rogue planets — unbound, planet-mass bodies drifting through the Galaxy."
 collection: projects
 date: 2024-05-08
+venue: "Relativity and Cosmology, Spring 2024"
+authors: Ming Gong
+teaser: /images/projects/planet.png
 ---
 
 Final project for PHYS 221 Relativity and Cosmology  

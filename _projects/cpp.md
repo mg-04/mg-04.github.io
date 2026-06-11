@@ -1,8 +1,11 @@
 ---
 title: "MyMake"
-excerpt: "A subset of GNU `make`<br/><img src='/images/projects/cpp/5.png' style='width:500px;'>"
+teaser: '/images/projects/cpp/5.png'
+excerpt: "Implementation of a subset of GNU `make` in C++ with Makefile parsing, recursive dependency graph resolution, and custom rule caching."
+venue: "C++ for C Programmers, Spring 2026"
 collection: projects
 date: 2026-05-23
+authors: Ming Gong
 ---
 
 

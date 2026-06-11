@@ -13,27 +13,19 @@ author_profile: true
 {% assign current_year = "" %}
 
 {% for post in sorted %}
-  {% assign year = post.date | date: "%Y" %}
-
-  {% if year != current_year %}
-    {% assign current_year = year %}
-    <h2 class="archive__subtitle">{{ current_year }}</h2>
-  {% endif %}
-
-  <div class="responsive-row" style="margin-bottom: 2.5em; border-bottom: 1px solid #f2f3f3; padding-bottom: 1.5em;">
+  <div class="responsive-row" 
+       style="margin-bottom: 2.5em; border-bottom: 1px solid #f2f3f3; padding-bottom: 1.5em;
+              --image-flex: 1.5; 
+              --image-max-width: '150px';">
     
     <div class="row-text">
       <h3 style="margin-top: 0; margin-bottom: 0.3em;">
         <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
       </h3>
       
-      <div style="font-size: 0.9em; color: #5a5a5a; margin-bottom: 0.5em;">
-        {% if post.authors %}
-          <span class="project-authors">{{ post.authors }}</span><br/>
-        {% endif %}
-        {% if post.venue %}
-          <span class="project-venue" style="font-style: italic;">{{ post.venue }}</span>
-        {% endif %}
+      <div style="font-size: 0.9em; margin-bottom: 0.5em;">
+        {% if post.authors %}<span class="project-authors">{{ post.authors }}</span><br/>{% endif %}
+        {% if post.venue %}<span class="project-venue" style="font-style: italic;">{{ post.venue }}</span>{% endif %}
       </div>
 
       {% if post.excerpt %}
@@ -47,13 +39,10 @@ author_profile: true
       {% if post.teaser %}
         <figure>
           <img src="{{ base_path }}{{ post.teaser }}" alt="{{ post.title }} teaser" />
-          {% if post.teaser_caption %}
-            <figcaption>{{ post.teaser_caption }}</figcaption>
-          {% endif %}
+          {% if post.teaser_caption %}<figcaption>{{ post.teaser_caption }}</figcaption>{% endif %}
         </figure>
       {% endif %}
     </div>
 
   </div>
-
 {% endfor %}

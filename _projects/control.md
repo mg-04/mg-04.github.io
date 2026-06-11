@@ -1,8 +1,11 @@
 ---
 title: "Control Theory"
-excerpt: "ODE final project <br/><img src='/images/projects/control.png' style='width:500px;'>"
+excerpt: "A walkthrough of control theory and applications, including open loop control, PID, and computer simulation and tuning."
 collection: projects
 date: 2023-05-10
+authors: Ming Gong
+teaser: "/images/projects/control.png"
+venue: "Ordinary Differential Equations, Spring 2023"
 ---
 
 > This page is under construction.

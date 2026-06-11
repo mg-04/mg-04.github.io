@@ -1,8 +1,11 @@
 ---
 title: "FFT Core"
-excerpt: "Design and VLSI Implementation of a high-performance, 1024-point Radix-2 DIF FFT core<br/><img src='/images/projects/ad.png' style='width:500px;'>"
+excerpt: "Design and VLSI implementation of a high-performance 1024-point Radix-2 DIF FFT core in TSMC 65nm CMOS with 400 MHz clock and 39.8 MS/s throughput."
+teaser: /images/projects/ad.png
+venue: "Advanced Digital Design, Spring 2026"
 collection: projects
 date: 2026-5-25
+authors: "Ming Gong"
 ---
 
 

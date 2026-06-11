@@ -1,12 +1,11 @@
 ---
 title: "Dog Cannot Catch"
-excerpt: "SCHUDEM VIII outstanding award winner <br/><img src='/images/projects/dog.png' style='width:500px;'>"
+excerpt: "Outstanding award winner. A unified mathematical and computational framework to analyze why Fritz the dog misses catching objects."
 collection: projects
 date: 2023-11-10
-authors:
-    - Ming Gong
-    - Paul Rose
-    - Anthony Chang
+authors: Ming Gong, Paul Rose, Anthony Chang
+venue: SCUDEM VIII, Fall 2023
+teaser: "/images/projects/dog.png"
 ---
 
 {% if page.authors %}

@@ -1,14 +1,11 @@
 ---
 title: "CircuitSim"
-excerpt: "SPICE on FPGA<br/><img src='/images/cc/555.png' style='width:500px;'>"
+excerpt: "An analog/digital circuit simulator on FPGA written in C and Verilog, featuring Modified Nodal Analysis and hardware-accelerated matrix inversion."
 collection: projects
 date: 2025-05-20
-authors:
-  - Ming Gong
-  - Case Schemmer
-  - Jary Tolentino
-  - Andrew Yang
-  - Faustina Cheng
+authors: Ming Gong, Case Schemmer, Andrew Yang, Jary Tolentino, Faustina Cheng
+venue: Embedded Systems, Spring 2025
+teaser: /images/cc/555.png
 ---
 
 {% if page.authors %}

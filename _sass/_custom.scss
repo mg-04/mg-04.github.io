@@ -195,8 +195,8 @@ html[data-theme="dark"] .row-media figcaption {
   }
 
   .row-media {
-    flex: 1; /* Adjust ratio (e.g., text takes 2 parts, image takes 1 part) */
-    max-width: 250px; /* Keeps the image from getting obnoxiously large on massive screens */
+	flex: var(--image-flex, 1); 
+    max-width: var(--image-max-width, 250px);
     display: flex;
     align-items: center; /* Centers the image vertically if text is much longer */
   }

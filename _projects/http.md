@@ -1,8 +1,11 @@
 ---
 title: "HTTP Server and Client"
-excerpt: "HTTP server/client from scratch<br/><img src='/images/projects/http.png' style='width:500px;'>"
+excerpt: "HTTP server and client written in C from scratch, with a backend server loading a binary database and serving the frontend."
 collection: projects
 date: 2024-12-11
+authors: Ming Gong
+teaser: "/images/projects/http.png"
+venue: "Advanced Programming, Fall 2024"
 ---
 
 Final assignment for COMS 3157 Advanced Programming  

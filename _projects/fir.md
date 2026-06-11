@@ -1,8 +1,12 @@
 ---
 title: "64-Tap FIR Filter"
-excerpt: "Design and simulation of a 64-tap finite impulse response filter<br/><img src='/images/projects/ald.png' style='width:500px;'>"
+excerpt: "Design and simulation of a 64-tap finite impulse response filter at 10 kS/s 16-bit fixed-point with MAC and full precision."
 collection: projects
 date: 2025-11-20
+teaser: '/images/projects/ald.png'
+authors: Ming Gong
+venue: "Advanced Logic Design, Fall 2025"
+
 ---
 
 

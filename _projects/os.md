@@ -1,13 +1,12 @@
 ---
 title: "Freezer Scheduler and EZFS"
-excerpt: "Implementation of Linux utilities: kv-pair, scheduler, page walk, and file system<br/><img src='/images/projects/os/5.png'
- style='width:500px;'>"
+teaser: '/images/projects/os/5.png'
+excerpt: "Implementation of Linux utilities: in-kernel key-value store, custom round-robin scheduler, page walk, and a lightweight filesystem."
+venue: "Operating Systems, Spring 2026"
 collection: projects
 date: 2026-05-24
 authors:
-    - Ming Gong
-    - Ryan Wang
-    - Chris Henry
+    - Ming Gong, Ryan Wang, Chris Henry
 ---
 
 {% include toc %}
