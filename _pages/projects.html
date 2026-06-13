@@ -13,36 +13,33 @@ author_profile: true
 {% assign current_year = "" %}
 
 {% for post in sorted %}
-  <div class="responsive-row" 
-       style="margin-bottom: 2.5em; border-bottom: 1px solid #f2f3f3; padding-bottom: 1.5em;
-              --image-flex: 1.5; 
-              --image-max-width: '150px';">
-    
-    <div class="row-text">
-      <h3 style="margin-top: 0; margin-bottom: 0.3em;">
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
-      </h3>
+<div class="responsive-row" style="margin-bottom: 2.5em; border-bottom: 1px solid #f2f3f3; padding-bottom: 1.5em; --image-flex: 1.5; --image-max-width: '150px';">
+  
+<div class="row-text">
+<h3 style="margin-top: 0; margin-bottom: 0.3em;">
+<a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
+</h3>
       
-      <div style="font-size: 0.9em; margin-bottom: 0.5em;">
-        {% if post.authors %}<span class="project-authors">{{ post.authors }}</span><br/>{% endif %}
-        {% if post.venue %}<span class="project-venue" style="font-style: italic;">{{ post.venue }}</span>{% endif %}
-      </div>
+<div style="font-size: 0.9em; margin-bottom: 0.5em;">
+{% if post.authors %}<span class="project-authors">{{ post.authors }}</span><br/>{% endif %}
+{% if post.venue %}<span class="project-venue" style="font-style: italic;">{{ post.venue }}</span>{% endif %}
+</div>
 
-      {% if post.excerpt %}
-        <div class="project-excerpt" style="font-size: 0.95em; line-height: 1.5;">
-          {{ post.excerpt | markdownify }}
-        </div>
-      {% endif %}
-    </div>
+{% if post.excerpt %}
+<div class="project-excerpt" style="font-size: 0.95em; line-height: 1.5;">
+{{ post.excerpt | markdownify }}
+</div>
+{% endif %}
+</div>
 
-    <div class="row-media">
-      {% if post.teaser %}
-        <figure>
-          <img src="{{ base_path }}{{ post.teaser }}" alt="{{ post.title }} teaser" />
-          {% if post.teaser_caption %}<figcaption>{{ post.teaser_caption }}</figcaption>{% endif %}
-        </figure>
-      {% endif %}
-    </div>
+<div class="row-media">
+{% if post.teaser %}
+<figure>
+<img src="{{ base_path }}{{ post.teaser }}" alt="{{ post.title }} teaser" />
+{% if post.teaser_caption %}<figcaption>{{ post.teaser_caption }}</figcaption>{% endif %}
+</figure>
+{% endif %}
+</div>
 
-  </div>
+</div>
 {% endfor %}

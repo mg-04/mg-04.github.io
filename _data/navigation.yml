@@ -24,7 +24,7 @@ main:
     url: /courses/
         
   - title: "Blog Posts"
-    url: /year-archive/
+    url: /posts/
     
   - title: "Resume"
     url: /resume/
