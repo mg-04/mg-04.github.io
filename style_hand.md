@@ -1,9 +1,11 @@
 ---
-title: "Handwritten Style"
+title: "Handwritten Notes Style Guide"
 permalink: /style2
 date: 2026-06-19
-author: "Ming Gong"     # optional, for collaborative posts
+author: "Ming Gong"
 ---
+
+{% include toc %}
 
 # Handwritten Note-Taking Style Guide
 
@@ -11,13 +13,28 @@ This document captures the structural, visual, and textual style of engineering 
 
 ---
 
-## Document Layout & Density
+# Document Layout & Note Structure
 
-Notes are optimized for high spatial density. Text flows dynamically around diagrams and equations, with minimal whitespace. Pages sometimes use a **dual-column layout**: the left side carries the primary mathematical or signal derivation path; the right side is reserved for architectural diagrams, vector charts, or waveform sketches.
+Notes are optimized for high spatial density, packed tightly into cohesive blocks or continuous documents to fit complex conceptual units onto a single view.
+
+- **Top-Level Banners:** Every major system or topic begins with a bold, standalone, prominent title banner at the top of the section acting as a clear entry point (e.g., `Linear Estimation (Weiner-Hopf)`, `Analog Modulation`, `Single-cycle MIPS processor`).
+- **Sequential Stage Marking:** Multi-step processing pipelines, structural loops, or proof sequences are rigorously tracked using circled digits (`①`, `②`, `③`, `④`, `⑤`) to establish a clear programmatic flow down the page.
+
+- **Separator Rules:** Horizontal divider lines or axis cross-sections are drawn across pages to segment sub-topics completely or to block off multi-stage proofs (e.g., separating the mathematical derivation of the Bose-Einstein distribution from the physical modeling of an ideal Bose gas).
+
+## Page Splits & Multi-Column Layouts
+
+To maximize visual density and keep derivations co-located with their physical frameworks, pages are systematically split into parallel spatial columns:
+
+- **Asymmetric Partitioning:** The page split dynamically adjusts based on the size of the visual model or datapath architecture.
+
+- **Mathematical vs. Visual Columns:** The primary mathematical derivations, signal transformations, or pipeline instructions run continuously down the left column, while the right side is explicitly reserved for accompanying visual validation (such as architectural diagrams, vector charts, or waveform sweeps).
+
+- **Vertical Segmentation:** Vertical ink strokes or distinct, unlined spatial gaps are utilized to partition self-contained problem checks or side-calculations away from the primary system path without changing pages.
 
 ---
 
-## Headings
+# Hierarchies
 
 Headings function as immediate conceptual tags, not full phrases. They are strictly telegraphic.
 
@@ -35,7 +52,7 @@ Headings function as immediate conceptual tags, not full phrases. They are stric
 
 ---
 
-## Prose Style
+# Prose Style
 
 Sentence structures are abandoned in favor of lecture-note fragments with extreme word economy. Articles, helping verbs, and transition words are completely omitted.
 
@@ -51,19 +68,21 @@ Sentence structures are abandoned in favor of lecture-note fragments with extrem
 **Inline directives** guide step-by-step verification:
 - `Watch overflow!`, `Check: 1 unit`, `Need to tune μ`, `safer to bias I_D, not V_GS`
 
-### Standard Shorthand Abbreviations
+## Shorthand Abbreviations
 
 | Shorthand | Meaning |
 |-----------|---------|
+| `E.` | example |
 | `w/` / `w/o` | with / without |
 | `vs` | versus |
+| `ana` | analogous |
+| `fucn.` / `vars.` | function / variables |
 | `clk` | clock |
 | `inv.` | inverter / inversion |
 | `dev.` | device |
 | `sys.` | system |
 | `sat` / `lin` / `dep` | saturation / linear / depletion |
 | `freq` | frequency |
-| `fucn.` / `vars.` | function / variables |
 | `mat.` | matrix |
 | `fwd` | forward |
 | `den.` / `num.` | denominator / numerator |
@@ -89,33 +108,34 @@ Causality, performance metrics, and system behavior are tracked using a strict s
 
 ---
 
-## Emphasis
+# Emphasis & Visual Hierarchy
 
-| Visual Element | Use |
-|----------------|-----|
-| **Full framing boxes** | Drawn around definitive analytical outcomes, optimum filter designs, or final coordinate transformations |
-| **Color highlights** (red/green) | State-change interventions, signal alterations (flip bits, add +1), structural hazard paths in pipelines |
-| **Underlines** | Key foundational tracking terms or dimensional invariants (e.g., `WSS`, `invariant interval`, `ideal diode`) |
+## 1. Color Coding
+Color is used functionally to establish a clear hierarchy over dense text and prevent visual clutter.
+
+* **Base (Black)**
+    * Core derivations, main formulas, structural block text, and initial diagrams.
+* **Emphasis (Red)**
+    * Critical points, error-prone steps, or structural changes.
+    * *Examples:* State-change interventions, signal alterations (e.g., bit flips, adding $+1$).
+* **Annotation & Function (Blue)**
+    * Auxiliary notes written over graphs, trace paths, signal names, and layout additions.
+    * Linked quotes, logical connections, and functional abbreviations (e.g., *Ex.*, *ana.*, *vs.*).
+* **Secondary (Orange / Green)**
+    * Section headings.
+    * Ancillary markings when an extra color layer is needed beyond blue annotations.
+
+## 2. Formatting & Framing Elements
+
+| Visual Element | Target Application |
+| :--- | :--- |
+| **Full Framing Boxes** | Definitive analytical outcomes, optimum filter designs, or final coordinate transformations. |
+| **Color Highlights** *(Neon Yellow/Green)* | Core exam concepts and high-yield testing points. |
+| **Underlines** | Key foundational tracking terms or dimensional invariants (e.g., `WSS`, `invariant interval`, `ideal diode`). Functions similarly to red ink for structural grounding. |
+
 
 ---
-
-## Color Coding Layer
-
-Color establishes a clear hierarchy over dense black text:
-
-- **Base layer (black/dark ink)**: Core derivations, main formulas, structural block text, initial diagrams
-- **Annotation layer (blue ink)**: Auxiliary notes written on top of graphs, trace paths, signal names, layout additions, and inline evaluation marks (`✓`, `✗`)
-- **Highlighting layer (yellow/neon green)**: Localized translucent circles or blocks pinpointing critical physical thresholds — bandgaps ($E_g$), equilibrium dimensions ($a_0$), vital intersections on transfer curves
-
----
-
-## Sequential & Multi-Step Structure
-
-Multi-step processing pipelines, structural loops, and proof sequences are tracked using **circled digits** to establish programmatic flow down the page:
-
-① → ② → ③ → ④ → ⑤
-
----
+# Math and Logic Elements
 
 ## Lists & Implication Chains
 
@@ -144,29 +164,6 @@ Stall Trigger:
 lwstall = MemToRegE and ((rsD == rtE) or (rtD == rtE))
 ```
 
----
-
-## Diagrams & Visual Annotations
-
-Visual sketches are primary note components and fall into three categories:
-
-### 1. Device Physics & Waveform Plots
-- **Axes and traces**: Clean lines with slopes (`slope=μ`), saturation thresholds ($V_{ov},\, \text{sat} \approx 0.2\,\text{V}$), and asymptotic limits annotated directly on the curve
-- **Critical markers**: Operational zones labeled inline (`cond.` for conduction band, `val.` for valence band, inversion boundaries)
-- **Reference points**: Hand-drawn stars ($\star$) mark critical design reference points
-
-### 2. Circuit & Layout Sketches
-- **Transistor stacks**: Simplified logic configurations with sizing written next to gates (`4W`, `2W/W`)
-- **Physical layout templates**: Stick-diagram representations with power rails clearly labeled `vdd!` and `gnd!`
-
-### 3. System & Signal Block Diagrams
-- **Signal flow graphs**: Summation nodes ($\Sigma$), integrators ($1/s$), and multipliers linked by directional arrows
-- **Pipeline matrix mapping**: Structural dependencies and hardware hazard bypass paths traced using colored interconnect pathways beneath code sequence columns
-- **Hardware architecture blocks**: Datapath layouts link PC, instr. mem., reg. file, ALU, and data mem. using directional buses with explicit bit-widths (`31:26`, `15:0`, `32`)
-- **FSM state bubbles**: Circles contain current states; edges are labeled `X/Y` for input/output transitions
-
----
-
 ## Mathematical Notation
 
 Math is highly integrated into text flow using direct algebraic transitions rather than verbal descriptions.
@@ -190,6 +187,28 @@ $$\int_{-\infty}^{\infty} f(x)\,\delta(x-a)\,dx = f(a)$$
 **System matrices** — multi-node parameter equations grouped into arrays before solving:
 $$\begin{bmatrix} \frac{1}{R} + sC & -\frac{1}{R} \\ \frac{1}{R} & sC \end{bmatrix} \begin{bmatrix} V_1 \\ V_2 \end{bmatrix} = \begin{bmatrix} -\frac{1}{R_1} \\ 0 \end{bmatrix} V_\text{in}(s)$$
 
+
+---
+
+# Diagrams & Visual Annotations
+
+Visual sketches are primary note components and fall into three categories:
+
+## 1. Device Physics & Waveform Plots
+- **Axes and traces**: Clean lines with slopes (`slope=μ`), saturation thresholds ($V_{ov},\, \text{sat} \approx 0.2\,\text{V}$), and asymptotic limits annotated directly on the curve
+- **Critical markers**: Operational zones labeled inline (`cond.` for conduction band, `val.` for valence band, inversion boundaries)
+- **Reference points**: Hand-drawn stars ($\star$) mark critical design reference points
+
+## 2. Circuit & Layout Sketches
+- **Transistor stacks**: Simplified logic configurations with sizing written next to gates (`4W`, `2W/W`)
+- **Physical layout templates**: Stick-diagram representations
+
+## 3. System & Signal Block Diagrams
+- **Signal flow graphs**: Summation nodes ($\Sigma$), integrators ($1/s$), and multipliers linked by directional arrows
+- **Pipeline matrix mapping**: Structural dependencies and hardware hazard bypass paths traced using colored interconnect pathways beneath code sequence columns
+- **Hardware architecture blocks**: Datapath layouts link PC, instr. mem., reg. file, ALU, and data mem. using directional buses with explicit bit-widths (`31:26`, `15:0`, `32`)
+- **FSM state bubbles**: Circles contain current states; edges are labeled `X/Y` for input/output transitions
+
 ---
 
 ## Hand-Drawn Graphs & Waveforms
@@ -202,15 +221,7 @@ Note segments are consistently paired with illustrative spatial plots, signal sw
 
 ---
 
-## Separator Rules
-
-Horizontal divider lines are drawn across pages to:
-- Segment sub-topics completely
-- Block off multi-stage proofs (e.g., separating a Bose-Einstein derivation from ideal Bose gas modeling)
-
----
-
-## Notice Boxes & Callouts
+# Notices & Callouts
 
 **Marginal pitfalls** — highlighted via bracketed indicators for hardware layout issues, scaling limitations, or parameter breakdowns:
 - `DIBL: Drain Induced Barrier Lowering`, `RHP zero hurts PM`
@@ -224,14 +235,14 @@ Horizontal divider lines are drawn across pages to:
 
 ---
 
-## Homework & Project References
+# Homework & Project References
 
 Problem set solutions and diagnostic checks are integrated into the relevant architectural notes with sharp contextual markers:
 - `HW1`, `HW2 All comp. give same pole...`, `Pn(f) = HW`
 
 ---
 
-## Overall Tone
+# Overall Tone
 
 - **Authoritative and quantitative**: Completely analytical and deterministic. Facts exist as direct system behaviors, mathematical definitions, or performance bottlenecks — no conversational assumptions.
 - **Visual-logical balance**: Mathematical proofs are paired directly with visual layout configurations — a relativity derivation alongside a Minkowski spacetime diagram, an op-amp poles transformation paired with an open-loop Bode plot sweep.

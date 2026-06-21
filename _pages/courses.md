@@ -28,10 +28,10 @@ author_profile: true
 
 ## Fall 2024
 - COMS 3157 [Advanced Programming](/articles/ap)
-- CSEE 3827 [Fundamentals of Computer Systems](/courses/fundies) ([+Lab](/courses/ds-lab))
+- CSEE 3827 [Fundamentals of Computer Systems](/courses/fundies) (+3082)
 - ELEN 3106 Solid State Devices-Matters
-- ELEN 3201 [Circuit Analysis](/pages/ca) ([+Lab](/pages/ca-lab))
-- ELEN 3801 [Signals and Systems](/courses/ss) (+Lab)
+- ELEN 3201 [Circuit Analysis](/courses/ca)
+- ELEN 3801 [Signals and Systems](/courses/ss)
 
 ---
 
