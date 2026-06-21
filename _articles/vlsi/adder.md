@@ -97,7 +97,7 @@ Below is our carry schematic. If you want to use the textbook sizing, change the
 ![](/images/vlsi/Adder/schem.png){: .align-center}
 
 A few notes:
-- Use multiple fingers, so every transistor has **equal width**
+- Use **multiple fingers**, so every transistor has **equal width**
 - Set up one P/NMOS with the *parameters*, then **duplicate** them over
 - Connect all PMOS bodies to `VDD!`, NMOS bodies to `GND!`. No exception
 - Label the nets and explicitly add the IO pins
@@ -117,7 +117,7 @@ This stick diagram is rotated 90 deg. In the actual layout, M2 (orange) will be 
 > For simplicity, I only show one finger. Multiple fingers will differ slightly in [diffusion sharing](/articles/vlsi/adder#4-non-sharing-neighbors)
 {: .notice--warning}
 
-Alternatively, you can give up planning and **"vibe layout"**, sometimes not bad
+Alternatively, you can give up planning and **"vibe layout"**. Sometimes not bad, but always horrible if you're a beginner.
 
 
 ---
@@ -143,17 +143,17 @@ You can use the `p` shortcut to draw a path. It shows its DRC boundaries, too
 ## 2. First Transistor
 1. Find the two fat 8/4 transistors gated by `A`. 
 2. Move them within the M2 grid, and rotate properly.
-- Make sure PP and NP touch, but not overlap
+- Make sure PP and NP layers touch, but not overlap
 3. Add the M1-NW and M1-SUB vias. 
-    - **Align their centers with the M2 grid!**
+    - **Align the center of the M1 layer with the M2 grid!**
 
 
 ## 3. Diffusion Sharing
 Find the single-fingered transistors gated by `A`. 
 - The top terminal (S) should be connected to `GND!`, so does the bottom terminal (S) of the four-fingered device. 
-- We can make them share the same diffusion
+- We can make them share the same diffusion terminal.
 
-Move the transistors together:
+Move the transistors closer:
 ![](/images/vlsi/Adder/diff0.png)
 
 Move the bottom transistor further up, and release your mouse. Virtuoso should **snap** them together.
@@ -167,7 +167,7 @@ Now, check DRC. I would recommend temporarily **deleting** the transistors you h
 
 You will get quite a few errors. It's complaining that the M1 and PO areas are too small. That's *fine*, since we haven't connected them yet
 
-Now, restore the deleted transistors by "Connectivity/**Update** All From Source" (not Connectivity/*Generate*)
+Now, restore the deleted transistors by "Connectivity/**Update** All From Source" (**not** Connectivity/*Generate*)
 
 ### S/D Swap
 
@@ -187,14 +187,14 @@ Now you can happily diffusion share!
 
 We run out of diffusion shares for M28/M26, a suboptimal situation. 
 
-The key is to know what can still be overlapped, and what can't. 
+The key is to know what can still be **overlapped**, and what can't. 
 - The bodies (NW/PP/NP) have the same potential. They **can overlap**.
 - The active regions (PO/OD) regions are different nets. They need to be **0.13 um** apart
     - This happens exactly when the PP/NP boxes overlap with the *neighboring* OD
 
 ![](/images/vlsi/Adder/nsd.png)
 
-Check DRC again.
+Place the two OD layers 0.13 um apart, and check DRC again.
 
 
 ## 5. Simple connections
@@ -211,15 +211,15 @@ Check DRC again.
 ## 6. M2 Connections and Vias
 We still have a few sources and drains left. Let's route them vertically using **M2** layer. Draw a single M2 wire with minimum width (0.1 um).
 
-> I do **not** recommend using the vias generated with `o`. They are too fat and ugly, and they are the root cause of DRC miseries if used improperly. Instead, let's manually construct the M1-VIA1-M2 sandwich
+> I do not recommend using the vias generated with `o`. They are too fat and ugly, and they are the root cause of routing miseries if used improperly. Instead, let's manually construct the M1-VIA1-M2 sandwich
 {: .notice--warning}
 
 1. Select the **VIA1** `drw` layer. Draw a **0.1 um x 0.1 um** square at the intersection
-2. A VIA1 requires enclosure by **both** M1 and M2, of either:
+2. A VIA1 requires enclosure by **both** M1 and M2, with a slack of either:
     - **0.04 um** on 2 opposite edges (almost always preferred)
     - 0.03 um on all 4 edges
-3. Use the ruler tool (`k`) to measure 0.04. Use `s` to extend the both layers.
-    - You may be tempted to extend M1 to the left, but that will violate the M1 spacing rules with the `GND!` wire.
+3. Use the ruler tool (`k`) to measure 0.04. Use `s` to extend the edges of the rectangles.
+    - You may be tempted to extend M1 to the left, but that will violate the M1 spacing rules with the `GND!` wire. Instead, there's plenty of vertical space.
 4. Done! Check DRC
 
 ![](/images/vlsi/Adder/via1.png)
@@ -278,7 +278,7 @@ Once you add the Pins, you should pass LVS too!
 ![](/images/vlsi/Adder/input_label.png)
 
 
-**CONGRATS** on completing 1/3 of this assignment!
+**CONGRATS** on completing 1/3 of *this* assignment!
 {: .notice--success}
 
 ---

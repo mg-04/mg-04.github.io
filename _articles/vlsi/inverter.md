@@ -102,7 +102,9 @@ A Body Via can power a large region of P/N substrate. You don't have to use a Bo
 
 
 ## 3. Connections
-Now, use the rectangle tool (`r`) to connect the `PO` gate and `M1` source/drain to complete the circuit:
+Now, use the rectangle tool (`r`) to connect the `PO` gate and `M1` source/drain to complete the circuit.
+- Use **minimum width** (60 nm for `PO`, 90 nm for `M1`). It should be the same as what's already on the transistors.
+
 ![](/images/vlsi/inv/conn.png)
 
 > You are allowed to overlap the rectangles. Only their union counts.
@@ -226,4 +228,5 @@ Stacked functions. If you accidentally repeat commands before previous ones have
 
 > My layout nets are not showing up
 
-Open with **Layout XL**
+Open the layout with **Layout XL**.
+
