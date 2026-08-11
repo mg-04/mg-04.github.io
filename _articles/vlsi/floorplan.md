@@ -118,5 +118,6 @@ See example in our [adder](/articles/vlsi/adder#7-po-connections-and-contacts)
 
 
 > Although not done in our project, you can further design all blocks to have the **same height** to have an organized horizontal grid
-- This leads to standard cells. You can check out some library examples!
+- This leads to standard cells. You can check out the cells in the TSMC library!
+- You can reference textbook chapter 1.10.2-4 (page 48-51) on how a 8-bit MIPS processor is laid out
 {: .notice--info}

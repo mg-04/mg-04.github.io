@@ -412,6 +412,9 @@ We chose to buffer at each MUX data input/output to reduce the *effective* stack
 
 ![](/images/vlsi/Adder/shifter_stick.png)
 
+> To save space, you can move all inter-module horizontal wires from M1 to M3.
+{: .notice--info}
+
 
 ## Layout
 

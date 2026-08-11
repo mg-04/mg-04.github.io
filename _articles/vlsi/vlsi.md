@@ -51,7 +51,7 @@ Hopefully, this means less **pain and suffering**, but more **appreciation** for
     - [SRAM Array](/articles/vlsi/sram#sram-array)
     - [Decoder](/articles/vlsi/sram#decoder)
     - [Read Write](/articles/vlsi/sram#read-write)
-    - [**Testing**](/http://localhost:4001/articles/vlsi/sram#testing)
+    - [**Testing**](/articles/vlsi/sram#testing)
     - [**What If Things Don't Fit**](/articles/vlsi/sram#what-if-things-dont-fit)
 6. [**Overall**](/articles/vlsi/overall) (PS9)
     - [Power Grid](/articles/vlsi/overall#power-grid)
@@ -86,8 +86,9 @@ Configuration:
 
 ## Disclaimer
 > mg-04-io is a personal blog. It is not affiliated with Columbia EE or BioEE.  
-This article is not an official TA guide. It's independent from the [official layout tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
-{: .notice--info}
+- This article is **not** an official TA guide. It is a supplement of the [On-line CAD tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
+- This guide is **never** intended to **help you cheat**. A lot of the circuits/schematics/stick diagrams/layouts are coming from our older design iterations, and will definitely fail if you copy directly
+{: .notice--warning}
 
 Our project is **FAR from perfect**. In fact, when I was writing this, I constantly cry about how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in this and that ways.
 
@@ -98,17 +99,15 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 ## Caveats
 - This guide is based on *our* design project. Our design evolution produces a lot of naming inconsistencies. Nevertheless, all names should make common sense and fit local context.
 - Sorry for the image quality and resolution inconsistencies. Some thumbnails may not render properly. You can always open them in a new tab.
-- There **are** suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you  
+- There **are** suboptimal designs from the early (and late) stages of our project. I point out the obvious ones along the articles, but if you  
     - Spot any mistakes or inefficiencies
     - Have suggestions on improving this guide
     - Want to share your layout/experience  
 
-    Feel free to **email** me at [ming.g@columbia.edu](mailto:ming.g@columbia.edu). I am **MORE THAN HAPPY** to include it! 
+    Feel free to [contact](mailto:mg04@cmu.edu) me. I am **MORE THAN HAPPY** to include it! 
 - These articles focus primarily on **layout**, but **testing** is **equally important**
 	- Check out the [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by my teammate Charlotte
 - We did not explore much in Virtuoso's **design automation** features. This is an area worth studying on
-- This guide is **never** intended to **help you cheat** (and realistically, you can't).
-	- Don't try to reverse-engineer, as a lot of them come from our older versions
 - TSMC, please don't sue me!
 
 ---
@@ -173,7 +172,7 @@ Most of the design projects can be **parallelized**: design, schematic, layout, 
 
 > **Ask Prof and TAs.**
 
-**Bring questions** to class, to recitations, to office hours.
+**Bring questions** to class, to recitations, to office hours. Let SHepard criticize your masterpiece.
 
 ---
 
@@ -191,33 +190,50 @@ LLMs are **surprisingly helpful**, especially at fetching and reading instructio
 
 ---
 
+> **How much should we read the textbook?**
+
+Below are the textbook chapters I found useful for the *project*:
+- 1 Introduction
+- 3.3 Layout Design Rules
+- 4.3 RC Delay Model
+- 9.2.5.1 CMOS with Transmission Gates
+- 10.3.1 Conventional CMOS Latches
+- 11.2.1 Single-Bit Addition
+- 11.8.1 Funnel Shifter
+- 12.2.1 SRAM Cells
+- 12.2.2 Row Circuitry
+- 12.2.3 Column Circuitry
+- 12.7 Programmable Logic Arrays
+
+---
+
 > **What are some other resources?**
 
-There are a lot. The **textbook** is really good. But your brain will soon *reject new PDFs*.  
+There are a lot, but pretty soon, your brain will reject new PDFs.  
 This guide serves to *distill* those resources, linking the ones that I find helpful.
 
 ## Design
 > **Run DRC and LVS early and often.**
 
-Small mistakes are cheap early and extremely expensive later. 
+Small mistakes are cheap early and exponentially expensive later. Verify in small increments and hierarchies
 
 ---
 
 > **Don't be messy.**
 
-Symmetry and consistency will save you from debugging hell. "Messy but working" layouts *will* stab you some point in the futures.
+Symmetry, consistency, and **hierarchy** will save you from debugging hell. "Messy but working" layouts *will* stab you some point in the futures.
 
 ---
 
 > **Don't be perfect.**
 
-Don’t stress about getting *anything* perfect on the first pass. You will **almost certainly** revisit, modify, and sometimes **completely nuke** them as your design evolves. That's part of the learning process
+Don’t stress about getting *anything* perfect on the first pass. You will **almost certainly** revisit, modify, and sometimes **completely nuke** them as your design evolves. It's part of the process.
 
 ---
 
 > **Don't blindly follow Shepard.**
 
-He's absolutely brilliant, but he's sometimes **off-by-one**, whether it's index, an inverter, or a 90-degree rotation. So make sure you understand what’s happening yourself.
+He's absolutely brilliant, but he can be sometimes off by an index index, an inverter, or a 90-degree rotation, whether intentional or not. So make sure you understand what’s happening yourself.
 
 ---
 
@@ -232,7 +248,7 @@ He's absolutely brilliant, but he's sometimes **off-by-one**, whether it's index
 
 - Go to **StudyDocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
 - ~~Go on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother putting their layout, chances are it probably sucks anyway.~~
-- I'll also share some of our own early designs, as concrete examples of what not to do.
+- I'll also share some of our own failed designs, as concrete examples of what not to do.
 
 
 ## Grading
@@ -261,20 +277,20 @@ It's quite a left-heavy tail, with a similar mean to exams, but a much **higher 
 
 > **How are the exams?**
 
-They are relatively easy to prepare. There are two types of exam problems:
+They are relatively easy to prepare. There are two types of problems:
 1. **Freebies**  
-    These are straightforward. Some may be quite computational, but as long as you hold your ground, you’ll be fine.
+    Straightforward. Some may be quite computational, but you'll be fine as long as you hold your ground.
 2. **Problems that "tell the boys apart from the men"** (according to Shepard who's "not trying to be sexist")  
-    Those are multi-part problems that require complex calculations or new concepts/equations, things that you haven't seen. Sometimes even the TA got them wrong. Sometimes Shepard himself finds the problem unsolvable. Who knows...
+    Multi-part problems that require complex calculations or new concepts/equations, things that you haven't seen. Sometimes even the TA got them wrong. Sometimes Shepard himself found the problem unsolvable. Who knows...
 
 > Over the years, the proportion of the second type has increased, as Shepard was "running out of easy problems"
 {: .notice--warning}
 
 The point is: **if you fail, the class fails with you**. If you can't solve the trick questions, neither can *most* of the class. Don't stress too much about the exam.
 
-> I've thought of writing a "4321 Exam Guide," but I don't think obsessing over exam tricks is productive in the long run. Have a life. 
+> I've thought of writing a "4321 Exam Guide," but I don't think obsessing over exam tricks is productive in the long run. Get a life. 
 - You can check out some class notes [here](/courses/vlsi)
-{: .notice--info}
+Get
 
 ---
 

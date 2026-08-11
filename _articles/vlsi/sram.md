@@ -253,8 +253,8 @@ Vertical Poly allows aggressive diffusion sharing if S/D Contact and Metal is al
 
 ## Read Driver
 
-The read driver's pretty straightforward. 
-1. A skewed inverter to handle bitlines
+We used single-ended sensing, suitable for small bitline capacitances, featuring
+1. A skewed inverter to sense a bitline
 2. A large tristate driver for `iobus`
 
 We chose a 4:1 *width* ratio. You should test it to make sure it works at **schematic** level.
@@ -293,10 +293,10 @@ An example of diffusion sharing and detour (M1)
 
 # Peripheral-Peripheral
 The rest of the circuit is what I call the "peripheral" of peripheral circuits, which includes:
-- PMOS for cell precharge
+- PMOS for bitline precharge
 - Logic for `(write NAND phi_1)`
 - A couple of inverted control signals
-- Power grids and pins
+- Power grid and pins
 
 This is where **overall** layout organization starts to hurt. The main challenges are:
 - Decide transistor size to drive the shared control signals
@@ -348,4 +348,4 @@ WARNING: [FDI3014] Could not find cell mapping for device nchpg_sr. Ignoring ins
 Those are fine, since the internal schematic for the 6T SRAM cell is not given. The **entire instance** will be used for the extraction.
 - If post-extraction simulation doesn't work, try a more tolerant testbench timing [here](/articles/vlsi/sram#testing)
 
-They post-extraction delays are around 50 ns.
+The post-extraction delays are around 50 ns.
