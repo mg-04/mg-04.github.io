@@ -16,13 +16,13 @@ authors:
 {% include toc %}
 
 
-In this set of articles, I will walk through the **essentials of the 4321 design project**, so you can achieve an A tier layout even you are **completely new** to layout (like I [was](https://drive.google.com/file/d/1FBoEp4GBl2KEo-37PTwxRQWdf6YPI9t_/view?usp=sharing)). It will be a *huge* learning curve, and that's exactly the point. 
+In this set of articles, I will walk through the **essence of the 4321 design project**, so you can survive even with zero layout experience (like I [was](https://drive.google.com/file/d/1FBoEp4GBl2KEo-37PTwxRQWdf6YPI9t_/view?usp=sharing)). It will be a *huge* learning curve, but don't be scared.
 
 Think of this as a process of **successive approximation** (Shepard’s favorite exam technique): make an initial attempt, realize how bad it is, learn something new, refine it, and repeat. 
 
-This guide is meant to help you **converge faster**, avoiding many of the traps and misjudgments we fell early on, and focusing on what *actually* matters. 
+This guide is meant to help you **converge faster**, dodging the early traps and misjudgments we ran into and focusing on what *actually* matters. 
 
-Hopefully, this means less **pain and suffering**, but more **appreciation** for the real beauty of custom layout. Enjoy!
+Hopefully, this means less *pain and suffering*, and more **appreciation** for the real beauty of custom layout. Enjoy!
 
 ---
 
@@ -69,8 +69,8 @@ Link. [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by Charl
 ---
 
 # About
-Specifications:  
-- ~1100 µm² core area
+Specs:  
+- 1100 µm² core area
 - 4 Metal layers  
 - 2 GHz frequency
 - 2.1 µm data path bit pitch (2 SRAM columns)
@@ -97,18 +97,18 @@ That's okay.
 The goal of this project is to get something *done*, and done *well*, not *perfectly*. This is an older technology node, intended for learning and practice, so don’t pull your hair out.
 
 ## Caveats
-- This guide is based on *our* design project. Our design evolution produces a lot of naming inconsistencies. Nevertheless, all names should make common sense and fit local context.
-- Sorry for the image quality and resolution inconsistencies. Some thumbnails may not render properly. You can always open them in a new tab.
-- There **are** suboptimal designs from the early (and late) stages of our project. I point out the obvious ones along the articles, but if you  
+- This guide is based on *our* design project. As the design evolved, there are inevitably some naming inconsistencies. Nevertheless, all labels should make common sense and fit local context.
+- Layout thumbnails may not render properly on some platforms. You can always view the full image in a new tab.
+- There **are** suboptimal designs from the early (and late) stages of our project. I point out the obvious ones, but if you  
     - Spot any mistakes or inefficiencies
     - Have suggestions on improving this guide
     - Want to share your layout/experience  
 
-    Feel free to [contact](mailto:mg04@cmu.edu) me. I am **MORE THAN HAPPY** to include it! 
+    Feel free to [contact](mailto:mg04@cmu.edu) me. I am **MORE THAN HAPPY** to include it!
 - These articles focus primarily on **layout**, but **testing** is **equally important**
-	- Check out the [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by my teammate Charlotte
+	- Check out the [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by Charlotte
 - We did not explore much in Virtuoso's **design automation** features. This is an area worth studying on
-- TSMC, please don't sue me!
+- TSMC, please don't sue me! (All layouts and figures shown are sanitized academic work intended solely for peer learning purposes. No NDA violations intended)
 
 ---
 
@@ -130,7 +130,7 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 
 > **Find a good teammate.**
 
-Half of the class were having teammate issues; the other half **are** the teammate issues
+Half of the class had teammate issues; the other half **were** the teammate issues
 
 ---
 
@@ -172,7 +172,7 @@ Most of the design projects can be **parallelized**: design, schematic, layout, 
 
 > **Ask Prof and TAs.**
 
-**Bring questions** to class, to recitations, to office hours. Let SHepard criticize your masterpiece.
+**Bring questions** to class, to recitations, to office hours. Let Shepard roast your masterpiece.
 
 ---
 
@@ -180,13 +180,13 @@ Most of the design projects can be **parallelized**: design, schematic, layout, 
 
 Your classmates know things you don’t.  
 They also know things you *don’t know* you don’t know.  
-Talk to them. Compare your layouts. Steal their ideas
+Talk to them. Compare (and steal) their layouts.
 
 ---
 
 > **Ask Chat.**
 
-LLMs are **surprisingly helpful**, especially at fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat to make it lay it out for you, but it is super useful at explaining concepts and interpreting errors.
+LLMs are helpful, especially at fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat and ask it lay it out for you, but it is super useful at explaining concepts and interpreting errors.
 
 ---
 
@@ -200,9 +200,7 @@ Below are the textbook chapters I found useful for the *project*:
 - 10.3.1 Conventional CMOS Latches
 - 11.2.1 Single-Bit Addition
 - 11.8.1 Funnel Shifter
-- 12.2.1 SRAM Cells
-- 12.2.2 Row Circuitry
-- 12.2.3 Column Circuitry
+- 12.2.1-3 SRAM Cells
 - 12.7 Programmable Logic Arrays
 
 ---
@@ -225,7 +223,7 @@ Symmetry, consistency, and **hierarchy** will save you from debugging hell. "Mes
 
 ---
 
-> **Don't be perfect.**
+> **Don't chase perfect.**
 
 Don’t stress about getting *anything* perfect on the first pass. You will **almost certainly** revisit, modify, and sometimes **completely nuke** them as your design evolves. It's part of the process.
 
@@ -233,7 +231,7 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 
 > **Don't blindly follow Shepard.**
 
-He's absolutely brilliant, but he can be sometimes off by an index index, an inverter, or a 90-degree rotation, whether intentional or not. So make sure you understand what’s happening yourself.
+He's absolutely brilliant, but he can be sometimes off by an index, an inverter, or a 90-degree rotation, whether intentional or not. So make sure you understand what’s happening yourself.
 
 ---
 
@@ -247,7 +245,7 @@ He's absolutely brilliant, but he can be sometimes off by an index index, an inv
 > **What are some examples that suck?**
 
 - Go to **StudyDocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
-- ~~Go on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother putting their layout, chances are it probably sucks anyway.~~
+- ~~Get on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother putting their layout, chances are it probably sucks anyway.~~
 - I'll also share some of our own failed designs, as concrete examples of what not to do.
 
 
@@ -280,7 +278,7 @@ It's quite a left-heavy tail, with a similar mean to exams, but a much **higher 
 They are relatively easy to prepare. There are two types of problems:
 1. **Freebies**  
     Straightforward. Some may be quite computational, but you'll be fine as long as you hold your ground.
-2. **Problems that "tell the boys apart from the men"** (according to Shepard who's "not trying to be sexist")  
+2. **Problems that "tell the boys apart from the men"** (according to Shepard who was "not trying to be sexist")  
     Multi-part problems that require complex calculations or new concepts/equations, things that you haven't seen. Sometimes even the TA got them wrong. Sometimes Shepard himself found the problem unsolvable. Who knows...
 
 > Over the years, the proportion of the second type has increased, as Shepard was "running out of easy problems"
@@ -288,9 +286,8 @@ They are relatively easy to prepare. There are two types of problems:
 
 The point is: **if you fail, the class fails with you**. If you can't solve the trick questions, neither can *most* of the class. Don't stress too much about the exam.
 
-> I've thought of writing a "4321 Exam Guide," but I don't think obsessing over exam tricks is productive in the long run. Get a life. 
+> I've thought of writing a "4321 Exam Guide," but I don't think obsessing over exam tricks is productive in the long run. Get a life! 
 - You can check out some class notes [here](/courses/vlsi)
-Get
 
 ---
 
