@@ -2,12 +2,14 @@
 title: "Interpreting Earth’s Inner Core Structure via Ultrasonic Scattering Experiments"
 collection: publications
 category: manuscripts
-permalink: /publication/2025-04-25-Interpreting-Inner-Core-Attenuation-Scattering-through-Ultrasonic-Experiments
+permalink: /publication/ic
 excerpt: 'An experimental study of the scattering of ultrasonic compressional waves in an hcp Zn-Sn alloy, serving as an analog to the Fe alloy in Earth’s inner core to better understand the origin of inner core seismic attenuation.'
 date: 2025-04-25
+authors: Ming Gong, Michael I. Bergman
 venue: 'Physics of the Earth and Planetary Interiors'
 slidesurl: 'https://docs.google.com/presentation/d/1C4nOEIFJypRAPYpgcL_d-mbAZy0HW6WQ7nFijfUacFY/'
 paperurl: 'https://www.sciencedirect.com/science/article/pii/S0031920125001505'
+teaser: '/images/research/ic.png'
 citation: "Ming Gong, Michael I. Bergman, An experimental ultrasonic method to determine a scattering quality factor, with application to earth's inner core, Physics of the Earth and Planetary Interiors, 2025, 107456, ISSN 0031-9201, https://doi.org/10.1016/j.pepi.2025.107456."
 ---
 

@@ -3,10 +3,11 @@ title: "An Experimental Ultrasonic Method to Determine A Scattering Quality Fact
 collection: conferences
 category: conferences
 permalink: /publication/2025-04-25-Interpreting-Inner-Core-Attenuation-Scattering-through-Ultrasonic-Experiments
-excerpt: 'SEDI Poster 2025'
+excerpt: 'SEDI Poster 2024'
 date: 2024-05-30
-venue: 'Physics of the Earth and Planetary Interiors'
+venue: "Study of the Earth's Deep Interior"
 slidesurl: 'https://docs.google.com/presentation/d/1C4nOEIFJypRAPYpgcL_d-mbAZy0HW6WQ7nFijfUacFY/'
+teaser: '/images/research/sedi.png'
 citation: "Ming Gong, Michael I. Bergman, An experimental ultrasonic method to determine a scattering quality factor, with application to earth's inner core, Physics of the Earth and Planetary Interiors, 2025, 107456, ISSN 0031-9201, https://doi.org/10.1016/j.pepi.2025.107456."
 ---
 

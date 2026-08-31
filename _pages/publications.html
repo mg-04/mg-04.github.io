@@ -6,31 +6,105 @@ author_profile: true
 ---
 
 {% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+  <div class="wordwrap" style="margin-bottom: 1.5em;">
+    You can also find my articles on <a href="{{ site.author.googlescholar }}">my Google Scholar profile</a>.
+  </div>
 {% endif %}
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
+{% assign sorted_pubs = site.publications | sort: "date" | reverse %}
+
 {% if site.publication_category %}
-  {% for category in site.publication_category  %}
+  {% for category in site.publication_category %}
     {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
+    {% for post in sorted_pubs %}
       {% if post.category != category[0] %}
         {% continue %}
       {% endif %}
+
       {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
+        <h2>{{ category[1].title }}</h2>
+        <hr style="margin-bottom: 1.5em;" />
         {% assign title_shown = true %}
       {% endunless %}
-      {% include archive-single.html %}
+
+      <div class="responsive-row" style="margin-bottom: 2.5em; border-bottom: 1px solid #f2f3f3; padding-bottom: 1.5em; --image-flex: 1.5; --image-max-width: '150px';">
+        <div class="row-text">
+          <h3 style="margin-top: 0; margin-bottom: 0.3em;">
+            {% if post.link %}
+              <a href="{{ post.link }}">{{ post.title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i></a>
+            {% else %}
+              <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
+            {% endif %}
+          </h3>
+
+          <div style="font-size: 0.9em; margin-bottom: 0.5em;">
+            {% if post.authors %}<span class="publication-authors">{{ post.authors }}</span><br/>{% endif %}
+            {% if post.venue %}<span class="publication-venue" style="font-style: italic;">{{ post.venue }}</span>{% endif %}{% if post.venue and post.date %}, {% endif %}{% if post.date %}{{ post.date | default: "1900-01-01" | date: "%Y" }}{% endif %}
+            {% if post.paperurl %}<br/><a href="{{ post.paperurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i>Paper</a>{% endif %}
+			{% if post.slidesurl %}<br/><a href="{{ post.slidesurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i>Slides</a>{% endif %}
+          </div>
+
+          {% if post.excerpt %}
+            <div class="publication-excerpt" style="font-size: 0.95em; line-height: 1.5;">
+              {{ post.excerpt | markdownify }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="row-media">
+          {% if post.teaser %}
+            <figure>
+              <img src="{{ base_path }}{{ post.teaser }}" alt="{{ post.title }} teaser" />
+              {% if post.teaser_caption %}<figcaption>{{ post.teaser_caption }}</figcaption>{% endif %}
+            </figure>
+          {% elsif post.header.teaser %}
+            <figure>
+              <img src="{{ base_path }}{{ post.header.teaser }}" alt="{{ post.title }} teaser" />
+            </figure>
+          {% endif %}
+        </div>
+      </div>
     {% endfor %}
   {% endfor %}
 {% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
+  {% for post in sorted_pubs %}
+    <div class="responsive-row" style="margin-bottom: 2.5em; border-bottom: 1px solid #f2f3f3; padding-bottom: 1.5em; --image-flex: 1.5; --image-max-width: '150px';">
+      <div class="row-text">
+        <h3 style="margin-top: 0; margin-bottom: 0.3em;">
+          {% if post.link %}
+            <a href="{{ post.link }}">{{ post.title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i></a>
+          {% else %}
+            <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
+          {% endif %}
+        </h3>
+
+        <div style="font-size: 0.9em; margin-bottom: 0.5em;">
+          {% if post.authors %}<span class="publication-authors">{{ post.authors }}</span><br/>{% endif %}
+          {% if post.venue %}<span class="publication-venue" style="font-style: italic;">{{ post.venue }}</span>{% endif %}{% if post.date and post.venue %}, {% endif %}{% if post.date %}{{ post.date | default: "1900-01-01" | date: "%Y" }}{% endif %}
+          {% if post.paperurl %}<br/><a href="{{ post.paperurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i> PDF</a>{% endif %}
+        </div>
+
+        {% if post.excerpt %}
+          <div class="publication-excerpt" style="font-size: 0.95em; line-height: 1.5;">
+            {{ post.excerpt | markdownify }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="row-media">
+        {% if post.teaser %}
+          <figure>
+            <img src="{{ base_path }}{{ post.teaser }}" alt="{{ post.title }} teaser" />
+            {% if post.teaser_caption %}<figcaption>{{ post.teaser_caption }}</figcaption>{% endif %}
+          </figure>
+        {% elsif post.header.teaser %}
+          <figure>
+            <img src="{{ base_path }}{{ post.header.teaser }}" alt="{{ post.title }} teaser" />
+          </figure>
+        {% endif %}
+      </div>
+    </div>
   {% endfor %}
 {% endif %}
-
-
-
