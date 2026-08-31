@@ -7,6 +7,15 @@ author_profile: true
 
 ---
 
+# CMU
+
+## Fall 2026
+- 18-643 Reconfigurable Logic
+- 18-740 Modern Computer Architecture and Design
+
+---
+# Colubmia
+
 ## Spring 2026
 - COMS 4118 [Operating Systems I](/courses/os)
 - COMS 4995 [C++ Deep Dive for C Programmers](/courses/cpp)
@@ -34,6 +43,7 @@ author_profile: true
 - ELEN 3801 [Signals and Systems](/courses/ss)
 
 ---
+# Simon's Rock
 
 > For full course materials, please go to the [SR archive directory](/sr-archive/) or navigate through the Drive links
 {: .notice--info}

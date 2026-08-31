@@ -1,9 +1,10 @@
 ---
 title: "Physics"
+course_id: "PHYS 101"
 collection: teaching
 type: "Class Tutor"
+instructor: "Michael Bergman"
 permalink: /teaching/2023-physics
 venue: "Bard College at Simon's Rock"
-date: 2023-01-01
-#ocation: "City, Country"
+date: 2022-01-01
 ---

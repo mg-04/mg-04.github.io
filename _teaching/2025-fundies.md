@@ -1,10 +1,13 @@
 ---
 title: "Fundamentals of Computer Systems"
+course_id: "CSEE 3827"
 collection: teaching
 type: "Head TA"
+instructor: "Martha Kim; Brian Plancher"
 permalink: /teaching/2025-fundies
 venue: "Columbia University"
 date: 2025-01-01
+teaser: "/images/teaching/fundies/0bc1e8cbc44a1ed52b16b68c1bc3c35.jpg"
 #location: "City, Country"
 ---
 
