@@ -144,6 +144,9 @@
       {% if author.vine %}
         <li><a href="https://vine.co/u/{{ author.vine }}"><i class="fab fa-fw fa-vine icon-pad-right" aria-hidden="true"></i>Vine</a></li>
       {% endif %}        
+      {% if author.wechat %}
+        <li><i class="fab fa-fw fa-weixin icon-pad-right" aria-hidden="true"></i>{{ author.wechat }}</li>
+      {% endif %}
       {% if author.weibo %}
         <li><a href="https://www.weibo.com/{{ author.weibo }}"><i class="fab fa-fw fa-weibo icon-pad-right" aria-hidden="true"></i>Weibo</a></li>
       {% endif %}
