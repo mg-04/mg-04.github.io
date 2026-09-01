@@ -21,7 +21,7 @@ Previously, I contributed to research projects in the labs of:
 - Professor Michael Bergman
 - Professor Xi Chen
 
-You can find more about my current and past work in the [research](/publications/) section.
+You can find more about my current and past work in the [research](/research/) section.
 
 ## Teaching
 I like to master hard and interesting classes, and pass my knowledge to others.
