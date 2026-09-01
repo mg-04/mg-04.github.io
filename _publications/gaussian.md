@@ -9,6 +9,7 @@ date: 2024-04-27
 venue: 'Engineering'
 paperurl: 'https://www.sciencedirect.com/science/article/pii/S2095809924001590'
 teaser: '/images/research/gaussian.png'
+author: Xinyu Cao, Ming Gong, Anjan Tula, Xi Chen, Rafiqul Gani, Venkat Venkatasubramanian
 citation: 'Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). An improved machine learning model for pure component property estimation. Engineering, 39, 61–73. https://doi.org/10.1016/j.eng.2023.08.024'
 ---
 

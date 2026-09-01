@@ -7,6 +7,7 @@ excerpt: 'Identify optimal combination of loss function and data to create a mod
 date: 2025-04-25
 venue: Yale Undergraduate Research Conference
 slidesurl: '/files/research/barmak/grae_gong_poster.pdf'
+author: Lauren Grae, Ming Gong, Matthew Patrick, Katayun Barmak
 teaser: '/images/research/grae.png'
 
 #citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'

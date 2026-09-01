@@ -8,6 +8,7 @@ date: 2024-05-30
 venue: "Study of the Earth's Deep Interior"
 slidesurl: 'https://docs.google.com/presentation/d/1C4nOEIFJypRAPYpgcL_d-mbAZy0HW6WQ7nFijfUacFY/'
 teaser: '/images/research/sedi.png'
+author: Ming Gong, Michael I Bergman, Neelesh Bhadwal
 citation: "Ming Gong, Michael I. Bergman, An experimental ultrasonic method to determine a scattering quality factor, with application to earth's inner core, Physics of the Earth and Planetary Interiors, 2025, 107456, ISSN 0031-9201, https://doi.org/10.1016/j.pepi.2025.107456."
 ---
 
