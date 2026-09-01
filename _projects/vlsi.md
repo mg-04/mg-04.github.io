@@ -1,6 +1,6 @@
 ---
 title: "Custom 8-Bit Processor"
-excerpt: "A simple 8-bit processor core custom layout, built and tested from scratch in Cadence Virtuoso.</span>"
+excerpt: "A simple 8-bit processor core custom layout, built and tested from scratch in Cadence Virtuoso."
 collection: projects
 date: 2025-11-28
 authors: "Ming Gong, Charlotte Chen"
