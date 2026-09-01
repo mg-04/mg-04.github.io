@@ -2,7 +2,7 @@
 title: "MyMake"
 teaser: '/images/projects/cpp/5.png'
 excerpt: "Implementation of a subset of GNU `make` in C++ with Makefile parsing, recursive dependency graph resolution, and custom rule caching."
-venue: "C++ for C Programmers, Spring 2026"
+course: "C++ for C Programmers, Spring 2026"
 collection: projects
 date: 2026-05-23
 authors: Ming Gong

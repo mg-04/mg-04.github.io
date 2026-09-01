@@ -43,6 +43,8 @@
         {% elsif post.collection == 'publications' %}
           {% if page.venue %}
             <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          {% elsif page.course %}
+            <p>{{ post.course }}, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
           {% else %}
             <p>{{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
           {% endif %}

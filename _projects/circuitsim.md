@@ -4,7 +4,7 @@ excerpt: "An analog/digital circuit simulator on FPGA written in C and Verilog, 
 collection: projects
 date: 2025-05-20
 authors: Ming Gong, Case Schemmer, Andrew Yang, Jary Tolentino, Faustina Cheng
-venue: Embedded Systems, Spring 2025
+course: Embedded Systems, Spring 2025
 teaser: /images/cc/555.png
 ---
 

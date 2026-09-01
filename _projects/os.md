@@ -2,7 +2,7 @@
 title: "Freezer Scheduler and EZFS"
 teaser: '/images/projects/os/5.png'
 excerpt: "Implementation of Linux utilities: in-kernel key-value store, custom round-robin scheduler, page walk, and a lightweight filesystem."
-venue: "Operating Systems, Spring 2026"
+course: "Operating Systems, Spring 2026"
 collection: projects
 date: 2026-05-24
 authors:

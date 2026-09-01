@@ -8,7 +8,7 @@ redirect_from:
 
 
 
-New York, NY \| [(682) 559-3699](tel:6825593699) \| [--verbose](/cv)
+Pittsburgh, PA \| [(682) 559-3699](tel:6825593699) \| [-\-verbose](/cv)
 
 {% include base_path %}
 
@@ -18,12 +18,12 @@ New York, NY \| [(682) 559-3699](tel:6825593699) \| [--verbose](/cv)
 # Education
 - **Carnegie Mellon University**    
     2026 - 2031  
-    Incoming PhD -- **Electrical and Computer Engineering**  
+    PhD -- **Electrical and Computer Engineering**  
 
 
 - **Columbia University**	  
     2024 - 2026  
-    BS -- **Computer Engineering**  
+    BS -- **Computer Engineering**, *Summa Cum Laude*  
     GPA 4.25/4.33
 
 - **Bard College at Simon's Rock**	  
@@ -33,16 +33,23 @@ New York, NY \| [(682) 559-3699](tel:6825593699) \| [--verbose](/cv)
 
 ---
 # Experience
+**Graduate Research Assistant**  
+VLSI Design Group, CMU | Jul. 2025 - present
+- Research on eFPGA architecture and routing fabric configurations to improve interconnect efficiency.
+- Integrate asynchronous boundary protocols between FPGA tiles to support fine-grained sparse computation.
+- TA for ECE 622 Digital IC Design
+
 **Teaching Assistant**  
 Columbia University | Jan. 2025 - May 2026  
 - TA for Embedded Systems
-- Former head TA for Fundies
+- Head TA for Fundamentals of Computer Systems
 - CSEE ODS [notetaker](/ods)
 
 **Research Assistant with Dr. Xia Zhou**  
-Columbia University	| Jan. 2025 - May 2026  
-- Implemented a sensor system to monitor ECG under motion artifacts.
-- Designed impedance sensing software and circuit to detect blood pulses
+Mobile X Lab, Columbia University	| Jan. 2025 - May 2026  
+- Designed an analog front-end for capacitive ECG signals to reliably monitor ECG under motion artifacts.
+- Designed impedance sensing software and circuitry to detect blood pulses
+- Designed, fabricated, and tested fabric sensors integrated into SoftSleep orthopedic pillows.
 
 **Algorithms Intern**  
 Alibaba | Jun. - Aug. 2025
@@ -62,6 +69,8 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 
 ---  
 # Publications
+- Leung, H. M. C., Tong, K., Gong, M., Bui, N., & Zhou, X. (2026). **Continuous Electrocardiogram Monitoring with A Loose T-shirt.** *(MobiDx '26) ACM.*
+
 - Gong, M. & Bergman, M.I., (2025). **An Experimental Ultrasonic Method to Determine A Scattering Quality Factor, with Application to Earth’s Inner Core.** *Physics of the Earth and Planetary Interiors.*
 
 - Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
@@ -71,32 +80,30 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 - [Jonathan L. Gross Award for Academic Excellence](https://www.cs.columbia.edu/2026/celebrating-the-class-of-2026/) (2026)
 - [Computer Engineering Award of Excellence](https://www.ee.columbia.edu/news/celebrate-excellence-eece-senior-awards-2026) (2026)
 - Columbia Dean's List (all semesters)
-- Fisher Poster Session Contest, 2nd place (2024)  
 - Simon's Rock Dean's List (all semesters)  
 - SCUDEM VIII Outstanding Award (2023)  
 - AP Scholar with Distinction (2021)  
 
 ---
 # Skills
-- **Hardware/EDA**: Cadence, Synopsys, Quartus, FPGA, PCB layout, SPICE
-- **Programming:** C/C++, Python, System Verilog, MATLAB, Git
+- **Hardware/EDA**: Cadence, Synopsys, Quartus, AMD Vitis, VTR, PCB layout, SPICE
+- **Programming:** C/C++, Python, SystemVerilog, Scala, MATLAB, Git, Java
 - **ML**: Pytorch, CNN/U-Net, LLM fine-tuning (SFT)
 - **Domains**: Digital VLSI, mixed-signal/analog, embedded systems, signal processing
 
 ---
 # Selected [Projects](/projects)
-- 16-bit DIF FFT
-- 8-bit VLSI Mini Processor
+- 16-bit DIF FFT Accelerator
+- 8-bit 65nm Mini Processor Custom Layout
+- Capacitative ECG Loose T-shirt
 - FPGA Gaussian Elimination Accelerator
-- Capacitative ECG Fabric Sensing Prototype
-
 
 ---
 
 # [Courses](/courses)
 
 **Computer Engineering:**  
-Computer Networks, Embedded Systems, Computer Architecture, Digital VLSI Circuits, Advanced Digital Electronic Systems
+Computer Networks, Embedded Systems, Digital VLSI Circuits, Advanced Digital Electronic Systems, Reconfigurable Logic, Modern Computer Architecture
 
 **Computer Science:**  
 Advanced Systems Programming, CS Theory, Operating Systems, C++ for C Programmers, Machine Learning
@@ -127,6 +134,7 @@ Organic Chemistry
 
 ---
 # References
+- Ken Mai
 - Michael Bergman
 - Xia Zhou
 - Martha Kim

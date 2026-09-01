@@ -1,8 +1,8 @@
 ---
-title: "FFT Core"
-excerpt: "Design and VLSI implementation of a high-performance 1024-point Radix-2 DIF FFT core in TSMC 65nm CMOS with 400 MHz clock and 39.8 MS/s throughput."
+title: "FFT Accelerator"
+excerpt: "RTL-GDS flow of a high-performance 1024-point Radix-2 DIF FFT core in TSMC 65nm CMOS with 400 MHz clock and 39.8 MS/s throughput."
 teaser: /images/projects/ad.png
-venue: "Advanced Digital Design, Spring 2026"
+course: "Advanced Digital Design, Spring 2026"
 collection: projects
 date: 2026-5-25
 authors: "Ming Gong"
@@ -20,20 +20,19 @@ Design and VLSI Implementation of a high-performance, 1024-point Radix-2 DIF FFT
 
 ---
 # Optimization Features
-- **Four-stage interleaved pipeline**: Optimize memory idle cycles and access time
-- **Dual-port SRAM interleaving**: FSM controller coordinating alternating read, execute, writeback phases, keeping the memory busy.
+- **Four-stage interleaved pipeline**: Dedicated FSM controller that coordinates alternating read, execute, and writeback, balancing cycle time and keeping memory utilization near 100%
 - **RTNE ALU**: 3 dB SQNR improvement
-- **Programmable scaling mask**: Let the user trade between accuracy and overflow protecting depending on input profiles
+- **Programmable scaling mask**: Let the user trade between accuracy and overflow protection depending on input profiles
 
 ![](/images/projects/ad/fft.png)
 
 ---
 # Physical Implementation
-Full RTL-to-GDSII layout flow via Synopsys Design Compiler, QuestaSim, Innovus, and Virtuoso
-- **Clock frequency**: 400 MHz (limited by ROM). Underlying logic capable for 500 MHz
+Full RTL-to-GDSII layout flow via Synopsys Design Compiler, QuestaSim, Cadence Innovus, and Virtuoso
+- **Clock frequency**: 400 MHz (limited by twiddle ROM). Logic capable for 500 MHz
 - **Throughput**: 39.8 MS/s
 - **Area**: 0.148 mm², mostly data SRAM
-- **Precision**: 60 dB SQNR, 0.0067% NRMSE
+- **Precision**: 60 dB SQNR, 0.0067% NRMSE against FP models
 
 ![](/images/projects/ad/virtuoso.png)
 

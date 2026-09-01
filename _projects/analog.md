@@ -5,7 +5,7 @@ collection: projects
 date: 2025-11-20
 authors: "Elijah Johnson, Ming Gong"
 teaser: '/images/projects/analog.png'
-venue: "Analog Electronic Circuits, Fall 2025"
+course: "Analog Electronic Circuits, Fall 2025"
 ---
 
 {% if page.authors %}

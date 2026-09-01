@@ -5,7 +5,7 @@ collection: projects
 date: 2026-1-11
 authors: Prosenjit Paul, Ming Gong, Xingya Liu, Helen Lou
 teaser: '/images/projects/hardlock.png'
-venue: "Winter 2026"
+course: "Winter 2026"
 ---
 
 Modern cars and drones depend on dozens of small computers exchanging control messages every millisecond to steer, brake, stabilize, and fly safely. A dangerous cyber attack does not need to change the message content — it only needs to send a control message slightly too early, too late, or block it entirely. These timing disruptions are extremely difficult to detect with today’s software or cryptographic security tools, yet they can immediately trigger safety incidents, mission failure, or costly recalls.  

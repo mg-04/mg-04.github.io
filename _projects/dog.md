@@ -4,7 +4,7 @@ excerpt: "Outstanding award winner. A unified mathematical and computational fra
 collection: projects
 date: 2023-11-10
 authors: Ming Gong, Paul Rose, Anthony Chang
-venue: SCUDEM VIII, Fall 2023
+course: SCUDEM VIII, Fall 2023
 teaser: "/images/projects/dog.png"
 ---
 

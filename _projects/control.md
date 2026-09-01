@@ -5,7 +5,7 @@ collection: projects
 date: 2023-05-10
 authors: Ming Gong
 teaser: "/images/projects/control.png"
-venue: "Ordinary Differential Equations, Spring 2023"
+course: "Ordinary Differential Equations, Spring 2023"
 ---
 
 > This page is under construction.

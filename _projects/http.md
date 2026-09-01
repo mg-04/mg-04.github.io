@@ -5,7 +5,7 @@ collection: projects
 date: 2024-12-11
 authors: Ming Gong
 teaser: "/images/projects/http.png"
-venue: "Advanced Programming, Fall 2024"
+course: "Advanced Programming, Fall 2024"
 ---
 
 Final assignment for COMS 3157 Advanced Programming  

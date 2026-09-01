@@ -5,7 +5,7 @@ collection: projects
 date: 2025-11-20
 teaser: '/images/projects/ald.png'
 authors: Ming Gong
-venue: "Advanced Logic Design, Fall 2025"
+course: "Advanced Logic Design, Fall 2025"
 
 ---
 

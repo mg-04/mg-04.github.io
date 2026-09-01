@@ -4,7 +4,7 @@ excerpt: "Architectural analysis on sorting algorithms."
 collection: projects
 date: 2025-11-18
 authors: Ming Gong, Adrian Lee, Maria Chemodanova, Anita Raj
-venue: "Computer Architecture, Fall 2025"
+course: "Computer Architecture, Fall 2025"
 teaser: /images/projects/comparch.png
 ---
 

@@ -81,8 +81,10 @@ author:
 publication_category:
   #books:
    # title: 'Books'
+  active:
+    title: 'Current Research'
   manuscripts:
-    title: 'Journal Articles'    
+    title: 'Journal Articles'
   conferences:
     title: 'Conference Posters'
   reports:

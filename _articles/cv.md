@@ -7,7 +7,7 @@ redirect_from:
   - /resume--verbose
 ---
 
-New York, NY \| [(682) 559-3699](tel:6825593699) 
+Pittsburgh, PA\| [(682) 559-3699](tel:6825593699)  \| [-s](/resume)
 
 {% include base_path %}
 
@@ -17,12 +17,12 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 # Education
 - **Carnegie Mellon University**    
     2026 - 2031  
-    Incoming PhD -- **Electrical and Computer Engineering**  
+    PhD -- **Electrical and Computer Engineering**  
 
 
 - **Columbia University**	  
     2024 - 2026  
-    Bachelor of Science -- **Computer Engineering**  
+    Bachelor of Science -- **Computer Engineering**, *Summa Cum Laude*  
     **GPA** 4.25/4.33
 
 - **Bard College at Simon's Rock**	  
@@ -32,26 +32,34 @@ New York, NY \| [(682) 559-3699](tel:6825593699)
 
 ---
 # Skills
-- **Hardware/EDA**: Cadence, Synopsys, Quartus, FPGA, PCB layout, SPICE
-- **Programming:** C/C++, Python, System Verilog, MATLAB, Git
+- **Hardware/EDA**: Cadence, Synopsys, Quartus, AMD Vitis, VTR, PCB layout, SPICE
+- **Programming:** C/C++, Python, SystemVerilog, Scala, MATLAB, Git, Java
 - **ML**: Pytorch, CNN/U-Net, LLM fine-tuning (SFT)
 - **Domains**: Digital VLSI, mixed-signal/analog, embedded systems, signal processing
 
 ---
 # Experience
+**Graduate Research Assistant**  
+VLSI Design Group, CMU | Jul. 2025 - present
+- Research on eFPGA architecture and routing fabric configurations to improve interconnect efficiency.
+- Integrate asynchronous boundary protocols between FPGA tiles to support fine-grained sparse computation.
+- TA for ECE 622 Digital IC Design
+
+
+
 **Teaching Assistant**  
-Columbia University | Jan. 2025 - present  
+Columbia University | Jan. 2025 - May 2026  
 - TA for Embedded Systems (CSEE 4840)
-- Former head TA for Fundamentals of Computer Systems (CSEE 3827)
+- Head TA for Fundamentals of Computer Systems (CSEE 3827)
 - Developed and optimized exam problems. Created supplemental materials to enhance and extend lecture content.
 - Disability Services [notetaker](/ods) for a variety of CSEE courses
 
 **Research Assistant with Dr. Xia Zhou**  
-Columbia University	| Jan. 2025 - present  
-- Implemented an Arduino-based system to monitor ECG under motion artifacts.
-- Designed impedance sensing software and circuit to detect blood pulses.
-- Fabricated and tested additional fabric pillow sensors to enhance reliability and functionality.
-- Designed charger circuits to safeguard fabric pillow sensor control chips.
+Mobile X Lab, Columbia University	| Jan. 2025 - May 2026  
+- Designed an analog front-end for capacitive ECG signals to reliably monitor ECG under motion artifacts.
+- Designed impedance sensing software and circuitry to detect blood pulses
+- Designed, fabricated, and tested fabric sensors integrated into SoftSleep orthopedic pillows.
+
 
 **Algorithms Intern**  
 Alibaba | Jun. - Aug. 2025
@@ -60,7 +68,7 @@ Alibaba | Jun. - Aug. 2025
 - Tuned multilingual LLMs, using SFT to improve translation quality.
 
 **Research Assistant with Dr. Katayun Barmak**  
-Columbia University	| Sept. 2024 - May 2025  
+Barmak Lab, Columbia University	| Sept. 2024 - May 2025  
 - Utilizing PyTorch to train U-Net convolutional neural networks for polycrystalline grain boundary detection.
 - Post-processed model predictions to create binarized images for data analysis workflows.
 - Applied statistical methods to fine-tune models and compare different predictions against human hand tracing.
@@ -87,6 +95,8 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 
 ---  
 # Publications
+- Leung, H. M. C., Tong, K., Gong, M., Bui, N., & Zhou, X. (2026). **Continuous Electrocardiogram Monitoring with A Loose T-shirt.** *(MobiDx '26) ACM.*
+
 - Gong, M. & Bergman, M.I., (2025). **An Experimental Ultrasonic Method to Determine A Scattering Quality Factor, with Application to Earth’s Inner Core.** *Physics of the Earth and Planetary Interiors.*
 
 - Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
@@ -105,16 +115,17 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 
 ---
 # Selected [Projects](/projects)
-- 8-bit VLSI Mini Processor
+- 16-bit DIF FFT Accelerator
+- 8-bit 65nm Mini Processor Custom Layout
+- Capacitative ECG Loose T-shirt
 - FPGA Gaussian Elimination Accelerator
-- Capacitive ECG Fabric Sensing Prototype
 
 ---
 
 # [Courses](/courses)
 
 **Computer Engineering:**  
-Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Design, Digital VLSI Circuits, Advanced Digital Electronic Systems
+Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Design, Digital VLSI Circuits, Advanced Digital Electronic Systems, Reconfigurable Logic, Modern Computer Architecture
 
 **Computer Science:**  
 Advanced Programming, Advanced Systems Programming, Computer Science Theory, Artificial Intelligence, Networked Autonomous Systems, Operating Systems, C++ Deep Dive for C Programmers, Machine Learning
@@ -188,7 +199,6 @@ Senior Lecturer in Electrical Engineering, Columbia University
 
 - **Xiaodong Wang**  
 Professor of Electrical Engineering, Columbia University
-
 
 - **David Myers**  
 Professor of Chemistry, Bard College at Simon's Rock  

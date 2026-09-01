@@ -1,10 +1,10 @@
 ---
-title: "8-Bit Processor"
-excerpt: "A simple 8-bit processor core built and tested from scratch in Cadence Virtuoso.</span>"
+title: "Custom 8-Bit Processor"
+excerpt: "A simple 8-bit processor core custom layout, built and tested from scratch in Cadence Virtuoso.</span>"
 collection: projects
 date: 2025-11-28
 authors: "Ming Gong, Charlotte Chen"
-venue: "Digital VLSI Circuits, Fall 2025"
+course: "Digital VLSI Circuits, Fall 2025"
 teaser: '/images/vlsi/pretty/overall/overall_8t.png'
 ---
 

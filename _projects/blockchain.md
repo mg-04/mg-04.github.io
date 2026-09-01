@@ -5,7 +5,7 @@ collection: projects
 date: 2025-05-17
 authors: Griffin Newbold, Amir Hossein Zarandi, Ming Gong, Neasha Mittal
 teaser: '/images/projects/blockchain.jpg'
-venue: Computer Networks, Spring 2025
+course: Computer Networks, Spring 2025
 ---
 
 {% if page.authors %}
