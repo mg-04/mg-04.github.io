@@ -7,45 +7,83 @@ redirect_from:
   - /resume--verbose
 ---
 
-Pittsburgh, PA\| [(682) 559-3699](tel:6825593699)  \| [-s](/resume)
+Pittsburgh, PA \| [Short version →](/resume)
 
 {% include base_path %}
+
+**Research interests:** digital VLSI, computer architecture, hardware acceleration, and systems programming.
 
 
 ---
 
 # Education
 - **Carnegie Mellon University**    
-    2026 - 2031  
+    2026 - present  
     PhD -- **Electrical and Computer Engineering**  
 
 
 - **Columbia University**	  
     2024 - 2026  
     Bachelor of Science -- **Computer Engineering**, *Summa Cum Laude*  
-    **GPA** 4.25/4.33
+    **GPA** 4.26/4.33
 
 - **Bard College at Simon's Rock**	  
-    2021 - 2025  
+    2021 - 2024  
     Bachelor of Arts -- **Physics**, *Summa Cum Laude*  
     **GPA** 3.99/4.0	  
 
 ---
-# Skills
-- **Hardware/EDA**: Cadence, Synopsys, Quartus, AMD Vitis, VTR, PCB layout, SPICE
-- **Programming:** C/C++, Python, SystemVerilog, Scala, MATLAB, Git, Java
-- **ML**: Pytorch, CNN/U-Net, LLM fine-tuning (SFT)
-- **Domains**: Digital VLSI, mixed-signal/analog, embedded systems, signal processing
+# Publications
+- Leung, H. M. C., Tong, K., **Gong, M.**, Bui, N., & Zhou, X. (2026). [Continuous Electrocardiogram Monitoring with a Loose T-Shirt](https://doi.org/10.1145/3842657.3842785). *Hot Topics in Mobile and Wireless Systems for Health (MobiDx '26)*. ACM.
+
+- **Gong, M.** & Bergman, M. I. (2025). [An Experimental Ultrasonic Method to Determine a Scattering Quality Factor, with Application to Earth’s Inner Core](https://doi.org/10.1016/j.pepi.2025.107456). *Physics of the Earth and Planetary Interiors*, 368, 107456.
+
+- Cao, X., **Gong, M.**, Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). [An Improved Machine Learning Model for Pure Component Property Estimation](https://doi.org/10.1016/j.eng.2023.08.024). *Engineering*, 39, 61–73.
 
 ---
-# Experience
+# Posters & Presentations
+- **Gong, M.**, Bergman, M. I., & Bhadwal, N. (2024). [An Experimental Ultrasonic Method to Determine a Scattering Quality Factor, with Application to Earth’s Inner Core](/publication/2025-04-25-Interpreting-Inner-Core-Attenuation-Scattering-through-Ultrasonic-Experiments). Poster, *Study of the Earth's Deep Interior (SEDI)*.
+
+- Grae, L., **Gong, M.**, Patrick, M., & Barmak, K. (2025). [Deep Learning Loss Function and Data Optimization for A.I. Detection of Thin Film Grain Boundaries](/publication/2025-04-14-Barmak). Poster, *Yale Undergraduate Research Conference*.
+
+---
+# Research Experience
 **Graduate Research Assistant**  
-VLSI Design Group, CMU | Jul. 2025 - present
-- Research on eFPGA architecture and routing fabric configurations to improve interconnect efficiency.
-- Integrate asynchronous boundary protocols between FPGA tiles to support fine-grained sparse computation.
-- TA for ECE 622 Digital IC Design
+VLSI Design Group, CMU | Jul. 2026 - present
+- Built a PyTorch fault-injection framework for YOLOv8n to size the trusted partition for a secure-FPGA + Jetson deployment. Identified a 448-weight critical set (1% of FLOPs) at the network’s input and output boundaries.
+- Exploring heterogeneous eFPGA architectures and routing fabric configs to improve interconnect efficiency.
+- Building a PyVISA-based automated post-silicon testing framework to extract ASIC operating margins.
 
+**Research Assistant with Dr. Xia Zhou**  
+Mobile X Lab, Columbia University	| Jan. 2025 - May 2026  
+- Designed hybrid FPCB electrodes with a capacitive motion-reference channel and driven bias for a loose-shirt ECG; 92.7% full-waveform detection at rest (r = 0.89) and 4.58 bpm HR error while walking.
+- Developed multichannel impedance monitoring PCBs, from schematic through board bring-up, to infer patient health conditions.
+- Designed, fabricated, and tested fabric sensors integrated into SoftSleep orthopedic pillows.
 
+**Research Assistant with Dr. Katayun Barmak**  
+Barmak Lab, Columbia University	| Sept. 2024 - May 2025  
+- Used PyTorch to train U-Net convolutional neural networks for polycrystalline grain boundary detection.
+- Built a data-augmentation pipeline that crops micrographs and their ground-truth tracings into aligned sub-images to enlarge the training set, and binarized model predictions for comparison against human hand tracings.
+- Showed that binary cross-entropy loss double-penalizes slightly misaligned traces, and proposed two alternative evaluation metrics: a fixed-pixel "top-hat" criterion and a continuous Gaussian-dilation loss.
+
+**Physics Intern with Dr. Michael Bergman**   
+Bard College at Simon's Rock | Jun. 2022 - Jun. 2025
+- Cast directionally solidified (1K/min) and fine-grained Zn-alloy samples (0.2 to >30 mm grains) and ran ultrasonic pulse-echo experiments at 1–10 MHz across 90 measurement spots on 4 samples.
+- Developed a Python echo-detection algorithm that splits each pulse-echo trace into scattered (R₁) and transmitted (T₁) energy per cycle, defining a new scattering quality factor Q_Z = (R₁ + T₁)/R₁.
+- Scaled lab Q_Z to Earth's inner core for 5–20% single-crystal Fe anisotropy, ruling out randomly oriented ~10 km grains and linking lateral variations in seismic attenuation (Q_P) to grain size; first-author [paper](https://doi.org/10.1016/j.pepi.2025.107456) (PEPI 2025).
+<!-- - Experimented with a new foil technique in high-temperature ultrasonic shear wave coupling. -->
+- Presented a poster at the 2024 SEDI Conference.
+
+**Research Assistant with Dr. Xi Chen**  
+Zhejiang University | Mar. 2022 - Jul. 2024
+- Benchmarked DNN, CNN, and decision tree architectures to model nonlinear pure component properties.
+- Co-authored a peer-reviewed [paper](https://doi.org/10.1016/j.eng.2023.08.024) on ML-based pure component property estimation (Engineering, 2024).
+
+---
+# Teaching
+**Teaching Assistant**  
+Carnegie Mellon University | Fall 2026
+- TA for 18-622 Digital IC Design
 
 **Teaching Assistant**  
 Columbia University | Jan. 2025 - May 2026  
@@ -54,52 +92,18 @@ Columbia University | Jan. 2025 - May 2026
 - Developed and optimized exam problems. Created supplemental materials to enhance and extend lecture content.
 - Disability Services [notetaker](/ods) for a variety of CSEE courses
 
-**Research Assistant with Dr. Xia Zhou**  
-Mobile X Lab, Columbia University	| Jan. 2025 - May 2026  
-- Designed an analog front-end for capacitive ECG signals to reliably monitor ECG under motion artifacts.
-- Designed impedance sensing software and circuitry to detect blood pulses
-- Designed, fabricated, and tested fabric sensors integrated into SoftSleep orthopedic pillows.
-
-
-**Algorithms Intern**  
-Alibaba | Jun. - Aug. 2025
-- Researched advanced search agent architectures and applied them to design a workflow for business development automation. 
-- Optimized tools for browser automation, webpage scraping, and summarization.
-- Tuned multilingual LLMs, using SFT to improve translation quality.
-
-**Research Assistant with Dr. Katayun Barmak**  
-Barmak Lab, Columbia University	| Sept. 2024 - May 2025  
-- Utilizing PyTorch to train U-Net convolutional neural networks for polycrystalline grain boundary detection.
-- Post-processed model predictions to create binarized images for data analysis workflows.
-- Applied statistical methods to fine-tune models and compare different predictions against human hand tracing.
-
-**Physics Intern with Dr. Michael Bergman**   
-Bard College at Simon's Rock | Jun. 2022 - Jun. 2024
-- Experimentally verified the effect of wavelength and grain size on longitudinal ultrasonic wave scattering patterns.
-- Designed a Python program to locate and integrate the scattering echo amplitude, overcoming signal quality issues.
-- Experimented with a new foil technique in high-temperature ultrasonic shear wave coupling.
-- Submitted a [paper](https://www.sciencedirect.com/science/article/pii/S0031920125001505) in 2025 and a poster to the 2024 SEDI Conference. Currently working on one more manuscript.
-
 **Tutor**  
 Bard College at Simon's Rock | Feb. 2022 - May 2024
 - Peer tutor in math, physics, chemistry, and computer science.
-Class tutor for Quantum Physics, Classical Mechanics, and Ordinary Differential Equations.
+- Class tutor for Quantum Physics, Classical Mechanics, and Ordinary Differential Equations.
 - Guided students on math and CS projects, offering outline planning and step-by-step hints.
-- Developed strong communication, mentoring, and problem-solving skills.
 
-**Research Assistant with Dr. Xi Chen**  
-Zhejiang University | Mar. 2022 - Jul. 2024
-- Published a paper on predicting the physio-chemical properties of pure organic chemical species. 
-- Trained dense neural networks, convolutional neural networks, and decision tree models and compared the results.
-- Collaborated on revising and editing academic [papers](https://www.sciencedirect.com/science/article/pii/S2095809924001590) in machine learning models.
-
----  
-# Publications
-- Leung, H. M. C., Tong, K., Gong, M., Bui, N., & Zhou, X. (2026). **Continuous Electrocardiogram Monitoring with A Loose T-shirt.** *(MobiDx '26) ACM.*
-
-- Gong, M. & Bergman, M.I., (2025). **An Experimental Ultrasonic Method to Determine A Scattering Quality Factor, with Application to Earth’s Inner Core.** *Physics of the Earth and Planetary Interiors.*
-
-- Cao, X., Gong, M., Tula, A., Chen, X., Gani, R., & Venkatasubramanian, V. (2024). **An Improved Machine Learning Model for Pure Component Property Estimation.** *Engineering.* 
+---
+# Industry Experience
+**Algorithms Intern**  
+Alibaba Group | Jun. - Aug. 2025
+- Built deep-search LLM agents for large-scale business web scraping, raising business-development contact email search success from 20% to 60%.
+- Fine-tuned Qwen multilingual LLMs with supervised fine-tuning (SFT) to improve translation quality across 92 languages.
 
 ---
 # Awards and Honors
@@ -114,11 +118,19 @@ Zhejiang University | Mar. 2022 - Jul. 2024
 - AP Scholar with Distinction (2021)  
 
 ---
+# Skills
+- **EDA:** Cadence Genus, Innovus, Virtuoso; Synopsys Design Compiler; AMD Vitis; Intel Quartus; VTR; SPICE
+- **Languages & Tools:** SystemVerilog, Chisel/Scala, Tcl, Python, C/C++, MATLAB, Java, Git, Linux
+- **Digital Design:** RTL, Logic Synthesis, Place & Route, Static Timing Analysis, Timing Closure, FPGA Prototyping, eFPGA Architecture, Hardware Accelerators, Fault Injection
+- **Hardware & Mixed-Signal:** Analog Design, PCB Design, Post-Silicon Validation, PyVISA, Signal Processing
+- **Machine Learning:** PyTorch, TensorFlow, CNN/U-Net, CNN Fault Injection, LLM Fine-Tuning (SFT)
+
+---
 # Selected [Projects](/projects)
-- 16-bit DIF FFT Accelerator
-- 8-bit 65nm Mini Processor Custom Layout
-- Capacitative ECG Loose T-shirt
-- FPGA Gaussian Elimination Accelerator
+- [16-bit DIF FFT Accelerator](/projects/fft/)
+- [8-bit 65nm Mini Processor Custom Layout](/articles/vlsi)
+- [Capacitive ECG Loose T-shirt](/publication/cecg)
+- [FPGA Gaussian Elimination Accelerator](/projects/circuitsim/)
 
 ---
 
@@ -131,7 +143,7 @@ Computer Networks, Embedded Systems, Computer Architecture, Advanced Logic Desig
 Advanced Programming, Advanced Systems Programming, Computer Science Theory, Artificial Intelligence, Networked Autonomous Systems, Operating Systems, C++ Deep Dive for C Programmers, Machine Learning
 
 **Electrical Engineering:**  
-Solid State Devices and Matters, Analog Electronic Circuits, Random Signals and Noise
+Solid-State Devices and Materials, Analog Electronic Circuits, Random Signals and Noise
 
 **Mathematics:**  
 Probability and Statistics, Real Analysis, Abstract Algebra
@@ -148,22 +160,24 @@ Organic Chemistry
 **Electrical and Programming Lead, Columbia Robotics Club**  
 Oct. 2024 - May 2026
 - Founding member of the Combat Robot Subteam.
-- Coordinating with the team lead and programming team to design robot electronics and control software.
+- Coordinated with the team lead and programming team to design robot electronics and control software.
 - Event supervisor for Robot Tour at the Columbia University Science Olympiad Invitational.
 
 **Executive Board, Columbia IEEE**  
 Aug. 2025 - May 2026
 - Maintained the Columbia IEEE [website](https://ieee.ee.columbia.edu/). 
-- Hosting Open Project Space, beginner-friendly Arduino workshops
+- Hosted Open Project Space and beginner-friendly Arduino workshops.
 
 **Organizational Committee Member, Columbia Global China Connection**  
 Sept. 2024 - May 2026
-- Organizing social, cultural, and pre-professional events for Chinese students at Columbia.
-- Collaborating with a team of 10 to manage GCC's website and social media platforms. 
+- Organized social, cultural, and pre-professional events for Chinese students at Columbia.
+- Collaborated with a team of 10 to manage GCC's website and social media platforms. 
 
 **Executive Board Member, Columbia Data Science Society**  
 Sept. 2024 - May 2026
-- Organizing data-science events and workshops for the Columbia community and the NYC area.
+- Organized data-science events and workshops for the Columbia community and the NYC area.
+
+**Member, Tau Beta Pi**
 
 **President, Simon's Rock Robotics Club**  
 Sept. 2021 - May 2024
@@ -181,6 +195,9 @@ Electronics, Lego, combat robots; road trip, swimming, hiking, badminton, tennis
 
 ---
 # References
+
+- **Ken Mai**  
+Principal Systems Scientist, Electrical and Computer Engineering, Carnegie Mellon University
 
 - **Michael Bergman**  
 Emily H. Fisher Professor of Physics, Bard College at Simon's Rock  
