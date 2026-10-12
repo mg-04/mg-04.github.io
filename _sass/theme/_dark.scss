@@ -12,9 +12,10 @@ $background                 : #474747;
 $background-light           : mix(#fff, $background, 80%);
 $background-lighter         : mix(#fff, $background, 90%);
 $text                       : #ffffff;
-$link                       : #0ea1c5;
+$link                       : #74d0ea;
 $link-dark                  : mix(#000, $link, 25%);
 $link-light                 : mix(#fff, $link, 25%);
+$link-lighter               : mix(#fff, $link, 45%);
 
 /* Color codes used for the site */
 $danger-color               : #ee5f5b;
@@ -44,11 +45,102 @@ html[data-theme="dark"] {
     --global-code-text-color            : #{$light-gray};
     --global-fig-caption-color          : #{$light-gray};
     --global-link-color                 : #{$link};
-    --global-link-color-hover           : #{$link-dark};
+    --global-link-color-hover           : #{$link-lighter};
     --global-link-color-visited         : #{$link-light};
     --global-masthead-link-color        : #{$text};
     --global-masthead-link-color-hover  : #{$background-light};
     --global-text-color                 : #{$text};
     --global-text-color-light           : #{$light-gray};
     --global-thead-color                : #{$background-lighter};
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES
+   Components whose light-theme colors are hardcoded rather than variables
+   ========================================================================== */
+
+/* Notice callouts: tinted dark background instead of the light pastel */
+$dark-notice-types: (
+  "notice"          : $notice-color,
+  "notice--primary" : $notice-color,
+  "notice--info"    : $info-color,
+  "notice--warning" : $warning-color,
+  "notice--success" : $success-color,
+  "notice--danger"  : $danger-color
+);
+
+@each $name, $color in $dark-notice-types {
+  html[data-theme="dark"] .#{$name} {
+    background-color: rgba($color, 0.22);
+    box-shadow: none;
+    color: var(--global-text-color);
+
+    a {
+      color: mix(#fff, $color, 45%);
+
+      &:hover {
+        color: mix(#fff, $color, 70%);
+      }
+    }
+
+    code {
+      background-color: rgba(#fff, 0.1);
+    }
+  }
+}
+
+/* Code blocks: light-on-dark syntax palette (Solarized roles, lifted for contrast) */
+$dark-code-text    : #e0e0e0;
+$dark-code-comment : #a9b4b4;
+$dark-code-green   : #c3d66a;
+$dark-code-blue    : #7fd0f5;
+$dark-code-cyan    : #6ad8cd;
+$dark-code-orange  : #f7b48a;
+$dark-code-red     : #ffa198;
+$dark-code-yellow  : #e6c35c;
+
+html[data-theme="dark"] {
+  div.highlighter-rouge:before,
+  figure.highlight:before {
+    background-color: rgba(#fff, 0.1);
+    color: var(--global-text-color-light);
+  }
+
+  .highlight {
+    color: $dark-code-text;
+
+    .err, .g, .l, .n, .p, .ge, .gs, .go, .gp, .gt, .ld, .na, .nl, .nn, .nx,
+    .py, .w, .sd, .sh { color: $dark-code-text; }
+
+    .c, .cm, .c1, .sb { color: $dark-code-comment; }
+
+    .k, .o, .cp, .cs, .gi, .kn, .kp, .ow { color: $dark-code-green; }
+
+    .kd, .kr, .nc, .nd, .nf, .nt, .nv, .bp { color: $dark-code-blue; }
+
+    .m, .s, .gd, .mf, .mh, .mi, .mo, .sc, .s2, .si, .sx, .s1, .ss { color: $dark-code-cyan; }
+
+    .x, .gh, .gu, .kc, .no, .ni, .ne, .se { color: $dark-code-orange; }
+
+    .gr, .kt, .sr { color: $dark-code-red; }
+
+    .nb { color: $dark-code-yellow; }
+  }
+}
+
+/* Sidebar social icons: near-black GitHub becomes text-colored; dim brand colors are lifted */
+html[data-theme="dark"] .social-icons {
+  .fa-github, .fa-github-alt, .fa-github-square { color: var(--global-text-color); }
+  .fa-linkedin, .fa-linkedin-square { color: mix(#fff, $linkedin-color, 35%); }
+  .fa-instagram { color: mix(#fff, $instagram-color, 35%); }
+  .fa-youtube, .fa-youtube-square, .fa-youtube-play { color: mix(#fff, $youtube-color, 30%); }
+  .fa-facebook, .fa-facebook-square { color: mix(#fff, $facebook-color, 35%); }
+  .fa-tumblr, .fa-tumblr-square { color: mix(#fff, $tumblr-color, 40%); }
+  .fa-xing, .fa-xing-square { color: mix(#fff, $xing-color, 40%); }
+  .fa-pinterest, .fa-pinterest-p, .fa-pinterest-square { color: mix(#fff, $pinterest-color, 30%); }
+}
+
+/* Mobile "Follow" dropdown arrow matches the dark background */
+html[data-theme="dark"] .author__urls:after {
+  border-color: var(--global-bg-color) transparent;
 }

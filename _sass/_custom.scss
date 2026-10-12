@@ -207,3 +207,210 @@ html[data-theme="dark"] .row-media figcaption {
     height: 100%;
   }
 }
+
+
+/* ============================================================
+   Home page
+   Colors come from theme CSS variables, so dark mode follows
+   ============================================================ */
+
+.home h2 {
+  margin-top: 2.25rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--global-border-color);
+}
+
+.home-intro {
+  font-size: 1.08em;
+  line-height: 1.7;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--global-link-color);
+  border-radius: 0 8px 8px 0;
+  background: var(--global-code-background-color);
+}
+
+/* Research interest cards */
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.home-card {
+  padding: 1.1rem 1.1rem 0.9rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.home-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--global-link-color);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.home-card i {
+  font-size: 1.4em;
+  color: var(--global-link-color);
+}
+
+.home-card h3 {
+  margin: 0.6rem 0 0.35rem;
+  font-size: 1.02em;
+}
+
+.home-card p {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* Past labs as chips */
+.home-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.home-chips li {
+  margin: 0;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.88em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 999px;
+}
+
+/* Teaching timeline */
+.home-timeline {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-timeline li {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 2px solid var(--global-border-color);
+  position: relative;
+}
+
+.home-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--global-link-color);
+}
+
+.home-year {
+  flex: 0 0 4.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--global-link-color);
+}
+
+.home-timeline small {
+  color: var(--global-text-color-light);
+}
+
+/* Personal list with icons */
+.home-personal {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-personal li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+}
+
+.home-personal i {
+  color: var(--global-link-color);
+}
+
+@media (max-width: 600px) {
+  .home-timeline li {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .home-year {
+    flex-basis: auto;
+  }
+}
+
+
+/* ============================================================
+   Resume / CV pages
+   ============================================================ */
+
+.cv {
+  line-height: 1.55;
+}
+
+.cv h2 {
+  margin: 2rem 0 0.75rem;
+  padding-bottom: 0.25rem;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.cv p {
+  margin: 0.9rem 0 0.3rem;
+}
+
+.cv ul {
+  margin: 0.3rem 0 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.cv li {
+  margin-bottom: 0.3rem;
+}
+
+.cv li > p {
+  margin: 0;
+}
+
+/* Dates sit on the right of the entry's first line */
+.cv-date {
+  float: right;
+  margin-left: 1rem;
+  font-size: 0.9em;
+  font-variant-numeric: tabular-nums;
+  color: var(--global-text-color-light);
+}
+
+.cv-meta {
+  color: var(--global-text-color-light);
+}
+
+.cv-refs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 0.75rem 1.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+@media (max-width: 600px) {
+  .cv-date {
+    float: none;
+    display: block;
+    margin-left: 0;
+  }
+}

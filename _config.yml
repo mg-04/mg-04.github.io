@@ -28,7 +28,8 @@ author:
   bio              : "IO小站"
   location         : "Pittsburgh"
   employer         : "Carnegie Mellon University"
-  uri              : # URL
+  uri              : "https://users.ece.cmu.edu/~mgong2/"
+  uri_label        : "CMU ECE site" # sidebar text for the uri link; defaults to "Website"
   email            : "mg04@cmu.edu" 
 
   # Academic websites
