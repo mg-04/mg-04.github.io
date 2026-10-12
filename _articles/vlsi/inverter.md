@@ -15,9 +15,9 @@ date: 2025-12-24
 6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
 
 
-> Take a read of Shepard's [Online CAD Tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/). It's very comprehensive guide. 
+> Take a read of Shepard's [Online CAD Tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/). It's a very comprehensive guide. 
 - Below, we’ll walk through the process systematically and highlight common pitfalls so you can avoid a **massive learning curve**.
-- If anothing messes up, see if it's in the [Virtuoso FAQ](/articles/vlsi/inverter#virtuoso-faq)
+- If anything messes up, see if it's in the [Virtuoso FAQ](/articles/vlsi/inverter#virtuoso-faq)
 {: .notice--info}
 
 
@@ -60,7 +60,7 @@ A MOSFET is a piece of silicon with 4 terminals: Gate, Source, Drain, and Body. 
     - `NP` ∩ `OD`: n+ diffusion
 
 **Gate**  
-- `PO` (POlysillicon)
+- `PO` (POlysilicon)
 
 ### Metal
 Silicon/metal interface
@@ -98,8 +98,8 @@ The Vias have a similar stack of 5 layers connecting Body to Metal:
 - `M1`
 
 > Different body taps are functionally equivalent, provided they tap the bodies to respective power rails. One body tap can cover a large region of P/N substrate
-- The "Detached Body" option places Body contacts explicitly on individual transistors. We don't need that, since we've already added decidated Body Vias.  
-- In typical standard cell design, we typically dedicate **tap** cells placed in parallel with the logic
+- The "Detached Body" option places Body contacts explicitly on individual transistors. We don't need that, since we've already added dedicated Body Vias.  
+- In standard cell design, we typically dedicate **tap** cells placed in parallel with the logic
 - Here for our custom layout, we have ample space on the left/right power rails. Placing body taps there saves space.
 {: .notice--info}
 
@@ -129,7 +129,7 @@ Below are the main types of DRC errors for TSMC N65:
     - Shapes must also meet **constraints**, such as a minimum side length
 - **Inter-shape rules**
     - **Enclosure**: for example, a Via must be properly enclosed by its associated Metal layers
-        - Sometimes, minimum **overlap** or enclosure area also apply.
+        - Sometimes, minimum **overlap** or enclosure area also applies.
     - **Spacing**: minimum spacing must be maintained
         - between shapes of the **same layer**, and
         - between shapes on **different layers**, such as spacing to body connections
@@ -172,7 +172,7 @@ Now run a DRC:
 ![](/images/vlsi/inv/drc_co.png)
 
 RIP, another two violations. Make only `M1` layer visible for more clarity
-- `M1` of the via is too close with our VOUT `M1`.
+- `M1` of the via is too close to our VOUT `M1`.
     - **Fix:** Move either `M1` rectangle away, so that they are at least 0.09 um apart
 - `M1` of the via's area is too small. It's like an island
     - **Fix:** Add a larger `M1` rectangle to the via to make the `M1` area more than 0.042 um²
@@ -191,9 +191,9 @@ Check LVS. Read the [tutorial](https://www.bioee.ee.columbia.edu/courses/cad/htm
 > If your layout is LVS clean, skip this part
 {: .notice--success}
 
-RIP, we got 4 "Incorrect Ports" errors. Calibre LVS somehow does not recognize our pins, despite that they are created with labels! This is very rare...
+RIP, we got 4 "Incorrect Ports" errors. Calibre LVS somehow does not recognize our pins, even though they were created with labels! This is very rare...
 
-In this case, first check if Virtuoso recognizes the pin. Try moving the pins around and see if the label ("VOUT") and the cross shows up. If not, delete the pins and do "Connectivity/Update/All from Source" again. Make sure you select the **"Create Label"** option
+In this case, first check if Virtuoso recognizes the pin. Try moving the pins around and see if the label ("VOUT") and the cross show up. If not, delete the pins and do "Connectivity/Update/All from Source" again. Make sure you select the **"Create Label"** option
 
 ![](/images/vlsi/inv/lvs_check.png)
 
@@ -250,7 +250,7 @@ Take 8 bits for example: Append `<7:0>` to the label and instance names. You can
 ---
 > My simulation waveform spits nonsense :(
 
-You might forgot to power VDD. This is dumb, but a recurring theme of the project.
+You might have forgotten to power VDD. This is dumb, but a recurring theme of the project.
 
 ---
 > My extraction is taking forever

@@ -49,8 +49,8 @@ There are a lot of ways to floorplan the SRAM. You don't have to, but it would b
 
 Because the SRAM cell is extremely dense, we use **column multiplexing**, sharing one set of R/W circuitry for each **two** adjacent columns
 - *Logically*, the array is 8x8. (8 wordlines, 3-bit addresses; 8 bits for `iobus`)
-- *Physically*, we lay it out as **4x16** (16 bitline *pairs*), where each pair of the **adjacent** physical column map to one logical column
-- Essentially, we shift a dimension from rows into columns to the column: one wordline address bit becomes the **column MUX select**.
+- *Physically*, we lay it out as **4x16** (16 bitline *pairs*), where each pair of **adjacent** physical columns maps to one logical column
+- Essentially, we shift a dimension from rows into columns: one wordline address bit becomes the **column MUX select**.
 
 ![](/images/vlsi/sram/mux_concept.jpg){: .align-center}
 
@@ -70,7 +70,7 @@ Above is a piece of `v1d1_demo_array_4x4` (8x4), which contains the following:
     - `v1d1_x1`
 - `v1d1_wells_strap_x2 (1x2)` (1x4)
     - `v1d1_wells_strap_x1` (power strap)
-- `v1d1_row_edge_x2 (2x1)` (4x1) (I think they are decap)
+- `v1d1_row_edge_x2 (2x1)` (4x1) (I think they are decaps)
     - `v1d1_row_edge_x1` (x4)
 - `v1d1_corner_edge_x1`
 - M2 and M4 pins
@@ -82,7 +82,7 @@ A level down the hierarchy:
 
 
 ### Inner Cells
-Now `Shift-F` to show the layers. Try to hide NW and M4, analyze layer by layer, and appreciate such a *fantastic* design.  
+Now press `Shift-F` to show the layers. Try to hide NW and M4, analyze layer by layer, and appreciate such a *fantastic* design.  
 I annotated the cell at `wordline<2>`, `bit<0>`, clearly showing the coupled inverters and access transistors.
 
 
@@ -91,7 +91,7 @@ I annotated the cell at `wordline<2>`, `bit<0>`, clearly showing the coupled inv
 Try to make your own layout just as cute!
 
 
-> Don't forget to check **DRC and LVS** of the SRAM cell. If there are nontrivial errors, **tell Shepard to fix immediately!**
+> Don't forget to check **DRC and LVS** of the SRAM cell. If there are nontrivial errors, **tell Shepard to fix it immediately!**
 {: .notice--danger}
 
 
@@ -101,14 +101,14 @@ Enough appreciation---it's time to build.
 
 The provided 8×4 array is constructed from 4×4 blocks. Your task is to reorganize this into **4×16**. As long as you understand what’s happening, this is very manageable.
 
-You can assemble a 4x4 cell with 1x1 cells, and then piece 4 of them for 4x16.
+You can assemble a 4x4 cell with 1x1 cells, and then piece 4 of them together for 4x16.
 
 1. Make a 4x4 schematic and symbol with four `v1d1_x1` symbols
     - 4 wordlines, bitline `<3:0>`
 2. Generate a 4x4 layout. 
     - Move entire rows/columns to save effort
-    - Make sure they are **perfectly** aligned. I'd like to look at the vias, as their sizes are fixed
-        - Sanity check: Does your 4x4 dimension match with the sample 4x4 layout?
+    - Make sure they are **perfectly** aligned. I like to look at the vias, as their sizes are fixed
+        - Sanity check: Does your 4x4 dimension match the sample 4x4 layout?
     - Add instances of the top and bottom `wells_strap_x2` to the **layout**. They are not active components, so they are not part of the schematic.
 
     ![](/images/vlsi/sram/sram_4x4.png)
@@ -119,7 +119,7 @@ You can assemble a 4x4 cell with 1x1 cells, and then piece 4 of them for 4x16.
     - Again, make sure everything's **perfectly** aligned
 5. **Check DRC and LVS**
 6. Add the pins.
-    - The width of the M2 wires vary, but there is a pretty clear "center line"
+    - The width of the M2 wires varies, but there is a pretty clear "center line"
     - Measure the distance between the center lines of `bit<0>` and `bit<2>`. You should get **2.1 um**. This is the bit pitch I've been talking about
     - Measure the M2 wires to the left of `bit<0>` and to the right of `bit_bar<15>` (GND). You should get **16.8 um**. If not, something is misaligned.
     - Add M2 pins for power and bitlines. They don't have to be perfectly square.
@@ -133,7 +133,7 @@ You can assemble a 4x4 cell with 1x1 cells, and then piece 4 of them for 4x16.
 
 # Decoder
 
-Shepard has probably showed off multiple decoder designs in lecture and practice exams. However, for this project, most people end up converting to a **static CMOS decoder**.
+Shepard has probably shown off multiple decoder designs in lecture and practice exams. However, for this project, most people end up converting to a **static CMOS decoder**.
 - With column MUXing, only **two** rows need decoding. 
 - Wordlines must be **qualified** with `phi_1`. 
     - Address change happens when `phi_2` is high
@@ -142,14 +142,14 @@ Shepard has probably showed off multiple decoder designs in lecture and practice
 
 We chose a 4-in-1 **NAND-NOT** layout that fits neatly within four SRAM rows and scales naturally with predecoding.
 
-> **The drawback?** Kind of huge in width. It will be better for *this* project if we can put them to a more squared shape.
+> **The drawback?** Kind of huge in width. It will be better for *this* project if we can put them into a more square shape.
 {: .notice--warning}
 
 
 The idea is simple: 
-1. Spam M3 horizontal wires for all signals and power (Yes they fit)
+1. Spam M3 horizontal wires for all signals and power (Yes, they fit)
 2. Use M2 to fetch the signals vertically from M3
-3. Use our M2-VIA2-M1-CO-PO stack to control the gates
+3. Use our M2-VIA1-M1-CO-PO stack to control the gates
 4. Route the outputs with M1-VIA1-M2-VIA2-M3
 
 ![](/images/vlsi/sram/dec.jpg){: .align-center}
@@ -163,7 +163,7 @@ Implementing it is tricky, but once you have one block, the rest is simple.
 # Read Write
 Below is the 2-bit (4 bitline *pairs*) R/W schematic, closely following lecture
 1. **Column MUX** selects between adjacent columns.
-2. **Write Select** pulls down the bitliens. 
+2. **Write Select** pulls down the bitlines. 
     - We merged the `write` and `data` NMOSes to save a stack height
 3. **Read Driver** taps from `bit_bar`, amplifies with a *skewed* inverter and a bus driver
 
@@ -185,7 +185,7 @@ At the schematic level, I’ve summarized a few common failure modes based on my
         - Use 1V `vdc` to tie all other powers and `gnd!`
         - Use **0V** `vdc` to tie all other grounds and `gnd!`
 - **Wordline glitch**
-    - Addresses much change only when `phi_2` is high. 
+    - Addresses must change only when `phi_2` is high. 
     - Probe all wordlines to ensure they are **one-hot**. 
 - **Off-by-one inversion**
     - The lecture circuit is **inverted**
@@ -207,7 +207,7 @@ At the schematic level, I’ve summarized a few common failure modes based on my
 
 
 ## Stick Diagram
-> This is legacy layout. Horizontal gates may save a lot more space
+> This is a legacy layout. Horizontal gates may save a lot more space
 {: .notice--warning}
 
 We used a vertical Poly layout for this part. You will see the pros and cons in a moment. We laid out two units at a time.
@@ -218,7 +218,7 @@ We used a vertical Poly layout for this part. You will see the pros and cons in 
 ## Column MUX
 Four NMOS devices steer either column into the R/W circuitry.
 
-We initially attempted a single-row diffusion-shared layout and missed by a fraction of um :( The final solution uses gate sharing instead.
+We initially attempted a single-row diffusion-shared layout and missed by a fraction of a micron :( The final solution uses gate sharing instead.
 
 A lot of wires, but also a lot of space
 
@@ -229,7 +229,7 @@ The pulldown path is short. Good for delay.
 
 ## Write Pulldown
 
-Now to the interesting (and hard) part. In lecture, we know that we can control the write pulldown NMOS of `bit` by `write AND iobus` (`iobus_bar` for `bit_bar`). For stability, we also want to qualify this with `phi_1`. The logic is: 
+Now to the interesting (and hard) part. From lecture, we know that we can control the write pulldown NMOS of `bit` by `write AND iobus` (`iobus_bar` for `bit_bar`). For stability, we also want to qualify this with `phi_1`. The logic is: 
 
 ```
 write AND iobus<i> AND phi_1
@@ -248,7 +248,7 @@ We need `iobus_bar<i>` for `bit_bar<i>`. Fortunately, there's ample space to squ
 
 ![](/images/vlsi/sram/rw.png){: .align-center}
 
-Vertical Poly allows aggressive diffusion sharing if S/D Contact and Metal is aligned **directly** under the M2 bit grid. Otherwise, you may waste a lot of space
+Vertical Poly allows aggressive diffusion sharing if S/D Contact and Metal are aligned **directly** under the M2 bit grid. Otherwise, you may waste a lot of space
 
 
 ## Read Driver
@@ -259,7 +259,7 @@ We used single-ended sensing, suitable for small bitline capacitances, featuring
 
 We chose a 4:1 *width* ratio. You should test it to make sure it works at **schematic** level.
 
-We then used a (600/300)x3 C²MOS tristate bus driver. Note that it has a stack height of 2. It is discussed in textbook pp 393
+We then used a (600/300)x3 C²MOS tristate bus driver. Note that it has a stack height of 2. It is discussed on textbook page 393
 
 ![](/images/vlsi/sram/tristate.png){: .align-center}
 
@@ -276,11 +276,11 @@ With careful tuning and diffusion sharing, you can make everything perfectly fit
 ## What if things don't fit?
 Cry, but don't overcry. You still have to face it
 1. **Check the basics.** Start with diffusion sharing, efficient routing/viaing, avoid oversizing, etc.
-2. **Resize device.** People constantly miss that. Ask yourself: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
-3. **Use straight lines.** Bent routes increase contention not only itself, but its neighbors as well! Try to make routes as straight as possible, or **shift** them away from tight regions.
+2. **Resize devices.** People constantly miss that. Ask yourself: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
+3. **Use straight lines.** Bent routes increase contention not only for themselves, but for their neighbors as well! Try to make routes as straight as possible, or **shift** them away from tight regions.
 4. **Detour.** If you've really tried, take a detour. Find **gaps** on each layer, and consider moving your routing to these gaps.
-5. **(Temporarily) move to a higher Metal layer.** This is detour on another dimension. Only do this for short, local routing, as it may horribly interfere with your global routing plans. Vias are also not cheap.
-6. **Accept tradeoffs.** If there are truly no ways, you have to increase your spacing. Note that this is not an *excuse* to sloppy layouts.  
+5. **(Temporarily) move to a higher Metal layer.** This is a detour in another dimension. Only do this for short, local routing, as it may horribly interfere with your global routing plans. Vias are also not cheap.
+6. **Accept tradeoffs.** If there's truly no way, you have to increase your spacing. Note that this is not an *excuse* for sloppy layouts.  
 A slightly area-inefficient design is not a failure --- It's a deliberate **tradeoff**. In fact, you can often reclaim the space by fitting in power straps, inverters, or decaps. 
 
 ![](/images/vlsi/sram/contention.png)
@@ -319,7 +319,7 @@ This is where **overall** layout organization starts to hurt. The main challenge
 > **Disclaimer**: these sizings are for an older version. Calculate your own!
 {: .notice--warning}
 
-With these decisions in-place, you can lay out the whole thing:
+With these decisions in place, you can lay out the whole thing:
 ![](/images/vlsi/sram/overall.png)
 
 

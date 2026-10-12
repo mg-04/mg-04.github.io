@@ -62,7 +62,7 @@ Hopefully, this means less *pain and suffering*, and more **appreciation** for t
     - [Wrap Up!](/articles/vlsi/overall#wrap-up)
 
 Appendix. [Pictures!](/articles/vlsi/gallery)  
-Link. [Offical Course Page](https://www.bioee.ee.columbia.edu/courses/ee4321/)  
+Link. [Official Course Page](https://www.bioee.ee.columbia.edu/courses/ee4321/)  
 Link. My [Class Notes](/courses/vlsi)  
 Link. [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by Charlotte Chen
 
@@ -86,11 +86,11 @@ Configuration:
 
 ## Disclaimer
 > mg-04-io is a personal blog. It is not affiliated with Columbia EE or BioEE.  
-- This article is **not** an official TA guide. It is a supplement of the [On-line CAD tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
+- This article is **not** an official TA guide. It is a supplement to the [On-line CAD tutorials](https://www.bioee.ee.columbia.edu/courses/cad/html/)
 - This guide is **never** intended to **help you cheat**. A lot of the circuits/schematics/stick diagrams/layouts are coming from our older design iterations, and will definitely fail if you copy directly
 {: .notice--warning}
 
-Our project is **FAR from perfect**. In fact, when I was writing this, I constantly cry about how much I still don't know about Cadence Virtuoso, and how our layout can be more efficient in this and that ways.
+Our project is **FAR from perfect**. In fact, when I was writing this, I constantly cried about how much I still don't know about Cadence Virtuoso, and how our layout could be more efficient in this and that way.
 
 That's okay.
 
@@ -107,7 +107,7 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
     Feel free to [contact](mailto:mg04@cmu.edu) me. I am **MORE THAN HAPPY** to include it!
 - These articles focus primarily on **layout**, but **testing** is **equally important**
 	- Check out the [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by Charlotte
-- We did not explore much in Virtuoso's **design automation** features. This is an area worth studying on
+- We did not explore much in Virtuoso's **design automation** features. This is an area worth studying
 - TSMC, please don't sue me! (All layouts and figures shown are sanitized academic work intended solely for peer learning purposes. No NDA violations intended)
 
 ---
@@ -121,7 +121,7 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 
 ## Logistics
 
-> **What are the prereq?**
+> **What are the prereqs?**
 
 **Officially**: [ECircuits](/courses/ec) and [Fundies](/courses/fundies)  
 **Realistically**: a resilient spine, caffeine metabolism, and enough tears...
@@ -186,7 +186,7 @@ Talk to them. Compare (and steal) their layouts.
 
 > **Ask Chat.**
 
-LLMs are helpful, especially at fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat and ask it lay it out for you, but it is super useful at explaining concepts and interpreting errors.
+LLMs are helpful, especially at fetching and reading instructions and manuals. Of course, you can't upload any TSMC NDA material to Chat and ask it to lay it out for you, but it is super useful at explaining concepts and interpreting errors.
 
 ---
 
@@ -219,7 +219,7 @@ Small mistakes are cheap early and exponentially expensive later. Verify in smal
 
 > **Don't be messy.**
 
-Symmetry, consistency, and **hierarchy** will save you from debugging hell. "Messy but working" layouts *will* stab you some point in the futures.
+Symmetry, consistency, and **hierarchy** will save you from debugging hell. "Messy but working" layouts *will* stab you at some point in the future.
 
 ---
 
@@ -231,7 +231,7 @@ Don’t stress about getting *anything* perfect on the first pass. You will **al
 
 > **Don't blindly follow Shepard.**
 
-He's absolutely brilliant, but he can be sometimes off by an index, an inverter, or a 90-degree rotation, whether intentional or not. So make sure you understand what’s happening yourself.
+He's absolutely brilliant, but he can sometimes be off by an index, an inverter, or a 90-degree rotation, whether intentional or not. So make sure you understand what’s happening yourself.
 
 ---
 
@@ -244,13 +244,13 @@ He's absolutely brilliant, but he can be sometimes off by an index, an inverter,
 
 > **What are some examples that suck?**
 
-- Go to **StudyDocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
+- Go to **Studocu** or similar sites. Most of what’s there is **hot garbage**. People upload their worst work and call it "resources" :)
 - ~~Get on LinkedIn, stalk some seniors and masters, check their "projects". If they even bother putting their layout, chances are it probably sucks anyway.~~
 - I'll also share some of our own failed designs, as concrete examples of what not to do.
 
 
 ## Grading
-> This class is **curved**, so if you are an A tier student putting in your *A tier* work, you should expect an A tier grade.
+> This class is **curved**, so if you are an A-tier student putting in your *A-tier* work, you should expect an A-tier grade.
 {: .notice--info}
 
 > **How will the project be graded?**
@@ -269,13 +269,13 @@ The letter grade distribution was not published in Fall 2025, but here's the pro
 ![](/images/vlsi/grades.png)
 
 It's quite a left-heavy tail, with a similar mean to exams, but a much **higher variance**
-- This means even though the project worths half as the Final, it has the same power to boost/bomb your final grade
+- This means even though the project is worth half as much as the Final, it has the same power to boost/bomb your final grade
 
 ---
 
 > **How are the exams?**
 
-They are relatively easy to prepare. There are two types of problems:
+They are relatively easy to prepare for. There are two types of problems:
 1. **Freebies**  
     Straightforward. Some may be quite computational, but you'll be fine as long as you hold your ground.
 2. **Problems that "tell the boys apart from the men"** (according to Shepard who was "not trying to be sexist")  
@@ -304,4 +304,4 @@ Many thanks to the following for their help and guidance throughout this project
 - Former students Yuxi Zhang, Yingrui Wei;
 - Current students David Kim, Stephen Ogunmwonyi, Simon Mao, Nico Alarcon.
 
-Additional thanks to William Wang on sharing his [PLA layout](/articles/vlsi/overall#layout-by-william-wang)
+Additional thanks to William Wang for sharing his [PLA layout](/articles/vlsi/overall#layout-by-william-wang)

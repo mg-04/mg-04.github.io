@@ -102,14 +102,14 @@ These are the 3 main things to plan:
 
 ![](/images/vlsi/floorplan/stick.jpg)
 
-Adapt a consistent Metal routing rules. Let's make
+Adopt consistent Metal routing rules. Let's make
 - **Odd** Metal layers horizontal
 - **Even** Metal layers vertical.
 - There can be local violations, especially at lower levels
 
 
 ## Vertical Grid
-Our 8-bit processor built from isomorphic 1-bit slices placed side by side. We can create a **vertical** grid of M2 power rails of alternating VDD and GND
+Our 8-bit processor is built from isomorphic 1-bit slices placed side by side. We can create a **vertical** grid of M2 power rails of alternating VDD and GND
 - Each cell will build VDD (PMOS N-Well) on one side, and GND (NMOS P-Well) on the other
 - The power straps (body Vias) can be placed directly below the M2 rails
 - All transistors will fit horizontally within each stripe. Larger transistors can be made of multiple **fingers**
@@ -119,5 +119,5 @@ See example in our [adder](/articles/vlsi/adder#7-po-connections-and-contacts)
 
 > Although not done in our project, you can further design all blocks to have the **same height** to have an organized horizontal grid
 - This leads to standard cells. You can check out the cells in the TSMC library!
-- You can reference textbook chapter 1.10.2-4 (page 48-51) on how a 8-bit MIPS processor is laid out
+- You can reference textbook chapter 1.10.2-4 (pages 48-51) on how an 8-bit MIPS processor is laid out
 {: .notice--info}

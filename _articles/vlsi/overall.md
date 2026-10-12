@@ -33,7 +33,7 @@ Now for the **final push!**
 ---
 
 # Power Grid
-Make sure the entire chip have a robust and continuous power grid. Route power nets all the way to the highest Metals.
+Make sure the entire chip has a robust and continuous power grid. Route power nets all the way to the highest Metals.
 - **Data path** is already fairly structured. You can add a few straps if space permits. Do it **last**, though
 - **Control path**: *Try* to maintain some regularity, but due to the lower transistor density, it doesn't have to be as dense.
 - Make sure all **Vias** are properly connected and not shorting out
@@ -47,7 +47,7 @@ Here's a detailed floorplan derived from Shepard's PDF, following all his implem
 - "L" below it is the `phi_1` latch from the bottom `phi_2` latch
 
 There are three main "bus-like" nets
-- `Acc`: the state stored between the `phi_2` and `phi_1` latch, denoted as "net46 (acc)", operated by all **arithmetic** units
+- `Acc`: the state stored between the `phi_2` and `phi_1` latches, denoted as "net46 (acc)", operated by all **arithmetic** units
 - `internal_bus`: connection between the accumulator (arithmetic), memory, and external bus
 - `external_bus`: external IO
 
@@ -70,7 +70,7 @@ Let's start by connecting the **shifter** and the **adder**
 
 
 
-> At you see, if the M2 interfaces are misaligned, future routing will be painful, but still more than possible.
+> As you see, if the M2 interfaces are misaligned, future routing will be painful, but still more than possible.
 {: .notice--warning}
 
 1. Create a schematic.
@@ -89,7 +89,7 @@ Let's start by connecting the **shifter** and the **adder**
 Above was our connection at M2. We didn't design the adder and shifter interfaces to be fully compatible, so we need to make some tweaks:
 - The `out<2>` - `A<2>` path is misaligned, but no worries, we can temporarily route it to M3. 
     - A cleaner fix would be to shorten the `B<2>` pin in the adder.
-- The `B<2>` input comes from the top latch. I laid an M2 connecting the `B<2>` pin, and send it through M3 to M4 for the long-distance `latch<2>` signal.
+- The `B<2>` input comes from the top latch. I laid an M2 connecting the `B<2>` pin, and sent it through M3 to M4 for the long-distance `latch<2>` signal.
 
 
 ## M4: Long-Distance Data
@@ -98,7 +98,7 @@ Above was our connection at M2. We didn't design the adder and shifter interface
 
 Long-distance data routing at M2 is unrealistic. These should typically go to M4.
 
-At M4, we have a much cleaner and spacious grid. We were even able to add an extra pair of power straps.
+At M4, we have a much cleaner and more spacious grid. We were even able to add an extra pair of power straps.
 
 ![](/images/vlsi/pla/wire_data.png){: .align-center}
 
@@ -120,7 +120,7 @@ Same schematic as hw5.
 ## MUX
 We used a **one-hot** encoding for the inputs, making decoding much simpler on the MUX end
 
-We used an NMOS-only gate, since the inputs are buffered; The outputs go immediately to the latch, which is also buffered.
+We used an NMOS-only gate, since the inputs are buffered; the outputs go immediately to the latch, which is also buffered.
 
 ![](/images/vlsi/pla/mux.png)
 
@@ -131,7 +131,7 @@ Here is another example of connecting the adder and the MUX. The two other input
 
 
 ## Bus Driver
-Same as the SRAM bus driver, except to not *skew* the inverter
+Same as the SRAM bus driver, except that the inverter is not *skewed*
 ![](/images/vlsi/pla/bus_driver.png)
 
 ---
@@ -139,15 +139,15 @@ Same as the SRAM bus driver, except to not *skew* the inverter
 
 # PLA
 
-It's not hard to lay out a PLA, but it's hard to lay it *well*.
+It's not hard to lay out a PLA, but it's hard to lay it out *well*.
 
 ## Planning
-> **Before** you start your PLA, have a clear [floorplan](http://localhost:4001/articles/vlsi/floorplan#floorplan) of the entire processor. 
+> **Before** you start your PLA, have a clear [floorplan](/articles/vlsi/floorplan#floorplan) of the entire processor. 
 {: .notice--warning}
 
 
 Ask yourself:
-- What [control signals](http://localhost:4001/articles/vlsi/floorplan#opcodes) are needed from the PLA?
+- What [control signals](/articles/vlsi/floorplan#isa) are needed from the PLA?
     - What are their formats (binary encoded? One-hot?) 
     - Do they require inversion? 
     - Do they need additional downstream logic? Can I optimize those?
@@ -168,8 +168,8 @@ Make a table of the logical outputs:
 | Opcode | Assembly | Description                 | Internal bus driven by | MUX | Action | 
 |--------|----------|-----------------------------| ------ | ---- | --- | 
 | 000    | NOP      | Hold Acc    | -- | Hold | No change
-| 001    | LOAD     | Mem[i] ← External bus       |external bus| hold |  Memory write
-| 010    | STORE    | External bus ← Mem[i]      | SRAM | hold | Memory read; Drive external bus
+| 001    | LOAD     | Mem[i] ← External bus       |external bus| Hold |  Memory write
+| 010    | STORE    | External bus ← Mem[i]      | SRAM | Hold | Memory read; Drive external bus
 | 011    | GET      | Acc ← Mem[i]               | SRAM | Memory | Memory read
 | 100    | PUT      | Mem[i] ← Acc               | Acc | Hold | Memory write
 | 101    | ADD      | Acc ← Acc + Mem[i]         | SRAM | Adder | Memory read; Bypass shifter
@@ -182,7 +182,7 @@ Make a table of the logical outputs:
         - Use `X`: simplify PLA logic
         - Turn it off: saves power  
 
-    As you will see from the Espresso output, because the opcode space is fully encoded (3 opcodes → 8 bytes), Espresso can't do much.
+    As you will see from the Espresso output, because the opcode space is fully encoded (3 bits → 8 opcodes), Espresso can't do much.
 
 2. Make a schematic from your Espresso logic. Start with minimum sizing for both NMOS and the pullup PMOS
     - This consumes a lot of **static** power, though. You may want to use non-minimum length.
@@ -195,8 +195,8 @@ The textbook explains it on page 539.
 
 ![](/images/vlsi/pla/textbook_stick.png){: .align-center}
 
-Start with one **standard cell** and push DRC limits. The rest follow naturally
-- I recommend **extracting** the PLA and test its functionality and delay. Make sure all outputs are expected
+Start with one **standard cell** and push DRC limits. The rest follows naturally
+- I recommend **extracting** the PLA and testing its functionality and delay. Make sure all outputs are expected
 
 ## Layout by William Wang
 > I would like to thank William Wang ’27 and his team for generously sharing their PLA layout. Their implementation closely follows the textbook design and achieves really impressive **density**!
@@ -225,7 +225,7 @@ To fit the chip, we eventually rotated the PLA by 90°, completely disrupting th
 ---
 
 # Control Path
-You've gained enough "vibe-layout" experience from the SRAM. You don't need an *optimal* solution-- just one that **fits and works**
+You've gained enough "vibe-layout" experience from the SRAM. You don't need an *optimal* solution---just one that **fits and works**
 
 Reserve M4 tracks for the following:
 - Clock
@@ -233,14 +233,14 @@ Reserve M4 tracks for the following:
 - Other long-distance/critical control nets
 
 ## Latched Signals
-The control signals to the adder/shifter need to be latched by `phi_1`. We implemented this by instantiating our single-bit latches and place them in parallel with existing latch blocks.
+The control signals to the adder/shifter need to be latched by `phi_1`. We implemented this by instantiating our single-bit latches and placing them in parallel with existing latch blocks.
 
 ## Shift Bypass
 Two ways:
 - Add a MUX in front of the shifter
 - Qualify the `shamt` signal with `shift_bypass_bar`. 
 
-We chose the latter one.
+We chose the latter.
 
 ---
 
@@ -248,16 +248,16 @@ We chose the latter one.
 - DRC is quite straightforward. Run it **early and often**.
 - LVS is one of the few **nonlinear** parts of this project. It behaves well when a *small number* of nets are problematic, and degrades rapidly once errors accumulate and propagate.
 
-You may encounter "**Incorrect Instances**" or "**Parameter Mismatch**". They are almost never sizing errors. Instead a **short** makes LVS to **reinterpret the circuit topology**
+You may encounter "**Incorrect Instances**" or "**Parameter Mismatch**". They are almost never sizing errors. Instead, a **short** makes LVS **reinterpret the circuit topology**
 - Devices that should be separated are seen as **merged**
 - Series/parallel devices are collapsed
 - Netlist mismatch at *device level*
 
-Large-net shorts (power, clock, buses) are especially problematic: When this happens, the error report typically explodes, and LVS was unable to localize the fault
+Large-net shorts (power, clock, buses) are especially problematic: When this happens, the error report typically explodes, and LVS is unable to localize the fault
 - Try **intentionally breaking the net** and re-run LVS. Use divide-and-conquer to localize the short
 - Pay special attention to overlapping Vias
 
-**Opens** are less scary, as they usually produce localized error
+**Opens** are less scary, as they usually produce localized errors
 
 Your extracted simulation should behave normally, given that you followed all the principles listed above.
 
@@ -277,9 +277,9 @@ If your datapath looks good, your control path probably doesn’t (relatively). 
 
 
 ### Schematic Trick
-Your probably need multiple decaps transistors in parallel:
+You probably need multiple decap transistors in parallel:
 1. Create a `decap` symbol, which will contain all decaps.
-2. Instantiate an `nch`. Adjust with, length, *fingers*, and *multipliers* to fit in your largest dead area.
+2. Instantiate an `nch`. Adjust width, length, *fingers*, and *multipliers* to fit in your largest dead area.
     - It would be really good if the decap contacts fit your power grid
 3. In the layout, "Update All From Source". **Share** the diffusion and gates!
 4. Tune the sizes, if needed
@@ -290,7 +290,7 @@ Your probably need multiple decaps transistors in parallel:
 You are probably very tired rn. Don't chase perfection. Sufficient is enough.
 
 
-> Below are for aesthetics only
+> The following is for aesthetics only
 {: .notice--success}
 
 ## Pins
