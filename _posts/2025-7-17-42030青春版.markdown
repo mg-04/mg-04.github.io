@@ -3,6 +3,7 @@
 title:  "42030青春版--一套刚刚好的乐高"
 date:   2025-7-18 11:22:30 -0500
 permalink: /posts/2025/07/030
+teaser: /images/posts/aqau/half.JPG
 tags:
     - misc
 excerpt: >

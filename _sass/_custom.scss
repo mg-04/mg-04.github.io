@@ -425,3 +425,185 @@ html[data-theme="dark"] .row-media figcaption {
     margin-left: 0;
   }
 }
+
+
+/* ============================================================
+   Blog posts page: year timeline of post cards with tag filter
+   ============================================================ */
+
+.posts-intro {
+  color: var(--global-text-color-light);
+}
+
+.posts-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.posts-filter__btn {
+  padding: 0.25rem 0.85rem;
+  font: inherit;
+  font-size: 0.85em;
+  color: var(--global-text-color);
+  background: transparent;
+  border: 1px solid var(--global-border-color);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    border-color: var(--global-link-color);
+  }
+
+  &.is-active {
+    color: var(--global-bg-color);
+    background: var(--global-link-color);
+    border-color: var(--global-link-color);
+  }
+}
+
+.posts-timeline {
+  margin-top: 1.5rem;
+}
+
+.posts-year {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.6em;
+  font-variant-numeric: tabular-nums;
+  color: var(--global-text-color-light);
+}
+
+/* Vertical rail with a dot per post */
+.posts-year__list {
+  position: relative;
+  margin-left: 0.4rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--global-border-color);
+}
+
+.post-card {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 1.35rem;
+    left: calc(-1.5rem - 7px);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--global-link-color);
+    box-shadow: 0 0 0 3px var(--global-bg-color);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--global-link-color);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.post-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-card__meta {
+  margin: 0 0 0.25rem;
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+  color: var(--global-text-color-light);
+
+  span[aria-hidden] {
+    margin: 0 0.3em;
+  }
+}
+
+.post-card__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.15em;
+  line-height: 1.3;
+
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-link-color);
+    }
+  }
+}
+
+/* Whole card is clickable via the title link */
+.post-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.post-card__excerpt {
+  margin: 0 0 0.6rem;
+  font-size: 0.92em;
+  line-height: 1.55;
+}
+
+.post-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0.05rem 0.55rem;
+    font-size: 0.75em;
+    color: var(--global-text-color-light);
+    border: 1px solid var(--global-border-color);
+    border-radius: 999px;
+  }
+}
+
+.post-card__thumb {
+  flex: 0 0 150px;
+  align-self: center;
+
+  img {
+    display: block;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+}
+
+.posts-empty {
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 600px) {
+  .post-card {
+    flex-direction: column-reverse;
+  }
+
+  .post-card__thumb {
+    flex-basis: auto;
+    align-self: stretch;
+
+    img {
+      width: 100%;
+      height: 140px;
+    }
+  }
+}

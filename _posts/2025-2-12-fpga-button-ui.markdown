@@ -3,6 +3,7 @@
 title:  "FPGA Button UI"
 date:   2025-2-12 22:45:30 -0500
 permalink: /posts/2025/02/lab1
+teaser: /images/posts/fpga/de1-soc.jpg
 tags:
     - cs
     - ee

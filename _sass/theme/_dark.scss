@@ -144,3 +144,18 @@ html[data-theme="dark"] .social-icons {
 html[data-theme="dark"] .author__urls:after {
   border-color: var(--global-bg-color) transparent;
 }
+
+/* Table header: the light theme reuses the border color, which is too bright under white text */
+html[data-theme="dark"] thead {
+  background-color: rgba(#fff, 0.12);
+}
+
+/* Red emphasis (style-guide spans and MathJax \color{red}) is lifted so it reads on the dark background */
+html[data-theme="dark"] {
+  span[style*="rgb(255, 0, 0)"],
+  span[style*="color:red"],
+  span[style*="color: red"],
+  mjx-mstyle[style*="color: red"] {
+    color: #ff7b72 !important;
+  }
+}

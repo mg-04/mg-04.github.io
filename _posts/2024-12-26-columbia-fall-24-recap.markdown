@@ -3,6 +3,7 @@
 title:  "Columbia Fall 24 Recap"
 date:   2024-12-26 15:59:30 -0500
 permalink: /posts/2024/12/f24
+teaser: /images/posts/f24/image-1.png
 tags:
     - academia
 excerpt: >

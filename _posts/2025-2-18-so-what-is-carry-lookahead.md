@@ -3,6 +3,7 @@
 title:  "So What Is Carry Look Ahead"
 date:   2025-2-25 2:45:30 -0500
 permalink: /posts/2025/02/carry
+teaser: /images/posts/carrylah/cl1.jpg
 tags:
     - cs
     - ee
