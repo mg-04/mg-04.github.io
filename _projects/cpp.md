@@ -4,6 +4,8 @@ teaser: '/images/projects/cpp/5.png'
 excerpt: "Implementation of a subset of GNU `make` in C++ with Makefile parsing, recursive dependency graph resolution, and custom rule caching."
 course: "C++ for C Programmers, Spring 2026"
 collection: projects
+tags:
+  - software
 date: 2026-05-23
 authors: Ming Gong
 ---

@@ -2,6 +2,8 @@
 title: "HardLock Chip"
 excerpt: "Detection of timing-based signal anomalies in autonomous and embedded systems"
 collection: projects
+tags:
+  - digital
 date: 2026-1-11
 authors: Prosenjit Paul, Ming Gong, Xingya Liu, Helen Lou
 teaser: '/images/projects/hardlock.png'

@@ -2,6 +2,8 @@
 title: "Blockchain"
 excerpt: "Fully functional peer-to-peer blockchain network in Python with proof-of-work, digital signatures, Merkle trees, and a GUI wallet."
 collection: projects
+tags:
+  - networking
 date: 2025-05-17
 authors: Griffin Newbold, Amir Hossein Zarandi, Ming Gong, Neasha Mittal
 teaser: '/images/projects/blockchain.jpg'

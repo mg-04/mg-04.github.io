@@ -2,6 +2,8 @@
 title: "Rogue Planets"
 excerpt: "Origin, detection, and simulation of rogue planets — unbound, planet-mass bodies drifting through the Galaxy."
 collection: projects
+tags:
+  - physics
 date: 2024-05-08
 course: "Relativity and Cosmology, Spring 2024"
 authors: Ming Gong

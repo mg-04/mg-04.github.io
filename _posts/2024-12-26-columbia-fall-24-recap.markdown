@@ -5,7 +5,7 @@ date:   2024-12-26 15:59:30 -0500
 permalink: /posts/2024/12/f24
 teaser: /images/posts/f24/image-1.png
 tags:
-    - academia
+  - ece
 excerpt: >
  A few thoughts on the past semester. This is by no means a comprehensive review. 
 ---

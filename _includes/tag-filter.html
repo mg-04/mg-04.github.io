@@ -1,0 +1,84 @@
+{% comment %}
+  Tag filter bar shared by list pages.
+  Usage: {% include tag-filter.html items=site.posts label="Filter posts by tag" %}
+  Filterable elements carry data-filter-item and data-tags="slug1 slug2".
+  Optional wrappers with data-filter-group are hidden when none of their items match.
+  A ?tag=slug URL parameter preselects a tag.
+{% endcomment %}
+{% assign tf_tags = "" | split: "" %}
+{% for item in include.items %}
+  {% for tag in item.tags %}
+    {% unless tf_tags contains tag %}{% assign tf_tags = tf_tags | push: tag %}{% endunless %}
+  {% endfor %}
+{% endfor %}
+{% assign tf_tags = tf_tags | sort %}
+{% if tf_tags contains "highlights" %}
+  {% assign tf_rest = tf_tags | where_exp: "t", "t != 'highlights'" %}
+  {% assign tf_tags = "highlights" | split: "," | concat: tf_rest %}
+{% endif %}
+
+<div class="tag-filter" role="group" aria-label="{{ include.label | default: 'Filter by tag' }}">
+  <button type="button" class="tag-filter__btn is-active" data-tag="all" aria-pressed="true">All</button>
+  {% for tag in tf_tags %}
+  <button type="button" class="tag-filter__btn" data-tag="{{ tag | slugify }}" aria-pressed="false">{% include tag-label.html tag=tag %}</button>
+  {% endfor %}
+</div>
+<p class="tag-filter__empty" hidden>Nothing with this tag yet.</p>
+
+<script>
+(function () {
+  /* Runs before the list is parsed, so look elements up when filtering, not at load */
+  function apply(tag) {
+    var buttons = document.querySelectorAll('.tag-filter__btn');
+    var items = document.querySelectorAll('[data-filter-item]');
+    var groups = document.querySelectorAll('[data-filter-group]');
+    var empty = document.querySelector('.tag-filter__empty');
+    var known = false;
+    for (var k = 0; k < buttons.length; k++) {
+      if (buttons[k].getAttribute('data-tag') === tag) { known = true; }
+    }
+    if (!known) { tag = 'all'; }
+
+    var shown = 0;
+    for (var i = 0; i < items.length; i++) {
+      var tags = ' ' + items[i].getAttribute('data-tags') + ' ';
+      var match = tag === 'all' || tags.indexOf(' ' + tag + ' ') !== -1;
+      items[i].hidden = !match;
+      if (match) { shown++; }
+    }
+    for (var j = 0; j < groups.length; j++) {
+      groups[j].hidden = !groups[j].querySelector('[data-filter-item]:not([hidden])');
+    }
+    if (empty) { empty.hidden = shown !== 0; }
+    for (var b = 0; b < buttons.length; b++) {
+      var active = buttons[b].getAttribute('data-tag') === tag;
+      buttons[b].classList.toggle('is-active', active);
+      buttons[b].setAttribute('aria-pressed', active ? 'true' : 'false');
+    }
+    return tag;
+  }
+
+  function setUrl(tag) {
+    if (!window.history || !window.history.replaceState) { return; }
+    var url = new URL(window.location.href);
+    if (tag === 'all') { url.searchParams.delete('tag'); } else { url.searchParams.set('tag', tag); }
+    window.history.replaceState(null, '', url);
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.tag-filter__btn') : null;
+    if (!btn) { return; }
+    setUrl(apply(btn.getAttribute('data-tag')));
+  });
+
+  function init() {
+    var tag = new URLSearchParams(window.location.search).get('tag');
+    if (tag) { apply(tag); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

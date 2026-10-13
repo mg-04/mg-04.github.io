@@ -435,14 +435,14 @@ html[data-theme="dark"] .row-media figcaption {
   color: var(--global-text-color-light);
 }
 
-.posts-filter {
+.tag-filter {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin: 1rem 0 0.5rem;
 }
 
-.posts-filter__btn {
+.tag-filter__btn {
   padding: 0.25rem 0.85rem;
   font: inherit;
   font-size: 0.85em;
@@ -576,19 +576,19 @@ html[data-theme="dark"] .row-media figcaption {
 }
 
 .post-card__thumb {
-  flex: 0 0 150px;
+  flex: 0 0 225px;
   align-self: center;
 
   img {
     display: block;
-    width: 150px;
-    height: 100px;
+    width: 225px;
+    height: 150px;
     object-fit: cover;
     border-radius: 6px;
   }
 }
 
-.posts-empty {
+.tag-filter__empty {
   color: var(--global-text-color-light);
 }
 
@@ -603,7 +603,267 @@ html[data-theme="dark"] .row-media figcaption {
 
     img {
       width: 100%;
-      height: 140px;
+      height: 180px;
     }
+  }
+}
+
+
+/* ============================================================
+   Courses page: school sections, term rows, course registry
+   ============================================================ */
+
+.courses-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1.5rem;
+
+  a {
+    padding: 0.2rem 0.75rem;
+    font-size: 0.85em;
+    color: var(--global-text-color);
+    text-decoration: none;
+    border: 1px solid var(--global-border-color);
+    border-radius: 6px;
+
+    &:hover {
+      border-color: var(--global-link-color);
+    }
+
+    span {
+      margin-left: 0.3em;
+      color: var(--global-text-color-light);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+}
+
+.course-school {
+  margin-bottom: 2.5rem;
+}
+
+.course-school__name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--global-border-color);
+}
+
+.course-school__meta {
+  font-size: 0.6em;
+  font-weight: normal;
+  color: var(--global-text-color-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.course-school__note {
+  font-size: 0.9em;
+  color: var(--global-text-color-light);
+}
+
+/* Term label on the left, course rows on the right */
+.course-term {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--global-border-color);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.course-term__name {
+  margin: 0.35rem 0 0;
+  font-size: 0.9em;
+  color: var(--global-text-color-light);
+}
+
+.course-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.course {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr auto;
+  gap: 0.75rem;
+  align-items: baseline;
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--global-code-background-color);
+  }
+}
+
+.course__code {
+  font-family: $monospace;
+  font-size: 0.8em;
+  color: var(--global-text-color-light);
+  white-space: nowrap;
+}
+
+.course__title {
+  font-size: 0.95em;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.course__extra {
+  margin-left: 0.4em;
+  font-size: 0.8em;
+  color: var(--global-text-color-light);
+}
+
+.course__badge {
+  padding: 0 0.45rem;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--global-text-color-light);
+  border: 1px solid var(--global-border-color);
+  border-radius: 4px;
+}
+
+.course__badges {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: flex-end;
+}
+
+.course__badge {
+  white-space: nowrap;
+}
+
+.course__badge--md {
+  color: var(--global-link-color);
+  border-color: var(--global-link-color);
+}
+
+@media (max-width: 600px) {
+  .course-term {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .course {
+    grid-template-columns: 5.5rem 1fr;
+  }
+
+  .course__badges {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   Projects and teaching list rows
+   (theme-aware divider instead of the old hardcoded #f2f3f3)
+   ============================================================ */
+
+.project-row,
+.teaching-row {
+  --image-flex: 1.5;
+  --image-max-width: 250px; /* same as the original rows (the old '150px' value was invalid, so 250px applied) */
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.project-row__title,
+.teaching-row__title {
+  margin: 0 0 0.3em;
+}
+
+.project-row__meta,
+.teaching-row__meta {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+}
+
+.project-course {
+  font-style: italic;
+}
+
+.project-excerpt,
+.teaching-excerpt {
+  font-size: 0.95em;
+  line-height: 1.5;
+
+  p {
+    margin-bottom: 0.6em;
+  }
+}
+
+/* Teaching: link row and a separate study-materials row */
+.teaching-row__title .course-number {
+  font-weight: 600;
+}
+
+.teaching-type {
+  font-weight: 500;
+}
+
+.teaching-row__links,
+.teaching-row__materials {
+  margin: 0.5em 0 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.teaching-row__links a {
+  margin-right: 1.25em;
+}
+
+.teaching-row__links i,
+.teaching-row__materials i {
+  margin-right: 0.3em;
+}
+
+.teaching-row__materials strong {
+  margin-right: 0.4em;
+}
+
+.teaching-row__sep {
+  color: var(--global-text-color-light);
+}
+
+.project-list {
+  margin-top: 1.5rem;
+}
+
+/* Filtered-out items: beat display:flex/grid on cards and rows */
+[data-filter-item][hidden],
+[data-filter-group][hidden] {
+  display: none !important;
+}
+
+/* Teaching images: 50% wider than project rows */
+.teaching-row {
+  --image-max-width: 375px;
+}
+
+/* Teaching grouped by school: last row in a school needs no divider */
+.teaching-school {
+  margin-bottom: 2.5rem;
+
+  .teaching-row:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
   }
 }

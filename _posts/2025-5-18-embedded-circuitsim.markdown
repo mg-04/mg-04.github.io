@@ -5,8 +5,7 @@ date:   2025-5-18 05:58:30 -0500
 permalink: /posts/2025/05/cs
 teaser: /images/cc/555.png
 tags:
-    - cs
-    - ee
+  - ece
 excerpt: >
  A walkthrough of our Embedded final project: Circuit Simulator on FPGA
 ---

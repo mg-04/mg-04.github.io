@@ -2,6 +2,8 @@
 title: "Omega Automata"
 excerpt: "Theory of infinite-word automata (ω-languages): Buchi, Muller, and Rabin acceptance conditions, and applications in modeling non-terminating systems."
 collection: projects
+tags:
+  - math
 date: 2023-05-17
 course: "The Theory of Computation, Spring 2023"
 authors: Ming Gong

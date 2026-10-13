@@ -1,5 +1,10 @@
 ---
-layout: archive
+layout: single
+read_time: false
+share: false
+comments: false
+related: false
+hide_date: true
 title: "Ming Gong"
 permalink: /cv/
 author_profile: true
@@ -8,6 +13,7 @@ redirect_from:
 ---
 
 {% include base_path %}
+{% include toc %}
 
 <div class="cv" markdown="1">
 

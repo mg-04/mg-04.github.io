@@ -4,6 +4,10 @@ excerpt: "RTL-GDS flow of a high-performance 1024-point Radix-2 DIF FFT core in 
 teaser: /images/projects/ad.png
 course: "Advanced Digital Design, Spring 2026"
 collection: projects
+tags:
+  - highlights
+  - vlsi
+  - digital
 date: 2026-5-25
 authors: "Ming Gong"
 ---

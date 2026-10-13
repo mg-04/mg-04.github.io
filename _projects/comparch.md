@@ -2,6 +2,8 @@
 title: "Sorting Algorithms"
 excerpt: "Architectural analysis on sorting algorithms."
 collection: projects
+tags:
+  - architecture
 date: 2025-11-18
 authors: Ming Gong, Adrian Lee, Maria Chemodanova, Anita Raj
 course: "Computer Architecture, Fall 2025"

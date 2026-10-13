@@ -10,29 +10,17 @@ redirect_from:
 
 {% include base_path %}
 
-{% assign all_tags = "" | split: "" %}
-{% for post in site.posts %}
-  {% for tag in post.tags %}
-    {% unless all_tags contains tag %}{% assign all_tags = all_tags | push: tag %}{% endunless %}
-  {% endfor %}
-{% endfor %}
-{% assign all_tags = all_tags | sort %}
-
 <p class="posts-intro">Guides, course write-ups, and the occasional story. {{ site.posts | size }} posts so far.</p>
 
-<div class="posts-filter" role="group" aria-label="Filter posts by tag">
-  <button type="button" class="posts-filter__btn is-active" data-tag="all">All</button>
-  {% for tag in all_tags %}
-  <button type="button" class="posts-filter__btn" data-tag="{{ tag | slugify }}">{{ tag }}</button>
-  {% endfor %}
-</div>
+{% include tag-filter.html items=site.posts label="Filter posts by tag" %}
 
 {% capture written_year %}None{% endcapture %}
 <div class="posts-timeline">
 {% for post in site.posts %}
   {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
   {% if year != written_year %}
-    {% unless forloop.first %}</div>{% endunless %}
+    {% unless forloop.first %}</div></section>{% endunless %}
+    <section data-filter-group>
     <h2 id="{{ year | slugify }}" class="posts-year">{{ year }}</h2>
     <div class="posts-year__list">
     {% capture written_year %}{{ year }}{% endcapture %}
@@ -51,7 +39,7 @@ redirect_from:
 
   {% capture tag_slugs %}{% for tag in post.tags %}{{ tag | slugify }} {% endfor %}{% endcapture %}
 
-  <article class="post-card{% if thumb %} has-thumb{% endif %}" data-tags="{{ tag_slugs | strip }}">
+  <article class="post-card{% if thumb %} has-thumb{% endif %}" data-filter-item data-tags="{{ tag_slugs | strip }}">
     <div class="post-card__body">
       <p class="post-card__meta">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
@@ -64,7 +52,7 @@ redirect_from:
       {% endif %}
       {% if post.tags.size > 0 %}
       <ul class="post-card__tags">
-        {% for tag in post.tags %}<li>{{ tag }}</li>{% endfor %}
+        {% for tag in post.tags %}<li>{% include tag-label.html tag=tag %}</li>{% endfor %}
       </ul>
       {% endif %}
     </div>
@@ -75,44 +63,5 @@ redirect_from:
     {% endif %}
   </article>
 {% endfor %}
+</div></section>
 </div>
-</div>
-
-<p class="posts-empty" hidden>No posts with this tag yet.</p>
-
-<script>
-(function () {
-  var buttons = document.querySelectorAll('.posts-filter__btn');
-  var cards = document.querySelectorAll('.post-card');
-  var years = document.querySelectorAll('.posts-year');
-  var empty = document.querySelector('.posts-empty');
-
-  function apply(tag) {
-    var shown = 0;
-    for (var i = 0; i < cards.length; i++) {
-      var tags = ' ' + cards[i].getAttribute('data-tags') + ' ';
-      var match = tag === 'all' || tags.indexOf(' ' + tag + ' ') !== -1;
-      cards[i].hidden = !match;
-      if (match) { shown++; }
-    }
-    for (var j = 0; j < years.length; j++) {
-      var list = years[j].nextElementSibling;
-      var visible = list && list.querySelector('.post-card:not([hidden])');
-      years[j].hidden = !visible;
-      if (list) { list.hidden = !visible; }
-    }
-    empty.hidden = shown !== 0;
-    for (var k = 0; k < buttons.length; k++) {
-      var active = buttons[k].getAttribute('data-tag') === tag;
-      buttons[k].classList.toggle('is-active', active);
-      buttons[k].setAttribute('aria-pressed', active ? 'true' : 'false');
-    }
-  }
-
-  for (var b = 0; b < buttons.length; b++) {
-    buttons[b].addEventListener('click', function () {
-      apply(this.getAttribute('data-tag'));
-    });
-  }
-})();
-</script>

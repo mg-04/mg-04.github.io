@@ -8,6 +8,12 @@ permalink: /teaching/2025-fundies
 venue: "Columbia University"
 date: 2025-01-01
 teaser: "/images/teaching/fundies/0bc1e8cbc44a1ed52b16b68c1bc3c35.jpg"
+materials_label: "Study Guides"
+materials:
+  - { title: "K-map Guide", url: /files/teaching/fundies/Boolean_Algebra_Revisited_with_K-maps.pdf }
+  - { title: "Carry Lookahead", url: /posts/2025/02/carry }
+  - { title: "Hazards", url: /posts/2025/11/hazard }
+  - { title: "Cache", url: /posts/2025/05/cache }
 #location: "City, Country"
 ---
 

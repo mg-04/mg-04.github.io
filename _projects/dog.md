@@ -2,6 +2,9 @@
 title: "Dog Cannot Catch"
 excerpt: "Outstanding award winner. A unified mathematical and computational framework to analyze why Fritz the dog misses catching objects."
 collection: projects
+tags:
+  - highlights
+  - math
 date: 2023-11-10
 authors: Ming Gong, Paul Rose, Anthony Chang
 course: SCUDEM VIII, Fall 2023

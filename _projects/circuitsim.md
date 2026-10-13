@@ -2,6 +2,10 @@
 title: "CircuitSim"
 excerpt: "An analog/digital circuit simulator on FPGA written in C and Verilog, featuring Modified Nodal Analysis and hardware-accelerated matrix inversion."
 collection: projects
+tags:
+  - highlights
+  - digital
+  - embedded
 date: 2025-05-20
 authors: Ming Gong, Case Schemmer, Andrew Yang, Jary Tolentino, Faustina Cheng
 course: Embedded Systems, Spring 2025

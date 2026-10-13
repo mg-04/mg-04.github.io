@@ -2,6 +2,8 @@
 title: "Control Theory"
 excerpt: "A walkthrough of control theory and applications, including open loop control, PID, and computer simulation and tuning."
 collection: projects
+tags:
+  - math
 date: 2023-05-10
 authors: Ming Gong
 teaser: "/images/projects/control.png"

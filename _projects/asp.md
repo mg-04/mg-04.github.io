@@ -2,6 +2,9 @@
 title: "ASP Zookeeper"
 excerpt: "(Subsets of) `malloc`, `grep`, chat server, `gdb`, `ld`, and a container manager"
 collection: projects
+tags:
+  - highlights
+  - os
 date: 2025-05-18
 authors: Ming Gong, David Juarez, Keshav Beriwal
 teaser: '/images/projects/asp.png'

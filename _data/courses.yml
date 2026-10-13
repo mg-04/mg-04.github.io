@@ -1,0 +1,83 @@
+# Course list rendered by _pages/courses.md
+# Each course: code, title, optional url, optional extra (e.g. "+ Lab").
+# Badge: set `kind` to md, pdf or article (or a list like [md, pdf]).
+# Without `kind`, it is inferred from url: drive.google.com -> pdf, /posts/... -> article, anything else -> md.
+
+- school: CMU
+  id: cmu
+  years: 2026 – present
+  terms:
+    - term: Fall 2026
+      courses:
+        - { code: "18-643", title: "Reconfigurable Logic" }
+        - { code: "18-740", title: "Modern Computer Architecture and Design" }
+
+- school: Columbia
+  id: columbia
+  years: 2024 – 2026
+  terms:
+    - term: Spring 2026
+      courses:
+        - { code: "COMS 4118", title: "Operating Systems I", url: /courses/os }
+        - { code: "COMS 4995", title: "C++ Deep Dive for C Programmers", url: /courses/cpp }
+        - { code: "ELEN 4815", title: "Random Signals and Noise", url: /courses/rsn, kind: pdf }
+        - { code: "ELEN 6321", title: "Advanced Digital Electronic Circuits", url: /courses/vlsi2, kind: pdf }
+        - { code: "COMS 4771", title: "Machine Learning", url: /courses/ml, kind: pdf }
+    - term: Fall 2025
+      courses:
+        - { code: "CSEE 4824", title: "Computer Architecture", url: /courses/comparch }
+        - { code: "EECS 4321", title: "Digital VLSI Circuits", url: /courses/vlsi, kind: [md, pdf] }
+        - { code: "CSEE 4823", title: "Advanced Logic Design", url: /courses/ald }
+        - { code: "ELEN 4312", title: "Analog Electronic Circuits", url: /courses/aec, kind: pdf, extra: "+ Lab" }
+    - term: Spring 2025
+      courses:
+        - { code: "COMS 4157", title: "Advanced Systems Programming", url: /courses/asp }
+        - { code: "CSEE 4119", title: "Computer Networks" }
+        - { code: "CSEE 4840", title: "Embedded Systems", url: /posts/2025/05/cs }
+        - { code: "ELEN 3331", title: "Electronic Circuits", url: /courses/ec, kind: pdf, extra: "+ Lab" }
+    - term: Fall 2024
+      courses:
+        - { code: "COMS 3157", title: "Advanced Programming", url: /articles/ap }
+        - { code: "CSEE 3827", title: "Fundamentals of Computer Systems", url: /courses/fundies, kind: pdf, extra: "+ 3082" }
+        - { code: "ELEN 3106", title: "Solid State Devices-Matters" }
+        - { code: "ELEN 3201", title: "Circuit Analysis", url: /courses/ca, kind: pdf }
+        - { code: "ELEN 3801", title: "Signals and Systems", url: /courses/ss, kind: pdf }
+
+- school: Simon's Rock
+  id: simons-rock
+  years: 2021 – 2024
+  note: For full course materials, see the [SR archive directory](/sr-archive/) or follow the Drive links.
+  terms:
+    - term: Spring 2024
+      courses:
+        - { code: "MATH 312", title: "Analysis I", url: "https://drive.google.com/drive/folders/1B9vMXt6R8yzwBUjKxr03fciTs9vP1nvT" }
+        - { code: "PHYS 221", title: "Relativity and Cosmology", url: "https://drive.google.com/drive/folders/1bbTQ6t6TIwqexidX7HFzMZtCpTiA1tG0" }
+        - { code: "PHYS 304", title: "Electricity and Magnetism", url: "https://drive.google.com/drive/folders/1fcXtLMbb6SSvdSlEm_6KJKk_IB1D50o8" }
+        - { code: "PHYS 320T", title: "Statistical Thermodynamics", url: "https://drive.google.com/drive/folders/1QGnIkjfVLexV9XOeF_IV3_fV7kujCCSK" }
+    - term: Fall 2023
+      courses:
+        - { code: "CMPT 320", title: "The Theory of Computation", url: "https://drive.google.com/drive/folders/1-29VQ6jJvS6UyJgH94jW1-KMSO6AGj9W" }
+        - { code: "MATH 320", title: "Abstract Algebra", url: "https://drive.google.com/drive/folders/1AXACfB8uLsI0F2Jr7bl52zsIZVzGgY4O" }
+        - { code: "PHYS 210", title: "Analog and Digital Electronics" }
+        - { code: "PHYS 320", title: "Modern Physics Laboratory" }
+    - term: Spring 2023
+      courses:
+        - { code: "CHEM 303", title: "Organic Chemistry II", url: "https://drive.google.com/drive/folders/16FQgi1xLrny8jt-5E4MkzUAi5jDitlLd" }
+        - { code: "CMPT 243", title: "Algorithms and Data Structures" }
+        - { code: "MATH 330", title: "Probability and Statistics", url: "https://drive.google.com/drive/folders/1RiLdLuBx03tBRLo3lqnAbn4MikVZspjd" }
+        - { code: "MATH 364", title: "Ordinary Differential Equations", url: "https://drive.google.com/drive/folders/1siZdtOaLaX1PObpPb4dozJLhJXlBVxER" }
+        - { code: "PHYS 303", title: "Classical Mechanics", url: "https://drive.google.com/drive/folders/1SFoXn_ZEDtgJ90FZAa4VYFLD4DPhweOT" }
+    - term: Fall 2022
+      courses:
+        - { code: "CHEM 302T", title: "Organic Chemistry I", url: "https://drive.google.com/drive/folders/12h-QO_QnrUMTblkJYjitGkVom0Tq5uAq" }
+        - { code: "CMPT 252", title: "Discrete Mathematics", url: "https://drive.google.com/drive/folders/1rh0RCj7j-ALBp7z77vIB9ZyG69JEoLq6" }
+        - { code: "PHYS 220", title: "Intro to Quantum Physics", url: "https://drive.google.com/drive/folders/1Kk1GXRv4mm4x93b6cO9oFV2s7wBg1kAO" }
+    - term: Spring 2022
+      courses:
+        - { code: "CHEM 101", title: "Chemistry II" }
+        - { code: "MATH 221", title: "Vector Calculus" }
+        - { code: "PHYS 101", title: "Physics II", url: "https://drive.google.com/drive/folders/12KD6BNZ_IV-eg1AUdzrf2NeTg_PqLnTu" }
+    - term: Fall 2021
+      courses:
+        - { code: "CHEM 100", title: "Chemistry I", url: "https://drive.google.com/drive/folders/1NP3N6_hWpWr4nWY0CsjQyeGTKsHuMFCq" }
+        - { code: "MATH 220", title: "Linear Algebra" }

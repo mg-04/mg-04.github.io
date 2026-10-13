@@ -1,0 +1,7 @@
+# Display names for tags (slugs stay lowercase in front matter and URLs).
+# Tags not listed here are shown with a capitalized first letter.
+ece: ECE
+vlsi: VLSI
+sr: SR
+os: OS
+highlights: "★ Highlights"

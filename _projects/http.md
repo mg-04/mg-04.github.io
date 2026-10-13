@@ -2,6 +2,8 @@
 title: "HTTP Server and Client"
 excerpt: "HTTP server and client written in C from scratch, with a backend server loading a binary database and serving the frontend."
 collection: projects
+tags:
+  - networking
 date: 2024-12-11
 authors: Ming Gong
 teaser: "/images/projects/http.png"

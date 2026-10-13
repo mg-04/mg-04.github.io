@@ -3,9 +3,9 @@
 title:  "Coping with Oscilloscope Signals"
 date:   2025-2-3 23:08:30 -0500
 permalink: /posts/2025/02/osc
-teaser: /images/osc/1738643651246.png
+teaser: /images/osc/1738642603232.png
 tags:
-    - ee
+  - ece
 excerpt: >
  A simple method to smoothen DC data. Worked perfectly for gate transfer curves. 
 ---
