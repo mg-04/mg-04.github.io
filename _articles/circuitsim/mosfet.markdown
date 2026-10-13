@@ -127,7 +127,7 @@ The saturation mode is lowkey exactly the small-signal MOS models. There is a DC
 
 Below is the transfer curve. Its first derivatives are not perfectly smooth, but good enough for our approximations. Looks very similar to the actual curves~
 
-![transfer](/images/cc/nmos-output.png)
+![transfer](/images/circuitsim/nmos-output.png)
 
 ## NOT gate
 Let's build a CMOS NOT gate out of this:
@@ -156,7 +156,7 @@ The new partial derivatives need to be calculated appropriately. Calculus moment
 
 Anyway, here's the transfer curve. Looks kind of like tanh.
 
-![not](/images/cc/not-transfer.png)
+![not](/images/circuitsim/not-transfer.png)
 
 ### More gates
 With this, you can build any combinatorial (and sequential logic), such as a NAND gate, and even an adder. Here are some helper functions:

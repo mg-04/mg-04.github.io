@@ -1,5 +1,5 @@
 # SPIM
-![SPIM Interface](1729012527990.png "Title")
+![SPIM Interface](spim-interface.png "Title")
 - `FP Regs`: floating point registers (out of scope)
 - `Int Regs[16]`: contents of all integer registers
 - `Data`: Contents of **data** memory (store/load)
@@ -34,7 +34,7 @@ Jumps to `main`, where you start with. If no `main`, error!
 - Right: data in ASCII representation
 
 ### Pseudoinstructions
-![pseudoinstructions](1729013141424.png "Title")
+![pseudoinstructions](pseudoinstructions.png "Title")
 
 ## E. `strlen`
 String storage in memory: ASCII bytes with `NULL` terminator

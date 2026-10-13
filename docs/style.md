@@ -1,6 +1,6 @@
 ---
-title: "Markdown Notes Style Guide (Obsidian)"
-permalink: /style3
+title: "Markdown Notes Style Guide (Jekyll)"
+permalink: /style
 date: 2026-06-19
 author: "Ming Gong"
 ---
@@ -9,13 +9,12 @@ author: "Ming Gong"
 
 This document captures the markdown note-taking style used across this site's class notes, extracted for AI agents to replicate.
 
-You will be asked to generate notes in one of two Markdown formats: **Jekyll or Obsidian**. Follow the formatting constraints below strictly based for **Obsidian** format files.
+You will be asked to generate notes in one of two Markdown formats: **Jekyll or Obsidian**. Follow the formatting constraints below strictly based for **Jekyll** format files.
 
 ---
 
 # File Structure
 
-If the target format is **Jekyll**, you **must** begin with YAML front matter:
 
 ```yaml
 ---
@@ -31,9 +30,6 @@ Immediately after front matter, include the TOC partial for longer notes:
 ```
 {% include toc %}
 ```
-
-If the target format is **Obsidian**, do not include the YAML front matter or the Jekyll TOC partial. Begin the file immediately with the first `# Heading` of the intro text of the note itself.
-
 ---
 
 # Headings
@@ -138,7 +134,7 @@ Capture only critical logic, control flows, or function signatures. Truncation w
 
 ## Separator Rules
 
-If the target format is **Obsidian**, Always place it immediately before a new H1 (#) section, and use it consistently throughout the file to create visual breaks between distinct topics:
+If the target format is **Jekyll**, restrict the use of `---` **exclusively** to the front of H1 (`#`) headings. Do not use horizontal rules between smaller sub-sections (like H2 or H3) or as general content dividers.
 
 ```markdown
 ---
@@ -160,22 +156,22 @@ Notice boxes (see above) are a specialized use of blockquotes for more emphasis
 
 ## Notice Boxes (Callouts)
 
-If the target format is **Obsidian**:
+If the target format is **Jekyll**:
 
-Use Obsidian's native callout syntax for notice boxes. They are written as a blockquote using the `> [!type]` syntax at the start of the block:
+Use Jekyll's notice classes for callout boxes. They are written as a blockquote followed by a `{: .notice--type}` tag on the **next line**:
 
 ```markdown
-> [!warning] Caution for Beginners
 > Run DRC **as frequently as possible**, especially if you are a beginner!!
+{: .notice--warning}
 
-> [!success] Goal Achieved
 > We are now **DRC clean!**
+{: .notice--success}
 
-> [!info] Recommended Reading
 > Take a read of Shepard's Online CAD Tutorial.
+{: .notice--info}
 
-> [!danger] Critical Setup Risk
 > Do a **C+CC** extraction only. RCC might crash Cadence
+{: .notice--danger}
 ```
 
 | Class | Color | Use |
@@ -195,19 +191,22 @@ Multi-line notices use `\n` line breaks or multi-line blockquote syntax. You can
 
 Images are placed immediately after the text they illustrate, with no blank line between the text and the image.
 
-
-
-If the target format is **Obsidian**:
-
-Use Obsidian’s native wiki-link asset embedding or standard markdown blocks.
-
-- **Standard Image:** Embed the asset directly using double brackets:  
+Standard image:
 ```markdown
-![[start.png]]
+![](/images/vlsi/inv/start.png)
 ```
-- **Constrained Size:** To constrain the width (e.g., to 300px), append the pipe `|` character followed by the pixel width inside the brackets:  
+
+Alt text is typically empty or just `alt`. The path is absolute from site root.
+
+Centered with Jekyll attribute:
 ```markdown
-![[pitch.png|300]]
+![](/images/vlsi/adder/sizing.png){: .align-center}
+```
+
+Constrained size (HTML):
+```html
+<img src="/images/vlsi/adder/pitch.png"
+     style="display: block; margin: 0 auto; max-width: 300px; width: 100%;">
 ```
 
 
@@ -215,12 +214,12 @@ Use Obsidian’s native wiki-link asset embedding or standard markdown blocks.
 
 ## Math (LaTeX)
 
-Inline math uses `$...$` (single dollar signs):
+Inline math uses `$$...$$` (double dollar signs, not single):
 ```markdown
-$t_{clk}(k) = \frac L k + o$
+$$t_{clk}(k) = \frac L k + o$$
 ```
 
-Block math also uses `$$...$$` (double dollar signs):
+Block math also uses `$$...$$` on its own line:
 ```markdown
 $$d' = d\times m \pm 2^k$$
 ```
@@ -255,31 +254,28 @@ flowchart TD
 
 # Navigation
 
-If the target format is **Obsidian**:
+If the target format is **Jekyll**:
 
 ## Series Navigation
 
 For multi-part article series, place a numbered navigation list at the top of the page (below front matter and TOC), with the **current page bolded**:
 
-Use native internal wiki-links `[[Note Name]]` or section links.
-
 ```markdown
-1. [[Intro]]
+1. [Intro](/articles/vlsi)
 2. **Inverter**
-3. [[Project Plan]]
-4. [[Adder and Shifter]]
-5. [[SRAM]]
+3. [Project Plan](/articles/vlsi/floorplan)
+4. [Adder and Shifter](/articles/vlsi/adder)
+5. [SRAM](/articles/vlsi/sram)
 ```
 
 ---
 
 ## Internal Linking
 
-Use native wiki-links `[[Note Name]]` for clean cross-linking inside your vault.
-- Link to other articles: Use the exact file name: `[[Memory]]`
-- Link to a specific section anchor: Use the `#` symbol directly after the note name to target heading text exactly: `[[Adder and Shifter#3. Diffusion Sharing]]`
-- Inline parenthetical references: `(see [[ASP Notes]])`
-- Display Aliases: If you need the text to read differently than the file name, use a pipe `|`: `[[ASP Notes\|ASP Course Material]]`
+- Link to other articles: `[Memory](/articles/asp/2)`
+- Link to a specific section anchor: `[Diffusion Sharing](/articles/vlsi/adder#3-diffusion-sharing)`
+- Inline parenthetical references: `(see [ASP Notes](/courses/asp))`
+- Anchor IDs are auto-generated from headings as lowercase-with-hyphens: `## Body Vias` → `#body-vias`
 
 ---
 

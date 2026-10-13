@@ -9,7 +9,7 @@ tags:
 date: 2025-05-20
 authors: Ming Gong, Case Schemmer, Andrew Yang, Jary Tolentino, Faustina Cheng
 course: Embedded Systems, Spring 2025
-teaser: /images/cc/555.png
+teaser: /images/circuitsim/555.png
 ---
 
 {% if page.authors %}
@@ -18,7 +18,7 @@ teaser: /images/cc/555.png
 </div>
 {% endif %}
 
-A+ final project for CSEE 4840 Embedded Systems, Edwards' favorites <br/><img src='/images/cc/staricon.png'>
+A+ final project for CSEE 4840 Embedded Systems, Edwards' favorites <br/><img src='/images/circuitsim/staricon.png'>
 
 An analog/digital circuit simulator, written in C
 

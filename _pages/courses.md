@@ -47,7 +47,7 @@ author_profile: true
           {% if c.url %}<a href="{% unless c.url contains '://' %}{{ base_path }}{% endunless %}{{ c.url }}">{{ c.title }}</a>{% else %}{{ c.title }}{% endif %}
           {% if c.extra %}<span class="course__extra">{{ c.extra }}</span>{% endif %}
         </span>
-        {% if kinds.size > 0 %}<span class="course__badges">{% for k in kinds %}<span class="course__badge course__badge--{{ k }}">{% case k %}{% when 'md' %}MD Notes{% when 'pdf' %}PDF{% when 'article' %}Article{% else %}{{ k }}{% endcase %}</span>{% endfor %}</span>{% endif %}
+        {% if kinds.size > 0 %}<span class="course__badges">{% for k in kinds %}<span class="course__badge course__badge--{{ k }}">{% case k %}{% when 'md' %}Markdown{% when 'pdf' %}PDF{% when 'tex' %}TeX{% when 'article' %}Article{% else %}{{ k }}{% endcase %}</span>{% endfor %}</span>{% endif %}
       </li>
       {% endfor %}
     </ul>

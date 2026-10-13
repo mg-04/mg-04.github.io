@@ -1,6 +1,6 @@
 # Course list rendered by _pages/courses.md
 # Each course: code, title, optional url, optional extra (e.g. "+ Lab").
-# Badge: set `kind` to md, pdf or article (or a list like [md, pdf]).
+# Badge: set `kind` to md, pdf, tex or article (or a list like [md, pdf]).
 # Without `kind`, it is inferred from url: drive.google.com -> pdf, /posts/... -> article, anything else -> md.
 
 - school: CMU
@@ -22,7 +22,7 @@
         - { code: "COMS 4995", title: "C++ Deep Dive for C Programmers", url: /courses/cpp }
         - { code: "ELEN 4815", title: "Random Signals and Noise", url: /courses/rsn, kind: pdf }
         - { code: "ELEN 6321", title: "Advanced Digital Electronic Circuits", url: /courses/vlsi2, kind: pdf }
-        - { code: "COMS 4771", title: "Machine Learning", url: /courses/ml, kind: pdf }
+        - { code: "COMS 4771", title: "Machine Learning", url: /courses/ml, kind: [pdf, tex] }
     - term: Fall 2025
       courses:
         - { code: "CSEE 4824", title: "Computer Architecture", url: /courses/comparch }
@@ -41,7 +41,7 @@
         - { code: "CSEE 3827", title: "Fundamentals of Computer Systems", url: /courses/fundies, kind: pdf, extra: "+ 3082" }
         - { code: "ELEN 3106", title: "Solid State Devices-Matters" }
         - { code: "ELEN 3201", title: "Circuit Analysis", url: /courses/ca, kind: pdf }
-        - { code: "ELEN 3801", title: "Signals and Systems", url: /courses/ss, kind: pdf }
+        - { code: "ELEN 3801", title: "Signals and Systems", url: /courses/ss, kind: [pdf, tex] }
 
 - school: Simon's Rock
   id: simons-rock

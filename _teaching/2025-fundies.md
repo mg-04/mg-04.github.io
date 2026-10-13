@@ -7,7 +7,7 @@ instructor: "Martha Kim; Brian Plancher"
 permalink: /teaching/2025-fundies
 venue: "Columbia University"
 date: 2025-01-01
-teaser: "/images/teaching/fundies/0bc1e8cbc44a1ed52b16b68c1bc3c35.jpg"
+teaser: "/images/teaching/fundies/cache/q-merge-blocks.jpg"
 materials_label: "Study Guides"
 materials:
   - { title: "K-map Guide", url: /files/teaching/fundies/Boolean_Algebra_Revisited_with_K-maps.pdf }

@@ -3,7 +3,7 @@
 title:  "Embedded Project: CircuitSim"
 date:   2025-5-18 05:58:30 -0500
 permalink: /posts/2025/05/cs
-teaser: /images/cc/555.png
+teaser: /images/circuitsim/555.png
 tags:
   - ece
 excerpt: >
@@ -102,7 +102,7 @@ We were out of time to write any complete evaluation or reflection. Here's a bet
 
 I'm sure it's more than fixable, given that rectifier works. It's just a matter of time
 
-瑕不掩瑜, Edwards really liked it. We got A+ and the infamous Edwards star ![Edwards](/images/cc/staricon.png)
+瑕不掩瑜, Edwards really liked it. We got A+ and the infamous Edwards star ![Edwards](/images/circuitsim/staricon.png)
 
 # Future Work
 We also ran out of time to write a future work section

@@ -51,15 +51,15 @@ void setup(void) {
 
 Inputting a 100 Hz and 10 kHz combo: perfect filtering
 
-![4th](/images/cc/4th.png)
+![4th](/images/circuitsim/4th.png)
 
 Let's make it harder, like 500 and 2k, and plot out the result in each stage. Each stage is very accurate, filtering out some components of the 2k while leaving 500 mostly intact. The final output is not perfect, but it's expected.
 
-![4th-hard](/images/cc/4th-hard.png)
+![4th-hard](/images/circuitsim/4th-hard.png)
 
 ## Digital: Rising-Edge Triggered Data Flip Flop
 
-![dff-c](/images/cc/dff-c.png)
+![dff-c](/images/circuitsim/dff-c.png)
 
 Fundies nightmare! Let's see if CircuitCim can handle it.
 ```c
@@ -101,7 +101,7 @@ void setup(void) {
 
 There's nothing too interesting. Just connect the gates appropriately, and pray that CircuitCim handles feedback well. (yes it did)
 
-![dff](/images/cc/dff.png)
+![dff](/images/circuitsim/dff.png)
 
 **Exercises**:
 1. There is a more efficient implementation with just 6 NANDs. Implement it
@@ -112,11 +112,11 @@ Finally, the 555 I promised.
 
 I first looked up a MOS 555 implementation: https://tinyurl.com/2bg6sjrk
 
-![555-c](/images/cc/555.png)
+![555-c](/images/circuitsim/555.png)
 
 This looked insanely complicated, so I turned it to a "half"-netlist: https://tinyurl.com/26w4885x
 
-![555-netlist](/images/cc/555-netlist.png)
+![555-netlist](/images/circuitsim/555-netlist.png)
 
 - Analog
     - Voltage bias for comparators
@@ -190,7 +190,7 @@ void setup(void) {
 ```
 WORKS PERFECTLY in both astable and monostable. There are slight issues on Falstad with the reset function. Have not tested it on CircuitCim yet. If it fails, it's that the model sucks, and I need to learn more on analog design.
 
-![555-plt](/images/cc/555-p.png)
+![555-plt](/images/circuitsim/555-p.png)
 
 So this completes Circuit**C**im, the software part of Circuit**S**im. As I would soon realize, this was only a small part, and the worst suffering was soon to come.
 

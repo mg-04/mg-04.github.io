@@ -732,9 +732,7 @@ html[data-theme="dark"] .row-media figcaption {
 
 .course__badge {
   padding: 0 0.45rem;
-  font-size: 0.7em;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-size: 0.75em;
   color: var(--global-text-color-light);
   border: 1px solid var(--global-border-color);
   border-radius: 4px;
@@ -750,7 +748,9 @@ html[data-theme="dark"] .row-media figcaption {
   white-space: nowrap;
 }
 
-.course__badge--md {
+.course__badge--md,
+.course__badge--article,
+.course__badge--tex {
   color: var(--global-link-color);
   border-color: var(--global-link-color);
 }

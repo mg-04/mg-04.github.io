@@ -1,6 +1,6 @@
 ---
 title: "Freezer Scheduler and EZFS"
-teaser: '/images/projects/os/5.png'
+teaser: '/images/projects/os/freezer-benchmark.png'
 excerpt: "Implementation of Linux utilities: in-kernel key-value store, custom round-robin scheduler, page walk, and a lightweight filesystem."
 course: "Operating Systems, Spring 2026"
 collection: projects
@@ -52,7 +52,7 @@ A robust, high-concurrency, and thread-safe kernel kv pair
 
 Extensive performance evaluation under various environments and workloads
 
-![](/images/projects/os/5.png)
+![](/images/projects/os/freezer-benchmark.png)
 
 # 6. [Farfetchd](/articles/os/3-mm#hw-6): Kernel Memory Introspection & Device Driver
 [Assignment](https://columbia-os.github.io/farfetchd/) | [Repo](https://github.com/columbia-os-hw-s2026/hw6-Team-Gengar)
@@ -60,7 +60,7 @@ Extensive performance evaluation under various environments and workloads
 - Memory introspection with `bvi`
 - Pseudo-device driver integration with `ioctl()`
 
-![](/images/projects/os/6.png)
+![](/images/projects/os/farfetchd-page-walk.png)
 
 # 7. [EZFS](/articles/os/4-io#hw7): A Lightweight Filesystem
 [Assignment](https://columbia-os.github.io/ezfs/) | [Repo](https://github.com/columbia-os-hw-s2026/hw7-Team-Gengar)
@@ -69,4 +69,4 @@ Extensive performance evaluation under various environments and workloads
 - **Fine-grained concurrency**: thread-safe metadata handling
 - **Kernel module integration**
 
-![](/images/projects/os/7.png)
+![](/images/projects/os/ezfs.png)

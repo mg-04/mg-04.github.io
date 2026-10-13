@@ -215,6 +215,6 @@ It simulates the iconic rectifier curve, with:
 - Precise diode drop
 - Exponential discharge (starts very linear)
 
-![diode-rect](/images/cc/diode-rect.png)
+![diode-rect](/images/circuitsim/diode-rect.png)
 
 Exercise: build a bridge rectifier.

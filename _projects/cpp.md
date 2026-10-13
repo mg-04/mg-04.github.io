@@ -1,6 +1,6 @@
 ---
 title: "MyMake"
-teaser: '/images/projects/cpp/5.png'
+teaser: '/images/projects/cpp/mymake-code.png'
 excerpt: "Implementation of a subset of GNU `make` in C++ with Makefile parsing, recursive dependency graph resolution, and custom rule caching."
 course: "C++ for C Programmers, Spring 2026"
 collection: projects
@@ -21,5 +21,5 @@ Implementation of a subset of GNU `make` in C++
 - Custom exception hierarchies
 
 
-![](/images/projects/cpp/5.png)
+![](/images/projects/cpp/mymake-code.png)
 

@@ -55,4 +55,4 @@ Over the years, the role of traditional note-taking is fading away, from posted 
 # ELEN 3201 Circuit Analysis
 1. [Resistive Circuits](https://drive.google.com/file/d/1YjzjZWqR-zfwJfsHWSZHvj4ij-3o7RPY/view?usp=drive_link)
 2. [Capacitive and Inductive Circuits](https://drive.google.com/file/d/1PhP26W6-Tc-3WQKkQ4udCCjQoJgvTJdw/view?usp=drive_link)
-3. [AC Analysis](/articles/f24/CA/Ca-notes-3-AC.pdf)
+3. [AC Analysis](https://drive.google.com/file/d/1sRZXj11uWru02bXGdW5_30QayhE3XNfN/view?usp=drive_link)

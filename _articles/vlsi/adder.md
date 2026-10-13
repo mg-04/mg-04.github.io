@@ -78,7 +78,7 @@ The CMOS implementation is pretty standard, and you can find plenty of resources
 ## Sizing
 Textbook page 432 shows the standard sizing. Carry propagation is the critical path; all other paths use minimum sizing.
 
-![](/images/vlsi/Adder/sizing.png){: .align-center}
+![](/images/vlsi/adder/sizing.png){: .align-center}
 
 
 The suggested minimum width is 150 nm
@@ -94,7 +94,7 @@ We used the following sizing:
 # Schematic
 Below is our carry schematic. If you want to use the textbook sizing, change the non-critical path NMOS sizing to 150 nm.
 
-![](/images/vlsi/Adder/schem.png){: .align-center}
+![](/images/vlsi/adder/schem.png){: .align-center}
 
 A few notes:
 - Use **multiple fingers**, so every transistor has **equal width**
@@ -103,14 +103,14 @@ A few notes:
 - Label the nets and explicitly add the IO pins
 - I recommend using capital letters for net names, and global `VDD!`/`GND!`
 
-> I will refer to transistors by their name `Mx` in the [*schematic above*](/images/vlsi/Adder/schem.png). They will differ in your schematic
+> I will refer to transistors by their name `Mx` in the [*schematic above*](/images/vlsi/adder/schem.png). They will differ in your schematic
 {: .notice--info}
 
 ## Stick Diagram
 Make a stick diagram of your adder layout. This [UMich lecture](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) is pretty useful. Adapt it to your design.
 
 
-![](/images/vlsi/Adder/adder_stick.png)
+![](/images/vlsi/adder/adder_stick.png)
 
 This stick diagram is rotated 90 deg. In the actual layout, M2 (orange) will be vertical. I used magenta for PMOS OD, and dark gray for NMOS OD. 
 
@@ -131,12 +131,12 @@ Before placing anything, draw your M2 [bit pitch](/articles/vlsi/floorplan#metal
 - Center-to-center: **2.1 um**
 - Width: 0.1 um
 
-<img src="/images/vlsi/Adder/pitch.png"
+<img src="/images/vlsi/adder/pitch.png"
      style="display: block; margin: 0 auto; max-width: 300px; width: 100%;">
 
 You can use the `p` shortcut to draw a path. It shows its DRC boundaries, too
 
-<img src="/images/vlsi/Adder/p.png"
+<img src="/images/vlsi/adder/p.png"
      style="display: block; margin: 0 auto; max-width: 250px; width: 100%;">
 
 
@@ -154,16 +154,16 @@ Find the single-fingered transistors gated by `A`.
 - We can make them share the same diffusion terminal.
 
 Move the transistors closer:
-![](/images/vlsi/Adder/diff0.png)
+![](/images/vlsi/adder/diff0.png)
 
 Move the bottom transistor further up, and release your mouse. Virtuoso should **snap** them together.
-![](/images/vlsi/Adder/diff1.png)
+![](/images/vlsi/adder/diff1.png)
 
 Repeat for the PMOS.
 
 Now, check DRC. I would recommend temporarily **deleting** the transistors you haven't yet placed, so their DRC disconnections don't obscure any actual errors. 
 
-![](/images/vlsi/Adder/t1.png)
+![](/images/vlsi/adder/t1.png)
 
 You will get quite a few errors. It's complaining that the M1 and PO areas are too small. That's *fine*, since we haven't connected them yet
 
@@ -176,7 +176,7 @@ M30/M5 has its drain on `COUTN`. However, the generated instance has its source 
 1. Select the FET, click `q`
 2. Go to "Parameter", check "S D swap"
 
-![](/images/vlsi/Adder/sd.png)
+![](/images/vlsi/adder/sd.png)
 
 Now you can happily diffusion share!
 
@@ -192,7 +192,7 @@ The key is to know what can still be **overlapped**, and what can't.
 - The active regions (PO/OD) are different nets. They need to be **0.13 um** apart
     - This happens exactly when the PP/NP boxes overlap with the *neighboring* OD
 
-![](/images/vlsi/Adder/nsd.png)
+![](/images/vlsi/adder/nsd.png)
 
 Place the two OD layers 0.13 um apart, and check DRC again.
 
@@ -222,14 +222,14 @@ We still have a few sources and drains left. Let's route them vertically using t
     - You may be tempted to extend M1 to the left, but that will violate the M1 spacing rules with the `GND!` wire. Instead, there's plenty of vertical space.
 4. Done! Check DRC
 
-![](/images/vlsi/Adder/via1.png)
+![](/images/vlsi/adder/via1.png)
 
-![](/images/vlsi/Adder/via1_bare.png)
+![](/images/vlsi/adder/via1_bare.png)
 
 
 Do the same thing for other nets. You can also use the same technique for power and ground connections.
 
-![](/images/vlsi/Adder/via1_drc.png)
+![](/images/vlsi/adder/via1_drc.png)
 
 
 ## 7. PO Connections and Contacts
@@ -262,20 +262,20 @@ The single `BS` gate in the middle is especially hard to contact:
 Those tricks will come up repeatedly later :)
 
 Check DRC. Below I show the PO-CO-M1 layer for more clarity:
-![](/images/vlsi/Adder/drc_mp.png)
+![](/images/vlsi/adder/drc_mp.png)
 
 Measure the distance to its neighbor. Clean!
 
-![](/images/vlsi/Adder/drc_12.png)
+![](/images/vlsi/adder/drc_12.png)
 
 I also added the M2-M1 Via to connect the power.
 
-![](/images/vlsi/Adder/drc_full.png)
+![](/images/vlsi/adder/drc_full.png)
 
 
 Once you add the Pins, you should pass LVS too!
 
-![](/images/vlsi/Adder/input_label.png)
+![](/images/vlsi/adder/input_label.png)
 
 
 **CONGRATS** on completing 1/3 of *this* assignment!
@@ -289,11 +289,11 @@ Below is our adder from a few months ago.
 ## Sum
 The sum bits use minimum P/N sizing. They can be really well diffusion-shared!
 
-![](/images/vlsi/Adder/sum.png)
+![](/images/vlsi/adder/sum.png)
 
 We can closely align the PO, M1, and M2 layers
 
-![](/images/vlsi/Adder/sum_det.png)
+![](/images/vlsi/adder/sum_det.png)
 
 
 
@@ -319,12 +319,12 @@ Mostly yes, but with the caveat on **pin order**:
 - Our current M2 pins have "ABC", which will turn to "CBA" if flipped. 
 - `cin` currently comes from the left, and `cout` from the right. They need to be flipped.
 
-![](/images/vlsi/Adder/adder_frame.png)
+![](/images/vlsi/adder/adder_frame.png)
 
 
 We created a new schematic and layout `hw6t` for the flipped version by copying (`c`) the `hw6` layout, flipping it, and adjusting the pin orders appropriately. 
 
-![](/images/vlsi/Adder/addert.png)
+![](/images/vlsi/adder/addert.png)
 
 
 > There are definitely other ways to do this:
@@ -335,12 +335,12 @@ We created a new schematic and layout `hw6t` for the flipped version by copying 
 ## Layout Hierarchy
 Now the final push! We want a coherent pattern and **minimally wasted space**. If you lay out your single bit like this, it's gonna suck. You want it as **tight** as possible
 
-![](/images/vlsi/Adder/old_8b.png)
+![](/images/vlsi/adder/old_8b.png)
 
 1. Make sure your single-bit layouts are DRC and LVS clean
 2. Create a symbol for your single bits. It doesn't have to be fancy
 3. Create a **new** 8-bit schematic. Connect the bits with alternating `hw6t` and `hw6`
-    ![](/images/vlsi/Adder/8b_schem.png)
+    ![](/images/vlsi/adder/8b_schem.png)
 4. Check and test the 8-bit schematic on the sample inputs
 5. Create a **new** 8-bit layout, with the same name as the 8-bit schematic. 
 6. "Generate All From Source"
@@ -351,7 +351,7 @@ Layouts communicate across hierarchies through **Pins**. If you zoom into the Pi
 - "/SN" is the internal net name (sum out)
 - "/SN7" is the current net name (7th sum out)
 
-![](/images/vlsi/Adder/8b_label.png)
+![](/images/vlsi/adder/8b_label.png)
 
 - Wires connected **through a pin** are automatically labelled by Virtuoso. 
 - Wires connected, but *not* through a pin will **still** be the same net, and checked equally under **DRC/LVS**. Just harder to see.
@@ -367,7 +367,7 @@ Make sure neighboring M2/M1/vias/pins overlap **exactly**, both vertically and h
 - The distance between the M2 center points at both ends should be 2.1 x 8 = 16.8 um. If not, you've done something wrong.
 - Your 8-bit layout will have a [P-N-P-N-P-N-P-N-P](/articles/vlsi/floorplan#metal-routing) structure
 
-![](/images/vlsi/Adder/adder_ddet.png)
+![](/images/vlsi/adder/adder_ddet.png)
 
 
 > I went up to M3 for the carry propagation wires, but you may as well do it in M1. The M1 power/ground *vertical* wires do **not** have to be contiguous. We can via local M1 wires from the M2 power lanes.
@@ -377,7 +377,7 @@ It is a good idea to use M3 for **global control signals**, such as `SUB`
 
 Here's how it should look:
 
-![](/images/vlsi/Adder/adder_det.png)
+![](/images/vlsi/adder/adder_det.png)
 
 
 
@@ -401,16 +401,16 @@ We choose a **complementary pass transistor MUX** for our shifter. You can also 
 
 Textbook pages 351-352 cover pass transistor effective resistance, sizing, and layout:
 
-![](/images/vlsi/Adder/book1.png){: .align-center}
+![](/images/vlsi/adder/book1.png){: .align-center}
 
 
 ## Stick Diagram
 
-![](/images/vlsi/Adder/book2.png){: .align-center}
+![](/images/vlsi/adder/book2.png){: .align-center}
 
 We chose to buffer at each MUX data input/output to reduce the *effective* stack height.
 
-![](/images/vlsi/Adder/shifter_stick.png)
+![](/images/vlsi/adder/shifter_stick.png)
 
 > To save space, you can move all inter-module horizontal wires from M1 to M3.
 {: .notice--info}
@@ -420,9 +420,9 @@ We chose to buffer at each MUX data input/output to reduce the *effective* stack
 
 You can see the iconic "alternating gates":
 
-![](/images/vlsi/Adder/s1.png)
+![](/images/vlsi/adder/s1.png)
 
-![](/images/vlsi/Adder/shifter.png)
+![](/images/vlsi/adder/shifter.png)
 
 
 

@@ -3,7 +3,7 @@
 title:  "Coping with Oscilloscope Signals"
 date:   2025-2-3 23:08:30 -0500
 permalink: /posts/2025/02/osc
-teaser: /images/osc/1738642603232.png
+teaser: /images/posts/osc/ttl-raw-xy.png
 tags:
   - ece
 excerpt: >
@@ -20,10 +20,10 @@ More unfortunately, labs don't always go smoothly as you think they would. You o
 Here's DS lab 1 part 1. The task was seemingly simple: find the transfer curve of a TTL NAND gate by sweeping a triangular wave as the input
 
 Wires up, supplies on, and boom! Here was our raw data:   
-![1738642467222](/images/osc/1738642467222.png)  
+![ttl raw waveform](/images/posts/osc/ttl-raw-waveform.png)  
 Looks... like an input-output response, but if you take the XY plot...
 
-![1738642603232](/images/osc/1738642603232.png)
+![ttl raw xy](/images/posts/osc/ttl-raw-xy.png)
 
 Hmm... looks like some gas particle diffusion
 # Before you start
@@ -61,7 +61,7 @@ def smooth_data(t, x, k=20):
 x_smooth = smooth_data(t, x)
 y_smooth = smooth_data(t, y)
 ```
-![1738643651246](/images/osc/1738643651246.png)  
+![ttl xy time smoothed](/images/posts/osc/ttl-xy-time-smoothed.png)  
 Damn the result was awesome!
 
 # XY plot
@@ -83,20 +83,20 @@ for i, point in enumerate(points):
     y_smooth_2[i] = np.mean(y_smooth[idx])
 ```
 Here's what the data looks like after the second (XY) smoothening:  
-![1738643738786](/images/osc/1738643738786.png)
+![ttl xy smoothed](/images/posts/osc/ttl-xy-smoothed.png)
 
 Now add the cursors to where slope = -1. I should have calculated the dy/dx and approximated where it's -1, but why don't we just 摆烂 and eyeball it  
-![1738644178288](/images/osc/1738644178288.png)  
+![ttl xy cursors](/images/posts/osc/ttl-xy-cursors.png)  
 Looks pretty pretty! (and the graders don't care if I 摆烂 or not)
 
 # CMOS
 
 The CMOS XY raw plot is even messier, due to the asymmetric rise/fall  
-![1738644392788](/images/osc/1738644392788.png)  
-![1738644412230](/images/osc/1738644412230.png)  
+![cmos raw waveform](/images/posts/osc/cmos-raw-waveform.png)  
+![cmos raw xy](/images/posts/osc/cmos-raw-xy.png)  
 Completely broken.  
 The figure above has superimposed multiple rises and falls with *different behaviors*, so I'll create masks and only look at one specific rise and fall.   
-![1738644440987](/images/osc/1738644440987.png)  
+![cmos xy masked](/images/posts/osc/cmos-xy-masked.png)  
 Feed the above to our KNN smoothener, and we get the result below:  
-![1738644446924](/images/osc/1738644446924.png)  
+![cmos xy smoothed](/images/posts/osc/cmos-xy-smoothed.png)  
 Not bad.

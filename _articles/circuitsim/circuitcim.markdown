@@ -26,7 +26,7 @@ In this article, I will break down the code design, and you can learn how to wri
 
 Nothing can explain this better than just a diagram:
 
-![SPICE](/images/cc/block_loop.png)
+![SPICE](/images/circuitsim/block_loop.png)
 
 [Section 2](/articles/cc/framework) will explain "stamp" and "update" in detail.
 

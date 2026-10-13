@@ -26,7 +26,7 @@ This archive currently hosts all STEM classes I took at Simon's Rock.
 
 This archive is maintained primarily for personal interest. It is not intended to serve as a standard reference or tutor material.
 - I try to keep a relative consistent organization, but there are definitely missing/incorrect/poor-quality stuff. This is a time-capsule archive, not an active knowledge base.
-- **Removal:** If I have posted any material that is not permitted, please contact me, and I will immediately take it down.
+- **Removal:** If I have posted anything not permitted, please contact me, and I will take it down immediately.
 
 ---
 # Directory

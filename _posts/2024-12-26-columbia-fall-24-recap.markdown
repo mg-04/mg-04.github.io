@@ -3,7 +3,7 @@
 title:  "Columbia Fall 24 Recap"
 date:   2024-12-26 15:59:30 -0500
 permalink: /posts/2024/12/f24
-teaser: /images/posts/f24/image-1.png
+teaser: /images/posts/f24/circuits-final-problem.png
 tags:
   - ece
 excerpt: >
@@ -14,7 +14,7 @@ A few thoughts on the past semester. This is by no means a comprehensive review.
 
 ## EE 3201 Circuits
 Here's a snippet from our final exam: derive node voltages $$\pmb V_1$$ and $$\pmb V_2$$.  
-![alt text](/images/posts/f24/image-1.png)
+![alt text](/images/posts/f24/circuits-final-problem.png)
 
 The answer is:  
 $$
@@ -52,7 +52,7 @@ Here's some [cheat sheet resources](https://github.com/mg-04/Sig-Sys).
 Showing off my final grade there (I actually got 100%, since lowest HW and first two midterms dropped loll)
 
 
-![alt text](/images/posts/f24/image-2.png)
+![alt text](/images/posts/f24/signals-final-grade.png)
 ## EE 3106 SSDM
 Exam time was *really* tight, and apparently the prof doesn't realize that (it's her second year teaching). Midterm 2 was 15 pages 75 minutes (5 minutes/**PAGE!**). To that point, you basically need to turn yourself into GNU Make:
 
@@ -61,7 +61,7 @@ Exam time was *really* tight, and apparently the prof doesn't realize that (it's
 3. Write down your `make` process
 
 Here's Midterm 2, Problem 1:
-![alt text](/images/posts/f24/image-3.png)
+![alt text](/images/posts/f24/ssdm-midterm2-problem.png)
 
 Let's do zero bias: here's the `Makefile` (aka equation sheet)
 ```Makefile
@@ -96,7 +96,7 @@ W = sqrt(2 * epsilon * V0 / q * (1/Na + 1/Nd))
 ```
 And here was what GNU Ming put down to his `stdout`:
 
-![alt text](/images/posts/f24/image-4.png)
+![alt text](/images/posts/f24/ssdm-midterm2-solution.png)
 
 ## CS 3157 AP
 
