@@ -42,20 +42,29 @@ Before drawing, it's important to understand each layer in `tsmc-n65`:
 ### MOSFET
 A MOSFET is a piece of silicon with 4 terminals: Gate, Source, Drain, and Body. S and D are typically *symmetrical*.
 
-**Body**  
+<div class="vlsi-cards" markdown="1">
+<div class="vlsi-card" markdown="1">
+**Body**
+
 - `NW` (N-Well): PMOS body
 - `SUB` (P-Well, SUBstrate): NMOS body
     - Marked by `PDK`
+</div>
+<div class="vlsi-card" markdown="1">
+**Source/Drain** (diffusion)
 
-**Source/Drain** (diffusion)  
 - `OD` (Oxide Diffusion): source and drain
-- `PP` (P imPlant mask, ~~pimp~~)
+- `PP` (P imPlant mask)
     - `PP` ∩ `OD`: p+ diffusion
 - `NP` (N imPlant mask)
     - `NP` ∩ `OD`: n+ diffusion
+</div>
+<div class="vlsi-card" markdown="1">
+**Gate**
 
-**Gate**  
 - `PO` (POlysilicon)
+</div>
+</div>
 
 ### Metal
 Silicon/metal interface
@@ -86,11 +95,14 @@ Next, we need to tap (via) the Bodies to the power supplies. Click `o` to add `M
 
 
 The Vias have a similar stack of 5 layers connecting Body to Metal:
-- `NW` (P) / substrate (N)
-- `NP` (P) / `PP` (N)
-- `OD`
-- `CO`
-- `M1`
+
+<ul class="vlsi-stack">
+  <li class="layer-m1"><code>M1</code></li>
+  <li class="layer-co"><code>CO</code></li>
+  <li class="layer-od"><code>OD</code></li>
+  <li class="layer-np"><code>NP</code> (P) / <code>PP</code> (N)</li>
+  <li class="layer-nw"><code>NW</code> (P) / substrate (N)</li>
+</ul>
 
 > Different body taps are functionally equivalent, provided they tap the bodies to respective power rails. One body tap can cover a large region of P/N substrate
 - The "Detached Body" option places Body contacts explicitly on individual transistors. We don't need that, since we've already added dedicated Body Vias.  
@@ -118,22 +130,32 @@ Skip to Shepard's Calibre DRC [tutorial](https://www.bioee.ee.columbia.edu/cours
 
 
 Below are the main types of DRC errors for TSMC N65:
-- **Shape rules**
-    - Shapes must satisfy a **minimum area**
-    - Shapes must have a **minimum width**
-    - Shapes must also meet **constraints**, such as a minimum side length
-- **Inter-shape rules**
-    - **Enclosure**: for example, a Via must be properly enclosed by its associated Metal layers
-        - Sometimes, minimum **overlap** or enclosure area also applies.
-    - **Spacing**: minimum spacing must be maintained
-        - between shapes of the **same layer**, and
-        - between shapes on **different layers**, such as spacing to body connections
+
+<div class="vlsi-cards vlsi-cards--2" markdown="1">
+<div class="vlsi-card" markdown="1">
+**Shape rules**
+
+- Shapes must satisfy a **minimum area**
+- Shapes must have a **minimum width**
+- Shapes must also meet **constraints**, such as a minimum side length
+</div>
+<div class="vlsi-card" markdown="1">
+**Inter-shape rules**
+
+- **Enclosure**: for example, a Via must be properly enclosed by its associated Metal layers
+    - Sometimes, minimum **overlap** or enclosure area also applies.
+- **Spacing**: minimum spacing must be maintained
+    - between shapes of the **same layer**, and
+    - between shapes on **different layers**, such as spacing to body connections
+</div>
+</div>
 
 Here's a (simplified) list from textbook pages 118-119
 
-![](/images/vlsi/inv/dr1.png)
-
-![](/images/vlsi/inv/dr2.png)
+<div class="img-row">
+  <img src="/images/vlsi/inv/dr1.png" style="flex: 1.518 1 0;" alt="Design rules, part 1" />
+  <img src="/images/vlsi/inv/dr2.png" style="flex: 0.950 1 0;" alt="Design rules, part 2" />
+</div>
 
 
 

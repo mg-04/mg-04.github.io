@@ -1263,3 +1263,85 @@ html[data-theme="dark"] .row-media figcaption {
   margin-left: auto;
   text-align: right;
 }
+
+/* VLSI series: small cards (layer legend, rule types) */
+.vlsi-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.vlsi-cards--2 {
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.vlsi-card {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.92em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+
+  > p:first-child {
+    margin: 0 0 0.35rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  li {
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Layer stack: top layer (M1) first, drawn as stacked slabs */
+.vlsi-stack {
+  max-width: 18rem;
+  margin: 0.75rem auto 1.25rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9em;
+
+  li {
+    margin: 0;
+    padding: 0.3rem 0.75rem;
+    text-align: center;
+    border: 1px solid var(--global-border-color);
+    border-top-width: 0;
+  }
+
+  li:first-child {
+    border-top-width: 1px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  li:last-child {
+    border-radius: 0 0 6px 6px;
+  }
+
+  /* Layer tints matching the Virtuoso layer colors; translucent so they work in both themes */
+  .layer-m1 { background: rgba(0, 200, 230, 0.35); }
+  .layer-co { background: rgba(60, 190, 80, 0.35); }
+  .layer-od { background: rgba(230, 60, 60, 0.35); }
+  .layer-np { background: rgba(240, 120, 200, 0.35); }
+  .layer-nw { background: rgba(250, 230, 120, 0.4); }
+
+  code {
+    background: rgba(255, 255, 255, 0.55);
+  }
+}
+
+html[data-theme="dark"] .vlsi-stack code {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Screenshots in the VLSI series: centered with a subtle frame */
+.vlsi-series ~ p > img,
+.vlsi-series ~ p > a > img {
+  display: block;
+  margin: 0.5rem auto;
+  border: 1px solid var(--global-border-color);
+  border-radius: 6px;
+}
