@@ -4,7 +4,7 @@ permalink: /courses/vlsi2
 date: 2026-5-27
 ---
 
-> This page, and all its children, are under construction.
+> This page, and all its children, is under construction.
 {: .notice--warning}
 
 # Notes

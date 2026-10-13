@@ -93,7 +93,7 @@ iterator& operator++() {
 
 // b++ postfix
 iterator operator++(int unused) {
-	iterator prev(*this)     // need CC previous iteator
+	iterator prev(*this);    // need CC previous iterator
 	curr = curr -> next;
 	return prev;
 }
@@ -193,7 +193,7 @@ template <typename Container>
 struct IteratorThatPushes {
     Container& c;
 
-	// noop dummdies
+	// noop dummies
     explicit IteratorThatPushes(Container& c) : c(c) {}
     IteratorThatPushes& operator*()     { return *this; }
     IteratorThatPushes& operator++()    { return *this; }
@@ -209,8 +209,8 @@ struct IteratorThatPushes {
 
 Hold a reference to **container**, instead of elements
 `*b_dest = *b_src;`
-- `opeator*()`: trick to not actually dereference, but return the **iterator itself**
-- Triggers the `opeartor=()` on the **iterator**, not the element
+- `operator*()`: trick to not actually dereference, but return the **iterator itself**
+- Triggers the `operator=()` on the **iterator**, not the element
 	- `*b_src` has type `Container::value_type&`
 		- Nested type of every container
 		- For nested type, need prefix `typename`
@@ -233,17 +233,17 @@ copy(v1.begin(), v1.end(), back_inserter(v2));
 ### `ostream_iterator`
 Adapter that wraps an `ostream`
 - **Write** by **copying** elements into `ostream_iterator`
-- Re-casting of `opeator<<()`
+- Re-casting of `operator<<()`
 
 ```cpp
 ostream_iterator<int> oi {cout, /*delim*/ "\n"};
 copy(v.begin(), v.end(), oi);       // prints
 ```
 
-### `isteam_iterator`
+### `istream_iterator`
 ```cpp
-vec<int> v;
-istream_iteartor<int> iib {cin};
+vector<int> v;
+istream_iterator<int> iib {cin};
 istream_iterator<int> iie {};      // need an end for copy()
 
 copy(iib, iie, back_inserter(v));
@@ -265,7 +265,7 @@ copy(iib, iie, back_inserter(v));
 	- Alternating assignment and increment
 	- `op=(end)` only!
 	- E. `back_insert_iterator` and `ostream_iterator`
-1. `LeagacyInputIterator`: reading through single-pass increment
+1. `LegacyInputIterator`: reading through single-pass increment
 	- Read exactly once
 	- E. `istream_iterator`
 2. `LegacyForwardIterator`: Supports input iterator and **multi-pass** increment
@@ -364,7 +364,7 @@ for (auto& [s, n] : m)     // structured binding
 
 
 ## Unordered Map
-`std::unorderedmap`
+`std::unordered_map`
 
 ```cpp
 unordered_map<string,int> m;
@@ -436,8 +436,9 @@ if (b != e) {
 `MyDistance ()` takes two **iterators**
 ```cpp
 template <typename I>
-size_t MyDistance(I b, I e)
+size_t MyDistance(I b, I e) {
 	return e - b;
+}
 ```
 - Only works if `op-()` works (random access)
 
@@ -467,13 +468,13 @@ struct random_access_iterator_tag : public bidirectional_iterator_tag {};
 struct contiguous_iterator_tag : public random_access_iterator_tag {};
 ```
 
-Each STL iterator has an `iterator_category` type inside (`typdef`)
+Each STL iterator has an `iterator_category` type inside (`typedef`)
 ```cpp
 template <typename T>
 struct vector {
 	struct iterator {
 		// ...
-		using iterator_category = forward_iterator_tag;
+		using iterator_category = random_access_iterator_tag;
 		// ...
 	};
 };
@@ -519,7 +520,7 @@ struct iterator_traits {
     // ...
 };
 
-// Specialization for raw pointer, speical type T
+// Specialization for raw pointer, special type T
 template <typename T>
 struct iterator_traits<T*> {
     using iterator_category = contiguous_iterator_tag;
@@ -786,7 +787,7 @@ constexpr T operator() (const T& lhs, const T& rhs) const {
 ## Bind Expressions
 ### `bind_front`
 STL provides **function** template `bind_front()` that can take a partial list of argument
-- More efficient that `std::bind()`
+- More efficient than `std::bind()`
 
 ```cpp
 void f(arg1, arg2, arg3);
@@ -840,7 +841,7 @@ transform(v1.begin(), v1.end(), back_inserter(v2),
 ```
 Same as:
 ```cpp
-auto g = bind(negate<int>{}, placeholders::1);
+auto g = bind(negate<int>{}, placeholders::_1);
 auto f = bind(plus<int>{}, 300, g);       // plus<int> is a type; g is an instance
 transform(..., f);
 ```
@@ -882,7 +883,7 @@ transform(v1.begin(), v1.end(), back_inserter(v2), lambda);
 - If `lambda` **outlives** the captured variable, undefined behavior!!
 
 > **What class is `lambda`?**  
-> With `auto`, compiler will make a *unnanmed temporary* class with an internal name
+> With `auto`, compiler will make a *unnamed temporary* class with an internal name
 {: .notice--info}
 
 
@@ -893,7 +894,7 @@ struct L1 {
 	int  b;
 	L1(int&a, int b) : a(a), b(b) {}
 	int operator()(int x) const { return a * x + b; }   // const member function!
-}；
+};
 int a = 2, b = 100;
 auto lambda = L1{a, b};     // same type as L1
 a = 4, b = 1000000;
@@ -1301,7 +1302,7 @@ X&& && collapses to X&&
 {: .notice--warning}
 
 
-Any **named** reference, whether L-value of R-value, is an L-value!
+Any **named** reference, whether L-value or R-value, is an L-value!
 ```cpp
 template <typename T> void f4(T&& t) { 
 	D d{t};     // CC(1); CC(2): further forwarding

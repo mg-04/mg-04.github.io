@@ -39,7 +39,7 @@ Jumps to `main`, where you start with. If no `main`, error!
 ## E. `strlen`
 String storage in memory: ASCII bytes with `NULL` terminator
 
-Need a pointer to the first element `$a0$`, increment it, until hitting `0`.
+Need a pointer to the first element `$a0`, increment it, until hitting `0`.
 
 ## Subroutine
 aka function
@@ -60,7 +60,7 @@ Changes program control twice
 
 ```c
 // Example of call tree
-int main(int argv, char **argc){
+int main(int argc, char **argv){
     for (i = 0; i < 3; i++){
         mysub(i);
     }
@@ -71,7 +71,7 @@ void mysub(int x){
 void myleaf(void){
 }
 ```
-One of the **branches** is in-progress: called the **stack** of **active** funciton invocations (Example: `main()`, `main()/mysub(0)/myleaf()`)
+One of the **branches** is in-progress: called the **stack** of **active** function invocations (Example: `main()`, `main()/mysub(0)/myleaf()`)
 
 In MIPS, **call stack** lives in memory. Pointer `$sp` points to the top of the stack, and stack grows **down**
 
@@ -85,8 +85,8 @@ A:
     jal B
     # Now $ra overwritten, but saved already    
 
-    lw $ra, 0($sp)      # retore original return address
-    addi $sp, $sp, 4    # de-callocate space on stack
+    lw $ra, 0($sp)      # restore original return address
+    addi $sp, $sp, 4    # de-allocate space on stack
 
     jr $ra
 
@@ -105,7 +105,7 @@ C:
     jr $ra              # C calls nothing, no need to S/L 
 ```
 
-## Complete MIPS Addresss space
+## Complete MIPS Address space
 - Kernel level
     - reserved, memory mapped IO, kernel data, kernel text
 - User level
@@ -125,7 +125,7 @@ Put any **arguments** in `$a0`, `$a1`, `$a2`, `$a3`
 ```mips
 jal mysub
 ```
-When control returns, **return value** in `$vo`, `$v1`
+When control returns, **return value** in `$v0`, `$v1`
 - `$s0`, ..., `$s7` (saved registers), `$gp`, `$sp` (stack pointer), `$fp`, `$ra` (return address) unchanged
 - `$a0`, ..., `$a3`; `$t0`, ..., `$t9` (temporary) may be **overwritten**. Anything that I want to save should be put in `$s` registers
 
@@ -168,13 +168,13 @@ strlen_basecase:
     jr $ra
 ```
 
-## Strored program
+## Stored program
 Instructions are encoded and stored in memory.
 
 No need to rewire
 
 
-In MIPS, 3 formats, all necodings 32 bits wide
+In MIPS, 3 formats, all encodings 32 bits wide
 - R-type: register operands (3 registers)
 - I-type: immediate operands (2 registers + 1 imm)
 - J-type: for jumping
@@ -182,7 +182,7 @@ In MIPS, 3 formats, all necodings 32 bits wide
 Fewer formats are simpler and faster
 
 ### R-format
-Example: `add, $s0, $s1, $s2`
+Example: `add $s0, $s1, $s2`
 |Name   | Meaning   | Size  | Example | Example (dec)|
 |---    |---        |---    |---    |---    |
 |`op`   | opcode   | 6     | `add` | 0     |

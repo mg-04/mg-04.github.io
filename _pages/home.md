@@ -10,12 +10,12 @@ redirect_from:
 <div class="home" markdown="1">
 
 <p class="home-intro">
-Hi, I'm <strong>Ming</strong>, first year ECE PhD student at <strong>Carnegie Mellon University</strong>, advised by Professor Ken Mai. I received my BS in Computer Engineering from <strong>Columbia University</strong>, having completed the 3-2 combined plan with <a href="https://simons-rock.edu/">Bard College at Simon's Rock</a>, where I studied <a href="https://www.instagram.com/p/DT3do9PjohB/">Physics</a>.
+Hi, I'm <strong>Ming</strong>, a first-year ECE PhD student at <strong>Carnegie Mellon University</strong>, advised by Professor Ken Mai. I received my BS in Computer Engineering from <strong>Columbia University</strong>, having completed the 3-2 combined plan with <a href="https://simons-rock.edu/">Bard College at Simon's Rock</a>, where I studied <a href="https://www.instagram.com/p/DT3do9PjohB/">Physics</a>.
 </p>
 
 ## Research
 
-I'm interested at the intersection of circuit design and low-level systems.
+I'm interested in the intersection of circuit design and low-level systems.
 
 <div class="home-cards">
   <div class="home-card">
@@ -48,7 +48,7 @@ You can find more about my current and past work in the [research](/research/) s
 
 ## Teaching
 
-I like to master hard and interesting classes, and pass my knowledge to others.
+I like to master hard and interesting classes, and pass on my knowledge to others.
 
 <ul class="home-timeline">
   <li>

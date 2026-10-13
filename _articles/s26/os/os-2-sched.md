@@ -12,10 +12,10 @@ permalink: /articles/os/2-sched
 - **Dispatcher**: Low-level *mechanism*
 	- Responsible for **context switch** (`context_switch()`)
 - **Scheduler**: High-level *policy*
-	- *Decide* which process to run: `pick_next_tesk()`
+	- *Decide* which process to run: `pick_next_task()`
 
 ## Metric
-- Min waiting tie
+- Min waiting time
 - Max CPU util
 - Max throughput
 	- As many processes as possible per unit time
@@ -60,7 +60,7 @@ permalink: /articles/os/2-sched
 
 ### 4. Round Robin (RR)
 - aka preemptive FIFO
-- Each process runs a predetermined time slide, then preempt and move back to queue
+- Each process runs a predetermined time slice, then preempt and move back to queue
 - Need optimal time slice ((wait time > **response** time) vs # context switch)
 
 > **Good:** 
@@ -137,14 +137,14 @@ Queues with different priority levels
 ```
 
 ### Computation
-`prio`, `normla_prio`, `static_prio`
+`prio`, `normal_prio`, `static_prio`
 
 Dynamic `prio` is simply a **booster** if RT priority
 - If not RT boost restore it to normal priority
 - E. holding lock
 
 ```c
-p->prio = efffective_prio(p);
+p->prio = effective_prio(p);
 
 static int effective_prio(struct task_struct *p) {
 	p->normal_prio = normal_prio(p);
@@ -205,7 +205,7 @@ static void set_load_weight(struct task_struct *p) {
 		p->se.load.inv_weight = WMULT_IDLEPRIO; 
 		return; 
 	} 
-	// load the acutal weight
+	// load the actual weight
 	p->se.load.weight = prio_to_weight[p->static_prio - MAX_RT_PRIO]; 
 	p->se.load.inv_weight = prio_to_wmult[p->static_prio - MAX_RT_PRIO]; 
 }
@@ -226,7 +226,7 @@ static void inc_nr_running(struct task_struct *p, struct rq *rq)
 ```
 - Doesn't calculate `inv_weight` for simplicity (avoids division)
 - Only `.weight` is needed for load balancing and calculating time slices
-- `.invweight` used to calculate `vruntime`
+- `.inv_weight` used to calculate `vruntime`
 
 ## Multicore
 > **Setup:** Symmetric Multiprocessing (SMP)
@@ -263,7 +263,7 @@ Scan the *entire* list of runnable processes to select
 - Global RQ
 	- More contention for multicore
 - Preemptive time slicing: jiffies
-- Slices: when blocked before slice ends, half of the remaining slide is added to the next epoch
+- Slices: when blocked before slice ends, half of the remaining slice is added to the next epoch
 	- ana. increase in priority
 
 ## 2. $$O(1)$$
@@ -305,9 +305,9 @@ Need to find the highest priority queue that is *not empty*
 
 Use dynamic time slice on `EPOCH` definition
 - `EPOCH` controlled via `sched_latency` (E. 48 ms)
-- Each task in a RQ gets an *equal* share of `EPOCH
-	- Can configure `min_grannularity` (E. 6 ms)
-Runtime then **weighed** based on nice value, with a map
+- Each task in a RQ gets an *equal* share of `EPOCH`
+	- Can configure `min_granularity` (E. 6 ms)
+Runtime then **weighted** based on nice value, with a map
 
 $$\texttt{time\_slice}_k = \frac{\texttt{weight}_k}{\sum_{i=0}^{n-1} \texttt{weight}_i} \cdot \textcolor{blue}{\texttt{sched\_latency}}$$
 
@@ -369,7 +369,7 @@ Neighbor check
 - Sleeper fairness
 - Too much heuristics/tuning
 
-**Lag**: difference between idea and actual
+**Lag**: difference between ideal and actual
 
 Time slice = base time slice / weight
 **Deadline** = vruntime + time slice **+ lag**
@@ -420,7 +420,7 @@ Pay attention to locking!
 
 ### Logging
 - Print `KERN_ERR` and `KERN_DEBUG`
-- Seen by `sudo demsg`
+- Seen by `sudo dmesg`
 
 **Serial Console**
 - Redirect messages to a file on host machine via virtual serial port
@@ -467,7 +467,7 @@ struct task_struct {
 		- Scheduler can also schedule **groups** (instance of `sched_entity`)
 - Data
 	- `policy`
-		- `SCHED_NROMAL` handled by **completely fair** scheduler
+		- `SCHED_NORMAL` handled by **completely fair** scheduler
 		- `SCHED_BATCH`, `SCHED_IDLE`: completely fair, but less important
 		- `SCHED_RR`, `SCHED_FIFO`: real-time scheduler class!
 	- `run_list`: list head by RR scheduler
@@ -498,7 +498,7 @@ struct rq {
 - `nr_running`: process number on the queue
 - `cpu_load` tracks past load behavior
 - `load` is a *measure* of current load on RQ (weighted)
-- `cfs`, `rt`: sub RQ for fair and RT schduler
+- `cfs`, `rt`: sub RQ for fair and RT scheduler
 	- Holds the actual queue!
 - `curr`: current running `task_struct`
 - `idle`: `task_struct` called when no other runnable process is available
@@ -544,7 +544,7 @@ Task `DB_QUERY` sleeping for a network packet
 4. `check_wakeup_preempt`: is a task currently running? 
 	- Is it more important than me? 
 	- If not, kick it off (raise a reschedule flag)
-5. `pcik_next_task`: `DB_QUERY`
+5. `pick_next_task`: `DB_QUERY`
 6. `set_next_task`: update CPU register
 7. If swapping CPUs `set_cpus_allowed`: sets the task to not allowed to run on current core
 8. `put_prev_task`: cleanup
@@ -571,12 +571,12 @@ Function called by the kernel with frequency `HZ`
 2. Activate **periodic scheduling method** of the schedule class for the current process
 
 ```c
-void scheduler_trick(void) {
+void scheduler_tick(void) {
 	int cpu = smp_processor_id();
-	struct rp *rq = cpu_rq(cpu);
+	struct rq *rq = cpu_rq(cpu);
 	struct task_struct *curr = rq->curr;
 	
-	__update_rq_clock(rq)
+	__update_rq_clock(rq);
 	update_cpu_load(rq);
 	
 	if (curr != rq->idle)
@@ -768,8 +768,8 @@ static struct task_struct *pick_next_task_freezer(rq *rq, ...) {
 	if (list_empty(&freezer_rq->queue))
 		return NULL;
 	struct sched_freezer_entity *entity = list_first_entry(&freezer_rq->queue,
-		struct sched_frezer_entity, list);
-	p = container_of(task, struct task_struct, freezer);
+		struct sched_freezer_entity, list);
+	p = container_of(entity, struct task_struct, freezer);
 	
 	p->se.exec_start = rq_clock_task(rq);   // allow sched to compute how long it runs
 	return p;
@@ -783,7 +783,7 @@ static struct task_struct *pick_next_task_freezer(rq *rq, ...) {
 static void put_prev_task_freezer(rq *rq, task_struct *prev) {
 	update_curr_freezer(rq);
 	if (entity->on_rq)          // entity = &prev->freezer
-		list_move_tail(&entity->list, &rq.freezer->queue);
+		list_move_tail(&entity->list, &rq->freezer.queue);
 }
 ```
 ### Tick
@@ -851,7 +851,7 @@ void set_next_task_freezer(rq *rq, task_struct *p, bool first) {
 
 ### Load Balancing
 Can't move if 
-- Pre-CPU kthreads
+- Per-CPU kthreads
 - Wrong affinity: `cpumask_test_cpu(dst_cpu, p->cpus_ptr)`
 - Currently on CPU: `task_on_cpu(src_rq, p)`
 

@@ -14,7 +14,7 @@ author_profile: true
 - 18-740 Modern Computer Architecture and Design
 
 ---
-# Colubmia
+# Columbia
 
 ## Spring 2026
 - COMS 4118 [Operating Systems I](/courses/os)

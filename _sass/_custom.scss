@@ -386,6 +386,17 @@ html[data-theme="dark"] .row-media figcaption {
   margin: 0;
 }
 
+/* Entry headers (bold role, line break, italic organization) read larger than their bullets */
+.cv p:has(> strong + br + em) {
+  margin-top: 1.25rem;
+  font-size: 1.1em;
+  line-height: 1.45;
+
+  .cv-date {
+    font-size: 0.8em;
+  }
+}
+
 /* Dates sit on the right of the entry's first line */
 .cv-date {
   float: right;

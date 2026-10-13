@@ -45,7 +45,7 @@ Let compiler optimize it. Compiler will package them to <span style="color:rgb(2
 
 ```c
 for (int i = 0; i < n; i++) {
-	result += x[i] * y[i]
+	result += x[i] * y[i];
 }
 ```
 
@@ -53,7 +53,7 @@ Unroll dot product to extract parallelism (done by compiler), as long as you kno
 
 ```c
 for (i = 0; i < n-4; i+=4) {
-	result += x[i] * y[i]
+	result += x[i] * y[i];
 	// ...
 	result += x[i+3] * y[i+3];
 }
@@ -84,12 +84,12 @@ In a superscalar pipeline, you can use all 16 (more at same cost)
 - **Solution**: Still execute, and throw away the stuff not needed (**predicated** execution)
 	- Or branch prediction
 
-#  VILW
+#  VLIW
 Very Long Instruction Word, compile instructions into **independent blocks**
 - Simple hardware
 - Compiler does scheduling
 	- If compiler does good static analysis
-VLIW processor, given a control flow graph, look all **all** instructions within one basic block, put into a single **packet**
+VLIW processor, given a control flow graph, look at **all** instructions within one basic block, put into a single **packet**
 
 ## Blocks
 - **Basic block**: any *single-entry*, *single-exit* region of code
@@ -296,7 +296,7 @@ case_0:
 	b increment_loop
 
 JUMP_TABLE:
-	.word case 0
+	.word case_0
 	#...
 ```
 
@@ -331,7 +331,7 @@ Suppose the branch of `basic_1` is **mispredicted**
 - Execution is **atomic** and uninterrupted
 
 ### Semantics
-- $$s$$: set of architectures states (PC, register, memory, configuration info)
+- $$s$$: set of architectural states (PC, register, memory, configuration info)
 - `Inst`: instruction set
 - $$s \overset{I} \rightarrow s'$$: $$s$$ yields $$s'$$ in an atomic step in $$I$$
 
@@ -542,7 +542,7 @@ May use **CAM** (content addressable memory), searchable
 - **Commit** in RoB order, free physical register; handle trap
 
 
-# Simultaneous Multithreading (SIMT)
+# Simultaneous Multithreading (SMT)
 Issue OOO <span style="color:rgb(255, 0, 0)">from</span> multiple threads
 - **Vertical waste**: <span style="color:rgb(255, 0, 0)">none</span> of the execution units are used
 	- Waiting for memory
@@ -578,7 +578,7 @@ Important: **reading**
 No OoO, just standard superscalar
 
 ```
-ro = ld A
+r0 = ld A
 r1 = ld B
 r2 = add r0, r1
 C = st r2
@@ -608,7 +608,7 @@ Significantly reduces energy: more work per instruction
 
 Also larger structures don't scale as well.
 
-If width don't math, first/last do the remainder in scalar mode, and then do the rest in vector
+If width don't match, first/last do the remainder in scalar mode, and then do the rest in vector
 - Speedup limited by the serial version
 
 ## Registers
@@ -626,7 +626,7 @@ Conditional store
 ```c
 for (i = 0; i < n; i++) {
 	if (A[i] > 0)
-		B[i] += C[i]
+		B[i] += C[i];
 }
 ```
 
@@ -646,9 +646,9 @@ If division, may have exception
 **Blend** instruction that takes two inputs, and use MUX to choose one value
 
 ```c
-for (i = 0; i < N; i ++ VLEN) {
+for (i = 0; i < N; i += VLEN) {
 	vload v0, A[i]
-	vxor v1, v1, v1 /// clear v1
+	vxor v1, v1, v1 // clear v1
 	vcmpgt m0, v0, v1   // mask register
 	
 	vload v2, m0, C[i]
@@ -656,12 +656,12 @@ for (i = 0; i < N; i ++ VLEN) {
 	
 	vload v4, m0, B[i]
 	vadd v5, m0, v3, v4
-	vstore B[i], m0, v7
+	vstore B[i], m0, v5
 }
 ```
 
 ## Memory operations
-Unaligned axis: do not align with cache lines
+Unaligned access: do not align with cache lines
 Use compiler `.align`
 
 ### Stream
@@ -687,7 +687,7 @@ For scalar pipeline, benefit from
 - In-order execution
 - Multithreading: only one decoder, execution unit, etc, so **can't multithread**
 	- Useful for speculative instruction on high-latency events such as memories (latency hiding)
-	- Intellectural precursor to GPU: programmer expresses computation as a scalar thread. When waiting, hide latency by switching to multiple threads
+	- Intellectual precursor to GPU: programmer expresses computation as a scalar thread. When waiting, hide latency by switching to multiple threads
 - Parallelism from compiler
 For VLIW processor,
 For OOO, superscalar processor

@@ -14,7 +14,7 @@ teaser: /images/cc/555.png
 </div>
 {% endif %}
 
-A+ final project for CSEE 4840 Embedded Systems, Edward's favorites <br/><img src='/images/cc/staricon.png'>
+A+ final project for CSEE 4840 Embedded Systems, Edwards' favorites <br/><img src='/images/cc/staricon.png'>
 
 An analog/digital circuit simulator, written in C
 

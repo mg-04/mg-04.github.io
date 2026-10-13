@@ -14,7 +14,7 @@ permalink: /courses/fundies
 ## 3082 Lab Reports
 1. [Digital Elements](https://drive.google.com/file/d/1hE4dkziB6d1nWBzLLlzeE2npnbQotJBt/view?usp=drive_link)  
 2. [555](https://drive.google.com/file/d/1_1xbMtjfox8KHbCOuEDB9KZJjPc03XyX/view?usp=drive_link)
-- 555 at high frequency failed to work. For better lab experience, change the cap to maybe 2.7 nF
+- 555 at high frequency failed to work. For a better lab experience, change the cap to maybe 2.7 nF
 3. [A/D](https://drive.google.com/file/d/1fL_RyLTXOppdhdcJp8H9yqKDE7g0w0rA/view?usp=drive_link)
 4. [Transmission Line](https://drive.google.com/file/d/1inLRuJA_Lsfk8g5UdJFa3RmUvm-qGhcP/view?usp=drive_link)
 5. [Piano (TB)](https://drive.google.com/file/d/10EiZS-Qe32TkoSTlxPuOkd8MTjH-PoLF/view?usp=drive_link)

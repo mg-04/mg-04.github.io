@@ -1,9 +1,9 @@
 ---
-title: "Continuous Vital Signs Monitoring with Loose T-Shirt "
+title: "Continuous Vital Signs Monitoring with a Loose T-Shirt"
 collection: publications
 category: manuscripts
 permalink: /publication/cecg
-excerpt: 'Continuous Electrocardiogram Monitorin	g with a Loose T-Shirt'
+excerpt: 'Continuous Electrocardiogram Monitoring with a Loose T-Shirt'
 date: 2026-8-1
 authors: Ho Man Colman Leung, Kyle Tong, Ming Gong, Nam Bui, Xia Zhou
 venue: MobiDx

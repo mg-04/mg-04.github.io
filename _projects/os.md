@@ -20,7 +20,7 @@ authors:
 
 
 # 1. Linux-List
-A simple Linux linked list to prepresent Pokémon
+A simple Linux linked list to represent Pokémon
 
 # 2. Shell
 Implementation of a shell directly calling system calls
@@ -36,7 +36,7 @@ A robust, high-concurrency, and thread-safe kernel kv pair
 - Entries distributed across a fixed-length chained hash table
 - Designed to prevent kernel panics, data corruption, or memory leaks. Robust against userspace abuse
 - Dedicated SLAB cache, reducing memory fragmentation and improving cache locality
-- Support producer-consumer blocking behaviors using Linux wait queues. Handles signals properly.
+- Supports producer-consumer blocking behaviors using Linux wait queues. Handles signals properly.
 
 # 5. [Freezer](/articles/os/2-sched#hw-5-scheduler): Custom Linux Kernel Scheduler
 [Assignment](https://columbia-os.github.io/freezer-Sp2026/) | [Repo](https://github.com/columbia-os-hw-s2026/hw5-Team1)  

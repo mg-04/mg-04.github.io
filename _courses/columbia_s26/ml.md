@@ -11,4 +11,4 @@ I was too lazy to formally convert the Obsidian-MathJax workflow to Jekyll, so [
 --- 
 # Exam Cheat Sheets
 My cheat sheets are archived [here](https://drive.google.com/drive/folders/1nXh9TsXorhiUXEEu9_CJ4fMDrK98OPao)
-- I didn't grind too hard on ML exams. For my cheat sheets, I really prioritized redability over density
+- I didn't grind too hard on ML exams. For my cheat sheets, I really prioritized readability over density

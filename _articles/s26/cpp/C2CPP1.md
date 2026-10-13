@@ -195,7 +195,7 @@ int main() {
 }
 ```
 - Copy constructor take `const` reference, since old object not modified
-- Move operator take **revalue reference** to bind to rvalue
+- Move operator take **rvalue reference** to bind to rvalue
 	- Only allow stealing from **temporary objects**
 	- Not named!!!
 
@@ -252,7 +252,7 @@ Compiler can generate a move constructor and move assignment
 
 
 > **Rule of 0**  
-> If all **class members** already have their 5 defined correctly (E. library class), and you class has **no special resource management**, no need to declare in *your* class
+> If all **class members** already have their 5 defined correctly (E. library class), and your class has **no special resource management**, no need to declare in *your* class
 > - Some prefer to declare with `=default`
 {: .notice--info}
 
@@ -396,13 +396,13 @@ void push_back(const T& x) {
 `std::vector` uses the criteria:
 1. **Moved** if move constructor marked `noexcept`
 2. Copy else
-3. If copy constructor deleted, the fall back to move (forgo strong exception guarantee)
+3. If copy constructor deleted, then fall back to move (forgo strong exception guarantee)
 
 ---
 # 8. Inheritance
-> Not to useful in cpp, mostly on template and OOP mechanisms
+> Not too useful in cpp, mostly on template and OOP mechanisms
 
-Based class -> derived class
+Base class -> derived class
 - Derived classes need to be constructed, if its base class constructor takes arguments
 
 ```cpp
@@ -723,7 +723,7 @@ Abstract class have purely virtual function
 ```cpp
 virtual uint64_t sum() const = 0;
 ```
-No code, meant purely to be **overwritten** by derived classes
+No code, meant purely to be **overridden** by derived classes
 - The class itself **cannot** be instantiated
 - Only its derived classes that **overrides** this method can
 
@@ -777,7 +777,7 @@ ios::operator bool() const;
 - Return `istream` so can keep chaining things
 - `operator <type>` is a **conversion operation**
 	- Invoked when `<type>` is required
-- `istream` is a *base class* of `ios`
+- `ios` is a *base class* of `istream`
 
 - `std::setw()` is a function that returns an **object** `WidthManipulator`
 ```cpp
@@ -791,7 +791,7 @@ ostream& operator<<(ostream& os, const WidthManipulator& wm) {
 ## Hierarchy
 ![](/articles/s26/cpp/img/09-io-stream-hierarchy.svg)
 - `std::cout` and `std::cin` are instances of `ostream` and `istream`
-- `ostingstream` prints into a string
+- `ostringstream` prints into a string
 - `ofstream` prints into a file
 
 ### `iostate`
@@ -800,7 +800,7 @@ ostream& operator<<(ostream& os, const WidthManipulator& wm) {
 `iostate` is a set of flags telling the state of the IO, can be combined
 - `failbit`: formatting/extraction error/EOF 
 - `badbit`: irrecoverable error (E. disk crashed)
-- `eofbit
+- `eofbit`
 
 In class `ios`, flags can be accessed by:
 - `fail()` (`failbit` **OR** `badbit`)
@@ -1108,7 +1108,7 @@ Push and `insert()` all in $$O(1)$$
 
 ## `std::forward_list`
 Minimal singly linked list
-- Just `push_back()`
+- Just `push_front()`
 ```cpp
 	forward_list<int> v { 100, 101, 102, 103, 104 };
 	v.push_front(99);

@@ -38,7 +38,7 @@ for i in 1 2 3 ; do date ; done         # runs date 3 times
 
 **Alias**
 ```shell
-declare alias ll-'ls -alF'
+alias ll='ls -alF'
 ```
 ```shell
 cat .bashrc     # to see all alias
@@ -108,7 +108,7 @@ Can use `-o` to rename the executable
 
 Now make `myadd.c`. Compile both
 ```shell
-gcc hello.o myadd.o -o hello        # link both togther
+gcc hello.o myadd.o -o hello        # link both together
 # warning here: myadd is not defined in hello.c
 # declared myadd "implicitly" by calling it
 ```
@@ -134,7 +134,7 @@ Before calling the function, you should either define or **declare** the functio
 Create `myadd.h` to just **declare** `add`. 
 ```c
 #include "myadd.h"      
-// When you encounter this line, replace this line withe the file content
+// When you encounter this line, replace this line with the file content
 ```
 Compiler just copy and paste
 -  `<>` looks for at system directory
@@ -293,8 +293,8 @@ File possibilities:
 # 3. C Basics
 ## Integer types
 C doesn't specify the exact length of the types, but pretty standardized
-- `char` 1 byte (8 bits), `unsigned` 0-225, or -128-127
-- `short` 2 bytes, `unsigned` 0~65536, or -32768-32767
+- `char` 1 byte (8 bits), `unsigned` 0-255, or -128-127
+- `short` 2 bytes, `unsigned` 0~65535, or -32768-32767
 - `int` 4 bytes, `unsigned` $0\approx 4\times 10^9$
 - `long` 4/8 bytes
 - `long long` 8 bytes
@@ -317,10 +317,10 @@ Properties:
 3. 1000...0 = smallest negative number
 
 Conversion: 
-1. Filp all bits
+1. Flip all bits
 2. **Add 1**
 
-**Hex** notation: `0x12` = 12
+**Hex** notation: `0x12` = 18
 ```c
 int x = 0xffffffff;             // x = -1
 int y = 0x7fffffff;             // y = 2^31 - 1
@@ -336,7 +336,7 @@ int j;          // not yet init
 
 i = 100;        // Assignment
 i = 'A';        // 'A' (single quote) = 65
-j = '\11';      // Ocatal numbers 011=9
+j = '\11';      // Octal numbers 011=9
 j = '\0';       // '\0' = 0, not '0' = 48
 ```
 ## Expressions vs statements
@@ -361,10 +361,10 @@ int z = -1;
 
 int a = x & y;  // a = 0000 .... 0000   AND operation on each bit
 int b = x | y;  // b = 0000 .... 0011   OR
-int c = x ^ y;  // c = 0000 .... 0000   XOR
+int c = x ^ y;  // c = 0000 .... 0011   XOR
 int d = ~x;     // d = 1111 .... 1110   NOT
-int e = x << 1  // e = 0000 .... 0010   left shift by 1, filing 0s.
-int f = z >> 1; // Up to complier to feed a 1 or a 0.
+int e = x << 1  // e = 0000 .... 0010   left shift by 1, filling 0s.
+int f = z >> 1; // Up to compiler to feed a 1 or a 0.
 // Typically use bitshift with signed numbers
 ```
 ### HW hint
@@ -428,7 +428,7 @@ void f(int p) {
     {
         int x;          // A different int x comes alive, separate from previous
         x = 1;
-        printf("%d", x) // 1
+        printf("%d", x); // 1
     }                   // That int x gone
     printf("%d", x);    // 0
 }
@@ -475,7 +475,7 @@ void g(void) {
 ### 2a. Global (static) variable
 Defined outside `main()`. Always accessible, unless "covered" by a local variable
 ### 2b. File static variable
-In declaration in `foo.c`, use `static int = 100`.
+In declaration in `foo.c`, use `static int x = 100`.
 `static` makes `extern int x` in **other files** not work. `x` is for `foo.c` **file only**!
 - Compile is fine, but **link time**, global variable not found
 
@@ -603,7 +603,7 @@ A `void*` **can't be dereferenced!** C doesn't know how many bytes to read or wh
 Address `0` is special
 
 ```c
-int *pi = 0 
+int *pi = 0;
 pi = NULL;          // NULL = 0
 ```
 Pointer in `if` block will evaluate to `0` only if pointer is `NULL`.
@@ -627,7 +627,7 @@ if (*q)
 int a[4] = {100, 101, 102, 103};    // declares and inits array
 int a[] = {100, 101, 102, 103};     // also OK, compiler will deduce it
 int a[10] = {100, 101, 102, 103};   // compiler will init others 0
-int a[] =                           // NO init: C won't init anything
+int a[10];                          // NO init: C won't init anything
 
 a[0] = 200;
 a[4] = 400;     // ILLEGAL, but may run
@@ -648,7 +648,7 @@ x = sizeof(a);      // 40!      4 * 10
 
 ## `p++;`
 Addition of pointer and `int` means the **address** of the next element the pointer points to. `+sizeof`
-E. `int`, `+1` points to 4 elements later. `double` 8.
+E. `int`, `+1` points to 4 bytes later. `double` 8.
 
 Can't do for `void*`. Undefined
 ```c
@@ -657,7 +657,7 @@ int *p = &a[0];
 
 for (int i = 0; i < 4; i++) {
     //printf("%d", *(p+i));
-    //print("%d", a[i]);
+    //printf("%d", a[i]);
     printf("%d", *p);
     p++;                    // p += 4 actually
 
@@ -730,9 +730,9 @@ Once you disconnect a pointer to heap, the memory is lost
 # 8. String
 String represented as `char` arrays, ending with `0`.
 ```c
-// "abc"
-char a[4] = {'a', 'b', 'c', 'd', '\0'};
-char a[4] = {97, 98, 99, 100, 0};
+// "abcd"
+char a[5] = {'a', 'b', 'c', 'd', '\0'};
+char a[5] = {97, 98, 99, 100, 0};
 
 char *p = a;          // p = &a[0]
 printf("%s", p);      // printf expects p to be type char*, NOT char!!!
@@ -944,7 +944,7 @@ int i = sizeof(struct Foo);     // i = 16!
 - First 4 bytes are for `int x`, but compiler **leaves out** a 4-byte **padding**
 - Then 8 bytes for `char *x`
 
-C allows compiler to layout the `struct` in memory. CLAC requires all 8-byte quantities must start at an address whose value is a **multiple of 8**. 4-bits must be at multiples of 4. 
+C allows compiler to layout the `struct` in memory. CLAC requires all 8-byte quantities must start at an address whose value is a **multiple of 8**. 4-byte quantities must be at multiples of 4. 
 - If reverse order by putting `char *s` first, compiler will still pad, in case of array `Foo[]`. 
 
 ## Pointer to `struct`
@@ -982,11 +982,11 @@ If a `struct` variable is passed to a function, you are **copying** the entire `
 
 An entire array cannot be copied. Array will turn itself into a pointer.
 ```c
-int get_num_element(int a[]) {   // As soon as you pass a, a becomes int *
-    return sizeof(a) / sizeof(int);     // 8 / 2 = 4
+int get_num_elements(int a[]) {   // As soon as you pass a, a becomes int *
+    return sizeof(a) / sizeof(int);     // 8 / 4 = 2
 }
 
-int main {
+int main() {
     int a[10];      // here sizeof(a) / sizeof(int) = 10
     int n = get_num_elements(a);
 }
@@ -1161,14 +1161,14 @@ valgrind --leak-check=yes ./isort < input >> output 2> err
 valgrind --leak-check=yes ./isort >> output.txt 2>&1
 ```
 Redirect `stderr` (descriptor `2`) to where `stdout` (descriptor `1`) is going
-- If `>> output.txt` and `2>&1` switched, won't work. `stderr` message will be printed out to `stdout`, which is the screen.'
+- If `>> output.txt` and `2>&1` switched, won't work. `stderr` message will be printed out to `stdout`, which is the screen.
 
 ## Pipes
 **Pipe**: taking one program's output directly to the input of another program
 ```shell
 echo 10 | ./isort
 ```
-Bash runs `echo`. `|` runs two programs together. Bash redirects the standard output of `echo` and the standard input of `.\isort`.
+Bash runs `echo`. `|` runs two programs together. Bash redirects the standard output of `echo` and the standard input of `./isort`.
 
 ```shell
 echo 10 | ./isort | cat -n
@@ -1189,7 +1189,7 @@ cat *.txt | tr ' ' '\n' | sort | uniq > lecture-words
 - `uniq`: removes duplicate lines. Need to be `sort`ed
 
 ```shell
-w | tail -n +3 | grep "vim" | cut -d " " -f 1 | sed 's/$/@colubmia.edu/' | sort | uniq > vimusers
+w | tail -n +3 | grep "vim" | cut -d " " -f 1 | sed 's/$/@columbia.edu/' | sort | uniq > vimusers
 ```
 - `wc` reads a file, counts number of lines, words, and characters
 - `head -n`  gives the first `n` lines
@@ -1203,7 +1203,7 @@ w | tail -n +3 | grep "vim" | cut -d " " -f 1 | sed 's/$/@colubmia.edu/' | sort 
 - `sed`: find and replace
 	- `s/`: substitute
 	- `$`: **end of a line** in `sed`.
-	- `@colubmia.edu` text you're appending at the end of each line.
+	- `@columbia.edu` text you're appending at the end of each line.
 	- `/` delimiters separating the parts of the `sed` command.
 
 Collect all users using `vim` and their emails, sort them, and remove duplicated (by `uniq`). Save the output to `vimusers`.
@@ -1224,7 +1224,7 @@ If you have a separate file `content` for the body of the email. Subject is "sor
 For pipeline `|`, you can't control the **order** of program run. Pipe facilities have mechanisms to block some programs from running before getting input.
 
 # 13. File I/O
-`stdin`, `stdout`, `strerr` are declared in `stdio.h` by `FILE` pointers
+`stdin`, `stdout`, `stderr` are declared in `stdio.h` by `FILE` pointers
 ```c
 extern FILE *stdin;
 extern FILE *stdout;
@@ -1232,7 +1232,7 @@ extern FILE *stderr;
 ```
 Anything we can read/write are files (E. hardware device, network)
 
-In UNIX, a file is a sequency of bytes with a position (file stream)
+In UNIX, a file is a sequence of bytes with a position (file stream)
 ## FILE pointers
 `ncat.c` `cat`s the file and adds line numbering
 ```c
@@ -1241,7 +1241,7 @@ In UNIX, a file is a sequency of bytes with a position (file stream)
 
 int main(int argc, char **argv)
 {
-	# checks number of command line arguments
+	// checks number of command line arguments
     if (argc != 2) {
         fprintf(stderr, "%s\n", "usage: ncat <file_name>");
         exit(1);
@@ -1252,7 +1252,7 @@ int main(int argc, char **argv)
 ```c
     char *filename = argv[1];
     FILE *fp = fopen(filename, "r");
-    # If fopen failes:
+    // If fopen fails:
     if (fp == NULL) {
         perror(filename);
         exit(1);
@@ -1269,7 +1269,7 @@ In OS perspective, the file organization is complex (lots of metadata). Costly t
     char buf[100];
     int lineno = 1;
     while (fgets(buf, sizeof(buf), fp) != NULL) {
-	    # prints line number, 4 spaces wide, right justified
+	    // prints line number, 4 spaces wide, right justified
         printf("[%4d]", lineno++);
 ```
 - `fgets()` reads **one line** (including `\n`) of file content and put them into `buf`, adding `\0`
@@ -1304,7 +1304,7 @@ In OS perspective, the file organization is complex (lots of metadata). Costly t
 2. If something actually **fails** in the middle. Need to distinguish by calling `ferror()`(), "Did you terminate it normally?"
 
 ```c
-	# close the file (free memory and stuff)
+	// close the file (free memory and stuff)
     fclose(fp);
     return 0;
 }
@@ -1365,7 +1365,7 @@ Returns the number of successfully written objects (<`n` if error)
 ```c
 fprintf(fp, "hello, world\n");
 fputs("hello world\n", stdout);  // No string formatting
-fputc('o', stderr)               // single character
+fputc('o', stderr);              // single character
 ```
 
 ## Reading input
@@ -1382,7 +1382,7 @@ If you call `fgets()` on `stdin`, program will block until you type something
 
 ```c
 char buf[1024];
-fgets(buf, sizeof(buf), fp):     // reads at most 1023 bytes to buf ('\0')
+fgets(buf, sizeof(buf), fp);     // reads at most 1023 bytes to buf ('\0')
 fread(buf, 1, sizeof(buf), fp);  // reads 1024 bytes
 ```
 `fgets()` returns either when there's a **new line** or `buffer` fills up, but it guarantees the buffer is `'\0'` terminated
@@ -1413,11 +1413,11 @@ Line buffering: `printf()` and other `FILE` output functions **buffer** bytes gi
 ```c
 fprintf(stderr, "hello...");
 sleep(3);
-fprinf(stderr, "world\n");
+fprintf(stderr, "world\n");
 ```
 `stderr` is by default, **unbuffered**, because we don't want error messages to be delayed. 
 
-Files are **block buffered**, buffed until a **fixed-size** buffer is filled (typically 4096 bytes), sends to disk until fill, flush, or program termination
+Files are **block buffered**, buffered until a **fixed-size** buffer is filled (typically 4096 bytes), sends to disk until fill, flush, or program termination
 
 ### Flush
 ```c
@@ -1448,7 +1448,7 @@ int fseek(FILE *file, long offset, int whence)
 - `%d`: `int`
 - `%u`: `unsigned int`
 - `%ld`: `long`
-- `%uld`: `unsigned long`
+- `%lu`: `unsigned long`
 - `%f`: `double`
 - `%g`: `double` (trailing zeros not printed)
 - `%s`: string (`char *`)
@@ -1462,10 +1462,10 @@ int sscanf(const char *input_string, const char *format, ...);
 Returns the number of items assigned.
 Variable number of arguments (variadic functions)
 `sscanf()` parses from `input_string`!
-Example: `
+Example:
 ```c
-input_string = "  \t   0xffffffff \n ;
-sscanf(s, "%x", &u)
+input_string = "  \t   0xffffffff \n ";
+sscanf(input_string, "%x", &u);
 ``` 
 will skip all spaces, **look** what looks like a number, and terminate reading once it hits a space.
 
@@ -1513,7 +1513,7 @@ If you have your own database , so
 ./mdb-add-cs3157       # hard coded the database to mess with permissions
 ```
 
-Size of `struct MdbRed` is 40 bytes, first 16 being `name`, second 24 being `msg`
+Size of `struct MdbRec` is 40 bytes, first 16 being `name`, second 24 being `msg`
 
 `mdb-add` calls `fgets()` and `strcpy()` or `snprintf()` to copy `name`, cutting it off at 15 (allow `NULL` at the end!!). Then copies 23 characters of `msg`
 
@@ -1527,7 +1527,7 @@ For lookup,
 	2. Examine the message
 	3. `strstr()` tells if a string contains a substring
 	4. Prints output
-	5. Until `fgets()` returns `EOF
+	5. Until `fgets()` returns `EOF`
 Copy `mdb-add*`, `mdb-lookup*` in the directory for reference
 
 # 14. Endianness
@@ -1578,7 +1578,7 @@ printf("%.2x", p[0]);         // will print "03"
 ## Conversion
 `htonl`: host to network long (4 bytes)
 ```c
-#include <apra/inet.h>
+#include <arpa/inet.h>
 
 uint32_t htonl(uint32_t hostlong);
 uint16_t htons(uint16_t hostshort);
@@ -1617,7 +1617,7 @@ Returns the PID (`pid_t`) of its **newly created** child. **Many** children can 
 Then, both parent and child resume from the place where `fork()` **returned**. Values may be different
 - No guarantee of execution **order**, unless explicitly coordinated (`waitpid()`)
 
-`partnet-child.c`
+`parent-child.c`
 Two branches **run at the same time**!! `fork()` splits program into two, and runs together. 
 ```c
 pid_t pid = fork();
@@ -1665,7 +1665,7 @@ Runs shell inside a program.
 ps af
 
 -bash
- \_ .a/.out
+ \_ ./a.out
 	 \_ /bin/bash
 ```
 
@@ -1712,7 +1712,7 @@ while (fgets(buf, sizeof(buf), stdin) != NULL) {
 		die("execl failed");
 	} else {         // parent process
 		if (waitpid(pid, &status, 0) != pid) {
-			// If a different child reterns, die
+			// If a different child returns, die
 			die("waitpid failed");
 		}
 	}
@@ -1825,7 +1825,7 @@ Will not work for shells other than `bash`, that uses a different language
 ### `shebang` directive
 At the **top line** of the shell script, put the full **path** of the program that can run the rest of the file
 ```shell
-#!/bin/bash/
+#!/bin/bash
 for i in {1..4}
 do
 	ls
@@ -1893,7 +1893,7 @@ Layers:
 		- Goes through nearest gateway router (Columbia)
 		- Gateway sends it west (based on location info)
 		- The **closer** you get to destination, the routers know more
-		- Boarder gateway protocol -- BGP
+		- Border gateway protocol -- BGP
 	- IP protocol doesn't guarantee anything. If packet dropped in the middle, **No recovery** -> 4
 4. **Transport**: manages packet flow **pipeline** (E. TCP, UDP)
 	- Using this unreliable IP, build a clean, working pipeline, **in order** 
@@ -1953,11 +1953,11 @@ nc clac.cs.columbia.edu 20000
 - `-N`: close connection upon `EOF` on `stdin`
 - `-C`: end lines with `\r\n`, useful for HTTP
 
-Now they have made a TCP connection (Transport connect protocol)
+Now they have made a TCP connection (Transmission Control Protocol)
 - Hides all the complexity and gives a clean pipeline of sending/receiving files
 Whatever entered on one end will show up on the other end. Done on **both** sides
 - `netcat` reads from `stdin`, and sends via network
-- Other side receives, until something comes from the network, spits to `stdout
+- Other side receives, until something comes from the network, spits to `stdout`
 
 How is it possible? You are stuck on `fgets()`! How can it print out simultaneously: **fork** (or something more advanced)  
 ### Turn `mdb-lookup` to network server
@@ -2075,10 +2075,10 @@ struct sockaddr_in {
 };
 struct in_addr {
 	uint32_t s_addr;                   // address in network order
-}
+};
 
 // destination address
-strcut sockaddr_in servaddr;
+struct sockaddr_in servaddr;
 memset(&servaddr, 0, sizeof(servaddr));     // zero out memory
 servaddr.sin_family = AF_INET;              // address family
 servaddr.sin_addr.s_addr = inet_addr(ip);   // address in network order
@@ -2135,7 +2135,7 @@ fclose(output);
 
 ## `echo` server example
 `tcp-echo-client.c` and `tcp-echo-server.c`
-One a connection is established, 4 couples:
+Once a connection is established, 4-tuple:
 1. IP address of server
 2. Port number server is listening on
 3. IP address of client (unseen)
@@ -2182,10 +2182,10 @@ unsigned short port = atoi(argv[1]);
 
 int servsock = socket(AF_INET, SOCK_STREAM, 0);
 
-strcut sockaddr_in servaddr;
+struct sockaddr_in servaddr;
 memset(&servaddr, 0, sizeof(servaddr));
 servaddr.sin_family = AF_INET;
-servaddr.sin_addr.s_addr = htonl(INADDR_ANY);  // any netowrk interface, 
+servaddr.sin_addr.s_addr = htonl(INADDR_ANY);  // any network interface, 
 // INADDR_ANY = 0.0.0.0. If you want WIFI, only, you'll pass specified
 servaddr.sin_port = htons(port);               // port # you choose to listen on
 
@@ -2194,7 +2194,7 @@ servaddr.sin_port = htons(port);               // port # you choose to listen on
 bind(servsock, (struct sockaddr *) &servaddr, sizeof(servaddr));
 
 // Start accepting client connections. Queue (5) requests up at OS level
-// Now clienct can connect()
+// Now client can connect()
 listen(servsock, 5);
 
 // CLIENT address
@@ -2308,7 +2308,7 @@ If still problem:
 	while (1) {
 		accept();
 		// generates file name and writes
-		snprintf(filename, "%s.%u", filebase, filesuffix++);
+		snprintf(filename, sizeof(filename), "%s.%u", filebase, filesuffix++);
 		fp = fopen(filename, "wb");
 	```
 	`filename`'s size is dynamic. (stack allocated) 
@@ -2326,7 +2326,7 @@ If still problem:
 ```c
 	remaining = size;    // supposed to receive
 	while (remaining > 0) {
-		limit = remaining > sizeof(buf) ? sizeof(buf) : remaining  // min
+		limit = remaining > sizeof(buf) ? sizeof(buf) : remaining; // min
 		r = recv(clntsock, buf, limit, 0);
 		if (r > 0) {
 			remaining -= r;
@@ -2389,11 +2389,11 @@ wget http://example.com/index.html      # saves page to disk
 Getting index page from `ncat` (stored in `/var/www/html`)
 
 ```shell
-nc clac.cs.columia.edu 80
+nc clac.cs.columbia.edu 80
 
 GET /index.html HTTP/1.0            # request line
 Host: clac.cs.columbia.edu:80       # header
-									# /r/n blank line
+									# \r\n blank line
 ```
 - Request line: method (`GET`), URI (`index.html`), HTTP version (`HTTP/1.0`), space separated
 - Header: field name, colon, field value
@@ -2428,12 +2428,12 @@ E. GNU make manual: `https://www.gnu.org/software/make/manual/make.html`
 ```shell
 wget https://www.gnu.org/software/make/manual/make.html
 
-./http client <host name> <port number> <file path>
+./http-client <host name> <port number> <file path>
 ./http-client https://www.gnu.org 80 /software/make/manual/make.html
 ```
 Start from client boiler plate
 1. Connect
-2. Send request file via `HTTP/1.0`, terminating with `/r/n`
+2. Send request file via `HTTP/1.0`, terminating with `\r\n`
 	1. Little more thing
 3. Get response. parse it. Look for `200 OK`. If not, report
 	1. skip header ,skip blank line
@@ -2445,7 +2445,7 @@ Must work for all binary files
 ## Lab 7
 ### Part 1
 `clac:80` files are in `/var/www/html` folder  
-When `GET /index.html HTTP/1.0`, we don't start from **root directory**. `/var/ww/html` is **configured** to be the **web root** by a configuration file
+When `GET /index.html HTTP/1.0`, we don't start from **root directory**. `/var/www/html` is **configured** to be the **web root** by a configuration file
 
 `https://clac.cs.columbia.edu:80/~jae/index.html` will look to **user specific** web root directory, configured to be `~/html` if it sees "`/~jae`"
 
@@ -2526,9 +2526,10 @@ public:            // everything below is public
 	~Pt() {        // destructor, called automatically when var goes out of scope
 		printf("bye\n");
 	}
-	void print()   // method
+	void print() { // method
 		printf("(%g, %g)\n", x, y);
-}；
+	}
+};
 
 int main() {
 	// Stack allocation
@@ -2553,7 +2554,7 @@ int main() {
 	- Similar to Lab 3 that takes a pointer to a `List`
 ```c
 void Pt_print(struct Pt *this) {
-	printf("(%g, %g)\n", this->x this->y);
+	printf("(%g, %g)\n", this->x, this->y);
 }
 ```
 - Take constructor/destructor as a global function

@@ -195,7 +195,7 @@ list_for_each_entry_safe(pos, next, head, member)
 #include <linux/module.h>
 #include <linux/printk.h>
 
-// called whem loaded
+// called when loaded
 int hello(void) {
 	printk(KERN_INFO "Hello\n");
 	return 0;    // return an error code
@@ -356,7 +356,7 @@ int main() {
 Go to the process filesystem
 ```shell
 cd /proc/2265
-cat maps           # shows entire addresss space
+cat maps           # shows entire address space
 ```
 Get a block on the heap
 Modern allocators use `mmap()` instead of repeatedly calling `brk()`
@@ -367,7 +367,7 @@ Modern allocators use `mmap()` instead of repeatedly calling `brk()`
 # HW3
 ## System Calls
 ```c
-asmlinkage long sys_getpid(getpid)    // maxro SYSCALL_DEFINE0(getpid)
+asmlinkage long sys_getpid(void)    // macro SYSCALL_DEFINE0(getpid)
 { 
 	return task_tgid_vnr(current); // returns current->tgid, long
 }
@@ -478,7 +478,7 @@ struct waitqueue {
 ```c
 #include <linux/wait.h>
 wait_event_interruptible()
-// a bit outdated, doens't account for synchronization
+// a bit outdated, doesn't account for synchronization
 ```
 Functions:
 1. `prepare_to_wait()`: add to wait queue, change state to `TASK_INTERRUPTIBLE`
@@ -504,7 +504,7 @@ Functions:
 2. Call `try_to_wake_up()` on **each** task
 3. Enqueue those on run queue
 4. Wait for other task to call `schedule()`. Choose a sleeping task
-5. Sleeping task checks condition again. If true, `finish_wake()`
+5. Sleeping task checks condition again. If true, `finish_wait()`
 Never go back directly to running on CPU
 
 ### States
@@ -521,7 +521,7 @@ Never go back directly to running on CPU
 	- Another process starts running
 3. Device receives input, raise a **hardware interrupt**
 	- Trap into kernel again, **enqueue** the next process
-4. Current ask eventually calls `schedule()`
+4. Current task eventually calls `schedule()`
 	- Another process on the **run** queue starts running
 
 ## Context Switch
@@ -559,7 +559,7 @@ If a process does not give up the CPU
 - Single interrupts will **not nest**, no need to be reentrant
 	- Can be interrupted by another *type* of interrupt
 
-> **E. network package arrival**
+> **E. network packet arrival**
 > - **Top half**: ACK arrival, move from NIC to memory, prepare for future packets
 > - **Bottom half**: propagate through networking stack (TCP/IP), can be deferred
 {: .notice--info}
@@ -568,7 +568,7 @@ If a process does not give up the CPU
 All concurrent data must be protected
 ### Mutex (Sleeping)
 ```c
-pthread_mutex_locK(&balance_lock);
+pthread_mutex_lock(&balance_lock);
 ++balance;
 pthread_mutex_unlock(&balance_lock);
 ```
@@ -642,7 +642,7 @@ int test_and_set(int *lock) {
 Kernel forcefully reclaim CPU
 - Track a per-process `TIF_NEED_RESCHED` flag
 - `preempt_count` tracks how many atomic states CPU entered. Can't preempt if nonzero
-- If set, preemption by calling `schecule()` when:
+- If set, preemption by calling `schedule()` when:
 	1. Return to user space (from syscall or interrupt handler)
 	2. Return to kernel from interrupt handler, only if `preempt_count` is zero
 	3. `preempt_count = 0`, (E. right after releasing lock)
@@ -651,7 +651,7 @@ Kernel forcefully reclaim CPU
 ---
 # 10. Synchronization
 - **Safety**: Mutex
-- **Liveliness** (progress): 
+- **Liveness** (progress): 
 	- must allow **one** to proceed; 
 	- must not depend on threads out of critical section
 - **Bounded waiting**
@@ -794,7 +794,7 @@ unlock() {
 {: .notice--warning}
 
 Fix by adding a `guard` lock to avoid losing wakeups
-- `prepared_to_yield()` to protect the gap between `guard = 0` and `yield()`
+- `prepare_to_yield()` to protect the gap between `guard = 0` and `yield()`
 
 ```c
 typedef struct mutex_t {
@@ -944,7 +944,7 @@ void Semaphore::V() {
 	value++;
 	if (value <= 0) {
 		Thread *thd = waitQ.getNextThread();
-		scheduler->addd(thd);
+		scheduler->add(thd);
 	}
 	
 	unlock(&lockvar);
@@ -985,7 +985,7 @@ Coordinate multiple threads to **all** reach a specific point before allowed to 
 - **Critical point**: no thread allowed to execute until everyone reach Rendezvous
 
 ```c
-rendezous:
+rendezvous:
 	sem_wait(mutex);
 		count++;
 		if (count == n)
@@ -999,7 +999,7 @@ critical_point:
 	sem_wait(mutex);               
 		count--;
 		if (count == 0) 
-			sem_wait(barrier);       // comsumes the final post left floating
+			sem_wait(barrier);       // consumes the final post left floating
 	sem_post(mutex);
 ```
 
@@ -1015,7 +1015,7 @@ Lock-free Synchronization
 {: .notice--warning}
 
 **Read-Copy-Update**
-- Multiple readers **and** one writer and run simultaneously
+- Multiple readers **and** one writer can run simultaneously
 - Reader may read **old**, but consistent data
 
 For reading, make a **copy** of the shared resource
@@ -1074,7 +1074,7 @@ void set(int x, int y) {
 
     spin_unlock(&foo_lock);
 
-    // 5) wait a for old readers to finish
+    // 5) wait for old readers to finish
     synchronize_rcu();
 
     // 6) free old struct
@@ -1106,6 +1106,6 @@ Function of:
 
 ### Monitoring
 Object with a set of **monitor procedures**
-- One one **active thread** at a time
+- Only one **active thread** at a time
 - Java `synchronized`
 	- 1 Mutex + N condition variables in a class object

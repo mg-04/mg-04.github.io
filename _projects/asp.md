@@ -21,7 +21,7 @@ course: Advanced Systems Programming, Spring 2025
 From [COMS 4157](https://cs4157.github.io/www/2025-1/) Advanced Systems Programming
 
 ---
-# Malloctupus: A Memory Allocator Library
+# Malloctopus: A Memory Allocator Library
 [Assignment](https://cs4157.github.io/malloctopus/) | [Repo](https://github.com/mgongd/hw1-The-Debuggers)  
 A custom memory allocator library in C
 - Implicit free list allocator
@@ -61,5 +61,5 @@ Static linker, subset of `ld`
 # Zookeeper: A Container Manager
 [Zookeeper](https://cs4157.github.io/zookeeper/) | [Repo](https://github.com/mgongd/hw6-The-Debuggers)    
 - Namespace isolation and virtualization
-- File system permissions and resource limits with `cgruops`
+- File system permissions and resource limits with `cgroups`
 - System call filtering via `seccomp`

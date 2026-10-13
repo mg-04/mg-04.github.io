@@ -483,7 +483,7 @@ In the $xy$-plane, circle $C$ has center $(3, -4)$ and radius 5. If circle $C$ i
 
 #### Solution 44
 * **Answer: 60**
-* **Explanation:** Arc length formula: $L = 2\pi r (\frac{\theta}{360ftp})$. Plug in values: $6\pi = 2\pi (18) (\frac{\theta}{360}) \implies 6\pi = 36\pi (\frac{\theta}{360}) \implies \frac{6}{36} = \frac{\theta}{360} \implies \frac{1}{6} = \frac{\theta}{360} \implies \theta = 60^\circ$.
+* **Explanation:** Arc length formula: $L = 2\pi r (\frac{\theta}{360})$. Plug in values: $6\pi = 2\pi (18) (\frac{\theta}{360}) \implies 6\pi = 36\pi (\frac{\theta}{360}) \implies \frac{6}{36} = \frac{\theta}{360} \implies \frac{1}{6} = \frac{\theta}{360} \implies \theta = 60^\circ$.
 
 #### Solution 45
 * **Answer: A**

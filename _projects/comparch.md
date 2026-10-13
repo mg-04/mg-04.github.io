@@ -15,4 +15,4 @@ teaser: /images/projects/comparch.png
 {% endif %}
 
 > This page is under construction
-{: .notices--info}
+{: .notice--info}

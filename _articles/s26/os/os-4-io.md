@@ -57,7 +57,7 @@ Raise interrupt when device finished work (or wants attention)
 1. Interrupt controller issues interrupt
 2. CPU **ack**s interrupt
 
-### Messaged Signaled Interrupts
+### Message Signaled Interrupts
 - Pin count restrictions
 Write a small interrupt-describing data block describing data to a special `mmap()`ed IO address triggers interrupt
 - Very programmable
@@ -74,14 +74,14 @@ Simple
 ## IO Software
 - Error handling
 	- Close to hardware as possible
-- Sync vs asyn
+- Sync vs async
 - Buffering
 - Sharable
 
 ## Performing IO
 ### Programmed IO
 - CPU does all work
-- Busy-waiting (pooling)
+- Busy-waiting (polling)
 
 ```c
 copy_from_user(buffer, p, count);
@@ -94,7 +94,7 @@ return_to_user();
 ```
 - Waste CPU cycle
 
-### Interrupt-Drive IO
+### Interrupt-Driven IO
 Process **blocked** while waiting, another process scheduled
 - When ready raises **interrupt**, then copies data
 
@@ -327,7 +327,7 @@ Requires a lot of memory, wastes RAM in host
 	- Double the cost :(
 	- No write penalty (parallelized)
 - Level 2
-	- Data stripping (very small)
+	- Data striping (very small)
 		- Parallel access
 	- Use **Hamming code** for ECC ($$\log(N)$$)
 		- Correct 1 bit, detect 2 bits
@@ -379,7 +379,7 @@ LVM allows combining physical partitions to **volume groups** logically
 > - Designed with disk geometry (cylinder groups)
 {: .notice--info}
 
-## BFS
+## FFS
 Partition disk into multiple OSes, or multiple file systems
 
 **Top level**
@@ -508,13 +508,13 @@ Assume write happens atomically
 
 ### `fsck`: File System Consistency Check
 Very long time
-- Can't fix all senarios, such as `B'I D'`
+- Can't fix all scenarios, such as `B'I D'`
 
 ### Block Consistency
 - Consistent: either in free list or used list
 - Missing block: add it back to free list
 - Duplicate free blocks: fix free list
-- Duplicate used blocks fpointed by 2 I-nodes: make a copy
+- Duplicate used blocks pointed by 2 I-nodes: make a copy
 
 ### Journaling
 > Keep a log of my actions, before updating FS
@@ -926,7 +926,7 @@ static int ezfs_get_block(struct inode *inode, sector_t block,
 {: .notice--info}
 
 1. `inode = file_inode(fp);`
-2. Get **direct block** number, and `sb_read()` it
+2. Get **direct block** number, and `sb_bread()` it
 3. Emit dots
 4. Iterate over and emit each one
 	```c
@@ -962,7 +962,7 @@ struct dentry *ezfs_lookup(struct inode *parent_dir, struct dentry *child_dentry
 1. Find parent direct data block. 
 2. Iterate dentries. Check file name
 3. If match found, get `child_dentry->inode_no`
-4. Return `d_split_alias(child_inode, child_dentry);`
+4. Return `d_splice_alias(child_inode, child_dentry);`
 	- Populates inode metadata from dentry's mapping
 
 ### `create()`
@@ -1037,7 +1037,7 @@ E2E transmission between **machines** (not applications)
 
 Most devices send everything to a single local router (gateway)
 
-**DNS**: Domain Name Resolution
+**DNS**: Domain Name System
 **ARP**: Address Resolution Protocol
 - Discover link layer address
 
@@ -1075,16 +1075,16 @@ Reliable, connection oriented, **stream** delivery
 int socket(int domain, int type, int protocol);
 // bind socket to IP address
 int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
-struct sockaddr { sa_family_t sa_family; char sa_data[14]; }
+struct sockaddr { sa_family_t sa_family; char sa_data[14]; };
 
-// tell OS to prepare for incomign requests, buffer to backlog
+// tell OS to prepare for incoming requests, buffer to backlog
 int listen(int sockfd, int backlog);
 // accept connection, return new socket with connection peer info
 int accept(int sockfd, struct sockaddr *restrict addr, socklen_t *restrict addrlen);
 ```
 Then do `read()`, `write()` on the socket
 
-Treated as a special **inode* to integrate with VFS
+Treated as a special **inode** to integrate with VFS
 
 ### Transfer
 Sliding window, with timeout

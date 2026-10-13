@@ -11,7 +11,7 @@ date: 2025-12-20
 Dynamic Random Access Memory: address -> data
 **Content addressable memory**: **key** -> address (Unit 3)
 
-On PCB, DRAM packaged in DIM (Dual Inline Memory Module)
+On PCB, DRAM packaged in DIMM (Dual Inline Memory Module)
 - Usually 8 chips (9-10 if error correction)
 - Connected to CPU/SOC using the **DDR** (dual data rate) bus
 - **DDR**: data can be transferred at **both clock edges** (double frequency)
@@ -22,7 +22,7 @@ On PCB, DRAM packaged in DIM (Dual Inline Memory Module)
 	- Address bus: 21 bits (Longer addresses take multiple cycles; slow if too wide)
 	- Command bus: 7 bits (?)
 	- 64 ms refresh
-- DDR Standard: **JEDEC**, allow different manufactures to interoperate
+- DDR Standard: **JEDEC**, allow different manufacturers to interoperate
 - In SOC, the **Memory Controller** controls the DRAM
 	- May have more than 1 MCs
 	- Each MC can be attached to more than one DRAM modules
@@ -133,7 +133,7 @@ Error accumulate over time so you can't correct
 - Error correction happens in the **memory controller**: Need to **read + write** from the chip
 - Also a **blocking** operation
 
-**DDR5** only does **SEC** (no double-bit) (Q: is it required on thei chip, or ???)
+**DDR5** only does **SEC** (no double-bit) (Q: is it required on the chip, or ???)
 
 Random Access Strobe timing
 
@@ -143,7 +143,7 @@ E. DDR5 memory, 1 DIMM on the system, 8 GiB, no ECC, clock 3000 MHz. Estimate th
 - 8 chips on the DIMM, each with 8 Gi**b** of memory; to output 64 bits of data
 - $$t_{RCD} + t_{CL}*n + t_{RP} + t_{RCD} + t_{CL}*n$$
 	- Multiple $$t_{CL}$$s that reads **burst** of data
-	- No need for **last** recharge
+	- No need for **last** precharge
 E2. Same condition, but to the **same row**
 - $$t_{RCD} + t_{CL}*n + t_{CCD} + t_{CL} * n$$
 - No need $$t_{RP}$$ twice
@@ -154,7 +154,7 @@ E4. Two different DIMMs
 
 # Cache
 Speed limited by memory 
-- Even worst due to **instruction** fetching (same time as memory access)
+- Even worse due to **instruction** fetching (same time as memory access)
 - Store these locally within the **SoC** in faster memory -> cache
 
 ## SRAM
@@ -264,7 +264,7 @@ L1D **store buffer**: can combine consecutive writes to 1 cache line
 	- Write buffer collects every write into a **single cache line** `st c[15:0]` (for `int`)
 	- When line filled, send the request to L2 to write
 - Without store buffer, L2 4096 writes * 4 byte
-- With store buffer, LL2 4096 / 16 = 256 writes * 64 bytes
+- With store buffer, L2 4096 / 16 = 256 writes * 64 bytes
 	- Same data, but less **metadata** (location, write size, etc.)
 - In L2, still write allocate system -> all misses -> send to DRAM
 	- No additional merging possible. All misses are cache line size
@@ -329,7 +329,7 @@ write C[0:15]
 - Associativity -> latency
 
 ### Fully associative structure
-**CAM**: content associative memory
+**CAM**: content addressable memory
 - (tag, data) pairs
 - Search the tag in **parallel** in every row. If match, data out.
 	- Typically 1 clock cycle
@@ -341,7 +341,7 @@ write C[0:15]
 How many R/W can do to a given memory at a time
 - E. 1R1W; 1RW; 2R1W
  - 1RW: standard SRAM array. Only one address (wordline) you can energize
- - 2R: **additional** wordline and **bitlines** attached to every cell. Two sets of sense amplifiers. To transistors controlling the read -> more **latency**
+ - 2R: **additional** wordline and **bitlines** attached to every cell. Two sets of sense amplifiers. Two transistors controlling the read -> more **latency**
 
 > Example:
 > - RF: 2nR, nW (n is the number of concurrent instructions in-flight)
@@ -505,7 +505,7 @@ Q: What is the size of the L1D <span style="color:rgb(255, 0, 0)"> tag array</sp
 ## Code Optimization
 To improve locality
 E. A 2D (byte) matrix is laid out **linearly** in memory
-- Load The bae address
+- Load The base address
 - Add offset (0)
 - Store this address to somewhere else in memory
 With cache (E. 4-entry, FA cache, line size: 4B, writeback on store hit, write **allocate** on store miss)

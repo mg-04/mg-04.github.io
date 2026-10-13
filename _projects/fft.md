@@ -22,14 +22,14 @@ Design and VLSI Implementation of a high-performance, 1024-point Radix-2 DIF FFT
 # Optimization Features
 - **Four-stage interleaved pipeline**: Dedicated FSM controller that coordinates alternating read, execute, and writeback, balancing cycle time and keeping memory utilization near 100%
 - **RTNE ALU**: 3 dB SQNR improvement
-- **Programmable scaling mask**: Let the user trade between accuracy and overflow protection depending on input profiles
+- **Programmable scaling mask**: Lets the user trade between accuracy and overflow protection depending on input profiles
 
 ![](/images/projects/ad/fft.png)
 
 ---
 # Physical Implementation
 Full RTL-to-GDSII layout flow via Synopsys Design Compiler, QuestaSim, Cadence Innovus, and Virtuoso
-- **Clock frequency**: 400 MHz (limited by twiddle ROM). Logic capable for 500 MHz
+- **Clock frequency**: 400 MHz (limited by twiddle ROM). Logic capable of 500 MHz
 - **Throughput**: 39.8 MS/s
 - **Area**: 0.148 mm², mostly data SRAM
 - **Precision**: 60 dB SQNR, 0.0067% NRMSE against FP models

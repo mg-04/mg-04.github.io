@@ -10,7 +10,7 @@ author_profile: true
 
 I like notetaking as a habit, and I have some stories to share that I find interesting
 - In elementary school, I have no sense of studying, no sense of reviewing before the exam, and of course, no sense of taking notes. I constantly do above average, but never close to the top. I ended up in a mid-tier public school
-- In middle school, I was paied attention to peiople taking notes, and I preprared notebooks for various subjects. At that time, my notes followed my personal style: very detailed, very cramped together
+- In middle school, I was paid attention to people taking notes, and I prepared notebooks for various subjects. At that time, my notes followed my personal style: very detailed, very cramped together
 
 
 Here is my note-taking style compared to some other common STEM notetakers
@@ -36,23 +36,23 @@ Over the years, the role of traditional note-taking is fading away, from posted 
 4. [Smart Pointers...](/articles/cpp/3new)
 
 # COMS 4118 Operating Systems
-- Under construction'
+- Under construction
 
 
 
 # ELEN 3331 Electronic Circuits
-1. [Nonlinear Components](/articles\s25\ec\EC-notes-Vallancourt-Electronic-Circuits-weeks1-6.pdf)
-2. [Operational Amplifier](/articles\s25\ec\EC-notes-Vallancourt-Electronic-Circuits-week7-11.pdf)
-3. [Digital Circuits](/articles\s25\ec\EC-notes-Vallancourt-Electronic-Circuits-week11-14.pdf)
+1. [Nonlinear Components](https://drive.google.com/file/d/1Gx6f_LZ13mBKbc4y4OVyd880-55xkYmR/view?usp=drive_link)
+2. [Operational Amplifier](https://drive.google.com/file/d/1XX2F1siLnrRy47PVZDzZzW_UWISXCPij/view?usp=drive_link)
+3. [Digital Circuits](https://drive.google.com/file/d/1uNzNezUl_fzeAesFPJRKwWVOZRRJP8HS/view?usp=drive_link)
 
 # CSEE 3827 Fundies
-1. [Logic](/articles/f24/CE3827-Fundies/Notes-1-Logic-Kim,-Fundies,-Weeks-1-5.pdf)
-2. [Assembly](/articles/f24/CE3827-Fundies/Notes-2-Assembly-Kim,-Fundies,-Weeks%206-7.pdf)
-3. [MIPS](/articles/f24/CE3827-Fundies/Notes-3-MIPS-Kim,-Fundies,-Weeks-7-8.pdf) ([Annotated GCD code](/articles/f24/CE3827-Fundies/Notes-Assembly-(gcd)-Kim,-Fundies,-Week%206.pdf))
-4. [Processor](/articles/f24/CE3827-Fundies/Notes-4-Processor-Kim,-Fundies,%20Weeks-9-11.pdf)
-5. [Memory](/articles/f24/CE3827-Fundies/Notes-5-Memory-Kim,-Fundies,-Weeks-11-14.pdf)
+1. [Logic](https://drive.google.com/file/d/1jMnH-1ZzGjZ0mFQsI8o2ZGg1P6R3gJ6Z/view?usp=drive_link)
+2. [Assembly](https://drive.google.com/file/d/1xUV_bRmK1ylvJKlrdRzsQYAFSAZEqpfs/view?usp=drive_link)
+3. [MIPS](https://drive.google.com/file/d/1sqtKFVGSaoG3LrzPENCpB7IzqjQamjiQ/view?usp=drive_link) ([Annotated GCD code](https://drive.google.com/file/d/1NsD_UJ0A8AahW5IWHdJXtN3-VU4levci/view?usp=drive_link))
+4. [Processor](https://drive.google.com/file/d/17eNDcUSM1gBb-vf7QYujmF9-_aUAxwQt/view?usp=drive_link)
+5. [Memory](https://drive.google.com/file/d/1Epd2RdzK8OD0m0R7VXnZjNDY8UE3Hb5x/view?usp=drive_link)
 
 # ELEN 3201 Circuit Analysis
-1. [Resistive Circuits](/articles/f24/CA/Ca-notes-1-R.pdf)
-2. [Capacitive and Inductive Circuits](/articles/f24/CA/Ca-notes-2-LC.pdf)
+1. [Resistive Circuits](https://drive.google.com/file/d/1YjzjZWqR-zfwJfsHWSZHvj4ij-3o7RPY/view?usp=drive_link)
+2. [Capacitive and Inductive Circuits](https://drive.google.com/file/d/1PhP26W6-Tc-3WQKkQ4udCCjQoJgvTJdw/view?usp=drive_link)
 3. [AC Analysis](/articles/f24/CA/Ca-notes-3-AC.pdf)

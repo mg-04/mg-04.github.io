@@ -85,7 +85,7 @@ loop:
 Unlock routine
 
 ```
-	st, 0, x
+	st 0, x
 ```
 
 Suppose `T1` locks the variable. 
@@ -150,7 +150,7 @@ Lock:
 	Rx <- LL x
 	BRNZ Rx, Lock                # if x != 0, someone has the lock, retry
 	Rx <- SC x
-	BRNZ, Rx, Lock               # if SC failed, retry 
+	BRNZ Rx, Lock               # if SC failed, retry 
 ```
 
 # Consistency Mechanism
@@ -210,7 +210,7 @@ Everything else can't, but **Store -> Load** may be violated
 E. used to update a stack/linked list
 Use atomic operations (RMW)
 - CAS (read a value from memory, compare it conditionally. If condition is true, write a different value back to a location): hardware instruction that does read, compare, and write in a single step
-- E. adding two nodes simultaneously a linked list, when executing CAS, read the tail pointer, and atomically swap to the pointer to one of the the two algorithms
+- E. adding two nodes simultaneously a linked list, when executing CAS, read the tail pointer, and atomically swap to the pointer to one of the two algorithms
 
 # Cache Coherence
 if multiple cores R/W to the **same** address, which value is the correct one?
@@ -317,7 +317,7 @@ Every cache block can be in one of three states:
 - Receive `BusEx(x)`
 	- **Evict** the cached item, 
 	- Drop to `Invalid`
-`Modfied`
+`Modified`
 - `LD(x)` or `ST(x)`
 	- Hit, stay in `Modified`
 - Receive `BusRD(x)`
@@ -338,7 +338,7 @@ Broadcast-based protocol (E. Snoopy) does *not scale*
 
 A **directory** that maintains a global coherence view
 - **No state machine**, all lookups happen at the central space
-- **Directory**: computes the local LUT tracks which thread his the current owner to your director.
+- **Directory**: computes the local LUT tracks which thread is the current owner to your directory.
 - Assume point-to-point ordering
 
 ## Setup
@@ -376,14 +376,14 @@ Directory -> Processor (commands)
 - `NACK`: Negative ACK, **try again later**
 - `MACK`: ACK for **modify** request
 - `cDAB`: Dirty Acknowledge back **and invalidate**
-- `cINT`: **Invalidate**: ask to **invalidate** its copy
+- `cINV`: **Invalidate**: ask to **invalidate** its copy
 
 ## Hardware
 L2
-- Global coherence sate
-- <span style="color:rgb(255, 0, 0)">Presume</span> <span style="color:rgb(255, 0, 0)">vector</span> (1 bit/core)
-	- Owner ID (for `modified)
-- When you see more than 1 ones, the condition will be `Shared` as in SIMR
+- Global coherence state
+- <span style="color:rgb(255, 0, 0)">Presence</span> <span style="color:rgb(255, 0, 0)">vector</span> (1 bit/core)
+	- Owner ID (for `modified`)
+- When you see more than 1 ones, the condition will be `Shared` as in SWMR
 - Suppose just one 1, state will be `Modified` or `Shared`
 - Suppose all 0, all will be `Invalid`, need to decode from M2.
 
@@ -442,7 +442,7 @@ If miss, ignore message
 	2. L2 -> L1
 	3. L2 -> mem
 	4. L1 -> L2
-- Buffer, with `NACK` at holding sate
+- Buffer, with `NACK` at holding state
 
 # Interconnect Network
 **Bus**, attached to

@@ -178,7 +178,7 @@ endmodule // testbench
 vsim -do "runsim.do"
 ```
 
-- `vsim` invoke VSIM simulator
+- `vsim` invokes VSIM simulator
 - `-do` lets VSIM execute the commands specified in "runsim.do"
 
 ### `runsim.do`
@@ -257,7 +257,7 @@ Three types with predictable results
 	- Better for logical optimization
 	- Resource sharing can happen if they are in the same `always` block or VHDL process
 - **Register** block outputs
-	- Improves simulation speed and simplify time estimate
+	- Improves simulation speed and simplifies time estimate
 - Partition by design goal
 	- Do not mix timing critical blocks and area critical blocks
 
@@ -276,7 +276,7 @@ set synthetic_library [list "dw_foundation.sldb"]
 set link_library [list "*" \                      "/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db" \
 "dw_foundation.sldb"]
 
-# techonology that design maps to
+# technology that design maps to
 # add here for any standard cell *.db file
 set target_library "/courses/ee6321/share/ibm13rflpvt/synopsys/scx3_cmos8rf_lpvt_tt_1p2v_25c.db"
 ```
@@ -348,14 +348,14 @@ report_power -hier -analysis_effort medium >> ${rpt_file}
 ## Output Files
 - Gate netlist `.nv.v`
 - Design constraints `.syn.sdc`
-	- An elaborate version of the constrains in `lfsr1.tcl`
+	- An elaborate version of the constraints in `lfsr1.tcl`
 - Timing info `.syn.sdf`
 - Design compiler report `.rpt`
 	- Area (just estimate, without interconnect or floor plan)
 	- Timing: individual contribution to path delay
 		- Negative **slack** indicates constraints violation
 	- Power
-		- For normal  VDD (1.2V), not information about inputs
+		- For normal  VDD (1.2V), no information about inputs
 
 # 4. Timing and Power Analysis
 - QuestaSim: **post-synthesis** *dynamic* timing verification
@@ -432,7 +432,7 @@ write_sdf -context verilog "./lfsr1.sdf"
 ```
 
 ### `timing.tcl`
-Need `clk_period`be **same** as the Verilog TB
+Need `clk_period` be **same** as the Verilog TB
 
 Report file will contain the min path, max path, and power consumption
 

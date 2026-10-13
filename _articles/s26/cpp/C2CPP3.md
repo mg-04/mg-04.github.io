@@ -34,7 +34,7 @@ public:
 	T* operator->() const { return ptr; }
 	
 	operator void*() const { return ptr; }   // for if (sp)
-	T* get_prt() const { return ptr; }       // get() in STL
+	T* get_ptr() const { return ptr; }       // get() in STL
 	int get_count() const { return *count; }
 ```
 - Constructed with a pointer (E. `new string{}`)
@@ -42,12 +42,12 @@ public:
 - Last one out of scope is responsible for deletion
 
 ```cpp
-	SharedPtr*(const SharedPtr<T>& sp): ptr(sp.ptr), count(sp.count) {
+	SharedPtr(const SharedPtr<T>& sp): ptr(sp.ptr), count(sp.count) {
 		++*count;
 	}
 	SharedPtr<T>& operator=(const SharedPtr<T>& sp) {
 		if (this != &sp) {    // delete, and then construct
-			if (--*count == 0) {delete count; delete sp;}
+			if (--*count == 0) {delete count; delete ptr;}
 			ptr = sp.ptr;
 			count = sp.count;
 			++*count;
@@ -64,7 +64,7 @@ public:
 SharedPtr<string> p1 = {new string{"hello"}};
 auto foo = [=] (SharedPtr<string> p) {  // take p by value, CC!
 	cout << p.get_count() << endl;
-}
+};
 foo(p1);
 ```
 This will invoke copy constructor, incrementing `count`
@@ -164,10 +164,10 @@ shared_ptr<string> p2 { make_shared<string>(50, 'C') };
 {
 	string* p0 { new string(50, 'A') };           // leak string and char[]
 	shared_ptr<string> p1 { new string(50, 'B') };
-	shared_ptr<string> p2 { new MakeSharedPtr<string>(50, 'C') };
+	shared_ptr<string> p2 { make_shared<string>(50, 'C') };
 }
 ```
-`MakeSharedPtr` has one **fewer** allocation from Valgrind
+`make_shared` has one **fewer** allocation from Valgrind
 - Library notices that `new string` is on the heap, so it combines the control block `count` and `string` in a single allocation (placement `new`)
 - Our implementation uses `new string`, no such freedom
 
@@ -206,7 +206,7 @@ Or, directly put `shared_ptr<string[]>` as the type for STL
 shared_ptr<pair<string,int>> p1 { new pair{"hi"s, 5} };
 shared_ptr<int>              p2 { p1, &p1->second };
 ```
-Since `p2` is constructed on `p1`, the point to the **same** control block and share the **ref** count!
+Since `p2` is constructed on `p1`, they point to the **same** control block and share the **ref** count!
 - *Managed* pointer same as `p1`
 	- Managed pointer `delete`d at the end!
 - *Stored* pointer points to the `int` portion of `p1`
@@ -299,7 +299,7 @@ shared_ptr<string[]> sp { std::move(up2) };
 
 Can also convert to a shared pointer, with a custom deleter
 ```cpp
-template <template T, template Deleter>
+template <typename T, typename Deleter>
 shared_ptr(std::unique_ptr<T, Deleter>&& r);
 ```
 
@@ -433,8 +433,8 @@ void f(wallet& sum, uint64_t count) {
 
 In `main()`, create a `thread` object:
 ```cpp
-tmeplate<class F, class... Args>
-expicit thread(F&& f, Args&&... args);
+template<class F, class... Args>
+explicit thread(F&& f, Args&&... args);
 ```
 Parameters:
 1. Function to run
@@ -503,7 +503,7 @@ condition_variable cv;
 while (getline(cin, line)) {
 	istringstream iss(line);
 
-	unique_lock lck(mtx);  // lck's contructor will lock mtx
+	unique_lock lck(mtx);  // lck's constructor will lock mtx
 	while (iss >> str) { vec.push_back(str); }
 	cv.notify_one();  // unblock one waiting thread
 }   // unique_lock unlocks when out of scope
@@ -529,7 +529,7 @@ Child thread: pass lambda function, grabbing everything by *reference*
 thread t {
 	[&]() {
 		while (1) {
-			unique_lock lck(mtx);  // lck's contructor will lock mtx
+			unique_lock lck(mtx);  // lck's constructor will lock mtx
 			while (vec.empty()) {
 				cv.wait(lck);
 			}
@@ -566,7 +566,7 @@ enum memory_order {
 ```
 
 ## Atomic Variable
-> Similar to [waller code](#cpp-thread) before
+> Similar to [wallet code](#cpp-thread) before
 
 In cpp, you can do an `atomic` of anything, even a `struct`
 - May use lock. Can check with `static_assert<atomic<T>::is_always_lock_free`

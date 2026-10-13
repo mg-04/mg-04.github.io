@@ -3,7 +3,7 @@ title: "Deep Learning Loss Function and Data Optimization for A.I. Detection of 
 collection: publications
 category: conferences
 permalink: /publication/2025-04-14-Barmak
-excerpt: 'Identify optimal combination of loss function and data to create a model that can generates an automated tracing most consistent with the ground truth'
+excerpt: 'Identify optimal combination of loss function and data to create a model that can generate an automated tracing most consistent with the ground truth'
 date: 2025-04-25
 venue: Yale Undergraduate Research Conference
 slidesurl: '/files/research/barmak/grae_gong_poster.pdf'

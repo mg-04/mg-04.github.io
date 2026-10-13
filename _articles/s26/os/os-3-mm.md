@@ -156,7 +156,7 @@ Metadata bits
 
 ---
 # 15. Multi-Level Page Tables
-Data now needs on e access for page tables
+Data now needs one access for page tables
 * **Sparsity Problem**: Simple page tables require massive allocations (around 1M entries) that are mostly **empty**.
 * **2-Level Solution**: Uses a Page Global Directory (PGD) and individual Page Tables.
 * **Allocation**: Only allocate the page tables that are actually in use.
@@ -299,7 +299,7 @@ Takes advantage of locality
 
 ![](/articles/s26/os/img/cache_2.png)
 
-- When `5` is inserted, everyone is on, and the **resets**. `1` evicted in the second iteration
+- When `5` is inserted, everyone is on, and then **resets**. `1` evicted in the second iteration
 
 Add a **second clock hand** (pointer) for large memories
 - Proactively clears `ref` bit
@@ -323,7 +323,7 @@ Works surprisingly well, since avoids worst case
 {: .notice--warning}
 
 **Idea**: reduce number of IOs on **critical path**
-- Keep **pool** of free page grams
+- Keep **pool** of free page frames
 - On fault, immediately use free page
 	- Can resume without writing out victim
 	- Add victim page to free pool
@@ -413,7 +413,7 @@ struct vm_area_struct {
 	struct mm_struct *vm_mm;         // parent
 	
 	pgprot_t vm_page_prot;
-	unsigned long vm_flags;          // premissions
+	unsigned long vm_flags;          // permissions
 	
 	struct file *vm_file             // optional file backing
 	unsigned long vm_pgoff;          // offset within vm_file
@@ -421,7 +421,7 @@ struct vm_area_struct {
 	struct list_head anon_vma_chain; // anonymous mappings with locking
 	struct anon_vma *anon_vma;
 	
-	const struct vm_operations_struct *vm_ops   // functions to opeaate on them
+	const struct vm_operations_struct *vm_ops   // functions to operate on them
 	
 	vm_fault_t (*fault) (struct vm_fault *vmf);  // fault handler
 };
@@ -491,7 +491,7 @@ Houses **metadata** regarding to physical frame
 
 ```c
 struct page {
-	atomic_t _refcount;    // can decallocate if 0
+	atomic_t _refcount;    // can deallocate if 0
 	
 	struct list_head lru;
 	
@@ -553,7 +553,7 @@ Also connected to page cache
 
 Two LRU lists: **active** and **inactive** that partitions the RAM
 > New page needs to "prove" its activity
-> - Divide page into E. 1/3 `active`; 2/3 `active`
+> - Divide page into E. 1/3 `active`; 2/3 `inactive`
 {: .notice--info}
 
 **Creation**
@@ -658,7 +658,7 @@ get_user_pages_remote(mm, target_addr, page_count,
 	- If page missing, trigger page faults
 - Flags: `FOLL_WRITE`: perform CoW; `FOLL_FORCE`: override permissions
 
-Then preform copy for each page in `pages`
+Then perform copy for each page in `pages`
 
 **Size to copy**
 - Begin: `PAGE_SIZE - page_off`

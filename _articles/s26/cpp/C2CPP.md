@@ -110,7 +110,7 @@ struct Pt {
 	double y;
 	
 	void print() {
-		std::cout << this->x << ",", y << std::endl
+		std::cout << this->x << "," << y << std::endl;
 	}
 };
 ```
@@ -228,7 +228,7 @@ delete[] p3;
 {% endraw %}
 1. Allocate for an array of 5 (80 bytes)
 	- On the **heap**, an **8-byte integer** pads in **front** to hold `5`
-	- Can access through `((int_64_t *)p3) - 1`![](/articles/s26/cpp/img/02-basic4-new-array.svg)
+	- Can access through `((int64_t *)p3) - 1`![](/articles/s26/cpp/img/02-basic4-new-array.svg)
 2. **Each** constructor is called
 3. At `delete[]`, each destructor called
 	- Passing `p3` (pointer to the first element)
@@ -290,7 +290,7 @@ Can use reference **as if** using the value.
 > When seeing `transpose(p4)` in cpp, less readable. Can't tell if value/reference
 
 ```cpp
-    Pt p1 {100. 5}, p2 {200, 5}; 
+    Pt p1 {100, 5}, p2 {200, 5}; 
 
     Pt* p;       // we declare a pointer variable, uninitialized
     p = &p1;     // p points to p1
@@ -424,7 +424,7 @@ bye                                # p4's destructor
 4. `p6` destroyed
 5. `p4` destroyed
 
-Now compile **without** `-no-elide-constructors`
+Now compile **without** `-fno-elide-constructors`
 ```shell
 hi                                 # p4's constructor
 *** p6: returning object by value
@@ -487,7 +487,7 @@ Pt& operator=(const Pt& rhs) {
 ```
 - LHS comes as this `this` object
 - RHS comes as parameter `rhs`
-- It you return by value `Pt`, it will make another copy
+- If you return by value `Pt`, it will make another copy
 
 ## Compiler Default
 - **Constructor**: generated if no constructor or **copy** constructor. Invoke member constructors
@@ -688,7 +688,7 @@ After `return temp`, a copy of `temp` is created, which goes into `rhs` for `ope
 
 > **Why is `operator=()` member, but `operator+()` global?**   
 > Either works syntax-wise
-> - `operator=()` modifies LFS, so make it member
+> - `operator=()` modifies LHS, so make it member
 > - lhs and rhs of `operator+()` are symmetrical, so make it global
 {: .notice--info}
 
@@ -793,8 +793,8 @@ The cpp syntax is:
 	throw std::out_of_range{"MyString::op[]"};
 	
 	// same as
-	std::out_of:range ex{"MyString::op[]"};  // construct a temp object
-	throw ex                                 // return by value
+	std::out_of_range ex{"MyString::op[]"};  // construct a temp object
+	throw ex;                                // return by value
 ```
 - `std::out_of_range` is a type, **constructs** a temporary object `ex`, and returns **by value**
 

@@ -12,7 +12,7 @@ Here are my OS notes:
 
 These notes were not taken in any careful or organized manner, because:
 1. The slide format makes it incredibly difficult to **distill** and **coalesce** the key concepts real-time
-2. There are plenty of great material on *specific* topics, see [below](#resources)
+2. There is plenty of great material on *specific* topics, see [below](#resources)
 3. Most of my comprehension happens during late-night debugging, instead of deliberate note-taking.
 
 Some of the homework/recitation notes are omitted, as they lead directly to solutions.
@@ -38,7 +38,7 @@ Here are also some *very* useful guides written by former Head TA [**Alex Jiakai
 - [HW5 Scheduler](https://alex-xjk.github.io/post/scheduler/)
 - [HW7 EZFS](https://alex-xjk.github.io/post/tiny-afs/)
 
-You can check out more awesome articles in his [GitHub page](https://alex-xjk.github.io/post/)
+You can check out more awesome articles on his [GitHub page](https://alex-xjk.github.io/post/)
 
 Here's a scheduler state diagram I made when reviewing for the finals
 ![](/articles/s26/os/img/sched_states.jpg)
