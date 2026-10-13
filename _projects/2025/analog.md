@@ -1,5 +1,6 @@
 ---
 title: "Two-Stage OTA"
+permalink: /projects/analog/
 excerpt: "Two-stage operational transconductance amplifier with extensive DC/AC/step testing and PVT variation analysis."
 collection: projects
 tags:

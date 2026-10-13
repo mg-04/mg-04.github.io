@@ -1,5 +1,6 @@
 ---
 title: "Omega Automata"
+permalink: /projects/automata/
 excerpt: "Theory of infinite-word automata (ω-languages): Buchi, Muller, and Rabin acceptance conditions, and applications in modeling non-terminating systems."
 collection: projects
 tags:

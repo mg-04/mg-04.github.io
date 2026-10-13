@@ -1,5 +1,6 @@
 ---
 title: "Rogue Planets"
+permalink: /projects/planet/
 excerpt: "Origin, detection, and simulation of rogue planets — unbound, planet-mass bodies drifting through the Galaxy."
 collection: projects
 tags:

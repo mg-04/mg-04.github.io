@@ -1,5 +1,6 @@
 ---
 title: "Sorting Algorithms"
+permalink: /projects/comparch/
 excerpt: "Architectural analysis on sorting algorithms."
 collection: projects
 tags:

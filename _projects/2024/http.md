@@ -1,5 +1,6 @@
 ---
 title: "HTTP Server and Client"
+permalink: /projects/http/
 excerpt: "HTTP server and client written in C from scratch, with a backend server loading a binary database and serving the frontend."
 collection: projects
 tags:

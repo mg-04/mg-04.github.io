@@ -1,5 +1,6 @@
 ---
 title: "Control Theory"
+permalink: /projects/control/
 excerpt: "A walkthrough of control theory and applications, including open loop control, PID, and computer simulation and tuning."
 collection: projects
 tags:

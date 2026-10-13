@@ -1,5 +1,6 @@
 ---
 title: "HardLock Chip"
+permalink: /projects/hardlock/
 excerpt: "Detection of timing-based signal anomalies in autonomous and embedded systems"
 collection: projects
 tags:

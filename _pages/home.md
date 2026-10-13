@@ -75,4 +75,6 @@ I like to master hard and interesting classes, and pass on my knowledge to other
   <li><i class="fas fa-fw fa-archive" aria-hidden="true"></i><span>I love archiving. I keep records of my old files, and it is always fun to look back at them. This website serves my purpose well too!</span></li>
 </ul>
 
+<p class="home-footer"><a href="/about/">About this site</a> · <a href="/sitemap/">Sitemap</a> · <a href="https://github.com/mg-04/mg-04.github.io">Source</a></p>
+
 </div>

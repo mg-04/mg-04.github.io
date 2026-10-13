@@ -1,5 +1,6 @@
 ---
 title: "Exponential and Logarithm"
+permalink: /projects/exp/
 excerpt: "A rigorous dive into exponential and logarithm functions, revisiting exp and log with real analysis and extending $$x^r$$ to all real $$r$$"
 collection: projects
 tags:

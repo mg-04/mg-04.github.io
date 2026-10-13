@@ -1,5 +1,6 @@
 ---
 title: "64-Tap FIR Filter"
+permalink: /projects/fir/
 excerpt: "Design and simulation of a 64-tap finite impulse response filter at 10 kS/s 16-bit fixed-point with MAC and full precision."
 collection: projects
 tags:

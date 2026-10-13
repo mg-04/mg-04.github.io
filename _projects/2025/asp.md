@@ -1,5 +1,6 @@
 ---
 title: "ASP Zookeeper"
+permalink: /projects/asp/
 excerpt: "(Subsets of) `malloc`, `grep`, chat server, `gdb`, `ld`, and a container manager"
 collection: projects
 tags:

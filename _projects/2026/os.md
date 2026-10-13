@@ -1,5 +1,6 @@
 ---
 title: "Freezer Scheduler and EZFS"
+permalink: /projects/os/
 teaser: '/images/projects/os/freezer-benchmark.png'
 excerpt: "Implementation of Linux utilities: in-kernel key-value store, custom round-robin scheduler, page walk, and a lightweight filesystem."
 course: "Operating Systems, Spring 2026"

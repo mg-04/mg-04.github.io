@@ -1,5 +1,6 @@
 ---
 title: "FFT Accelerator"
+permalink: /projects/fft/
 excerpt: "RTL-GDS flow of a high-performance 1024-point Radix-2 DIF FFT core in TSMC 65nm CMOS with 400 MHz clock and 39.8 MS/s throughput."
 teaser: /images/projects/ad.png
 course: "Advanced Digital Design, Spring 2026"

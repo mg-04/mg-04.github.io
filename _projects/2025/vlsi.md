@@ -1,5 +1,6 @@
 ---
 title: "Custom 8-Bit Processor"
+permalink: /projects/vlsi/
 excerpt: "A simple 8-bit processor core custom layout, built and tested from scratch in Cadence Virtuoso."
 collection: projects
 tags:

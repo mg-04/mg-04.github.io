@@ -1,5 +1,6 @@
 ---
 title: "MyMake"
+permalink: /projects/cpp/
 teaser: '/images/projects/cpp/mymake-code.png'
 excerpt: "Implementation of a subset of GNU `make` in C++ with Makefile parsing, recursive dependency graph resolution, and custom rule caching."
 course: "C++ for C Programmers, Spring 2026"

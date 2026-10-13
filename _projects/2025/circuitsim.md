@@ -1,5 +1,6 @@
 ---
 title: "CircuitSim"
+permalink: /projects/circuitsim/
 excerpt: "An analog/digital circuit simulator on FPGA written in C and Verilog, featuring Modified Nodal Analysis and hardware-accelerated matrix inversion."
 collection: projects
 tags:

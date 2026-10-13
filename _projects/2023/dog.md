@@ -1,5 +1,6 @@
 ---
 title: "Dog Cannot Catch"
+permalink: /projects/dog/
 excerpt: "Outstanding award winner. A unified mathematical and computational framework to analyze why Fritz the dog misses catching objects."
 collection: projects
 tags:

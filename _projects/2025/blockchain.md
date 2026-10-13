@@ -1,5 +1,6 @@
 ---
 title: "Blockchain"
+permalink: /projects/blockchain/
 excerpt: "Fully functional peer-to-peer blockchain network in Python with proof-of-work, digital signatures, Merkle trees, and a GUI wallet."
 collection: projects
 tags:
