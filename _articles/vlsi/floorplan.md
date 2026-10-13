@@ -10,12 +10,7 @@ date: 2025-12-24
 
 
 
-1. [Intro](/articles/vlsi)
-2. [Inverter](/articles/vlsi/inverter) 
-3. **Project Plan**
-4. [Adder and Shifter](/articles/vlsi/adder)
-5. [SRAM](/articles/vlsi/sram) 
-6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
+{% include vlsi-series.html current=3 %}
 
 ---
 
@@ -121,3 +116,5 @@ See example in our [adder](/articles/vlsi/adder#7-po-connections-and-contacts)
 - This leads to standard cells. You can check out the cells in the TSMC library!
 - You can reference textbook chapter 1.10.2-4 (pages 48-51) on how an 8-bit MIPS processor is laid out
 {: .notice--info}
+
+{% include vlsi-series.html current=3 position="bottom" %}

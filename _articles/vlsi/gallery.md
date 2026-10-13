@@ -16,13 +16,7 @@ authors:
 
 Here's a picture page, just for fun
 
-1. [Intro](/articles/vlsi)
-2. [Inverter](/articles/vlsi/inverter) 
-3. [Project Plan](/articles/vlsi/floorplan)
-4. [Adder and Shifter](/articles/vlsi/adder)
-5. [SRAM](/articles/vlsi/sram) 
-6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
-    - **Gallery**
+{% include vlsi-series.html current=7 %}
 
 {% include toc %}
 
@@ -63,3 +57,5 @@ Here's a picture page, just for fun
 
 ## M3-VIA3-M4  
 ![](/images/vlsi/pretty/layers/overall_5.png)
+
+{% include vlsi-series.html current=7 position="bottom" %}

@@ -22,13 +22,7 @@ Now for the **final push!**
 {: .notice--info}
 
 
-1. [Intro](/articles/vlsi)
-2. [Inverter](/articles/vlsi/inverter) 
-3. [Project Plan](/articles/vlsi/floorplan)
-4. [Adder and Shifter](/articles/vlsi/adder)
-5. [SRAM](/articles/vlsi/sram) 
-6. **PLA, Control, Data, Overall**
-    - [Gallery](/articles/vlsi/gallery)
+{% include vlsi-series.html current=6 %}
 
 ---
 
@@ -310,3 +304,5 @@ Look how the irregularities are hidden!
 
 > FIN
 {: .notice--success}
+
+{% include vlsi-series.html current=6 position="bottom" %}

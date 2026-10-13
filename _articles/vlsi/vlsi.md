@@ -18,71 +18,71 @@ authors:
 
 In this set of articles, I will walk through the **essence of the 4321 design project**, so you can survive even with zero layout experience (like I [was](https://drive.google.com/file/d/1FBoEp4GBl2KEo-37PTwxRQWdf6YPI9t_/view?usp=sharing)). It will be a *huge* learning curve, but don't be scared.
 
+---
+
+# Contents
+
+<div class="vlsi-toc">
+  <ol class="vlsi-toc__parts">
+    <li class="vlsi-toc__part vlsi-toc__part--current">
+      <div class="vlsi-toc__head"><span class="vlsi-toc__num">1</span><span>Intro to 4321 Layout</span><span class="vlsi-toc__ps vlsi-toc__ps--here">you are here</span></div>
+    </li>
+    <li class="vlsi-toc__part">
+      <div class="vlsi-toc__head"><span class="vlsi-toc__num">2</span><a href="/articles/vlsi/inverter">Inverter</a><span class="vlsi-toc__ps">PS4</span></div>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/inverter#layout">Layout</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/inverter#drc">DRC</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/inverter#lvs">LVS</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/inverter#virtuoso-faq">Virtuoso FAQ</a></em></p>
+    </li>
+    <li class="vlsi-toc__part">
+      <div class="vlsi-toc__head"><span class="vlsi-toc__num">3</span><a href="/articles/vlsi/floorplan">Project Plan</a></div>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/floorplan#architecture">Architecture</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/floorplan#isa">ISA</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/floorplan#floorplan">Floorplan</a></p>
+    </li>
+    <li class="vlsi-toc__part">
+      <div class="vlsi-toc__head"><span class="vlsi-toc__num">4</span><a href="/articles/vlsi/adder">Adder and Shifter</a><span class="vlsi-toc__ps">PS6-7</span></div>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/adder#design">Design</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#schematic">Schematic</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#carry-circuit-walkthrough">Carry Circuit</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#1-bit-adder">1-Bit Adder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#8-bit-adder">8-Bit Adder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#shifter">Shifter</a></p>
+    </li>
+    <li class="vlsi-toc__part">
+      <div class="vlsi-toc__head"><span class="vlsi-toc__num">5</span><a href="/articles/vlsi/sram">SRAM</a><span class="vlsi-toc__ps">PS8</span></div>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/sram#sram-array">SRAM Array</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#decoder">Decoder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#read-write">Read Write</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#testing">Testing</a></em><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#what-if-things-dont-fit">What If Things Don't Fit</a></em></p>
+    </li>
+    <li class="vlsi-toc__part">
+      <div class="vlsi-toc__head"><span class="vlsi-toc__num">6</span><a href="/articles/vlsi/overall">Overall</a><span class="vlsi-toc__ps">PS9</span></div>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/overall#power-grid">Power Grid</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#data-path">Data Path</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#pla">PLA</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#control-path">Control Path</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/overall#drc-and-lvs-tips">DRC/LVS Tips</a></em><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#wrap-up">Wrap Up!</a></p>
+    </li>
+  </ol>
+  <figure class="vlsi-toc__figure"><a href="/articles/vlsi/gallery"><img src="/images/vlsi/pretty/overall/overall_1.png" alt="Final processor layout"></a><figcaption>Final layout · <a href="/articles/vlsi/gallery">more pictures</a></figcaption></figure>
+</div>
+
+<p class="vlsi-toc__links"><a href="/articles/vlsi/gallery"><i class="fas fa-fw fa-images" aria-hidden="true"></i>Gallery</a><a href="https://www.bioee.ee.columbia.edu/courses/ee4321/"><i class="fas fa-fw fa-university" aria-hidden="true"></i>Official Course Page</a><a href="/courses/vlsi"><i class="fas fa-fw fa-book" aria-hidden="true"></i>My Class Notes</a><a href="https://charlottechen.blog/posts/VLSI_testing"><i class="fas fa-fw fa-vial" aria-hidden="true"></i>Testing Tutorial by Charlotte Chen</a></p>
+
+---
+
+# About
 Think of this as a process of **successive approximation** (Shepard’s favorite exam technique): make an initial attempt, realize how bad it is, learn something new, refine it, and repeat. 
 
 This guide is meant to help you **converge faster**, dodging the early traps and misjudgments we ran into and focusing on what *actually* matters. 
 
 Hopefully, this means less *pain and suffering*, and more **appreciation** for the real beauty of custom layout. Enjoy!
 
----
+<div class="vlsi-about" markdown="1">
+<div class="vlsi-about__card" markdown="1">
+**Specs**
 
-# Contents
-
-![image-right](/images/vlsi/pretty/overall/overall_1.png){: .align-right width="55%"}
-
-1. **Intro to 4321 Layout** (this article)
-2. [**Inverter**](/articles/vlsi/inverter) (PS4)
-    - [Layout](/articles/vlsi/inverter#layout)
-    - [DRC](/articles/vlsi/inverter#drc)
-    - [LVS](/articles/vlsi/inverter#lvs)
-    - [**Virtuoso FAQ**](/articles/vlsi/inverter#virtuoso-faq)
-3. [**Project Plan**](/articles/vlsi/floorplan)
-    - [Architecture](/articles/vlsi/floorplan#architecture)
-    - [ISA](/articles/vlsi/floorplan#isa)
-    - [Floorplan](/articles/vlsi/floorplan#floorplan)
-4. [**Adder and Shifter**](/articles/vlsi/adder) (PS6-7)
-    - [Design](/articles/vlsi/adder#design)
-    - [Schematic](/articles/vlsi/adder#schematic)
-    - [Carry Circuit Walkthrough](/articles/vlsi/adder#carry-circuit-walkthrough)
-    - [1-Bit Adder](/articles/vlsi/adder#1-bit-adder)
-    - [8-Bit Adder](/articles/vlsi/adder#8-bit-adder)
-    - [Shifter](/articles/vlsi/adder#shifter)
-5. [**SRAM**](/articles/vlsi/sram) (PS8)
-    - [SRAM Array](/articles/vlsi/sram#sram-array)
-    - [Decoder](/articles/vlsi/sram#decoder)
-    - [Read Write](/articles/vlsi/sram#read-write)
-    - [**Testing**](/articles/vlsi/sram#testing)
-    - [**What If Things Don't Fit**](/articles/vlsi/sram#what-if-things-dont-fit)
-6. [**Overall**](/articles/vlsi/overall) (PS9)
-    - [Power Grid](/articles/vlsi/overall#power-grid)
-    - [Data Path](/articles/vlsi/overall#data-path)
-    - [PLA](/articles/vlsi/overall#pla)
-    - [Control Path](/articles/vlsi/overall#control-path)
-    - [**DRC and LVS Tips**](/articles/vlsi/overall#drc-and-lvs-tips)
-    - [Wrap Up!](/articles/vlsi/overall#wrap-up)
-
-Appendix. [Pictures!](/articles/vlsi/gallery)  
-Link. [Official Course Page](https://www.bioee.ee.columbia.edu/courses/ee4321/)  
-Link. My [Class Notes](/courses/vlsi)  
-Link. [Testing Tutorial](https://charlottechen.blog/posts/VLSI_testing) by Charlotte Chen
-
----
-
-# About
-Specs:  
 - 1100 µm² core area
 - 4 Metal layers  
 - 2 GHz frequency
 - 2.1 µm data path bit pitch (2 SRAM columns)
 - DRC and LVS clean
+</div>
+<div class="vlsi-about__card" markdown="1">
+**Configuration**
 
-Configuration:
 - Static CMOS ripple-carry adder
 - Transmission gate logarithmic shifter (buffered)
 - 4x16 physical SRAM (static decoding, 2-column MUX)
 - Pseudo-NMOS ratio PLA
 - Master-slave accumulator
 - C²MOS bus drivers
+</div>
+</div>
 
 ## Disclaimer
 > mg-04-io is a personal blog. It is not affiliated with Columbia EE or BioEE.  
@@ -118,6 +118,8 @@ The goal of this project is to get something *done*, and done *well*, not *perfe
 
 
 
+
+<div class="vlsi-faq" markdown="1">
 
 ## Logistics
 
@@ -293,6 +295,8 @@ The point is: **if you fail, the class fails with you**. If you can't solve the 
 
 > **More to be added...**
 
+</div>
+
 ---
 
 # Special Thanks
@@ -305,3 +309,5 @@ Many thanks to the following for their help and guidance throughout this project
 - Current students David Kim, Stephen Ogunmwonyi, Simon Mao, Nico Alarcon.
 
 Additional thanks to William Wang for sharing his [PLA layout](/articles/vlsi/overall#layout-by-william-wang)
+
+{% include vlsi-series.html current=1 position="bottom" %}

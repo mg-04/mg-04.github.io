@@ -1,0 +1,46 @@
+{% comment %}
+  Navigation for the 4321 VLSI article series.
+  Usage: {% include vlsi-series.html current=3 %}             (stepper, top of page)
+         {% include vlsi-series.html current=3 position="bottom" %}  (prev/next, end of page)
+  current: 1 Intro, 2 Inverter, 3 Project Plan, 4 Adder, 5 SRAM, 6 Overall, 7 Gallery
+{% endcomment %}
+{% capture vs_data %}
+/articles/vlsi|Intro
+/articles/vlsi/inverter|Inverter
+/articles/vlsi/floorplan|Project Plan
+/articles/vlsi/adder|Adder and Shifter
+/articles/vlsi/sram|SRAM
+/articles/vlsi/overall|PLA, Control, Data, Overall
+/articles/vlsi/gallery|Gallery
+{% endcapture %}
+{% assign vs_items = vs_data | strip | split: "
+" %}
+{% assign vs_cur = include.current | plus: 0 %}
+
+{% if include.position == "bottom" %}
+{% assign vs_prev = vs_cur | minus: 2 %}
+{% assign vs_next = vs_cur %}
+<nav class="vlsi-pager" aria-label="VLSI series">
+  {% if vs_cur > 1 %}
+    {% assign p = vs_items[vs_prev] | split: "|" %}
+    <a class="vlsi-pager__link vlsi-pager__link--prev" href="{{ p[0] }}"><span>← Previous</span>{{ p[1] }}</a>
+  {% else %}<span></span>{% endif %}
+  {% if vs_cur < vs_items.size %}
+    {% assign n = vs_items[vs_next] | split: "|" %}
+    <a class="vlsi-pager__link vlsi-pager__link--next" href="{{ n[0] }}"><span>Next →</span>{{ n[1] }}</a>
+  {% endif %}
+</nav>
+{% else %}
+<nav class="vlsi-series" aria-label="VLSI series">
+  <span class="vlsi-series__label">4321 VLSI series</span>
+  <ol>
+  {% for item in vs_items %}
+    {% assign it = item | split: "|" %}
+    {% capture vs_cls %}{% if forloop.last %}vlsi-series__extra {% endif %}{% if forloop.index == vs_cur %}is-current{% endif %}{% endcapture %}
+    <li{% if vs_cls != "" %} class="{{ vs_cls | strip }}"{% endif %}{% if forloop.index == vs_cur %} aria-current="page"{% endif %}>
+      {% if forloop.index == vs_cur %}<span>{% unless forloop.last %}<b>{{ forloop.index }}</b>{% endunless %}{{ it[1] }}</span>{% else %}<a href="{{ it[0] }}">{% unless forloop.last %}<b>{{ forloop.index }}</b>{% endunless %}{{ it[1] }}</a>{% endif %}
+    </li>
+  {% endfor %}
+  </ol>
+</nav>
+{% endif %}

@@ -955,3 +955,311 @@ html[data-theme="dark"] .row-media figcaption {
     flex: 1 1 100% !important;
   }
 }
+
+/* VLSI series contents: numbered part cards beside the chip image */
+.vlsi-toc {
+  display: grid;
+  grid-template-columns: 1fr 13rem;
+  gap: 1.25rem;
+  align-items: start;
+  margin: 1rem 0;
+}
+
+.vlsi-toc__parts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vlsi-toc__part {
+  margin: 0 0 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--global-link-color);
+  }
+}
+
+.vlsi-toc__part--current {
+  border-style: dashed;
+}
+
+.vlsi-toc__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.vlsi-toc__num {
+  flex: 0 0 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  font-size: 0.85em;
+  text-align: center;
+  color: var(--global-bg-color);
+  background: var(--global-link-color);
+  border-radius: 50%;
+}
+
+.vlsi-toc__ps {
+  margin-left: auto;
+  padding: 0 0.5rem;
+  font-size: 0.72em;
+  font-weight: normal;
+  color: var(--global-text-color-light);
+  border: 1px solid var(--global-border-color);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.vlsi-toc__ps--here {
+  font-style: italic;
+}
+
+.page__content .vlsi-toc__subs,
+.vlsi-toc__subs {
+  margin: 0.3rem 0 0 2.2rem;
+  font-size: 0.85em;
+  line-height: 1.6;
+
+  a {
+    white-space: nowrap;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    color: var(--global-text-color-light);
+  }
+}
+
+.vlsi-toc__figure {
+  position: sticky;
+  top: 5rem;
+  margin: 0;
+  text-align: center;
+
+  img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  figcaption {
+    margin-top: 0.3rem;
+    font-size: 0.8em;
+    color: var(--global-text-color-light);
+  }
+}
+
+.vlsi-toc__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  a {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85em;
+    text-decoration: none;
+    border: 1px solid var(--global-border-color);
+    border-radius: 6px;
+
+    &:hover {
+      border-color: var(--global-link-color);
+    }
+  }
+
+  i {
+    margin-right: 0.3em;
+  }
+}
+
+@media (max-width: 700px) {
+  .vlsi-toc {
+    grid-template-columns: 1fr;
+  }
+
+  .vlsi-toc__figure {
+    position: static;
+    order: -1;
+    max-width: 12rem;
+    margin: 0 auto;
+  }
+}
+
+/* VLSI intro: specs / configuration boxes */
+.vlsi-about {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.vlsi-about__card {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+
+  > p:first-child {
+    margin: 0 0 0.4rem;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--global-text-color-light);
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* VLSI FAQ: question blockquotes read as headings, lighter dividers */
+.vlsi-faq {
+  blockquote:not([class]):has(> p:only-child) {
+    margin: 1.25rem 0 0.5rem;
+    padding: 0.1rem 0 0.1rem 0.75rem;
+    font-style: normal;
+    font-size: 1.05em;
+    font-weight: 600;
+    border-left: 3px solid var(--global-link-color);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  hr {
+    margin: 1.25rem 0;
+    border-top-style: dashed;
+    opacity: 0.6;
+  }
+}
+
+/* VLSI series: stepper at the top of each part, prev/next at the end */
+.vlsi-series {
+  margin: 0.5rem 0 1.5rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a,
+  li > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.15rem 0.65rem 0.15rem 0.2rem;
+    font-size: 0.82em;
+    text-decoration: none;
+    border: 1px solid var(--global-border-color);
+    border-radius: 999px;
+  }
+
+  a:hover {
+    border-color: var(--global-link-color);
+  }
+
+  b {
+    display: inline-block;
+    width: 1.35rem;
+    height: 1.35rem;
+    line-height: 1.35rem;
+    font-size: 0.85em;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--global-text-color-light);
+    color: var(--global-bg-color);
+  }
+
+  .is-current > span {
+    font-weight: 600;
+    color: var(--global-bg-color);
+    background: var(--global-link-color);
+    border-color: var(--global-link-color);
+
+    b {
+      background: var(--global-bg-color);
+      color: var(--global-link-color);
+    }
+  }
+
+  .vlsi-series__extra {
+    margin-left: auto;
+
+    a,
+    > span {
+      padding-left: 0.65rem;
+    }
+  }
+}
+
+.vlsi-series__label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--global-text-color-light);
+}
+
+.vlsi-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 3rem 0 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--global-border-color);
+}
+
+.page__content .vlsi-pager__link,
+.vlsi-pager__link {
+  display: flex;
+  flex-direction: column;
+  max-width: 48%;
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+
+  &:hover {
+    border-color: var(--global-link-color);
+  }
+
+  span {
+    font-size: 0.75em;
+    font-weight: normal;
+    color: var(--global-text-color-light);
+  }
+}
+
+.vlsi-pager__link--next {
+  margin-left: auto;
+  text-align: right;
+}

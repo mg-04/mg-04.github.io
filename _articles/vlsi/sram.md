@@ -31,12 +31,7 @@ Now you are at the next *stage* of 4321: the mighty **SRAM**
 > Many parts of this PS can be done in parallel. Get your teammate to work!
 {: .notice--info}
 
-1. [Intro](/articles/vlsi)
-2. [Inverter](/articles/vlsi/inverter) 
-3. [Project Plan](/articles/vlsi/floorplan)
-4. [Adder and Shifter](/articles/vlsi/adder)
-5. **SRAM**
-6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
+{% include vlsi-series.html current=5 %}
 
 ---
 
@@ -349,3 +344,5 @@ Those are fine, since the internal schematic for the 6T SRAM cell is not given. 
 - If post-extraction simulation doesn't work, try a more tolerant testbench timing [here](/articles/vlsi/sram#testing)
 
 The post-extraction delays are around 50 ns.
+
+{% include vlsi-series.html current=5 position="bottom" %}

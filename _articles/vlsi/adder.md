@@ -21,12 +21,7 @@ Now comes the first real task of 4321: adder
 > This is very, very important. You will learn the fundamentals of tight layout and diffusion sharing!
 {: .notice--info}
 
-1. [Intro](/articles/vlsi)
-2. [Inverter](/articles/vlsi/inverter) 
-3. [Project Plan](/articles/vlsi/floorplan)
-4. **Adder and Shifter**
-5. [SRAM](/articles/vlsi/sram) 
-6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
+{% include vlsi-series.html current=4 %}
 
 ---
 
@@ -424,5 +419,4 @@ You can see the iconic "alternating gates":
 
 ![](/images/vlsi/adder/shifter.png)
 
-
-
+{% include vlsi-series.html current=4 position="bottom" %}

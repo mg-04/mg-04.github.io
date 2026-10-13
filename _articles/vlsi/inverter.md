@@ -7,12 +7,7 @@ date: 2025-12-24
 
 {% include toc %}
 
-1. [Intro](/articles/vlsi)
-2. **Inverter**
-3. [Project Plan](/articles/vlsi/floorplan)
-4. [Adder and Shifter](/articles/vlsi/adder)
-5. [SRAM](/articles/vlsi/sram) 
-6. [PLA, Control, Data, Overall](/articles/vlsi/overall)
+{% include vlsi-series.html current=2 %}
 
 
 > Take a read of Shepard's [Online CAD Tutorial](https://www.bioee.ee.columbia.edu/courses/cad/html/). It's a very comprehensive guide. 
@@ -215,6 +210,8 @@ Yep, so add labels to the other three, and you will be **LVS clean!**
 ---
 
 # Virtuoso FAQ
+<div class="vlsi-faq" markdown="1">
+
 > When I open Virtuoso, all my instances show up as [red boxes](/images/vlsi/sram/s_demo_master.png)
 
 Click `Shift+F` to display instance details, and `Ctrl+F` to abstract them
@@ -257,3 +254,7 @@ You might have forgotten to power VDD. This is dumb, but a recurring theme of th
 
 It should be fine for the inverter, but for more complex designs like the adder, extract only **C+CC**. RCC will blow up the number of nets.  
 If the extracted delay has jumped by a massive amount (e.g. more than 2x), there's a problem in your layout.
+
+</div>
+
+{% include vlsi-series.html current=2 position="bottom" %}
