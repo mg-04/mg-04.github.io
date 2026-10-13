@@ -15,7 +15,7 @@ Built with Jekyll on the [Academic Pages](https://github.com/academicpages/acade
 | Courses | `_data/courses.yml` | Rendered by `_pages/courses.md` |
 | Blog Posts | `_posts/` | Year timeline with tag filter |
 | Resume / CV | `_articles/resume.md`, `_articles/cv.md` | Served at `/resume/` and `/cv/` |
-| About this site | `_pages/about.md` | Hub for pages outside the menu; linked from the home page footer |
+| About this site | `_pages/about.md` | Hub for pages outside the menu; linked from the site footer |
 
 ## Repository layout
 
@@ -57,7 +57,7 @@ Jekyll only reads `_config.yml` at startup, so restart the server after editing 
 # Academic Pages
 **Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
 
-![Academic Pages template example](images/homepage.png "Academic Pages template example")
+![Academic Pages template example](images/template/homepage.png "Academic Pages template example")
 
 ## Getting Started
 

@@ -92,7 +92,7 @@ publication_category:
     title: 'Research Reports'
 
 # Site Settings
-teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
+teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "template/500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 130
 future                   : false

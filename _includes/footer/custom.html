@@ -1,3 +1,10 @@
 <!-- start custom footer snippets -->
-<a href="/sitemap/">Sitemap</a>
+{% include base_path %}
+<nav class="page__footer-links" aria-label="Site links">
+  <a href="{{ base_path }}/about/">About this site</a>
+  <span aria-hidden="true">·</span>
+  <a href="{{ base_path }}/sitemap/">Sitemap</a>
+  <span aria-hidden="true">·</span>
+  <a href="https://github.com/mg-04/mg-04.github.io">Source</a>
+</nav>
 <!-- end custom footer snippets -->
