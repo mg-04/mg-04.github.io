@@ -3,7 +3,7 @@ title: "Continuous Vital Signs Monitoring with a Loose T-Shirt"
 collection: publications
 category: manuscripts
 permalink: /publication/cecg
-excerpt: 'Continuous Electrocardiogram Monitoring with a Loose T-Shirt'
+excerpt: "We present a hardware-software co-design that enables continuous cardiac tracking within a standard, loose t-shirt. Physically, the shirt's weight presses a thin sensor against the skin, trapping perspiration to form a stable fluidic anchor via capillary pull and negative pressure, while a structural kirigami pattern mechanically absorbs lateral shear."
 date: 2026-8-1
 authors: Ho Man Colman Leung, Kyle Tong, Ming Gong, Nam Bui, Xia Zhou
 venue: MobiDx

@@ -18,7 +18,7 @@ author_profile: true
 {% endfor %}
 </nav>
 
-<p class="courses-styleguide"><i class="fas fa-fw fa-pen-nib" aria-hidden="true"></i>How the notes are written: note style guides for <a href="{{ base_path }}/notes/style/jekyll/">Markdown (Jekyll)</a> · <a href="{{ base_path }}/notes/style/obsidian/">Markdown (Obsidian)</a> · <a href="{{ base_path }}/notes/style/handwritten/">Handwritten</a></p>
+<p class="courses-styleguide"><i class="fas fa-fw fa-pen-nib" aria-hidden="true"></i>Note style guides for <a href="{{ base_path }}/notes/style/jekyll/">Markdown (Jekyll)</a> · <a href="{{ base_path }}/notes/style/obsidian/">Markdown (Obsidian)</a> · <a href="{{ base_path }}/notes/style/handwritten/">Handwritten</a></p>
 
 {% for school in site.data.courses %}
 {% assign count = 0 %}

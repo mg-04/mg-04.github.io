@@ -13,7 +13,6 @@ Below are the pages that aren't in the main menu.
 ## Notes and resources
 - [ODS Notes](/ods/): notetaker notes for CSEE courses
 - [Simon's Rock Archive](/sr-archive): course materials from Simon's Rock
-- Digital SAT Math: [Test Bank I](/yuan), [Test Bank II](/yuan2), [Solutions](/yuan/sol)
 - [Dating](/dating/)
 - [Talks](/talks/)
 

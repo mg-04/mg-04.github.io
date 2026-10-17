@@ -5,107 +5,38 @@ permalink: /research/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap" style="margin-bottom: 1.5em;">
-    You can also find my articles on <a href="{{ site.author.googlescholar }}">my Google Scholar profile</a>.
-  </div>
-{% endif %}
-
 {% include base_path %}
+
+{% if site.author.googlescholar %}
+  <p class="research-intro">You can also find my articles on <a href="{{ site.author.googlescholar }}">my Google Scholar profile</a>.</p>
+{% endif %}
 
 {% assign sorted_pubs = site.publications | sort: "date" | reverse %}
 
 {% if site.publication_category %}
-  {% for category in site.publication_category %}
-    {% assign title_shown = false %}
-    {% for post in sorted_pubs %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2>
-        <hr style="margin-bottom: 1.5em;" />
-        {% assign title_shown = true %}
-      {% endunless %}
-
-      <div class="responsive-row" style="margin-bottom: 2.5em; border-bottom: 1px solid #f2f3f3; padding-bottom: 1.5em; --image-flex: 1.5; --image-max-width: '150px';">
-        <div class="row-text">
-          <h3 style="margin-top: 0; margin-bottom: 0.3em;">
-            {% if post.link %}
-              <a href="{{ post.link }}">{{ post.title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i></a>
-            {% else %}
-              <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
-            {% endif %}
-          </h3>
-
-          <div style="font-size: 0.9em; margin-bottom: 0.5em;">
-            {% if post.authors %}<span class="publication-authors">{{ post.authors }}</span><br/>{% endif %}
-            {% if post.venue %}<span class="publication-venue" style="font-style: italic;">{{ post.venue }}</span>{% endif %}{% if post.venue and post.date %}, {% endif %}{% if post.date %}{{ post.date | default: "1900-01-01" | date: "%Y" }}{% endif %}
-            {% if post.paperurl %}<br/><a href="{{ post.paperurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i>Paper</a>{% endif %}
-			{% if post.slidesurl %}<br/><a href="{{ post.slidesurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i>Slides</a>{% endif %}
-			{% if post.codeurl %}<br/><a href="{{ post.codeurl }}" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i>Code</a>{% endif %}
-          </div>
-
-          {% if post.excerpt %}
-            <div class="publication-excerpt" style="font-size: 0.95em; line-height: 1.5;">
-              {{ post.excerpt | markdownify }}
-            </div>
-          {% endif %}
-        </div>
-
-        <div class="row-media">
-          {% if post.teaser %}
-            <figure>
-              <img src="{{ base_path }}{{ post.teaser }}" alt="{{ post.title }} teaser" />
-              {% if post.teaser_caption %}<figcaption>{{ post.teaser_caption }}</figcaption>{% endif %}
-            </figure>
-          {% elsif post.header.teaser %}
-            <figure>
-              <img src="{{ base_path }}{{ post.header.teaser }}" alt="{{ post.title }} teaser" />
-            </figure>
-          {% endif %}
-        </div>
-      </div>
-    {% endfor %}
+  {% comment %}
+    Sections in order. "Publications" collects every category not given its own section
+    (journal articles, theses, ...), newest first.
+  {% endcomment %}
+  {% assign published = sorted_pubs | where_exp: "p", "p.category != 'active'" | where_exp: "p", "p.category != 'conferences'" | where_exp: "p", "p.category != 'reports'" %}
+  {% assign sections = "active,publications,conferences,reports" | split: "," %}
+  {% for sec in sections %}
+    {% if sec == "publications" %}
+      {% assign sec_items = published %}
+      {% assign sec_title = "Publications" %}
+    {% else %}
+      {% assign sec_items = sorted_pubs | where: "category", sec %}
+      {% assign sec_title = site.publication_category[sec].title %}
+    {% endif %}
+    {% if sec_items.size > 0 %}
+    <section class="research-section" id="{{ sec }}">
+      <h2 class="course-school__name">{{ sec_title }}</h2>
+      {% for post in sec_items %}{% include research-row.html %}{% endfor %}
+    </section>
+    {% endif %}
   {% endfor %}
 {% else %}
   {% for post in sorted_pubs %}
-    <div class="responsive-row" style="margin-bottom: 2.5em; border-bottom: 1px solid #f2f3f3; padding-bottom: 1.5em; --image-flex: 1.5; --image-max-width: '150px';">
-      <div class="row-text">
-        <h3 style="margin-top: 0; margin-bottom: 0.3em;">
-          {% if post.link %}
-            <a href="{{ post.link }}">{{ post.title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i></a>
-          {% else %}
-            <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
-          {% endif %}
-        </h3>
-
-        <div style="font-size: 0.9em; margin-bottom: 0.5em;">
-          {% if post.authors %}<span class="publication-authors">{{ post.authors }}</span><br/>{% endif %}
-          {% if post.venue %}<span class="publication-venue" style="font-style: italic;">{{ post.venue }}</span>{% endif %}{% if post.date and post.venue %}, {% endif %}{% if post.date %}{{ post.date | default: "1900-01-01" | date: "%Y" }}{% endif %}
-          {% if post.paperurl %}<br/><a href="{{ post.paperurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i> PDF</a>{% endif %}
-        </div>
-
-        {% if post.excerpt %}
-          <div class="publication-excerpt" style="font-size: 0.95em; line-height: 1.5;">
-            {{ post.excerpt | markdownify }}
-          </div>
-        {% endif %}
-      </div>
-
-      <div class="row-media">
-        {% if post.teaser %}
-          <figure>
-            <img src="{{ base_path }}{{ post.teaser }}" alt="{{ post.title }} teaser" />
-            {% if post.teaser_caption %}<figcaption>{{ post.teaser_caption }}</figcaption>{% endif %}
-          </figure>
-        {% elsif post.header.teaser %}
-          <figure>
-            <img src="{{ base_path }}{{ post.header.teaser }}" alt="{{ post.title }} teaser" />
-          </figure>
-        {% endif %}
-      </div>
-    </div>
+    {% include research-row.html %}
   {% endfor %}
 {% endif %}

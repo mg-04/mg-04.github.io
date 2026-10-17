@@ -1,0 +1,43 @@
+{% comment %} One entry on the Research page. Expects `post`. {% endcomment %}
+{% include base_path %}
+{% assign rr_authors = post.authors | default: post.author %}
+<div class="responsive-row research-row">
+  <div class="row-text">
+    <h3 class="research-row__title">
+      {% if post.link %}
+        <a href="{{ post.link }}">{{ post.title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i></a>
+      {% else %}
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
+      {% endif %}
+    </h3>
+
+    <div class="research-row__meta">
+      {% if rr_authors %}<span class="publication-authors">{{ rr_authors | replace: "Ming Gong", "<strong>Ming Gong</strong>" }}</span><br/>{% endif %}
+      {% if post.venue %}<span class="publication-venue">{{ post.venue }}</span>{% endif %}{% if post.venue and post.date %}, {% endif %}{% if post.date %}{{ post.date | default: "1900-01-01" | date: "%Y" }}{% endif %}
+    </div>
+
+    {% if post.excerpt %}
+      <div class="research-row__excerpt">
+        {{ post.excerpt | markdownify }}
+      </div>
+    {% endif %}
+
+    {% if post.paperurl or post.slidesurl or post.codeurl %}
+    <p class="research-row__links">
+      {% if post.paperurl %}<a href="{{ post.paperurl }}" target="_blank" rel="noopener"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i>Paper</a>{% endif %}
+      {% if post.slidesurl %}<a href="{{ post.slidesurl }}" target="_blank" rel="noopener"><i class="fas fa-fw fa-file-powerpoint" aria-hidden="true"></i>Slides</a>{% endif %}
+      {% if post.codeurl %}<a href="{{ post.codeurl }}" target="_blank" rel="noopener"><i class="fab fa-fw fa-github" aria-hidden="true"></i>Code</a>{% endif %}
+    </p>
+    {% endif %}
+  </div>
+
+  <div class="row-media">
+    {% assign rr_teaser = post.teaser | default: post.header.teaser %}
+    {% if rr_teaser %}
+      <figure>
+        <img src="{{ base_path }}{{ rr_teaser }}" alt="{{ post.title }} teaser" loading="lazy" />
+        {% if post.teaser_caption %}<figcaption>{{ post.teaser_caption }}</figcaption>{% endif %}
+      </figure>
+    {% endif %}
+  </div>
+</div>

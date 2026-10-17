@@ -221,12 +221,8 @@ html[data-theme="dark"] .row-media figcaption {
 }
 
 .home-intro {
-  font-size: 1.08em;
-  line-height: 1.7;
-  padding: 1rem 1.25rem;
-  border-left: 4px solid var(--global-link-color);
-  border-radius: 0 8px 8px 0;
-  background: var(--global-code-background-color);
+  margin: 0 0 0.5rem;
+  line-height: 1.65;
 }
 
 /* Research interest cards */
@@ -1355,4 +1351,308 @@ pre.mermaid {
   border: 0;
   box-shadow: none;
   overflow-x: auto;
+}
+
+
+/* ============================================================
+   Research page (same row pattern as Teaching)
+   ============================================================ */
+
+.research-intro {
+  font-size: 0.9em;
+  color: var(--global-text-color-light);
+}
+
+.research-section {
+  margin-bottom: 2.5rem;
+
+  .research-row:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+.research-row {
+  --image-flex: 1.5;
+  --image-max-width: 300px;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.research-row__title {
+  margin: 0 0 0.3em;
+}
+
+.research-row__meta {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+
+  .publication-venue {
+    font-style: italic;
+  }
+}
+
+.research-row__excerpt {
+  font-size: 0.95em;
+  line-height: 1.5;
+
+  p {
+    margin-bottom: 0.5em;
+  }
+}
+
+.research-row__links {
+  margin: 0.4em 0 0;
+  font-size: 0.9em;
+
+  a {
+    margin-right: 1.25em;
+  }
+
+  i {
+    margin-right: 0.3em;
+  }
+}
+
+/* ============================================================
+   Home: research section (featured cards with technical SVGs)
+   ============================================================ */
+
+.home h3.home-sub {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+
+  span {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: normal;
+  }
+}
+
+.research-feature {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1rem;
+}
+
+.home .rf-card {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--global-link-color);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.rf-fig {
+  display: block;
+  width: 100%;
+  height: 7.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--global-code-background-color);
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.rf-text {
+  padding: 0.6rem 0.9rem 0.7rem;
+
+  h4 {
+    margin: 0 0 0.35rem;
+    font-size: 1em;
+    color: var(--global-link-color);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.88em;
+    line-height: 1.45;
+  }
+}
+
+.rf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+
+  span {
+    padding: 0.05rem 0.55rem;
+    font-size: 0.72em;
+    font-family: $monospace;
+    border: 1px solid var(--global-border-color);
+    border-radius: 999px;
+    color: var(--global-text-color-light);
+  }
+}
+
+/* SVG parts: theme colours via currentColor-free CSS vars */
+.rf-fig {
+  .rs-track path { stroke: var(--global-text-color-light); stroke-width: 0.8; opacity: 0.45; fill: none; }
+  .rs-sb rect { fill: none; stroke: var(--global-text-color-light); stroke-width: 1; stroke-dasharray: 2 2; }
+  .rs-lb rect { fill: var(--global-bg-color); stroke: var(--global-text-color); stroke-width: 1.2; rx: 3; }
+  .rs-label, .rs-label text { fill: var(--global-text-color-light); font-family: $monospace; font-size: 9px; text-anchor: middle; dominant-baseline: middle; }
+  .rs-small { font-size: 7.5px; }
+  .rs-net { fill: none; stroke: var(--global-link-color); stroke-width: 2.4; stroke-linejoin: round; }
+  .rs-pin { fill: var(--global-link-color); }
+
+  .rs-sign, .rs-exp, .rs-man, .rs-flip { stroke: var(--global-bg-color); stroke-width: 0.8; }
+  .rs-sign { fill: var(--global-text-color-light); opacity: 0.55; }
+  .rs-exp { fill: var(--global-link-color); opacity: 0.55; }
+  .rs-man { fill: var(--global-text-color-light); opacity: 0.22; }
+  .rs-flip { fill: #e5534b; }
+  .rs-arrow { fill: none; stroke: #e5534b; stroke-width: 1.4; }
+  .rs-flip-text { fill: #e5534b; font-family: $monospace; font-size: 8.5px; }
+  .rs-brace path { fill: none; stroke: var(--global-text-color-light); stroke-width: 0.8; }
+  .rs-eq { fill: var(--global-text-color); font-family: $monospace; font-size: 9px; text-anchor: middle; }
+}
+
+/* Earlier research list (reuses the timeline look) */
+.home-past {
+  margin: 0.5rem 0 1rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-left: 2px solid var(--global-border-color);
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 0.95rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 2px solid var(--global-link-color);
+      background: var(--global-bg-color);
+    }
+  }
+
+  small {
+    color: var(--global-text-color-light);
+  }
+}
+
+@media (max-width: 600px) {
+  .home-past li {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+}
+
+/* Subtle links (text colour, thin underline): interest cards, teaching, personal */
+.home-card p a,
+.home-teach a,
+.home-personal a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--global-text-color-light);
+
+  &:hover {
+    color: var(--global-link-color);
+    text-decoration-color: var(--global-link-color);
+  }
+}
+
+/* Home: hot links row under the intro */
+.home-hot {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.6rem;
+  margin: 0.75rem 0 0.5rem;
+
+  a {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.55rem 0.75rem;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid var(--global-border-color);
+    border-radius: 8px;
+    transition: border-color 0.15s ease;
+
+    &:hover {
+      border-color: var(--global-link-color);
+
+      strong {
+        color: var(--global-link-color);
+      }
+    }
+  }
+
+  i {
+    margin-top: 0.2rem;
+    color: var(--global-link-color);
+  }
+
+  span {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+  }
+
+  strong {
+    font-size: 0.92em;
+  }
+
+  small {
+    font-size: 0.78em;
+    color: var(--global-text-color-light);
+  }
+}
+
+/* Home: compact teaching list (term | role) */
+.home-teach {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.95em;
+
+  li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--global-border-color);
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  span {
+    color: var(--global-text-color-light);
+    font-variant-numeric: tabular-nums;
+  }
+
+  small {
+    color: var(--global-text-color-light);
+  }
+}
+
+@media (max-width: 600px) {
+  .home-teach li {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
