@@ -1345,3 +1345,14 @@ html[data-theme="dark"] .vlsi-stack code {
   border: 1px solid var(--global-border-color);
   border-radius: 6px;
 }
+
+/* Mermaid diagrams: centered, no code-block chrome */
+pre.mermaid {
+  margin: 1rem 0;
+  padding: 0;
+  text-align: center;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow-x: auto;
+}

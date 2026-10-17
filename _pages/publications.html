@@ -44,6 +44,7 @@ author_profile: true
             {% if post.venue %}<span class="publication-venue" style="font-style: italic;">{{ post.venue }}</span>{% endif %}{% if post.venue and post.date %}, {% endif %}{% if post.date %}{{ post.date | default: "1900-01-01" | date: "%Y" }}{% endif %}
             {% if post.paperurl %}<br/><a href="{{ post.paperurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i>Paper</a>{% endif %}
 			{% if post.slidesurl %}<br/><a href="{{ post.slidesurl }}" target="_blank"><i class="fas fa-fw fa-file-pdf" aria-hidden="true"></i>Slides</a>{% endif %}
+			{% if post.codeurl %}<br/><a href="{{ post.codeurl }}" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i>Code</a>{% endif %}
           </div>
 
           {% if post.excerpt %}

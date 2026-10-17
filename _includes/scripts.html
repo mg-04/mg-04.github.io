@@ -1,3 +1,29 @@
 <script src="{{ base_path }}/assets/js/main.min.js"></script>
 
 {% include analytics.html %}
+
+{% comment %}
+  Mermaid diagrams: ```mermaid fences render as highlighted code blocks.
+  Swap them for <pre class="mermaid"> and load Mermaid only on pages that have one.
+{% endcomment %}
+<script>
+(function () {
+  var blocks = document.querySelectorAll('div.language-mermaid, pre > code.language-mermaid');
+  if (!blocks.length) { return; }
+  for (var i = 0; i < blocks.length; i++) {
+    var el = blocks[i].tagName === 'CODE' ? blocks[i].parentNode : blocks[i];
+    var pre = document.createElement('pre');
+    pre.className = 'mermaid';
+    pre.textContent = el.textContent;
+    el.parentNode.replaceChild(pre, el);
+  }
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js';
+  s.onload = function () {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    window.mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'default' });
+    window.mermaid.run({ querySelector: 'pre.mermaid' });
+  };
+  document.body.appendChild(s);
+})();
+</script>
