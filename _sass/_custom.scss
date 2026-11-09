@@ -1559,6 +1559,7 @@ pre.mermaid {
 /* Subtle links (text colour, thin underline): interest cards, teaching, personal */
 .home-card p a,
 .home-teach a,
+.home-past a,
 .home-personal a {
   color: inherit;
   text-decoration: underline;
@@ -1654,5 +1655,74 @@ pre.mermaid {
   .home-teach li {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+}
+
+/* Teaching row extra link pushed to the right edge */
+.home-teach__aside {
+  float: right;
+  margin-left: 0.75rem;
+}
+
+/* ============================================================
+   Callouts (notices), Ed-style: tinted box, solid icon tile on the left
+   ============================================================ */
+
+$callout-types: (
+  "notice"          : ($notice-color,  "\f0eb"),  /* lightbulb */
+  "notice--primary" : ($notice-color,  "\f0eb"),
+  "notice--info"    : ($info-color,    "\f129"),  /* info */
+  "notice--warning" : ($warning-color, "\f071"),  /* triangle-exclamation */
+  "notice--success" : ($success-color, "\f00c"),  /* check */
+  "notice--danger"  : ($danger-color,  "\f06a")   /* circle-exclamation */
+);
+
+@each $name, $spec in $callout-types {
+  $c: nth($spec, 1);
+  $icon: nth($spec, 2);
+
+  .page__content .#{$name},
+  .#{$name} {
+    position: relative;
+    margin: 1.25em 0 !important;
+    padding: 0.7em 1em 0.7em 3em;
+    font-style: normal;
+    font-size: $type-size-6 !important;
+    line-height: 1.55;
+    background-color: mix(#fff, $c, 88%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: none;
+
+    &::before {
+      content: $icon;
+      position: absolute;
+      top: 0.6em;
+      left: 0.7em;
+      width: 1.6em;
+      height: 1.6em;
+      line-height: 1.6em;
+      text-align: center;
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-style: normal;
+      font-size: 0.95em;
+      color: #fff;
+      background-color: $c;
+      border-radius: 4px;
+    }
+
+    p, li {
+      font-style: normal;
+    }
+
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+
+  html[data-theme="dark"] .page__content .#{$name},
+  html[data-theme="dark"] .#{$name} {
+    background-color: rgba($c, 0.2);
   }
 }

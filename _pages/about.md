@@ -8,7 +8,7 @@ redirect_from:
 
 This site is built with Jekyll on the [Academic Pages](https://github.com/academicpages/academicpages.github.io) template and hosted on GitHub Pages. Source: [mg-04/mg-04.github.io](https://github.com/mg-04/mg-04.github.io).
 
-Below are the pages that aren't in the main menu.
+Here are some unlisted/unused pages!
 
 ## Notes and resources
 - [ODS Notes](/ods/): notetaker notes for CSEE courses

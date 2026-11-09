@@ -21,7 +21,7 @@ First-year ECE PhD student at <strong>Carnegie Mellon University</strong>, advis
 
 ## Research
 
-I'm interested in the intersection of **circuit design** and **low-level systems**: how hardware is built, how it fails, and how it interacts with software.
+I'm interested in the intersection of **digital design** and **low-level systems**: how hardware is built, how it fails, and how it interacts with software.
 
 <h3 class="home-sub">Current <span>· VLSI Design Group, CMU</span></h3>
 
@@ -118,55 +118,55 @@ I'm interested in the intersection of **circuit design** and **low-level systems
   </div>
 </div>
 
-<h3 class="home-sub">Before</h3>
+<h3 class="home-sub">Past Research</h3>
 
 <ul class="home-past">
   <li>
-    <span class="home-year">2026</span>
-    <div><a href="/publication/thesis">CircuitSim: an FPGA circuit simulation accelerator</a><br>
-    <small>B.A. thesis · Simon's Rock · Prof. Michael Bergman, Prof. Stephen Edwards</small></div>
+    <span class="home-year">2025–26</span>
+    <div><strong>Mobile X Lab</strong>, Columbia · Prof. Xia Zhou<br>
+    <small>Hybrid textile electrodes and impedance-monitoring PCBs for loose-shirt ECG · <a href="/publication/cecg">MobiDx '26</a></small></div>
   </li>
   <li>
-    <span class="home-year">2026</span>
-    <div><a href="/publication/cecg">Continuous vital signs monitoring with a loose T-shirt</a><br>
-    <small>MobiDx '26 · Prof. Xia Zhou, Columbia</small></div>
+    <span class="home-year">2025–26</span>
+    <div><strong>Senior thesis</strong>, Simon's Rock · Prof. Michael Bergman, Prof. Stephen Edwards<br>
+    <small>CircuitSim, an FPGA-accelerated circuit simulator · <a href="/publication/thesis">thesis</a></small></div>
   </li>
   <li>
-    <span class="home-year">2025</span>
-    <div><a href="/publication/ic">Earth's inner core structure via ultrasonic scattering</a><br>
-    <small>Physics of the Earth and Planetary Interiors · Prof. Michael Bergman, Simon's Rock</small></div>
+    <span class="home-year">2024–25</span>
+    <div><strong>Barmak Lab</strong>, Columbia · Prof. Katayun Barmak<br>
+    <small>U-Net loss functions for grain-boundary detection in micrographs · <a href="/publication/2025-04-14-Barmak">poster</a></small></div>
   </li>
   <li>
-    <span class="home-year">2025</span>
-    <div><a href="/publication/2025-04-14-Barmak">Deep learning for thin-film grain boundary detection</a><br>
-    <small>Yale Undergraduate Research Conference · Prof. Katayun Barmak, Columbia</small></div>
+    <span class="home-year">2022–25</span>
+    <div><strong>Bergman Lab</strong>, Simon's Rock · Prof. Michael Bergman<br>
+    <small>Ultrasonic scattering experiments on inner-core analogs · <a href="/publication/ic">first-author paper, PEPI 2025</a></small></div>
   </li>
   <li>
-    <span class="home-year">2024</span>
-    <div><a href="/publication/gaussian">Machine learning for pure component property estimation</a><br>
-    <small>Engineering · Prof. Xi Chen, Zhejiang University</small></div>
+    <span class="home-year">2022–24</span>
+    <div><strong>Zhejiang University</strong> · Prof. Xi Chen<br>
+    <small>ML models for pure component property estimation · <a href="/publication/gaussian">Engineering 2024</a></small></div>
   </li>
 </ul>
 
-More details, posters, and reports are in the [research](/research/) section.
+<!-- More details, posters, and reports are in the [research](/research/) section. -->
 
 ## Teaching
 
 I like to master hard and interesting classes, and pass on my knowledge to others.
 
 <ul class="home-teach">
-  <li><span>2026</span><div>TA, <a href="/teaching/2026-vlsi">18-422/622 Digital Integrated Circuit Design</a>, CMU <small>· <a href="/posts/2026/10/elmore">recitation notes</a></small></div></li>
+  <li><span>2026</span><div>TA, <a href="/teaching/2026-vlsi">18-422/622 Digital Integrated Circuit Design</a>, CMU </div></li>
   <li><span>2026</span><div>TA, <a href="https://www.cs.columbia.edu/~sedwards/classes/2026/4840-spring/index.html">CSEE 4840 Embedded Systems</a>, Columbia</div></li>
-  <li><span>2025</span><div>Head TA, <a href="/teaching/2025-fundies">CSEE 3827 Fundamentals of Computer Systems</a>, Columbia <small>· study guides</small></div></li>
-  <li><span>2022–24</span><div>Think Tank drop-in tutor, Simon's Rock <small>· <a href="/sr-archive">archived materials</a></small></div></li>
+  <li><span>2025</span><div>Head TA, <a href="/teaching/2025-fundies">CSEE 3827 Fundamentals of Computer Systems</a>, Columbia </div></li>
+  <li><span>2022–24</span><div>Think Tank drop-in tutor, Simon's Rock <small class="home-teach__aside"><a href="/sr-archive">SR Archive</a></small></div></li>
 </ul>
 
 ## Personal
 
 <ul class="home-personal">
-  <li><i class="fas fa-fw fa-bus" aria-hidden="true"></i><span>I am a <a href="https://en.wikipedia.org/wiki/User:MGD04">roadgeek</a>. I'm a fan of roads, buses, trains (and their connections). I love long road trips and bus rides as a way to unwind.</span></li>
-  <li><i class="fas fa-fw fa-seedling" aria-hidden="true"></i><span>I was a <a href="https://www.youtube.com/@minggong">PvZ YouTuber</a>, still playing casually from time to time.</span></li>
-  <li><i class="fas fa-fw fa-archive" aria-hidden="true"></i><span>I love archiving. I keep records of my old files, and it is always fun to look back at them. This website serves my purpose well too!</span></li>
+  <li><i class="fas fa-fw fa-bus" aria-hidden="true"></i><span>Part-time <a href="https://en.wikipedia.org/wiki/User:MGD04">roadgeek</a>. I map roads, buses, and rail in my head the way I map circuits! A long road trip is my favorite way to recharge.</span></li>
+  <li><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span>Former <a href="https://www.youtube.com/@minggong">PvZ YouTuber</a>. The lawn still gets defended now and then.</span></li>
+  <li><i class="fas fa-fw fa-archive" aria-hidden="true"></i><span>I like archiving. I keep records of good and bad things I've made, and this site is the living version of that archive.</span></li>
 </ul>
 
 

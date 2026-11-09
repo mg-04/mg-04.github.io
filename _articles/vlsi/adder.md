@@ -27,34 +27,17 @@ Now comes the first real task of 4321: adder
 
 
 # Overview
-- Use [ripple carry](/articles/vlsi/adder#design)
-- Make a (rough) [stick diagram](/articles/vlsi/adder#stick-diagram) before you start
-- Fix a [bit pitch](/articles/vlsi/adder#1-bit-pitch) of 2.1 um
-- Edge DRC
-    - [Diffusion share](/articles/vlsi/adder#3-diffusion-sharing), and if you can't, place them as close as DRC allows
-    - Do not use the [default Vias](/articles/vlsi/adder#6-m2-connections-and-vias)
-- Leave room for upper-level Metal routing
+- Use [ripple carry](/articles/vlsi/adder#design). It's simple, and fast enough for 8 bits
+- Sketch a rough [stick diagram](/articles/vlsi/adder#stick-diagram) of one bit before you start
+- Fix a [bit pitch](/articles/vlsi/adder#1-bit-pitch) of 2.1 um, and never break it
+- Pack devices as tightly as DRC allows
+    - [Diffusion share](/articles/vlsi/adder#3-diffusion-sharing) wherever you can; otherwise place at [minimum spacing](/articles/vlsi/adder#4-non-sharing-neighbors)
+    - Build vias [by hand](/articles/vlsi/adder#6-m2-connections-and-vias) instead of using the default ones
+- Perfect one bit, then [instantiate it eight times](/articles/vlsi/adder#8-bit-adder)
+- Leave M3/M4 free for top-level routing
 
-> Below are some improvement areas in our implementation. Don't copy them blindly.
-{: .notice--warning}
-
-
-> **Adder**
-- More organized M2 data grid
-- Use [minimum](/articles/vlsi/adder#sizing) sizing on the non-critical path PFETs
-- Better diffusion sharing with [S/D swapping](/articles/vlsi/adder#sd-swap)
-- Using inverted `COUT` to save a gate in the propagation path
-- MUX-based `SUB` select
-- Use an odd number of fingers for better diffusion sharing
-- Fewer, more organized body vias
-- An organized M3 and M4 [power grid](/articles/vlsi/overall#m4-long-distance-data)  
-{: .notice--warning}
-
-
-> **Shifter**
-- Since we are buffering all I/O, we can do the MUX with NMOS only
-- You can save some space by routing the inter-block connections on M3, instead of M1. 
-and a lot more...  
+> Some sizings and diagrams in this article can be suboptimal or outdated. Don't copy them blindly. Figure out your own!
+- Look for the **Hindsight** notes: things we would do differently next time
 {: .notice--warning}
 
 ---
@@ -79,27 +62,34 @@ Textbook page 432 shows the standard sizing. Carry propagation is the critical p
 The suggested minimum width is 150 nm
 - Below that, the MOSFETs will turn into a **dogbone** shape, which actually takes more space!  
 
-We used the following sizing:
+Our design used the following sizing:
 - Critical path: 300 nm * 4 / 150 nm * 4
 - Non-critical path: 300 nm / 150 nm
-    - It's a better idea to size the PMOS to 150 as well :( We got lazy...
+
+> **Hindsight:** Use minimum sizing on the non-critical path PFETs too. We got lazy...
+{: .notice--warning}
 
 ---
 
 # Schematic
 Below is our carry schematic. If you want to use the textbook sizing, change the non-critical path NMOS sizing to 150 nm.
 
+> I will refer to transistors by their name `Mx` in the [*schematic above*](/images/vlsi/adder/schem.png). They will differ in your schematic
+{: .notice--info}
+
 ![](/images/vlsi/adder/schem.png){: .align-center}
 
 A few notes:
-- Use **multiple fingers**, so every transistor has **equal width**
+- For wide transistors **multiple fingers**, so it has the same **width** with neighbors
 - Set up one P/NMOS with the *parameters*, then **duplicate** them over
 - Connect all PMOS bodies to `VDD!`, NMOS bodies to `GND!`. No exceptions
 - Label the nets and explicitly add the IO pins
 - I recommend using capital letters for net names, and global `VDD!`/`GND!`
 
-> I will refer to transistors by their name `Mx` in the [*schematic above*](/images/vlsi/adder/schem.png). They will differ in your schematic
-{: .notice--info}
+> **Hindsight:** Propagate an inverted `COUT` to save a gate on the carry path.
+{: .notice--warning}
+
+
 
 ## Stick Diagram
 Make a stick diagram of your adder layout. This [UMich lecture](https://www.eecs.umich.edu/courses/eecs427/w07/lecture8.pdf) is pretty useful. Adapt it to your design.
@@ -107,7 +97,7 @@ Make a stick diagram of your adder layout. This [UMich lecture](https://www.eecs
 
 ![](/images/vlsi/adder/adder_stick.png)
 
-This stick diagram is rotated 90 deg. In the actual layout, M2 (orange) will be vertical. I used magenta for PMOS OD, and dark gray for NMOS OD. 
+This stick diagram is rotated 90 deg. In the actual layout, M2 (orange) will be vertical. All colors map directly to the TSMC N65 PDK layers
 
 > For simplicity, I only show one finger. Multiple fingers will differ slightly in [diffusion sharing](/articles/vlsi/adder#4-non-sharing-neighbors)
 {: .notice--warning}
@@ -117,7 +107,7 @@ Alternatively, you can give up planning and **"vibe layout"**. Sometimes not bad
 
 ---
 
-# Carry Circuit Walkthrough
+# Carry Layout Walkthrough
 
 Similar to the inverter, "Generate All From Source." You will get a sea of transistors and pins from the schematic. Our job is to move and connect them correctly.
 
@@ -131,6 +121,9 @@ Before placing anything, draw your M2 [bit pitch](/articles/vlsi/floorplan#metal
 
 You can use the `p` shortcut to draw a path. It shows its DRC boundaries, too
 
+> **Hindsight:** Keep the M2 **data** grid more organized than ours: decide which [track](/articles/vlsi/overall#data-path) each data signal owns before you route.
+{: .notice--warning}
+
 <img src="/images/vlsi/adder/p.png"
      style="display: block; margin: 0 auto; max-width: 250px; width: 100%;">
 
@@ -141,6 +134,9 @@ You can use the `p` shortcut to draw a path. It shows its DRC boundaries, too
     - Make sure PP and NP layers touch, but not overlap
 3. Add the M1-NW and M1-SUB vias. 
     - **Align the center of the M1 layer with the M2 grid!**
+
+> **Hindsight:** Use fewer, more organized body vias. A few well-placed taps are enough.
+{: .notice--warning}
 
 
 ## 3. Diffusion Sharing
@@ -162,7 +158,7 @@ Now, check DRC. I would recommend temporarily **deleting** the transistors you h
 
 You will get quite a few errors. It's complaining that the M1 and PO areas are too small. That's *fine*, since we haven't connected them yet
 
-Now, restore the deleted transistors by "Connectivity/**Update** All From Source" (**not** Connectivity/*Generate*)
+Now, restore the deleted transistors by "Connectivity/**Update** All From Source" (**not** Connectivity/*Generate*, or you'll have to start over)
 
 ### S/D Swap
 
@@ -175,9 +171,12 @@ M30/M5 has its drain on `COUTN`. However, the generated instance has its source 
 
 Now you can happily diffusion share!
 
+> **Hindsight:** Swap S/D more aggressively. Our layout left some sharing on the table.
+{: .notice--warning}
+
 ## 4. Non-sharing Neighbors
 > Most people fuck up on this one. They start crying once they can't diffusion share
-{: .notice--warning}
+{: .notice--danger}
 
 
 We run out of diffusion shares for M28/M26, a suboptimal situation. 
@@ -190,6 +189,9 @@ The key is to know what can still be **overlapped**, and what can't.
 ![](/images/vlsi/adder/nsd.png)
 
 Place the two OD layers 0.13 um apart, and check DRC again.
+
+> **Hindsight:** Use an odd number of fingers. Both outer terminals are then the same net, so neighbors can share them.
+{: .notice--warning}
 
 
 ## 5. Simple Connections
@@ -207,7 +209,7 @@ Check DRC again.
 We still have a few sources and drains left. Let's route them vertically using the **M2** layer. Draw a single M2 wire with minimum width (0.1 um).
 
 > I do not recommend using the vias generated with `o`. They are too fat and ugly, and they are the root cause of routing miseries if used improperly. Instead, let's manually construct the M1-VIA1-M2 sandwich
-{: .notice--warning}
+{: .notice--danger}
 
 1. Select the **VIA1** `drw` layer. Draw a **0.1 um x 0.1 um** square at the intersection
 2. A VIA1 requires enclosure by **both** M1 and M2, with a slack of either:
@@ -278,7 +280,7 @@ Once you add the Pins, you should pass LVS too!
 
 ---
 
-# 1-Bit Adder
+# 1-Bit Layout
 
 Below is our adder from a few months ago.
 ## Sum
@@ -295,13 +297,21 @@ We can closely align the PO, M1, and M2 layers
 ## Subtraction
 You can implement subtraction in two ways
 - Static XOR gate
-- MUX  
-We chose the XOR implementation.
+- MUX (?what type of MUX)  
+
+
+> **Hindsight:** We chose the XOR implementation, but a MUX-based select may be the cleaner choice.
+{: .notice--warning}
 
 ---
 
-# 8-Bit Adder
+# 8-Bit Layout
 This is *very important*. You do **not** want to draw this eight times. Fortunately, we can **Instantiate** (`i`) the single-bit layout as a **symbol**, just like the `pch` and `nch` symbols.
+
+> There are definitely other ways to do this:
+- Enforce symmetry for simple layouts
+- Build schematic and layout for [2 bits at a time](/articles/vlsi/overall#mux)
+{: .notice--info}
 
 ## Flipped Adder
 Because we use the alternating VDD-GND-VDD-GND-VDD [power grid plan](/articles/vlsi/floorplan#metal-routing)
@@ -322,10 +332,7 @@ We created a new schematic and layout `hw6t` for the flipped version by copying 
 ![](/images/vlsi/adder/addert.png)
 
 
-> There are definitely other ways to do this:
-- Enforce symmetry for simple layouts
-- Build schematic and layout for [2 bits at a time](/articles/vlsi/overall#mux)
-{: .notice--info}
+
 
 ## Layout Hierarchy
 Now the final push! We want a coherent pattern and **minimally wasted space**. If you lay out your single bit like this, it's gonna suck. You want it as **tight** as possible
@@ -370,6 +377,9 @@ Make sure neighboring M2/M1/vias/pins overlap **exactly**, both vertically and h
 
 It is a good idea to use M3 for **global control signals**, such as `SUB`
 
+> **Hindsight:** Plan an organized M3/M4 [power grid](/articles/vlsi/overall#m4-long-distance-data) up front, rather than patching it later.
+{: .notice--warning}
+
 Here's how it should look:
 
 ![](/images/vlsi/adder/adder_det.png)
@@ -392,6 +402,9 @@ Get `c7` and `c8` from M3. In our top-level layout, I placed the control logic n
 
 
 We choose a **complementary pass transistor MUX** for our shifter. You can also choose an NMOS-only version.
+
+> **Hindsight:** Since we buffer every MUX input and output anyway, an NMOS-only MUX is enough and saves space.
+{: .notice--warning}
 ## Sizing
 
 Textbook pages 351-352 cover pass transistor effective resistance, sizing, and layout:
@@ -407,8 +420,8 @@ We chose to buffer at each MUX data input/output to reduce the *effective* stack
 
 ![](/images/vlsi/adder/shifter_stick.png)
 
-> To save space, you can move all inter-module horizontal wires from M1 to M3.
-{: .notice--info}
+> **Hindsight:** To save space, move all inter-module horizontal wires from M1 to M3.
+{: .notice--warning}
 
 
 ## Layout
