@@ -41,7 +41,7 @@ In this set of articles, I will walk through the **essence of the 4321 design pr
     </li>
     <li class="vlsi-toc__part">
       <div class="vlsi-toc__head"><span class="vlsi-toc__num">5</span><a href="/articles/vlsi/sram">SRAM</a><span class="vlsi-toc__ps">PS8</span></div>
-      <p class="vlsi-toc__subs"><a href="/articles/vlsi/sram#sram-array">SRAM Array</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#decoder">Decoder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#read-write">Read Write</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#testing">Testing</a></em><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#what-if-things-dont-fit">What If Things Don't Fit</a></em></p>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/sram#sram-array">SRAM Array</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#decoder">Decoder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#read-write">Cell IO</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#testing">Testing</a></em><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#what-if-things-dont-fit">What If Things Don't Fit</a></em></p>
     </li>
     <li class="vlsi-toc__part">
       <div class="vlsi-toc__head"><span class="vlsi-toc__num">6</span><a href="/articles/vlsi/overall">Overall</a><span class="vlsi-toc__ps">PS9</span></div>
@@ -147,9 +147,9 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the **unique p
 > Check out a few extremely accurate reviews from [CULPA](https://culpa.info/professor/4500)
 {: .notice--warning}
 
-Yes, and **not** linearly.    
-Consider PS4 the *bare minimum*. You will likely need a few **all-nighters** after that  
-**START EARLY!!!** Start them **the day they are released!!!**
+Yes, and **not** linearly. **START EARLY!!!** Start them **the day they are released!!!**
+- Consider PS4 the *bare minimum*. You will likely need a few **all-nighters** after that
+- 4321 can also come with a free [sunrise package](/articles/vlsi/gallery#manhattan-sunrise)!
 
 ---
 

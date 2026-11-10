@@ -1753,3 +1753,35 @@ $callout-types: (
     background-color: rgba($c, 0.2);
   }
 }
+
+/* Photo grid (e.g. gallery "Manhattan Sunrise"): equal tiles, click to open in the lightbox */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+
+  a {
+    display: block;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+  }
+
+  a:hover img {
+    transform: scale(1.03);
+  }
+}
+
+@media (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
