@@ -31,26 +31,26 @@ Here's a picture page, just for fun
 ![](/images/vlsi/pretty/overall/overall_2.png)
 
 ## 4x  
-![](/images/vlsi/pretty/overall/overall_4.png)
+![](/images/vlsi/pretty/overall/overall_4.png){: .blurred}
 
 ## 8x  
-![](/images/vlsi/pretty/overall/overall_8.png)
+![](/images/vlsi/pretty/overall/overall_8.png){: .blurred}
 
 ## 16x  
-![](/images/vlsi/pretty/overall/overall_16.png)
+![](/images/vlsi/pretty/overall/overall_16.png){: .blurred}
 
 ---
 
 # Various Layers
 
 ## OD-CO-PO  
-![](/images/vlsi/pretty/layers/overall_1.png)
+![](/images/vlsi/pretty/layers/overall_1.png){: .blurred}
 
 ## PO-CO-M1  
-![](/images/vlsi/pretty/layers/overall_2.png)
+![](/images/vlsi/pretty/layers/overall_2.png){: .blurred}
 
 ## M1-VIA1-M2  
-![](/images/vlsi/pretty/layers/overall_3.png)
+![](/images/vlsi/pretty/layers/overall_3.png){: .blurred}
 
 ## M2-VIA2-M3  
 ![](/images/vlsi/pretty/layers/overall_4.png)

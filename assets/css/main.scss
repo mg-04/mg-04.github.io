@@ -47,3 +47,16 @@
 pre, code {
   tab-size: 4;
 }
+
+/* Images tagged {: .blurred}: blurred (also in the lightbox) and not draggable when site.blur_images is on */
+{% if site.blur_images %}
+img.blurred {
+  filter: blur({{ site.blur_strength | default: 6 }}px);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+img.mfp-img.blurred {
+  filter: blur({{ site.blur_strength | default: 6 | times: 2 }}px);
+}
+{% endif %}

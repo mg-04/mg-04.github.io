@@ -259,15 +259,15 @@ The single `BS` gate in the middle is especially hard to contact:
 Those tricks will come up repeatedly later :)
 
 Check DRC. Below I show the PO-CO-M1 layer for more clarity:
-![](/images/vlsi/adder/drc_mp.png)
+![](/images/vlsi/adder/drc_mp.png){: .blurred}
 
 Measure the distance to its neighbor. Clean!
 
-![](/images/vlsi/adder/drc_12.png)
+![](/images/vlsi/adder/drc_12.png){: .blurred}
 
 I also added the M2-M1 Via to connect the power.
 
-![](/images/vlsi/adder/drc_full.png)
+![](/images/vlsi/adder/drc_full.png){: .blurred}
 
 
 Once you add the Pins, you should pass LVS too!
@@ -286,7 +286,7 @@ Below is our adder from a few months ago.
 ## Sum
 The sum bits use minimum P/N sizing. They can be really well diffusion-shared!
 
-![](/images/vlsi/adder/sum.png)
+![](/images/vlsi/adder/sum.png){: .blurred}
 
 We can closely align the PO, M1, and M2 layers
 
@@ -329,7 +329,7 @@ Mostly yes, but with the caveat on **pin order**:
 
 We created a new schematic and layout `hw6t` for the flipped version by copying (`c`) the `hw6` layout, flipping it, and adjusting the pin orders appropriately. 
 
-![](/images/vlsi/adder/addert.png)
+![](/images/vlsi/adder/addert.png){: .blurred}
 
 
 
@@ -369,7 +369,7 @@ Make sure neighboring M2/M1/vias/pins overlap **exactly**, both vertically and h
 - The distance between the M2 center points at both ends should be 2.1 x 8 = 16.8 um. If not, you've done something wrong.
 - Your 8-bit layout will have a [P-N-P-N-P-N-P-N-P](/articles/vlsi/floorplan#metal-routing) structure
 
-![](/images/vlsi/adder/adder_ddet.png)
+![](/images/vlsi/adder/adder_ddet.png){: .blurred}
 
 
 > I went up to M3 for the carry propagation wires, but you may as well do it in M1. The M1 power/ground *vertical* wires do **not** have to be contiguous. We can via local M1 wires from the M2 power lanes.
@@ -382,7 +382,7 @@ It is a good idea to use M3 for **global control signals**, such as `SUB`
 
 Here's how it should look:
 
-![](/images/vlsi/adder/adder_det.png)
+![](/images/vlsi/adder/adder_det.png){: .blurred}
 
 
 
@@ -418,7 +418,7 @@ Textbook pages 351-352 cover pass transistor effective resistance, sizing, and l
 
 We chose to buffer at each MUX data input/output to reduce the *effective* stack height.
 
-![](/images/vlsi/adder/shifter_stick.png)
+![](/images/vlsi/adder/shifter_stick.png){: .blurred}
 
 > **Hindsight:** To save space, move all inter-module horizontal wires from M1 to M3.
 {: .notice--warning}
@@ -428,8 +428,8 @@ We chose to buffer at each MUX data input/output to reduce the *effective* stack
 
 You can see the iconic "alternating gates":
 
-![](/images/vlsi/adder/s1.png)
+![](/images/vlsi/adder/s1.png){: .blurred}
 
-![](/images/vlsi/adder/shifter.png)
+![](/images/vlsi/adder/shifter.png){: .blurred}
 
 {% include vlsi-series.html current=4 position="bottom" %}

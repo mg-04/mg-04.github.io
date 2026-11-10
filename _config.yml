@@ -94,6 +94,10 @@ publication_category:
     title: 'Theses'
 
 # Site Settings
+# Images tagged {: .blurred} are shown blurred (deters copy-paste of layouts).
+# Set to false to show them sharp everywhere.
+blur_images              : true
+blur_strength            : 6     # blur radius in px on the page; the lightbox uses 2x
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "template/500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 130

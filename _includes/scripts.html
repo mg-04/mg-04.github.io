@@ -27,3 +27,34 @@
   document.body.appendChild(s);
 })();
 </script>
+
+{% if site.blur_images %}
+{% comment %}
+  Images tagged {: .blurred} stay blurred when opened in the lightbox.
+  Watches the popup image and blurs it whenever its source is a tagged image
+  (covers opening and gallery left/right navigation).
+{% endcomment %}
+<script>
+(function () {
+  var tagged = document.querySelectorAll('img.blurred');
+  if (!tagged.length || !window.MutationObserver) { return; }
+  var srcs = {};
+  for (var i = 0; i < tagged.length; i++) { srcs[tagged[i].src] = true; }
+  function sync() {
+    var imgs = document.querySelectorAll('img.mfp-img');
+    for (var j = 0; j < imgs.length; j++) {
+      imgs[j].classList.toggle('blurred', !!srcs[imgs[j].src]);
+    }
+  }
+  new MutationObserver(sync).observe(document.body, {
+    childList: true, subtree: true, attributes: true, attributeFilter: ['src']
+  });
+
+  // No right-click menu ("Open image in new tab", "Save image as") on blurred images,
+  // inline or in the lightbox
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target.matches && e.target.matches('img.blurred')) { e.preventDefault(); }
+  });
+})();
+</script>
+{% endif %}

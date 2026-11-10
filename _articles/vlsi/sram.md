@@ -151,11 +151,11 @@ The idea is simple:
 
 Implementing it is tricky, but once you have one block, the rest is simple.
 
-![](/images/vlsi/sram/dec.png)
+![](/images/vlsi/sram/dec.png){: .blurred}
 
 ---
 
-# Read Write
+# Cell IO
 Below is the 2-bit (4 bitline *pairs*) R/W schematic, closely following lecture
 1. **Column MUX** selects between adjacent columns.
 2. **Write Select** pulls down the bitlines. 
@@ -241,7 +241,7 @@ Omg this is too beautiful
 
 We need `iobus_bar<i>` for `bit_bar<i>`. Fortunately, there's ample space to squeeze in an inverter
 
-![](/images/vlsi/sram/rw.png){: .align-center}
+![](/images/vlsi/sram/rw.png){: .align-center}{: .blurred}
 
 Vertical Poly allows aggressive diffusion sharing if S/D Contact and Metal are aligned **directly** under the M2 bit grid. Otherwise, you may waste a lot of space
 
@@ -266,7 +266,7 @@ We then used a (600/300)x3 C²MOS tristate bus driver. Note that it has a stack 
 With careful tuning and diffusion sharing, you can make everything perfectly fit
 
 
-![](/images/vlsi/sram/rw_real.png){: .align-center}
+![](/images/vlsi/sram/rw_real.png){: .align-center}{: .blurred}
 
 ## What if things don't fit?
 Cry, but don't overcry. You still have to face it
@@ -315,7 +315,7 @@ This is where **overall** layout organization starts to hurt. The main challenge
 {: .notice--warning}
 
 With these decisions in place, you can lay out the whole thing:
-![](/images/vlsi/sram/overall.png)
+![](/images/vlsi/sram/overall.png){: .blurred}
 
 
 

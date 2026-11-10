@@ -109,14 +109,14 @@ Above are the M4 wires at the adder block, where data wires are the densest.
 ## Latch
 Same schematic as hw5.
 
-![](/images/vlsi/pla/latch.png)
+![](/images/vlsi/pla/latch.png){: .blurred}
 
 ## MUX
 We used a **one-hot** encoding for the inputs, making decoding much simpler on the MUX end
 
 We used an NMOS-only gate, since the inputs are buffered; the outputs go immediately to the latch, which is also buffered.
 
-![](/images/vlsi/pla/mux.png)
+![](/images/vlsi/pla/mux.png){: .blurred}
 
 
 Here is another example of connecting the adder and the MUX. The two other inputs are Viaed from M4.
@@ -126,7 +126,7 @@ Here is another example of connecting the adder and the MUX. The two other input
 
 ## Bus Driver
 Same as the SRAM bus driver, except that the inverter is not *skewed*
-![](/images/vlsi/pla/bus_driver.png)
+![](/images/vlsi/pla/bus_driver.png){: .blurred}
 
 ---
 
@@ -197,18 +197,18 @@ Start with one **standard cell** and push DRC limits. The rest follows naturally
 {: .notice--info}
 
 
-![](/images/vlsi/william/pla_decoder.png)
+![](/images/vlsi/william/pla_decoder.png){: .blurred}
 
-![](/images/vlsi/william/pla_po_od.png)
+![](/images/vlsi/william/pla_po_od.png){: .blurred}
 
-![](/images/vlsi/william/pla_m1_m2.png)
+![](/images/vlsi/william/pla_m1_m2.png){: .blurred}
 
 Their diffusion sharing in the AND-plane was fascinating. While they use long poly, the circuit is so small that RC is less of a concern.
 
 ## Our Layout
 We tried to mitigate the RC Poly delay by laying parallel higher-level Metal and Viaing down to Poly gates, effectively breaking the long Poly segments. However, the Via stacks led to a larger design and spacing.
 
-![](/images/vlsi/pla/pla.png)
+![](/images/vlsi/pla/pla.png){: .blurred}
 
 
 To fit the chip, we eventually rotated the PLA by 90°, completely disrupting the power grid (think Central Park in Manhattan). Highly suboptimal. Use the William design if possible.
@@ -261,7 +261,7 @@ Your extracted simulation should behave normally, given that you followed all th
 > **CONGRATS** on finishing most of the project! Give yourself a break, and get ready for this final push!
 {: .notice--success}
 
-![](/images/vlsi/pla/pre.png)
+![](/images/vlsi/pla/pre.png){: .blurred}
 
 If your datapath looks good, your control path probably doesn’t (relatively). Let’s hide the sins.
 
@@ -297,7 +297,7 @@ The rest of the circuit is what I call "遮羞布". These dead areas come from t
 
 Look how the irregularities are hidden!
 
-![](/images/vlsi/pretty/overall/overall_32.png)
+![](/images/vlsi/pretty/overall/overall_32.png){: .blurred}
 
 ## Final Check
 ![](/images/vlsi/pla/drclvs.png)

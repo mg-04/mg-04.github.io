@@ -9,6 +9,8 @@ redirect_from:
 
 <div class="home" markdown="1">
 
+<section class="home-section home-section--intro" markdown="1">
+
 <p class="home-intro">
 First-year ECE PhD student at <strong>Carnegie Mellon University</strong>, advised by Prof. Ken Mai, working on digital VLSI and computer architecture. B.S. in Computer Engineering from <strong>Columbia University</strong>.
 </p>
@@ -18,6 +20,10 @@ First-year ECE PhD student at <strong>Carnegie Mellon University</strong>, advis
   <a href="/projects/circuitsim/"><i class="fas fa-fw fa-wave-square" aria-hidden="true"></i><span><strong>CircuitSim</strong><small>FPGA-accelerated SPICE-like simulator</small></span></a>
   <a href="/teaching/2025-fundies"><i class="fas fa-fw fa-chalkboard-teacher" aria-hidden="true"></i><span><strong>Fundies Study Guides</strong><small>Head TA notes for CSEE 3827</small></span></a>
 </nav>
+
+</section>
+
+<section class="home-section" markdown="1">
 
 ## Research
 
@@ -150,6 +156,10 @@ I'm interested in the intersection of **digital design** and **low-level systems
 
 <!-- More details, posters, and reports are in the [research](/research/) section. -->
 
+</section>
+
+<section class="home-section" markdown="1">
+
 ## Teaching
 
 I like to master hard and interesting classes, and pass on my knowledge to others.
@@ -161,6 +171,10 @@ I like to master hard and interesting classes, and pass on my knowledge to other
   <li><span>2022–24</span><div>Think Tank drop-in tutor, Simon's Rock <small class="home-teach__aside"><a href="/sr-archive">SR Archive</a></small></div></li>
 </ul>
 
+</section>
+
+<section class="home-section" markdown="1">
+
 ## Personal
 
 <ul class="home-personal">
@@ -169,5 +183,6 @@ I like to master hard and interesting classes, and pass on my knowledge to other
   <li><i class="fas fa-fw fa-archive" aria-hidden="true"></i><span>I like archiving. I keep records of good and bad things I've made, and this site is the living version of that archive.</span></li>
 </ul>
 
+</section>
 
 </div>
