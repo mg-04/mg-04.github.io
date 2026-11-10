@@ -16,4 +16,16 @@
 <!-- Support for MathJax (the MathJax script itself is loaded once, with config, at the end of _layouts/default*.html) -->
 <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
 
+{% if site.blur_images %}
+<!-- Seasonal image blur: turn it on only in site.blur_months (runs before paint, so no flash of sharp images) -->
+<script>
+(function () {
+  var months = {{ site.blur_months | default: empty | jsonify }};
+  if (!months || !months.length || months.indexOf(new Date().getMonth() + 1) !== -1) {
+    document.documentElement.classList.add('blur-on');
+  }
+})();
+</script>
+{% endif %}
+
 <!-- end custom head snippets -->

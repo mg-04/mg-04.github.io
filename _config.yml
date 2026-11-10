@@ -98,6 +98,7 @@ publication_category:
 # Set to false to show them sharp everywhere.
 blur_images              : true
 blur_strength            : 6     # blur radius in px on the page; the lightbox uses 2x
+blur_months              : [10, 11, 12]  # months (1-12) when blurring is on, checked in the visitor's browser; [] = all year
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "template/500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 130

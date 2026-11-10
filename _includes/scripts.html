@@ -53,7 +53,7 @@
   /* No right-click menu ("Open image in new tab", "Save image as") on blurred images,
      inline or in the lightbox. Use block comments only: the page is minified onto one line in production. */
   document.addEventListener('contextmenu', function (e) {
-    if (e.target.matches && e.target.matches('img.blurred')) { e.preventDefault(); }
+    if (e.target.matches && e.target.matches('html.blur-on img.blurred')) { e.preventDefault(); }
   });
 })();
 </script>

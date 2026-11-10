@@ -48,15 +48,16 @@ pre, code {
   tab-size: 4;
 }
 
-/* Images tagged {: .blurred}: blurred (also in the lightbox) and not draggable when site.blur_images is on */
+/* Images tagged {: .blurred}: blurred (also in the lightbox) and not draggable when site.blur_images is on
+   and the current month is in site.blur_months (html.blur-on is set in _includes/head/custom.html) */
 {% if site.blur_images %}
-img.blurred {
+html.blur-on img.blurred {
   filter: blur({{ site.blur_strength | default: 6 }}px);
   user-select: none;
   -webkit-user-drag: none;
 }
 
-img.mfp-img.blurred {
+html.blur-on img.mfp-img.blurred {
   filter: blur({{ site.blur_strength | default: 6 | times: 2 }}px);
 }
 {% endif %}

@@ -149,7 +149,7 @@ Yes, if you enjoy circuits, symmetry, compulsive optimization, or the **unique p
 
 Yes, and **not** linearly. **START EARLY!!!** Start them **the day they are released!!!**
 - Consider PS4 the *bare minimum*. You will likely need a few **all-nighters** after that
-- 4321 can also come with a free [sunrise package](/articles/vlsi/gallery#manhattan-sunrise)!
+- To encourage your hard work, 4321 can also come with a free [sunrise package](/articles/vlsi/gallery#manhattan-sunrise)!
 
 ---
 
