@@ -1,5 +1,5 @@
 ---
-title: "4321 Inverter"
+title: "4321 VLSI Inverter"
 permalink: /articles/vlsi/inverter
 date: 2025-12-24
 ---

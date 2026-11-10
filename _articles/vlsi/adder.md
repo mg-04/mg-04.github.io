@@ -1,5 +1,5 @@
 ---
-title: "4321 Adder and Shifter"
+title: "4321 VLSI Adder and Shifter"
 permalink: /articles/vlsi/adder
 author: "Ming Gong, Charlotte Chen"
 date: 2025-1-20
@@ -297,7 +297,7 @@ We can closely align the PO, M1, and M2 layers
 ## Subtraction
 You can implement subtraction in two ways
 - Static XOR gate
-- MUX (?what type of MUX)  
+- MUX (what type of MUX?)  
 
 
 > **Hindsight:** We chose the XOR implementation, but a MUX-based select may be the cleaner choice.

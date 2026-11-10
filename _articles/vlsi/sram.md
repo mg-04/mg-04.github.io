@@ -1,5 +1,5 @@
 ---
-title: "4321 SRAM"
+title: "4321 VLSI SRAM"
 permalink: /articles/vlsi/sram
 author: "Ming Gong, Charlotte Chen"
 date: 2025-12-31
@@ -211,6 +211,9 @@ We used a vertical Poly layout for this part. You will see the pros and cons in 
 
 
 ## Column MUX
+> To accurately pass down the bitlines, you may need PMOS too!
+{: .notice--warning}
+
 Four NMOS devices steer either column into the R/W circuitry.
 
 We initially attempted a single-row diffusion-shared layout and missed by a fraction of a micron :( The final solution uses gate sharing instead.
