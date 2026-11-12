@@ -54,7 +54,9 @@ pre, code {
 html.blur-on img.blurred {
   filter: blur({{ site.blur_strength | default: 6 }}px);
   user-select: none;
+  -webkit-user-select: none;
   -webkit-user-drag: none;
+  -webkit-touch-callout: none;  /* iOS Safari: no long-press "Save/Open image" menu */
 }
 
 html.blur-on img.mfp-img.blurred {
