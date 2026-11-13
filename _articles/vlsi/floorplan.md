@@ -117,4 +117,15 @@ See example in our [adder](/articles/vlsi/adder#7-po-connections-and-contacts)
 - You can reference textbook chapter 1.10.2-4 (pages 48-51) on how an 8-bit MIPS processor is laid out
 {: .notice--info}
 
+
+## Bit Slice Width
+You'll see me keep bringing up the **2.1 um** bit slice width later on. Here's why.
+
+In PS8 you'll be given an SRAM macro. A natural choice is a 2-to-1 [column MUX](https://mg-04.github.io/articles/vlsi/sram#floorplan), which means each bit of your datapath sits under **two** SRAM columns. In **Fall 2025**, two columns of the given macro was 2.1 um. Match that, and your datapath lines up with the SRAM bit for bit. That's the whole argument.
+- The macro is not likely to change from year to year, but **confirm it with Shepard** before you commit. Your bit pitch depends on it, and you don't want to realize it at PS8.
+
+Other options also exist exist:
+- **Squeeze each bit into *one* SRAM column.** I've seen teams doing that, but the SRAM is engineered to be dense and comes with its own special DRC rules. Matching that density with your own logic can be quite challenging.
+- **Use a different pitch** for the datapath and connect the wires at the SRAM boundary. Totally valid, but route those connections **above** instead of around Don't bend them all over M1/M2 and leave a **massive gap** between your transistors. It looks disgusting, and it costs you area.
+
 {% include vlsi-series.html current=3 position="bottom" %}

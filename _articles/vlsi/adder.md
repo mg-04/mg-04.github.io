@@ -29,7 +29,7 @@ Now comes the first real task of 4321: adder
 # Overview
 - Use [ripple carry](/articles/vlsi/adder#design). It's simple, and fast enough for 8 bits
 - Sketch a rough [stick diagram](/articles/vlsi/adder#stick-diagram) of one bit before you start
-- Fix a [bit pitch](/articles/vlsi/adder#1-bit-pitch) of 2.1 um, and never break it
+- Fix a bit pitch of 2.1 um ([why](https://mg-04.github.io/articles/vlsi/floorplan#bit-slice-width)?)
 - Pack devices as tightly as DRC allows
     - [Diffusion share](/articles/vlsi/adder#3-diffusion-sharing) wherever you can; otherwise place at [minimum spacing](/articles/vlsi/adder#4-non-sharing-neighbors)
     - Build vias [by hand](/articles/vlsi/adder#6-m2-connections-and-vias) instead of using the default ones
