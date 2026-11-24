@@ -6,6 +6,7 @@ date: 2025-1-20
 authors:
     - Ming Gong
     - Charlotte Chen
+    - Mahmoud Abdullah
 ---
 
 {% if page.authors %}
@@ -428,8 +429,13 @@ We chose to buffer at each MUX data input/output to reduce the *effective* stack
 
 You can see the iconic "alternating gates":
 
-![](/images/vlsi/adder/s1.png){: .blurred}
+![](/images/vlsi/adder/s1.png)
 
 ![](/images/vlsi/adder/shifter.png){: .blurred}
+
+Below is a more compact layout by Mahmoud Abdullah, 2026. Routing the MUX inputs in M1 allows **perfect diffusion sharing**
+
+![](/images/vlsi/adder/improved_mux_layout.png){: .align-center width="400"}
+
 
 {% include vlsi-series.html current=4 position="bottom" %}

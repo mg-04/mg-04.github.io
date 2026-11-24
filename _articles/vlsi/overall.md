@@ -187,10 +187,10 @@ Make a table of the logical outputs:
 ## Stick Diagram
 The textbook explains it on page 539.
 
-![](/images/vlsi/pla/textbook_stick.png){: .align-center}
+![](/images/vlsi/pla/textbook_stick.png){: .align-center width="500"}
 
 Start with one **standard cell** and push DRC limits. The rest follows naturally
-- I recommend **extracting** the PLA and testing its functionality and delay. Make sure all outputs are expected
+- **Extract** the PLA and test its functionality, delay, and power. Make sure everything is expected
 
 ## Layout by William Wang
 > I would like to thank William Wang ’27 and his team for generously sharing their PLA layout. Their implementation closely follows the textbook design and achieves really impressive **density**!

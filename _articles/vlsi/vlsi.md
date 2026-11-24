@@ -305,13 +305,12 @@ The point is: **if you fail, the class fails with you**. If you can't solve the 
 
 # Special Thanks
 
-Many thanks to the following for their help and guidance throughout this project:
+Many thanks to the following people for their help and guidance throughout this project, and for helping improve this guide over time:
 - My teammate Charlotte Chen;
 - Professor Ken Shepard;
 - TAs Kaden Du, James Jagielski; 
-- Former students Yuxi Zhang, Yingrui Wei;
-- Current students David Kim, Stephen Ogunmwonyi, Simon Mao, Nico Alarcon.
-
-Additional thanks to William Wang for sharing his [PLA layout](/articles/vlsi/overall#layout-by-william-wang)
+- 2024 students Yuxi Zhang, Yingrui Wei;
+- 2025 students David Kim, Stephen Ogunmwonyi, William Wang, Simon Mao, Nico Alarcon;
+- 2026 student Mahmoud Abdullah.
 
 {% include vlsi-series.html current=1 position="bottom" %}
