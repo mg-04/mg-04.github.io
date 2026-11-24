@@ -58,11 +58,11 @@ Because the SRAM cell is extremely dense, we use **column multiplexing**, sharin
 ## Analyze the 8x8 Layout
 The following demo array was given in **Fall 2025**. Take a moment to appreciate this fabulous SRAM.
 
-Press `Ctrl-F` to view the blocks:
+Press `Ctrl-F` to view the instance blocks:
 ![](/images/vlsi/sram/s_demo_master.png)
 
-Above is a piece of `v1d1_demo_array_4x4` (8x4), which contains the following: 
-    - `v1d1_x1`
+Above is a piece of `v1d1_demo_array_4x4` (8x4), which contains the following instances: 
+- `v1d1_x1`
 - `v1d1_wells_strap_x2 (1x2)` (1x4)
     - `v1d1_wells_strap_x1` (power strap)
 - `v1d1_row_edge_x2 (2x1)` (4x1) (I think they are decaps)
@@ -163,13 +163,13 @@ Implementing it is tricky, but once you have one block, the rest is simple.
 ---
 
 # Cell IO
-Below is the 2-bit (4 bitline *pairs*) R/W schematic, closely following lecture
+Below is the R/W schematic, closely following lecture
 1. **Column MUX** selects between adjacent columns.
 2. **Write Select** pulls down the bitlines. 
     - We merged the `write` and `data` NMOSes to save a stack height
-3. **Read Driver** taps from `bit_bar`, amplifies with a *skewed* inverter and a bus driver
+3. **Read Driver** taps from the bitline, amplifies with a *skewed* inverter and a bus driver
 
-![](/images/vlsi/sram/wr_sch.png)
+![](/images/vlsi/sram/wr_sch.png){: .align-center width="450"}
 
 
 
@@ -190,8 +190,8 @@ At the schematic level, I’ve summarized a few common failure modes based on my
     - Addresses must change only when `phi_2` is high. 
     - Probe all wordlines to ensure they are **one-hot**. 
 - **Off-by-one inversion**
-    - The lecture circuit is **inverted**
     - **Simple test:** invert your input vector
+    - Fine long as your reads and writes are consistent with each other
 - **Clock phase overlap**
     - The circuit should work fine if `phi_1` and `phi_2` are both 50% duty cycle. 
     - If problems appear, try:
