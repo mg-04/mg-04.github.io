@@ -38,16 +38,16 @@ Now you are at the next *stage* of 4321: the mighty **SRAM**
 
 # Floorplan
 > Throughout this article, an array written as $$x\times y$$ always stands for **row** $$\times$$ **column**
+> - There are alternative MUX/floorplan approaches. See [here](/articles/vlsi/floorplan#bit-slice-width).
+> - This is a very small array. There is a tradeoff between optimizing  for this specific size vs designing to be scalable
 {: .notice--info}
-
-There are a lot of ways to floorplan the SRAM. You don't have to, but it would be *really* nice if all the peripherals match the width of the SRAM array. 
 
 Because the SRAM cell is extremely dense, we use **column multiplexing**, sharing one set of R/W circuitry for each **two** adjacent columns
 - *Logically*, the array is 8x8. (8 wordlines, 3-bit addresses; 8 bits for `iobus`)
 - *Physically*, we lay it out as **4x16** (16 bitline *pairs*), where each pair of **adjacent** physical columns maps to one logical column
-- Essentially, we shift a dimension from rows into columns: one wordline address bit becomes the **column MUX select**.
+- Essentially, we *move* a dimension from rows into columns: one wordline address bit becomes the **column MUX select**.
 
-![](/images/vlsi/sram/mux_concept.jpg){: .align-center}
+![](/images/vlsi/sram/mux_concept.jpg){: .align-center width="500"}
 
 ---
 
@@ -55,7 +55,7 @@ Because the SRAM cell is extremely dense, we use **column multiplexing**, sharin
 
 
 
-## 8x8 Layout
+## Analyze the 8x8 Layout
 The following demo array was given in **Fall 2025**. Take a moment to appreciate this fabulous SRAM.
 
 Press `Ctrl-F` to view the blocks:
@@ -91,7 +91,7 @@ Try to make your own layout just as cute!
 
 
 
-## 4x16 Layout
+## Build Your 4x16 Layout
 Enough appreciation---it's time to build. 
 
 The provided 8×4 array is constructed from 4×4 blocks. Your task is to reorganize this into **4×16**. As long as you understand what’s happening, this is very manageable.
@@ -110,16 +110,16 @@ You can assemble a 4x4 cell with 1x1 cells, and then piece 4 of them together fo
 3. Create a 4x16 schematic and symbol with four of your 4x4
     ![](/images/vlsi/sram/sram_4x16.png)
 4. Generate a 4x16 layout
-    - Add `row_edge` and `corner_edge` instances to the layout
+    - Add `row_edge` and `corner_edge` instances to the layout. Some power straps are critical for LVS.
     - Again, make sure everything's **perfectly** aligned
 5. **Check DRC and LVS**
 6. Add the pins.
     - The width of the M2 wires varies, but there is a pretty clear "center line"
     - Measure the distance between the center lines of `bit<0>` and `bit<2>`. You should get **2.1 um**. This is the bit pitch I've been talking about
     - Measure the M2 wires to the left of `bit<0>` and to the right of `bit_bar<15>` (GND). You should get **16.8 um**. If not, something is misaligned.
-    - Add M2 pins for power and bitlines. They don't have to be perfectly square.
+    - Add M2 pins for bitlines. They don't have to be perfectly square.
     - Add M3 pins for wordlines and power
-    - Add M4 pins for power
+    - Add M4 pins for **power**
     - You don't have to be perfect for now. We will refine later
 
 ![](/images/vlsi/sram/sram.png)
@@ -128,19 +128,23 @@ You can assemble a 4x4 cell with 1x1 cells, and then piece 4 of them together fo
 
 # Decoder
 
+## Logic
 Shepard has probably shown off multiple decoder designs in lecture and practice exams. However, for this project, most people end up converting to a **static CMOS decoder**.
 - With column MUXing, only **two** rows need decoding. 
 - Wordlines must be **qualified** with `phi_1`. 
     - Address change happens when `phi_2` is high
     - Evaluation happens when `phi_1` is high. 
-    - Multiple (**even transiently**) active wordlines will short the cells, leading to **catastrophic** data corruption.
+    - Multiple (**even transiently**) active wordlines during evaluation will short the cells, leading to **catastrophic** data corruption.
 
-We chose a 4-in-1 **NAND-NOT** layout that fits neatly within four SRAM rows and scales naturally with predecoding.
+We chose a 4-in-1 **NAND-NOT** layout that fits neatly within four SRAM rows and *scales* with more rows.
 
-> **The drawback?** Kind of huge in width. It will be better for *this* project if we can put them into a more square shape.
-{: .notice--warning}
+> You may also try pre-decoding 1 bit? Unfortunately with this small array there's not much to play with these...
+{: .notice--info}
 
 
+
+
+## Layout
 The idea is simple: 
 1. Spam M3 horizontal wires for all signals and power (Yes, they fit)
 2. Use M2 to fetch the signals vertically from M3
@@ -150,6 +154,9 @@ The idea is simple:
 ![](/images/vlsi/sram/dec.jpg){: .align-center}
 
 Implementing it is tricky, but once you have one block, the rest is simple.
+
+> **The drawback?** Kind of huge in width. It will be better for *this* specific project if we can put them into a more square shape.
+{: .notice--warning}
 
 ![](/images/vlsi/sram/dec.png){: .blurred}
 
@@ -167,7 +174,7 @@ Below is the 2-bit (4 bitline *pairs*) R/W schematic, closely following lecture
 
 
 
-## Testing
+## Schematic Testing
 > Make sure the pre-extraction simulation works **consistently** before starting layout, so you can isolate errors as early as possible.
 {: .notice--danger}
 
@@ -211,7 +218,7 @@ We used a vertical Poly layout for this part. You will see the pros and cons in 
 
 
 ## Column MUX
-> To accurately pass down the bitlines, you may need PMOS too!
+> **Hindsight**: Use complementary columnn MUX. You need a PMOS to cleanly pass down the near-VDD bitlines. Our NMOS-only MUX was fine for a 4-cell bitline, but larger arrays (which means more bitline cap and less voltage margin) need the PMOS!
 {: .notice--warning}
 
 Four NMOS devices steer either column into the R/W circuitry.
@@ -255,15 +262,15 @@ We used single-ended sensing, suitable for small bitline capacitances, featuring
 1. A skewed inverter to sense a bitline
 2. A large tristate driver for `iobus`
 
-We chose a 4:1 *width* ratio. You should test it to make sure it works at **schematic** level.
+We chose a 4:1 P/N *width* ratio. You should test to make sure it works at least on schematic level.
 
 We then used a (600/300)x3 C²MOS tristate bus driver. Note that it has a stack height of 2. It is discussed on textbook page 393
 
-![](/images/vlsi/sram/tristate.png){: .align-center}
 
 > Do not add inverters **after** a tristate driver. That defeats the point.
 {: .notice--danger}
 
+![](/images/vlsi/sram/tristate.png){: .align-center}
 
 
 With careful tuning and diffusion sharing, you can make everything perfectly fit
@@ -272,7 +279,7 @@ With careful tuning and diffusion sharing, you can make everything perfectly fit
 ![](/images/vlsi/sram/rw_real.png){: .align-center}{: .blurred}
 
 ## What if things don't fit?
-Cry, but don't overcry. You still have to face it
+Cry, but don't cry too much. You unfortunately still have to face it.
 1. **Check the basics.** Start with diffusion sharing, efficient routing/viaing, avoid oversizing, etc.
 2. **Resize devices.** People constantly miss that. Ask yourself: Is the device on the **critical path**? How slow would it be if I size it smaller? Can I finger it differently? Can I orient it differently?
 3. **Use straight lines.** Bent routes increase contention not only for themselves, but for their neighbors as well! Try to make routes as straight as possible, or **shift** them away from tight regions.
@@ -284,9 +291,11 @@ A slightly area-inefficient design is not a failure --- It's a deliberate **trad
 ![](/images/vlsi/sram/contention.png)
 An example of diffusion sharing and detour (M1)
 
----
+
 > **CONGRATS ON FINISHING HALF THE DESIGN PROJECT!!!**
 {: .notice--success}
+
+---
 
 
 # Peripheral-Peripheral
