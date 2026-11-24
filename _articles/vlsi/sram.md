@@ -47,7 +47,7 @@ Because the SRAM cell is extremely dense, we use **column multiplexing**, sharin
 - *Physically*, we lay it out as **4x16** (16 bitline *pairs*), where each pair of **adjacent** physical columns maps to one logical column
 - Essentially, we *move* a dimension from rows into columns: one wordline address bit becomes the **column MUX select**.
 
-![](/images/vlsi/sram/mux_concept.jpg){: .align-center width="500"}
+![](/images/vlsi/sram/mux_concept.jpg){: .align-center width="450"}
 
 ---
 
@@ -353,7 +353,7 @@ WARNING: [FDI3014] Could not find cell mapping for device nchpg_sr. Ignoring ins
 ```
 
 Those are fine, since the internal schematic for the 6T SRAM cell is not given. The **entire instance** will be used for the extraction.
-- If post-extraction simulation doesn't work, try a more tolerant testbench timing [here](/articles/vlsi/sram#testing)
+- If post-extraction simulation doesn't work, try a more tolerant testbench timing [here](/articles/vlsi/sram#schematic-testing)
 
 The post-extraction delays are around 50 ns.
 

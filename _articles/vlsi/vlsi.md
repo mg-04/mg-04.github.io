@@ -25,7 +25,7 @@ In this set of articles, I will walk through the **essence of the 4321 design pr
 <div class="vlsi-toc">
   <ol class="vlsi-toc__parts">
     <li class="vlsi-toc__part vlsi-toc__part--current">
-      <div class="vlsi-toc__head"><span class="vlsi-toc__num">1</span><span>Intro to 4321 Layout</span><span class="vlsi-toc__ps vlsi-toc__ps--here">you are here</span></div>
+      <div class="vlsi-toc__head"><span class="vlsi-toc__num">1</span><span>Intro to 4321 Layout</span><span class="vlsi-toc__ps vlsi-toc__ps--here">You are here</span></div>
     </li>
     <li class="vlsi-toc__part">
       <div class="vlsi-toc__head"><span class="vlsi-toc__num">2</span><a href="/articles/vlsi/inverter">Inverter</a><span class="vlsi-toc__ps">PS4</span></div>
@@ -37,21 +37,25 @@ In this set of articles, I will walk through the **essence of the 4321 design pr
     </li>
     <li class="vlsi-toc__part">
       <div class="vlsi-toc__head"><span class="vlsi-toc__num">4</span><a href="/articles/vlsi/adder">Adder and Shifter</a><span class="vlsi-toc__ps">PS6-7</span></div>
-      <p class="vlsi-toc__subs"><a href="/articles/vlsi/adder#design">Design</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#schematic">Schematic</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#carry-circuit-walkthrough">Carry Circuit</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#1-bit-adder">1-Bit Adder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#8-bit-adder">8-Bit Adder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#shifter">Shifter</a></p>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/adder#design">Design</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#schematic">Schematic</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#carry-circuit-walkthrough">Carry</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#1-bit-adder">1-Bit Adder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#8-bit-adder">8-Bit Adder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/adder#shifter">Shifter</a></p>
     </li>
     <li class="vlsi-toc__part">
       <div class="vlsi-toc__head"><span class="vlsi-toc__num">5</span><a href="/articles/vlsi/sram">SRAM</a><span class="vlsi-toc__ps">PS8</span></div>
-      <p class="vlsi-toc__subs"><a href="/articles/vlsi/sram#sram-array">SRAM Array</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#decoder">Decoder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#read-write">Cell IO</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#testing">Testing</a></em><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#what-if-things-dont-fit">What If Things Don't Fit</a></em></p>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/sram#sram-array">SRAM Array</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#decoder">Decoder</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/sram#cell-io">Cell IO</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#schematic-testing">Testing</a></em><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/sram#what-if-things-dont-fit">What If Things Don't Fit</a></em></p>
     </li>
     <li class="vlsi-toc__part">
       <div class="vlsi-toc__head"><span class="vlsi-toc__num">6</span><a href="/articles/vlsi/overall">Overall</a><span class="vlsi-toc__ps">PS9</span></div>
-      <p class="vlsi-toc__subs"><a href="/articles/vlsi/overall#power-grid">Power Grid</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#data-path">Data Path</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#pla">PLA</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#control-path">Control Path</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/overall#drc-and-lvs-tips">DRC/LVS Tips</a></em><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#wrap-up">Wrap Up!</a></p>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/overall#power-grid">Power Grid</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#data-path">Data</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#pla">PLA</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#control-path">Control</a><span aria-hidden="true"> · </span><em><a href="/articles/vlsi/overall#drc-and-lvs-tips">DRC/LVS Tips</a></em><span aria-hidden="true"> · </span><a href="/articles/vlsi/overall#wrap-up">Wrap Up!</a></p>
+    </li>
+    <li class="vlsi-toc__part">
+      <div class="vlsi-toc__head"><span class="vlsi-toc__num"><i class="fas fa-images" aria-hidden="true"></i></span><a href="/articles/vlsi/gallery">Gallery</a></div>
+      <p class="vlsi-toc__subs"><a href="/articles/vlsi/gallery#overall-layout">Layout</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/gallery#various-layers">Layers</a><span aria-hidden="true"> · </span><a href="/articles/vlsi/gallery#manhattan-sunrise">Manhattan Sunrise</a></p>
     </li>
   </ol>
-  <figure class="vlsi-toc__figure"><a href="/articles/vlsi/gallery"><img src="/images/vlsi/pretty/overall/overall_1.png" alt="Final processor layout"></a><figcaption>Final layout · <a href="/articles/vlsi/gallery">more pictures</a></figcaption></figure>
+  <figure class="vlsi-toc__figure"><a href="/articles/vlsi/gallery"><img src="/images/vlsi/pretty/overall/overall_1.png" alt="Final processor layout"></a><figcaption>Final layout</figcaption></figure>
 </div>
 
-<p class="vlsi-toc__links"><a href="/articles/vlsi/gallery"><i class="fas fa-fw fa-images" aria-hidden="true"></i>Gallery</a><a href="https://www.bioee.ee.columbia.edu/courses/ee4321/"><i class="fas fa-fw fa-university" aria-hidden="true"></i>Official Course Page</a><a href="/courses/vlsi"><i class="fas fa-fw fa-book" aria-hidden="true"></i>My Class Notes</a><a href="https://charlottechen.blog/posts/VLSI_testing"><i class="fas fa-fw fa-vial" aria-hidden="true"></i>Testing Tutorial by Charlotte Chen</a></p>
+<p class="vlsi-toc__links"><a href="https://www.bioee.ee.columbia.edu/courses/ee4321/"><i class="fas fa-fw fa-university" aria-hidden="true"></i>Official Course Page</a><a href="/courses/vlsi"><i class="fas fa-fw fa-book" aria-hidden="true"></i>My Class Notes</a><a href="https://charlottechen.blog/posts/VLSI_testing"><i class="fas fa-fw fa-vial" aria-hidden="true"></i>Testing Tutorial by Charlotte Chen</a></p>
 
 ---
 

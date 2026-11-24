@@ -55,7 +55,7 @@ There are a total of **4** bus drivers:
 {: .notice--info}
 
 
-![](/images/vlsi/pla/overall_stick.jpg)
+![](/images/vlsi/pla/overall_stick.jpg){: .align-center width="500"}
 
 Let's focus on a single-bit data block on the right.
 
